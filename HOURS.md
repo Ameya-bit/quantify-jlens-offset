@@ -5,6 +5,6 @@ Each row logged as it happens. Git commit timestamps corroborate.
 
 | # | Start | Stop | Duration | Work |
 |---|-------|------|----------|------|
-| 1 | 2026-08-19 19:33 EDT | — | — | Step 1: load + sanity-check the instrument (src/lens.py, src/sanity.py) |
+| 1 | 2026-08-19 19:33 EDT | 2026-08-19 19:38 EDT | 0h 05m | Step 1: load + sanity-check the instrument (src/lens.py, src/sanity.py). All gates pass. Agent-assisted; wall-clock logged. Reviewer (Ameya) verification time to be appended as its own row. |
 
-**Total logged: 0h 00m**
+**Total logged: 0h 05m**
