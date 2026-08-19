@@ -1,0 +1,18 @@
+# macOS
+.DS_Store
+
+# --- private: strategy/application notes, never commit ---
+mats-application-plan-v2.md
+exec_sum.md
+phoenix_claim.png
+rlhf_claim.png
+private/
+
+# python
+__pycache__/
+*.pyc
+.venv/
+
+# large artifacts (models/lenses live in HF cache, not the repo)
+*.pt
+*.safetensors
