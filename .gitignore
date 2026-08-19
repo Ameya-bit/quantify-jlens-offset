@@ -2,6 +2,7 @@
 .DS_Store
 
 # --- private: strategy/application notes, never commit ---
+GLOSSARY.md
 mats-application-plan-v2.md
 exec_sum.md
 phoenix_claim.png
