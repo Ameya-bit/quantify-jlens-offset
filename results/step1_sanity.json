@@ -1,0 +1,326 @@
+{
+  "provenance": {
+    "J": {
+      "model_id": "Qwen/Qwen3.5-4B",
+      "dataset_id": "NeelNanda/pile-10k",
+      "target_layer": 30,
+      "t_max": 128,
+      "n_prompts": 25,
+      "docs_consumed": 25,
+      "n_positions": 0.0,
+      "git_commit": "modal",
+      "skip_first": 4,
+      "config_json": "{\"estimator\": \"standard\"}",
+      "weighting": "uniform",
+      "corpus_mode": "pretrain"
+    },
+    "R": {
+      "model_id": "Qwen/Qwen3.5-4B",
+      "dataset_id": "NeelNanda/pile-10k",
+      "target_layer": 30,
+      "t_max": 128,
+      "n_prompts": 25,
+      "docs_consumed": 25,
+      "n_positions": 0.0,
+      "git_commit": "modal",
+      "skip_first": 4,
+      "config_json": "{\"estimator\": \"relp\", \"rules\": {\"ln_rule\": true, \"identity_rule\": true, \"half_rule\": true, \"half_rule_beta\": 0.5, \"include_qk_norms\": false, \"gated_norms\": false}}",
+      "weighting": "uniform",
+      "corpus_mode": "pretrain"
+    }
+  },
+  "anchor": {
+    "J": {
+      "max_abs_diff_from_I": 0.0,
+      "pass": true
+    },
+    "R": {
+      "max_abs_diff_from_I": 0.0,
+      "pass": true
+    }
+  },
+  "agreement": {
+    "rows": [
+      {
+        "prompt": "The quick brown fox jumps over the lazy",
+        "overlap_by_layer": {
+          "26": 6,
+          "28": 7,
+          "29": 10,
+          "30": 10
+        }
+      },
+      {
+        "prompt": "In 1969, humans first landed on the",
+        "overlap_by_layer": {
+          "26": 9,
+          "28": 8,
+          "29": 8,
+          "30": 10
+        }
+      },
+      {
+        "prompt": "Water is made of hydrogen and",
+        "overlap_by_layer": {
+          "26": 9,
+          "28": 7,
+          "29": 6,
+          "30": 10
+        }
+      }
+    ],
+    "target_layer_all_exact": true,
+    "mean_overlap_28_29": 7.666666666666667,
+    "pass": true
+  },
+  "facts": {
+    "rows": [
+      {
+        "prompt": "The Eiffel Tower is in the city of",
+        "answer": " Paris",
+        "model_knows_top5": true,
+        "jlens_found_at_layer": 24,
+        "jlens_top10_by_layer": {
+          "8": [
+            " neighborhoods",
+            "neighbor",
+            " neighborhood",
+            " cities",
+            " downtown",
+            " city",
+            " traveled",
+            " traveling",
+            "-city",
+            " metropolitan"
+          ],
+          "12": [
+            " city",
+            " town",
+            " towns",
+            " downtown",
+            " cities",
+            " neighborhoods",
+            "-city",
+            " metropolitan",
+            "neighbor",
+            "town"
+          ],
+          "16": [
+            "____",
+            "____________",
+            "called",
+            " called",
+            "_____",
+            " city",
+            "________",
+            " famous",
+            "NAME",
+            "________________"
+          ],
+          "20": [
+            "____",
+            " __",
+            " ___",
+            "_____",
+            "___",
+            "________",
+            "____________",
+            " ______",
+            "________________",
+            " ____"
+          ],
+          "24": [
+            " Paris",
+            " __",
+            " ___",
+            "____",
+            "Paris",
+            "_____",
+            "___",
+            "__",
+            "\u5df4\u9ece",
+            "________"
+          ],
+          "28": [
+            " Paris",
+            "Paris",
+            " __",
+            "\u5df4\u9ece",
+            " ___",
+            " paris",
+            " _____",
+            "____",
+            "___",
+            "__"
+          ]
+        },
+        "pass": true
+      },
+      {
+        "prompt": "The capital of Japan is",
+        "answer": " Tokyo",
+        "model_knows_top5": true,
+        "jlens_found_at_layer": 24,
+        "jlens_top10_by_layer": {
+          "8": [
+            " cities",
+            " city",
+            " metropolitan",
+            " capitale",
+            "cities",
+            "\u58e4",
+            " capital",
+            " Cities",
+            "ijing",
+            " Metropol"
+          ],
+          "12": [
+            " citizens",
+            " city",
+            " cities",
+            " civic",
+            " capitale",
+            " metropolitan",
+            " presidential",
+            "located",
+            " famous",
+            "official"
+          ],
+          "16": [
+            "____",
+            "________",
+            "____________",
+            " ___",
+            " ____",
+            " ______",
+            "_____",
+            "___",
+            "________________",
+            " famous"
+          ],
+          "20": [
+            "____",
+            "________",
+            "_____",
+            " ___",
+            " __",
+            " ______",
+            " ____",
+            "____________",
+            "___",
+            " _____"
+          ],
+          "24": [
+            " Tokyo",
+            "\u4e1c\u4eac",
+            "____",
+            " ___",
+            "Tok",
+            " __",
+            "________",
+            " ____",
+            " Japan",
+            "_____"
+          ],
+          "28": [
+            " Tokyo",
+            "Tok",
+            "\u4e1c\u4eac",
+            "____",
+            " Tokio",
+            " ___",
+            " ____",
+            " _____",
+            " ______",
+            "\u6771\u4eac"
+          ]
+        },
+        "pass": true
+      },
+      {
+        "prompt": "The chemical symbol for gold is",
+        "answer": " Au",
+        "model_knows_top5": true,
+        "jlens_found_at_layer": 28,
+        "jlens_top10_by_layer": {
+          "8": [
+            "otope",
+            " abbreviation",
+            "\ub9c8\uc790",
+            "\u4e00\u4e2a\u5b57",
+            "\u4e2d\u6587\u540d",
+            "Symbols",
+            "latin",
+            "abbreviation",
+            " Symbols",
+            " abbrev"
+          ],
+          "12": [
+            " abbreviation",
+            " abbrev",
+            "abbrev",
+            " shorthand",
+            "abbreviation",
+            "\u7684\u540d\u79f0",
+            " symbols",
+            "\u7f29\u5199",
+            " Symbols",
+            " abbreviated"
+          ],
+          "16": [
+            " abbreviation",
+            " abbrev",
+            "abbreviation",
+            "____",
+            "\u7684\u540d\u79f0",
+            "\u7f29\u5199",
+            "\u8fd9\u4e2a\u540d\u5b57",
+            "abbrev",
+            "________",
+            " shorthand"
+          ],
+          "20": [
+            "____",
+            "________",
+            " ___",
+            "_____",
+            " ____",
+            " ______",
+            " __",
+            "____________",
+            "________________",
+            " _____"
+          ],
+          "24": [
+            " gold",
+            " ___",
+            "________",
+            "gold",
+            "____",
+            "_____",
+            " __",
+            "\u7684\u5316\u5b66",
+            " Gold",
+            "\u7f29\u5199"
+          ],
+          "28": [
+            " gold",
+            " Gold",
+            " Au",
+            "Gold",
+            "gold",
+            "Au",
+            "_gold",
+            ".gold",
+            "\u91d1\u7684",
+            " GOLD"
+          ]
+        },
+        "pass": false
+      }
+    ],
+    "n_pass": 2,
+    "pass": true
+  },
+  "all_pass": true
+}
