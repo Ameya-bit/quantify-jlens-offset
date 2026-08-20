@@ -1,0 +1,10 @@
+{
+  "model_id": "EleutherAI/pythia-1.4b",
+  "device": "mps",
+  "target_layer": 22,
+  "skip_first": 4,
+  "max_seq_len": 128,
+  "seconds_for_1_doc": 101.1,
+  "projected_minutes_10_docs": 16.9,
+  "projected_minutes_25_docs": 42.1
+}
