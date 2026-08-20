@@ -1,0 +1,4976 @@
+{
+  "model_id": "Qwen/Qwen3.5-4B",
+  "n_shortcut_solvable_top1": 5,
+  "n_shortcut_in_blinded_top5": 39,
+  "n_two_hop_lenient": 133,
+  "n_two_hop_strict": 99,
+  "filter": "kept iff the model's true final-layer top-1 next token == answer",
+  "n_entities": 45,
+  "n_candidates": 164,
+  "n_kept": 138,
+  "n_rejected": 26,
+  "dropped_before_model": {
+    "multi_token_intermediate": 0,
+    "multi_token_answer": 14,
+    "no_label": 2
+  },
+  "by_template": {
+    "capital": {
+      "kept": 39,
+      "rejected": 3,
+      "keep_rate": 0.929,
+      "shortcut_solvable_top1": 0,
+      "shortcut_in_blinded_top5": 0,
+      "two_hop_strict": 39
+    },
+    "currency": {
+      "kept": 27,
+      "rejected": 11,
+      "keep_rate": 0.711,
+      "shortcut_solvable_top1": 0,
+      "shortcut_in_blinded_top5": 20,
+      "two_hop_strict": 7
+    },
+    "language": {
+      "kept": 39,
+      "rejected": 3,
+      "keep_rate": 0.929,
+      "shortcut_solvable_top1": 5,
+      "shortcut_in_blinded_top5": 19,
+      "two_hop_strict": 20
+    },
+    "capital_of": {
+      "kept": 33,
+      "rejected": 9,
+      "keep_rate": 0.786,
+      "shortcut_solvable_top1": 0,
+      "shortcut_in_blinded_top5": 0,
+      "two_hop_strict": 33
+    }
+  },
+  "n_distinct_intermediates": 25,
+  "items": [
+    {
+      "id": "Munich|capital",
+      "entity": "Munich",
+      "entity_kind": "city",
+      "template": "capital",
+      "prompt": "The city of Munich is located in the country whose capital city is",
+      "intermediate": " Germany",
+      "intermediate_id": 9564,
+      "answer": " Berlin",
+      "answer_id": 19241,
+      "model_top1": " Berlin",
+      "model_top5": [
+        " Berlin",
+        " ______",
+        ":",
+        " Vienna",
+        "\n"
+      ],
+      "answer_rank_in_top5": 0,
+      "shortcut_solvable": false,
+      "shortcut_in_blinded_top5": false,
+      "blinded_top1": " the",
+      "blinded_top5": [
+        " the",
+        " in",
+        " located",
+        " also",
+        " ______"
+      ]
+    },
+    {
+      "id": "Munich|currency",
+      "entity": "Munich",
+      "entity_kind": "city",
+      "template": "currency",
+      "prompt": "The city of Munich is located in the country whose currency is the",
+      "intermediate": " Germany",
+      "intermediate_id": 9564,
+      "answer": " euro",
+      "answer_id": 17146,
+      "model_top1": " euro",
+      "model_top5": [
+        " euro",
+        " Euro",
+        " ______",
+        " __",
+        ":"
+      ],
+      "answer_rank_in_top5": 0,
+      "shortcut_solvable": false,
+      "shortcut_in_blinded_top5": true,
+      "blinded_top1": " **",
+      "blinded_top5": [
+        " **",
+        " euro",
+        " dollar",
+        " US",
+        " pound"
+      ]
+    },
+    {
+      "id": "Munich|language",
+      "entity": "Munich",
+      "entity_kind": "city",
+      "template": "language",
+      "prompt": "The city of Munich is located in the country whose main language is",
+      "intermediate": " Germany",
+      "intermediate_id": 9564,
+      "answer": " German",
+      "answer_id": 5753,
+      "model_top1": " German",
+      "model_top5": [
+        " German",
+        ":",
+        " __",
+        " ______",
+        "\n"
+      ],
+      "answer_rank_in_top5": 0,
+      "shortcut_solvable": false,
+      "shortcut_in_blinded_top5": true,
+      "blinded_top1": " English",
+      "blinded_top5": [
+        " English",
+        " Spanish",
+        " French",
+        " German",
+        " not"
+      ]
+    },
+    {
+      "id": "Munich|capital_of",
+      "entity": "Munich",
+      "entity_kind": "city",
+      "template": "capital_of",
+      "prompt": "The city of Munich is located in a country, and the capital of that country is",
+      "intermediate": " Germany",
+      "intermediate_id": 9564,
+      "answer": " Berlin",
+      "answer_id": 19241,
+      "model_top1": " Berlin",
+      "model_top5": [
+        " Berlin",
+        " also",
+        " a",
+        " located",
+        " the"
+      ],
+      "answer_rank_in_top5": 0,
+      "shortcut_solvable": false,
+      "shortcut_in_blinded_top5": false,
+      "blinded_top1": " also",
+      "blinded_top5": [
+        " also",
+        " a",
+        " the",
+        " in",
+        " located"
+      ]
+    },
+    {
+      "id": "Hamburg|capital",
+      "entity": "Hamburg",
+      "entity_kind": "city",
+      "template": "capital",
+      "prompt": "The city of Hamburg is located in the country whose capital city is",
+      "intermediate": " Germany",
+      "intermediate_id": 9564,
+      "answer": " Berlin",
+      "answer_id": 19241,
+      "model_top1": " Berlin",
+      "model_top5": [
+        " Berlin",
+        ":",
+        " ______",
+        "\n",
+        " ___"
+      ],
+      "answer_rank_in_top5": 0,
+      "shortcut_solvable": false,
+      "shortcut_in_blinded_top5": false,
+      "blinded_top1": " the",
+      "blinded_top5": [
+        " the",
+        " in",
+        " located",
+        " also",
+        " ______"
+      ]
+    },
+    {
+      "id": "Hamburg|currency",
+      "entity": "Hamburg",
+      "entity_kind": "city",
+      "template": "currency",
+      "prompt": "The city of Hamburg is located in the country whose currency is the",
+      "intermediate": " Germany",
+      "intermediate_id": 9564,
+      "answer": " euro",
+      "answer_id": 17146,
+      "model_top1": " euro",
+      "model_top5": [
+        " euro",
+        " Euro",
+        " **",
+        " __",
+        " ______"
+      ],
+      "answer_rank_in_top5": 0,
+      "shortcut_solvable": false,
+      "shortcut_in_blinded_top5": true,
+      "blinded_top1": " **",
+      "blinded_top5": [
+        " **",
+        " euro",
+        " dollar",
+        " US",
+        " pound"
+      ]
+    },
+    {
+      "id": "Hamburg|language",
+      "entity": "Hamburg",
+      "entity_kind": "city",
+      "template": "language",
+      "prompt": "The city of Hamburg is located in the country whose main language is",
+      "intermediate": " Germany",
+      "intermediate_id": 9564,
+      "answer": " German",
+      "answer_id": 5753,
+      "model_top1": " German",
+      "model_top5": [
+        " German",
+        ":",
+        " ______",
+        " __",
+        "\n"
+      ],
+      "answer_rank_in_top5": 0,
+      "shortcut_solvable": false,
+      "shortcut_in_blinded_top5": true,
+      "blinded_top1": " English",
+      "blinded_top5": [
+        " English",
+        " Spanish",
+        " French",
+        " German",
+        " not"
+      ]
+    },
+    {
+      "id": "Hamburg|capital_of",
+      "entity": "Hamburg",
+      "entity_kind": "city",
+      "template": "capital_of",
+      "prompt": "The city of Hamburg is located in a country, and the capital of that country is",
+      "intermediate": " Germany",
+      "intermediate_id": 9564,
+      "answer": " Berlin",
+      "answer_id": 19241,
+      "model_top1": " Berlin",
+      "model_top5": [
+        " Berlin",
+        " also",
+        " a",
+        " located",
+        " the"
+      ],
+      "answer_rank_in_top5": 0,
+      "shortcut_solvable": false,
+      "shortcut_in_blinded_top5": false,
+      "blinded_top1": " also",
+      "blinded_top5": [
+        " also",
+        " a",
+        " the",
+        " in",
+        " located"
+      ]
+    },
+    {
+      "id": "Frankfurt|capital",
+      "entity": "Frankfurt",
+      "entity_kind": "city",
+      "template": "capital",
+      "prompt": "The city of Frankfurt is located in the country whose capital city is",
+      "intermediate": " Germany",
+      "intermediate_id": 9564,
+      "answer": " Berlin",
+      "answer_id": 19241,
+      "model_top1": " Berlin",
+      "model_top5": [
+        " Berlin",
+        " ______",
+        ":",
+        "\n",
+        " located"
+      ],
+      "answer_rank_in_top5": 0,
+      "shortcut_solvable": false,
+      "shortcut_in_blinded_top5": false,
+      "blinded_top1": " the",
+      "blinded_top5": [
+        " the",
+        " in",
+        " located",
+        " also",
+        " ______"
+      ]
+    },
+    {
+      "id": "Frankfurt|currency",
+      "entity": "Frankfurt",
+      "entity_kind": "city",
+      "template": "currency",
+      "prompt": "The city of Frankfurt is located in the country whose currency is the",
+      "intermediate": " Germany",
+      "intermediate_id": 9564,
+      "answer": " euro",
+      "answer_id": 17146,
+      "model_top1": " euro",
+      "model_top5": [
+        " euro",
+        " Euro",
+        " __",
+        " ______",
+        ":"
+      ],
+      "answer_rank_in_top5": 0,
+      "shortcut_solvable": false,
+      "shortcut_in_blinded_top5": true,
+      "blinded_top1": " **",
+      "blinded_top5": [
+        " **",
+        " euro",
+        " dollar",
+        " US",
+        " pound"
+      ]
+    },
+    {
+      "id": "Frankfurt|language",
+      "entity": "Frankfurt",
+      "entity_kind": "city",
+      "template": "language",
+      "prompt": "The city of Frankfurt is located in the country whose main language is",
+      "intermediate": " Germany",
+      "intermediate_id": 9564,
+      "answer": " German",
+      "answer_id": 5753,
+      "model_top1": " German",
+      "model_top5": [
+        " German",
+        " __",
+        " ______",
+        ":",
+        "\n"
+      ],
+      "answer_rank_in_top5": 0,
+      "shortcut_solvable": false,
+      "shortcut_in_blinded_top5": true,
+      "blinded_top1": " English",
+      "blinded_top5": [
+        " English",
+        " Spanish",
+        " French",
+        " German",
+        " not"
+      ]
+    },
+    {
+      "id": "Frankfurt|capital_of",
+      "entity": "Frankfurt",
+      "entity_kind": "city",
+      "template": "capital_of",
+      "prompt": "The city of Frankfurt is located in a country, and the capital of that country is",
+      "intermediate": " Germany",
+      "intermediate_id": 9564,
+      "answer": " Berlin",
+      "answer_id": 19241,
+      "model_top1": " Berlin",
+      "model_top5": [
+        " Berlin",
+        " also",
+        " located",
+        " a",
+        " the"
+      ],
+      "answer_rank_in_top5": 0,
+      "shortcut_solvable": false,
+      "shortcut_in_blinded_top5": false,
+      "blinded_top1": " also",
+      "blinded_top5": [
+        " also",
+        " a",
+        " the",
+        " in",
+        " located"
+      ]
+    },
+    {
+      "id": "Barcelona|capital",
+      "entity": "Barcelona",
+      "entity_kind": "city",
+      "template": "capital",
+      "prompt": "The city of Barcelona is located in the country whose capital city is",
+      "intermediate": " Spain",
+      "intermediate_id": 17163,
+      "answer": " Madrid",
+      "answer_id": 23327,
+      "model_top1": " Madrid",
+      "model_top5": [
+        " Madrid",
+        " Rome",
+        ":",
+        " ______",
+        " located"
+      ],
+      "answer_rank_in_top5": 0,
+      "shortcut_solvable": false,
+      "shortcut_in_blinded_top5": false,
+      "blinded_top1": " the",
+      "blinded_top5": [
+        " the",
+        " in",
+        " located",
+        " also",
+        " ______"
+      ]
+    },
+    {
+      "id": "Barcelona|currency",
+      "entity": "Barcelona",
+      "entity_kind": "city",
+      "template": "currency",
+      "prompt": "The city of Barcelona is located in the country whose currency is the",
+      "intermediate": " Spain",
+      "intermediate_id": 17163,
+      "answer": " euro",
+      "answer_id": 17146,
+      "model_top1": " euro",
+      "model_top5": [
+        " euro",
+        " Euro",
+        " ______",
+        ":",
+        " __"
+      ],
+      "answer_rank_in_top5": 0,
+      "shortcut_solvable": false,
+      "shortcut_in_blinded_top5": true,
+      "blinded_top1": " **",
+      "blinded_top5": [
+        " **",
+        " euro",
+        " dollar",
+        " US",
+        " pound"
+      ]
+    },
+    {
+      "id": "Barcelona|language",
+      "entity": "Barcelona",
+      "entity_kind": "city",
+      "template": "language",
+      "prompt": "The city of Barcelona is located in the country whose main language is",
+      "intermediate": " Spain",
+      "intermediate_id": 17163,
+      "answer": " Spanish",
+      "answer_id": 14712,
+      "model_top1": " Spanish",
+      "model_top5": [
+        " Spanish",
+        ":",
+        " Catalan",
+        " __",
+        "\n"
+      ],
+      "answer_rank_in_top5": 0,
+      "shortcut_solvable": false,
+      "shortcut_in_blinded_top5": true,
+      "blinded_top1": " English",
+      "blinded_top5": [
+        " English",
+        " Spanish",
+        " French",
+        " German",
+        " not"
+      ]
+    },
+    {
+      "id": "Barcelona|capital_of",
+      "entity": "Barcelona",
+      "entity_kind": "city",
+      "template": "capital_of",
+      "prompt": "The city of Barcelona is located in a country, and the capital of that country is",
+      "intermediate": " Spain",
+      "intermediate_id": 17163,
+      "answer": " Madrid",
+      "answer_id": 23327,
+      "model_top1": " Madrid",
+      "model_top5": [
+        " Madrid",
+        " also",
+        " located",
+        " a",
+        " Rome"
+      ],
+      "answer_rank_in_top5": 0,
+      "shortcut_solvable": false,
+      "shortcut_in_blinded_top5": false,
+      "blinded_top1": " also",
+      "blinded_top5": [
+        " also",
+        " a",
+        " the",
+        " in",
+        " located"
+      ]
+    },
+    {
+      "id": "Valencia|capital",
+      "entity": "Valencia",
+      "entity_kind": "city",
+      "template": "capital",
+      "prompt": "The city of Valencia is located in the country whose capital city is",
+      "intermediate": " Spain",
+      "intermediate_id": 17163,
+      "answer": " Madrid",
+      "answer_id": 23327,
+      "model_top1": " Madrid",
+      "model_top5": [
+        " Madrid",
+        ":",
+        " located",
+        " ______",
+        " __"
+      ],
+      "answer_rank_in_top5": 0,
+      "shortcut_solvable": false,
+      "shortcut_in_blinded_top5": false,
+      "blinded_top1": " the",
+      "blinded_top5": [
+        " the",
+        " in",
+        " located",
+        " also",
+        " ______"
+      ]
+    },
+    {
+      "id": "Valencia|currency",
+      "entity": "Valencia",
+      "entity_kind": "city",
+      "template": "currency",
+      "prompt": "The city of Valencia is located in the country whose currency is the",
+      "intermediate": " Spain",
+      "intermediate_id": 17163,
+      "answer": " euro",
+      "answer_id": 17146,
+      "model_top1": " euro",
+      "model_top5": [
+        " euro",
+        " Euro",
+        " ______",
+        " **",
+        " __"
+      ],
+      "answer_rank_in_top5": 0,
+      "shortcut_solvable": false,
+      "shortcut_in_blinded_top5": true,
+      "blinded_top1": " **",
+      "blinded_top5": [
+        " **",
+        " euro",
+        " dollar",
+        " US",
+        " pound"
+      ]
+    },
+    {
+      "id": "Valencia|language",
+      "entity": "Valencia",
+      "entity_kind": "city",
+      "template": "language",
+      "prompt": "The city of Valencia is located in the country whose main language is",
+      "intermediate": " Spain",
+      "intermediate_id": 17163,
+      "answer": " Spanish",
+      "answer_id": 14712,
+      "model_top1": " Spanish",
+      "model_top5": [
+        " Spanish",
+        ":",
+        " __",
+        " Cast",
+        " ______"
+      ],
+      "answer_rank_in_top5": 0,
+      "shortcut_solvable": false,
+      "shortcut_in_blinded_top5": true,
+      "blinded_top1": " English",
+      "blinded_top5": [
+        " English",
+        " Spanish",
+        " French",
+        " German",
+        " not"
+      ]
+    },
+    {
+      "id": "Valencia|capital_of",
+      "entity": "Valencia",
+      "entity_kind": "city",
+      "template": "capital_of",
+      "prompt": "The city of Valencia is located in a country, and the capital of that country is",
+      "intermediate": " Spain",
+      "intermediate_id": 17163,
+      "answer": " Madrid",
+      "answer_id": 23327,
+      "model_top1": " Madrid",
+      "model_top5": [
+        " Madrid",
+        " located",
+        " also",
+        " a",
+        " the"
+      ],
+      "answer_rank_in_top5": 0,
+      "shortcut_solvable": false,
+      "shortcut_in_blinded_top5": false,
+      "blinded_top1": " also",
+      "blinded_top5": [
+        " also",
+        " a",
+        " the",
+        " in",
+        " located"
+      ]
+    },
+    {
+      "id": "Milan|capital",
+      "entity": "Milan",
+      "entity_kind": "city",
+      "template": "capital",
+      "prompt": "The city of Milan is located in the country whose capital city is",
+      "intermediate": " Italy",
+      "intermediate_id": 14898,
+      "answer": " Rome",
+      "answer_id": 21047,
+      "model_top1": " Rome",
+      "model_top5": [
+        " Rome",
+        " ______",
+        ":",
+        "\n",
+        " located"
+      ],
+      "answer_rank_in_top5": 0,
+      "shortcut_solvable": false,
+      "shortcut_in_blinded_top5": false,
+      "blinded_top1": " the",
+      "blinded_top5": [
+        " the",
+        " in",
+        " located",
+        " also",
+        " ______"
+      ]
+    },
+    {
+      "id": "Milan|currency",
+      "entity": "Milan",
+      "entity_kind": "city",
+      "template": "currency",
+      "prompt": "The city of Milan is located in the country whose currency is the",
+      "intermediate": " Italy",
+      "intermediate_id": 14898,
+      "answer": " euro",
+      "answer_id": 17146,
+      "model_top1": " euro",
+      "model_top5": [
+        " euro",
+        " Euro",
+        " ______",
+        ":",
+        " __"
+      ],
+      "answer_rank_in_top5": 0,
+      "shortcut_solvable": false,
+      "shortcut_in_blinded_top5": true,
+      "blinded_top1": " **",
+      "blinded_top5": [
+        " **",
+        " euro",
+        " dollar",
+        " US",
+        " pound"
+      ]
+    },
+    {
+      "id": "Milan|language",
+      "entity": "Milan",
+      "entity_kind": "city",
+      "template": "language",
+      "prompt": "The city of Milan is located in the country whose main language is",
+      "intermediate": " Italy",
+      "intermediate_id": 14898,
+      "answer": " Italian",
+      "answer_id": 14382,
+      "model_top1": " Italian",
+      "model_top5": [
+        " Italian",
+        ":",
+        " __",
+        " Spanish",
+        " ______"
+      ],
+      "answer_rank_in_top5": 0,
+      "shortcut_solvable": false,
+      "shortcut_in_blinded_top5": false,
+      "blinded_top1": " English",
+      "blinded_top5": [
+        " English",
+        " Spanish",
+        " French",
+        " German",
+        " not"
+      ]
+    },
+    {
+      "id": "Milan|capital_of",
+      "entity": "Milan",
+      "entity_kind": "city",
+      "template": "capital_of",
+      "prompt": "The city of Milan is located in a country, and the capital of that country is",
+      "intermediate": " Italy",
+      "intermediate_id": 14898,
+      "answer": " Rome",
+      "answer_id": 21047,
+      "model_top1": " Rome",
+      "model_top5": [
+        " Rome",
+        " located",
+        " also",
+        " a",
+        " Paris"
+      ],
+      "answer_rank_in_top5": 0,
+      "shortcut_solvable": false,
+      "shortcut_in_blinded_top5": false,
+      "blinded_top1": " also",
+      "blinded_top5": [
+        " also",
+        " a",
+        " the",
+        " in",
+        " located"
+      ]
+    },
+    {
+      "id": "Venice|capital",
+      "entity": "Venice",
+      "entity_kind": "city",
+      "template": "capital",
+      "prompt": "The city of Venice is located in the country whose capital city is",
+      "intermediate": " Italy",
+      "intermediate_id": 14898,
+      "answer": " Rome",
+      "answer_id": 21047,
+      "model_top1": " Rome",
+      "model_top5": [
+        " Rome",
+        " ______",
+        ":",
+        " ___",
+        "\n"
+      ],
+      "answer_rank_in_top5": 0,
+      "shortcut_solvable": false,
+      "shortcut_in_blinded_top5": false,
+      "blinded_top1": " the",
+      "blinded_top5": [
+        " the",
+        " in",
+        " located",
+        " also",
+        " ______"
+      ]
+    },
+    {
+      "id": "Venice|currency",
+      "entity": "Venice",
+      "entity_kind": "city",
+      "template": "currency",
+      "prompt": "The city of Venice is located in the country whose currency is the",
+      "intermediate": " Italy",
+      "intermediate_id": 14898,
+      "answer": " euro",
+      "answer_id": 17146,
+      "model_top1": " euro",
+      "model_top5": [
+        " euro",
+        " Euro",
+        " ______",
+        ":",
+        " __"
+      ],
+      "answer_rank_in_top5": 0,
+      "shortcut_solvable": false,
+      "shortcut_in_blinded_top5": true,
+      "blinded_top1": " **",
+      "blinded_top5": [
+        " **",
+        " euro",
+        " dollar",
+        " US",
+        " pound"
+      ]
+    },
+    {
+      "id": "Venice|language",
+      "entity": "Venice",
+      "entity_kind": "city",
+      "template": "language",
+      "prompt": "The city of Venice is located in the country whose main language is",
+      "intermediate": " Italy",
+      "intermediate_id": 14898,
+      "answer": " Italian",
+      "answer_id": 14382,
+      "model_top1": " Italian",
+      "model_top5": [
+        " Italian",
+        ":",
+        "\n",
+        " __",
+        " ______"
+      ],
+      "answer_rank_in_top5": 0,
+      "shortcut_solvable": false,
+      "shortcut_in_blinded_top5": false,
+      "blinded_top1": " English",
+      "blinded_top5": [
+        " English",
+        " Spanish",
+        " French",
+        " German",
+        " not"
+      ]
+    },
+    {
+      "id": "Venice|capital_of",
+      "entity": "Venice",
+      "entity_kind": "city",
+      "template": "capital_of",
+      "prompt": "The city of Venice is located in a country, and the capital of that country is",
+      "intermediate": " Italy",
+      "intermediate_id": 14898,
+      "answer": " Rome",
+      "answer_id": 21047,
+      "model_top1": " Rome",
+      "model_top5": [
+        " Rome",
+        " also",
+        " a",
+        " located",
+        " the"
+      ],
+      "answer_rank_in_top5": 0,
+      "shortcut_solvable": false,
+      "shortcut_in_blinded_top5": false,
+      "blinded_top1": " also",
+      "blinded_top5": [
+        " also",
+        " a",
+        " the",
+        " in",
+        " located"
+      ]
+    },
+    {
+      "id": "Naples|capital",
+      "entity": "Naples",
+      "entity_kind": "city",
+      "template": "capital",
+      "prompt": "The city of Naples is located in the country whose capital city is",
+      "intermediate": " Italy",
+      "intermediate_id": 14898,
+      "answer": " Rome",
+      "answer_id": 21047,
+      "model_top1": " Rome",
+      "model_top5": [
+        " Rome",
+        " ______",
+        ":",
+        "\n",
+        " __"
+      ],
+      "answer_rank_in_top5": 0,
+      "shortcut_solvable": false,
+      "shortcut_in_blinded_top5": false,
+      "blinded_top1": " the",
+      "blinded_top5": [
+        " the",
+        " in",
+        " located",
+        " also",
+        " ______"
+      ]
+    },
+    {
+      "id": "Naples|currency",
+      "entity": "Naples",
+      "entity_kind": "city",
+      "template": "currency",
+      "prompt": "The city of Naples is located in the country whose currency is the",
+      "intermediate": " Italy",
+      "intermediate_id": 14898,
+      "answer": " euro",
+      "answer_id": 17146,
+      "model_top1": " euro",
+      "model_top5": [
+        " euro",
+        " Euro",
+        ":",
+        " ______",
+        " __"
+      ],
+      "answer_rank_in_top5": 0,
+      "shortcut_solvable": false,
+      "shortcut_in_blinded_top5": true,
+      "blinded_top1": " **",
+      "blinded_top5": [
+        " **",
+        " euro",
+        " dollar",
+        " US",
+        " pound"
+      ]
+    },
+    {
+      "id": "Naples|language",
+      "entity": "Naples",
+      "entity_kind": "city",
+      "template": "language",
+      "prompt": "The city of Naples is located in the country whose main language is",
+      "intermediate": " Italy",
+      "intermediate_id": 14898,
+      "answer": " Italian",
+      "answer_id": 14382,
+      "model_top1": " Italian",
+      "model_top5": [
+        " Italian",
+        " Spanish",
+        ":",
+        "\n",
+        " __"
+      ],
+      "answer_rank_in_top5": 0,
+      "shortcut_solvable": false,
+      "shortcut_in_blinded_top5": false,
+      "blinded_top1": " English",
+      "blinded_top5": [
+        " English",
+        " Spanish",
+        " French",
+        " German",
+        " not"
+      ]
+    },
+    {
+      "id": "Naples|capital_of",
+      "entity": "Naples",
+      "entity_kind": "city",
+      "template": "capital_of",
+      "prompt": "The city of Naples is located in a country, and the capital of that country is",
+      "intermediate": " Italy",
+      "intermediate_id": 14898,
+      "answer": " Rome",
+      "answer_id": 21047,
+      "model_top1": " Rome",
+      "model_top5": [
+        " Rome",
+        " a",
+        " located",
+        " also",
+        " the"
+      ],
+      "answer_rank_in_top5": 0,
+      "shortcut_solvable": false,
+      "shortcut_in_blinded_top5": false,
+      "blinded_top1": " also",
+      "blinded_top5": [
+        " also",
+        " a",
+        " the",
+        " in",
+        " located"
+      ]
+    },
+    {
+      "id": "Lyon|capital",
+      "entity": "Lyon",
+      "entity_kind": "city",
+      "template": "capital",
+      "prompt": "The city of Lyon is located in the country whose capital city is",
+      "intermediate": " France",
+      "intermediate_id": 9338,
+      "answer": " Paris",
+      "answer_id": 11751,
+      "model_top1": " Paris",
+      "model_top5": [
+        " Paris",
+        ":",
+        " located",
+        " Brussels",
+        " ______"
+      ],
+      "answer_rank_in_top5": 0,
+      "shortcut_solvable": false,
+      "shortcut_in_blinded_top5": false,
+      "blinded_top1": " the",
+      "blinded_top5": [
+        " the",
+        " in",
+        " located",
+        " also",
+        " ______"
+      ]
+    },
+    {
+      "id": "Lyon|currency",
+      "entity": "Lyon",
+      "entity_kind": "city",
+      "template": "currency",
+      "prompt": "The city of Lyon is located in the country whose currency is the",
+      "intermediate": " France",
+      "intermediate_id": 9338,
+      "answer": " euro",
+      "answer_id": 17146,
+      "model_top1": " euro",
+      "model_top5": [
+        " euro",
+        " Euro",
+        " ______",
+        " __",
+        " **"
+      ],
+      "answer_rank_in_top5": 0,
+      "shortcut_solvable": false,
+      "shortcut_in_blinded_top5": true,
+      "blinded_top1": " **",
+      "blinded_top5": [
+        " **",
+        " euro",
+        " dollar",
+        " US",
+        " pound"
+      ]
+    },
+    {
+      "id": "Lyon|language",
+      "entity": "Lyon",
+      "entity_kind": "city",
+      "template": "language",
+      "prompt": "The city of Lyon is located in the country whose main language is",
+      "intermediate": " France",
+      "intermediate_id": 9338,
+      "answer": " French",
+      "answer_id": 8323,
+      "model_top1": " French",
+      "model_top5": [
+        " French",
+        ":",
+        "\n",
+        " __",
+        " ______"
+      ],
+      "answer_rank_in_top5": 0,
+      "shortcut_solvable": false,
+      "shortcut_in_blinded_top5": true,
+      "blinded_top1": " English",
+      "blinded_top5": [
+        " English",
+        " Spanish",
+        " French",
+        " German",
+        " not"
+      ]
+    },
+    {
+      "id": "Lyon|capital_of",
+      "entity": "Lyon",
+      "entity_kind": "city",
+      "template": "capital_of",
+      "prompt": "The city of Lyon is located in a country, and the capital of that country is",
+      "intermediate": " France",
+      "intermediate_id": 9338,
+      "answer": " Paris",
+      "answer_id": 11751,
+      "model_top1": " Paris",
+      "model_top5": [
+        " Paris",
+        " located",
+        " also",
+        " a",
+        " in"
+      ],
+      "answer_rank_in_top5": 0,
+      "shortcut_solvable": false,
+      "shortcut_in_blinded_top5": false,
+      "blinded_top1": " also",
+      "blinded_top5": [
+        " also",
+        " a",
+        " the",
+        " in",
+        " located"
+      ]
+    },
+    {
+      "id": "Marseille|capital",
+      "entity": "Marseille",
+      "entity_kind": "city",
+      "template": "capital",
+      "prompt": "The city of Marseille is located in the country whose capital city is",
+      "intermediate": " France",
+      "intermediate_id": 9338,
+      "answer": " Paris",
+      "answer_id": 11751,
+      "model_top1": " Paris",
+      "model_top5": [
+        " Paris",
+        ":",
+        " ______",
+        "\n",
+        " located"
+      ],
+      "answer_rank_in_top5": 0,
+      "shortcut_solvable": false,
+      "shortcut_in_blinded_top5": false,
+      "blinded_top1": " the",
+      "blinded_top5": [
+        " the",
+        " in",
+        " located",
+        " also",
+        " ______"
+      ]
+    },
+    {
+      "id": "Marseille|currency",
+      "entity": "Marseille",
+      "entity_kind": "city",
+      "template": "currency",
+      "prompt": "The city of Marseille is located in the country whose currency is the",
+      "intermediate": " France",
+      "intermediate_id": 9338,
+      "answer": " euro",
+      "answer_id": 17146,
+      "model_top1": " euro",
+      "model_top5": [
+        " euro",
+        " Euro",
+        " ______",
+        " __",
+        ":"
+      ],
+      "answer_rank_in_top5": 0,
+      "shortcut_solvable": false,
+      "shortcut_in_blinded_top5": true,
+      "blinded_top1": " **",
+      "blinded_top5": [
+        " **",
+        " euro",
+        " dollar",
+        " US",
+        " pound"
+      ]
+    },
+    {
+      "id": "Marseille|language",
+      "entity": "Marseille",
+      "entity_kind": "city",
+      "template": "language",
+      "prompt": "The city of Marseille is located in the country whose main language is",
+      "intermediate": " France",
+      "intermediate_id": 9338,
+      "answer": " French",
+      "answer_id": 8323,
+      "model_top1": " French",
+      "model_top5": [
+        " French",
+        ":",
+        "\n",
+        " __",
+        " ______"
+      ],
+      "answer_rank_in_top5": 0,
+      "shortcut_solvable": false,
+      "shortcut_in_blinded_top5": true,
+      "blinded_top1": " English",
+      "blinded_top5": [
+        " English",
+        " Spanish",
+        " French",
+        " German",
+        " not"
+      ]
+    },
+    {
+      "id": "Marseille|capital_of",
+      "entity": "Marseille",
+      "entity_kind": "city",
+      "template": "capital_of",
+      "prompt": "The city of Marseille is located in a country, and the capital of that country is",
+      "intermediate": " France",
+      "intermediate_id": 9338,
+      "answer": " Paris",
+      "answer_id": 11751,
+      "model_top1": " Paris",
+      "model_top5": [
+        " Paris",
+        " a",
+        " also",
+        " located",
+        " known"
+      ],
+      "answer_rank_in_top5": 0,
+      "shortcut_solvable": false,
+      "shortcut_in_blinded_top5": false,
+      "blinded_top1": " also",
+      "blinded_top5": [
+        " also",
+        " a",
+        " the",
+        " in",
+        " located"
+      ]
+    },
+    {
+      "id": "Osaka|capital",
+      "entity": "Osaka",
+      "entity_kind": "city",
+      "template": "capital",
+      "prompt": "The city of Osaka is located in the country whose capital city is",
+      "intermediate": " Japan",
+      "intermediate_id": 6124,
+      "answer": " Tokyo",
+      "answer_id": 25358,
+      "model_top1": " Tokyo",
+      "model_top5": [
+        " Tokyo",
+        ":",
+        " Kyoto",
+        "\n",
+        " located"
+      ],
+      "answer_rank_in_top5": 0,
+      "shortcut_solvable": false,
+      "shortcut_in_blinded_top5": false,
+      "blinded_top1": " the",
+      "blinded_top5": [
+        " the",
+        " in",
+        " located",
+        " also",
+        " ______"
+      ]
+    },
+    {
+      "id": "Osaka|currency",
+      "entity": "Osaka",
+      "entity_kind": "city",
+      "template": "currency",
+      "prompt": "The city of Osaka is located in the country whose currency is the",
+      "intermediate": " Japan",
+      "intermediate_id": 6124,
+      "answer": " yen",
+      "answer_id": 55421,
+      "model_top1": " yen",
+      "model_top5": [
+        " yen",
+        " Japanese",
+        " Yen",
+        " ______",
+        ":"
+      ],
+      "answer_rank_in_top5": 0,
+      "shortcut_solvable": false,
+      "shortcut_in_blinded_top5": false,
+      "blinded_top1": " **",
+      "blinded_top5": [
+        " **",
+        " euro",
+        " dollar",
+        " US",
+        " pound"
+      ]
+    },
+    {
+      "id": "Osaka|language",
+      "entity": "Osaka",
+      "entity_kind": "city",
+      "template": "language",
+      "prompt": "The city of Osaka is located in the country whose main language is",
+      "intermediate": " Japan",
+      "intermediate_id": 6124,
+      "answer": " Japanese",
+      "answer_id": 10452,
+      "model_top1": " Japanese",
+      "model_top5": [
+        " Japanese",
+        ":",
+        " ______",
+        "\n",
+        " __"
+      ],
+      "answer_rank_in_top5": 0,
+      "shortcut_solvable": false,
+      "shortcut_in_blinded_top5": false,
+      "blinded_top1": " English",
+      "blinded_top5": [
+        " English",
+        " Spanish",
+        " French",
+        " German",
+        " not"
+      ]
+    },
+    {
+      "id": "Osaka|capital_of",
+      "entity": "Osaka",
+      "entity_kind": "city",
+      "template": "capital_of",
+      "prompt": "The city of Osaka is located in a country, and the capital of that country is",
+      "intermediate": " Japan",
+      "intermediate_id": 6124,
+      "answer": " Tokyo",
+      "answer_id": 25358,
+      "model_top1": " Tokyo",
+      "model_top5": [
+        " Tokyo",
+        " located",
+        " a",
+        " also",
+        " in"
+      ],
+      "answer_rank_in_top5": 0,
+      "shortcut_solvable": false,
+      "shortcut_in_blinded_top5": false,
+      "blinded_top1": " also",
+      "blinded_top5": [
+        " also",
+        " a",
+        " the",
+        " in",
+        " located"
+      ]
+    },
+    {
+      "id": "Kyoto|capital",
+      "entity": "Kyoto",
+      "entity_kind": "city",
+      "template": "capital",
+      "prompt": "The city of Kyoto is located in the country whose capital city is",
+      "intermediate": " Japan",
+      "intermediate_id": 6124,
+      "answer": " Tokyo",
+      "answer_id": 25358,
+      "model_top1": " Tokyo",
+      "model_top5": [
+        " Tokyo",
+        ":",
+        "\n",
+        " located",
+        " ______"
+      ],
+      "answer_rank_in_top5": 0,
+      "shortcut_solvable": false,
+      "shortcut_in_blinded_top5": false,
+      "blinded_top1": " the",
+      "blinded_top5": [
+        " the",
+        " in",
+        " located",
+        " also",
+        " ______"
+      ]
+    },
+    {
+      "id": "Kyoto|currency",
+      "entity": "Kyoto",
+      "entity_kind": "city",
+      "template": "currency",
+      "prompt": "The city of Kyoto is located in the country whose currency is the",
+      "intermediate": " Japan",
+      "intermediate_id": 6124,
+      "answer": " yen",
+      "answer_id": 55421,
+      "model_top1": " yen",
+      "model_top5": [
+        " yen",
+        " Yen",
+        " Japanese",
+        ":",
+        " ______"
+      ],
+      "answer_rank_in_top5": 0,
+      "shortcut_solvable": false,
+      "shortcut_in_blinded_top5": false,
+      "blinded_top1": " **",
+      "blinded_top5": [
+        " **",
+        " euro",
+        " dollar",
+        " US",
+        " pound"
+      ]
+    },
+    {
+      "id": "Kyoto|language",
+      "entity": "Kyoto",
+      "entity_kind": "city",
+      "template": "language",
+      "prompt": "The city of Kyoto is located in the country whose main language is",
+      "intermediate": " Japan",
+      "intermediate_id": 6124,
+      "answer": " Japanese",
+      "answer_id": 10452,
+      "model_top1": " Japanese",
+      "model_top5": [
+        " Japanese",
+        ":",
+        "\n",
+        " ______",
+        " __"
+      ],
+      "answer_rank_in_top5": 0,
+      "shortcut_solvable": false,
+      "shortcut_in_blinded_top5": false,
+      "blinded_top1": " English",
+      "blinded_top5": [
+        " English",
+        " Spanish",
+        " French",
+        " German",
+        " not"
+      ]
+    },
+    {
+      "id": "Kyoto|capital_of",
+      "entity": "Kyoto",
+      "entity_kind": "city",
+      "template": "capital_of",
+      "prompt": "The city of Kyoto is located in a country, and the capital of that country is",
+      "intermediate": " Japan",
+      "intermediate_id": 6124,
+      "answer": " Tokyo",
+      "answer_id": 25358,
+      "model_top1": " Tokyo",
+      "model_top5": [
+        " Tokyo",
+        " located",
+        " also",
+        " a",
+        " in"
+      ],
+      "answer_rank_in_top5": 0,
+      "shortcut_solvable": false,
+      "shortcut_in_blinded_top5": false,
+      "blinded_top1": " also",
+      "blinded_top5": [
+        " also",
+        " a",
+        " the",
+        " in",
+        " located"
+      ]
+    },
+    {
+      "id": "Shanghai|capital",
+      "entity": "Shanghai",
+      "entity_kind": "city",
+      "template": "capital",
+      "prompt": "The city of Shanghai is located in the country whose capital city is",
+      "intermediate": " China",
+      "intermediate_id": 5440,
+      "answer": " Beijing",
+      "answer_id": 25701,
+      "model_top1": " Beijing",
+      "model_top5": [
+        " Beijing",
+        ":",
+        " P",
+        " ______",
+        "\n"
+      ],
+      "answer_rank_in_top5": 0,
+      "shortcut_solvable": false,
+      "shortcut_in_blinded_top5": false,
+      "blinded_top1": " the",
+      "blinded_top5": [
+        " the",
+        " in",
+        " located",
+        " also",
+        " ______"
+      ]
+    },
+    {
+      "id": "Shanghai|currency",
+      "entity": "Shanghai",
+      "entity_kind": "city",
+      "template": "currency",
+      "prompt": "The city of Shanghai is located in the country whose currency is the",
+      "intermediate": " China",
+      "intermediate_id": 5440,
+      "answer": " yuan",
+      "answer_id": 69827,
+      "model_top1": " yuan",
+      "model_top5": [
+        " yuan",
+        " ren",
+        " R",
+        ":",
+        " ______"
+      ],
+      "answer_rank_in_top5": 0,
+      "shortcut_solvable": false,
+      "shortcut_in_blinded_top5": false,
+      "blinded_top1": " **",
+      "blinded_top5": [
+        " **",
+        " euro",
+        " dollar",
+        " US",
+        " pound"
+      ]
+    },
+    {
+      "id": "Shanghai|capital_of",
+      "entity": "Shanghai",
+      "entity_kind": "city",
+      "template": "capital_of",
+      "prompt": "The city of Shanghai is located in a country, and the capital of that country is",
+      "intermediate": " China",
+      "intermediate_id": 5440,
+      "answer": " Beijing",
+      "answer_id": 25701,
+      "model_top1": " Beijing",
+      "model_top5": [
+        " Beijing",
+        " also",
+        " located",
+        " a",
+        " the"
+      ],
+      "answer_rank_in_top5": 0,
+      "shortcut_solvable": false,
+      "shortcut_in_blinded_top5": false,
+      "blinded_top1": " also",
+      "blinded_top5": [
+        " also",
+        " a",
+        " the",
+        " in",
+        " located"
+      ]
+    },
+    {
+      "id": "Toronto|capital",
+      "entity": "Toronto",
+      "entity_kind": "city",
+      "template": "capital",
+      "prompt": "The city of Toronto is located in the country whose capital city is",
+      "intermediate": " Canada",
+      "intermediate_id": 6650,
+      "answer": " Ottawa",
+      "answer_id": 31106,
+      "model_top1": " Ottawa",
+      "model_top5": [
+        " Ottawa",
+        ":",
+        " ______",
+        "\n",
+        "..."
+      ],
+      "answer_rank_in_top5": 0,
+      "shortcut_solvable": false,
+      "shortcut_in_blinded_top5": false,
+      "blinded_top1": " the",
+      "blinded_top5": [
+        " the",
+        " in",
+        " located",
+        " also",
+        " ______"
+      ]
+    },
+    {
+      "id": "Toronto|capital_of",
+      "entity": "Toronto",
+      "entity_kind": "city",
+      "template": "capital_of",
+      "prompt": "The city of Toronto is located in a country, and the capital of that country is",
+      "intermediate": " Canada",
+      "intermediate_id": 6650,
+      "answer": " Ottawa",
+      "answer_id": 31106,
+      "model_top1": " Ottawa",
+      "model_top5": [
+        " Ottawa",
+        " a",
+        " also",
+        " located",
+        " the"
+      ],
+      "answer_rank_in_top5": 0,
+      "shortcut_solvable": false,
+      "shortcut_in_blinded_top5": false,
+      "blinded_top1": " also",
+      "blinded_top5": [
+        " also",
+        " a",
+        " the",
+        " in",
+        " located"
+      ]
+    },
+    {
+      "id": "Vancouver|capital",
+      "entity": "Vancouver",
+      "entity_kind": "city",
+      "template": "capital",
+      "prompt": "The city of Vancouver is located in the country whose capital city is",
+      "intermediate": " Canada",
+      "intermediate_id": 6650,
+      "answer": " Ottawa",
+      "answer_id": 31106,
+      "model_top1": " Ottawa",
+      "model_top5": [
+        " Ottawa",
+        ":",
+        " ______",
+        "\n",
+        " __"
+      ],
+      "answer_rank_in_top5": 0,
+      "shortcut_solvable": false,
+      "shortcut_in_blinded_top5": false,
+      "blinded_top1": " the",
+      "blinded_top5": [
+        " the",
+        " in",
+        " located",
+        " also",
+        " ______"
+      ]
+    },
+    {
+      "id": "Vancouver|capital_of",
+      "entity": "Vancouver",
+      "entity_kind": "city",
+      "template": "capital_of",
+      "prompt": "The city of Vancouver is located in a country, and the capital of that country is",
+      "intermediate": " Canada",
+      "intermediate_id": 6650,
+      "answer": " Ottawa",
+      "answer_id": 31106,
+      "model_top1": " Ottawa",
+      "model_top5": [
+        " Ottawa",
+        " a",
+        " located",
+        " also",
+        " the"
+      ],
+      "answer_rank_in_top5": 0,
+      "shortcut_solvable": false,
+      "shortcut_in_blinded_top5": false,
+      "blinded_top1": " also",
+      "blinded_top5": [
+        " also",
+        " a",
+        " the",
+        " in",
+        " located"
+      ]
+    },
+    {
+      "id": "Sydney|capital",
+      "entity": "Sydney",
+      "entity_kind": "city",
+      "template": "capital",
+      "prompt": "The city of Sydney is located in the country whose capital city is",
+      "intermediate": " Australia",
+      "intermediate_id": 8071,
+      "answer": " Canberra",
+      "answer_id": 66463,
+      "model_top1": " Canberra",
+      "model_top5": [
+        " Canberra",
+        ":",
+        " ______",
+        "\n",
+        "..."
+      ],
+      "answer_rank_in_top5": 0,
+      "shortcut_solvable": false,
+      "shortcut_in_blinded_top5": false,
+      "blinded_top1": " the",
+      "blinded_top5": [
+        " the",
+        " in",
+        " located",
+        " also",
+        " ______"
+      ]
+    },
+    {
+      "id": "Sydney|language",
+      "entity": "Sydney",
+      "entity_kind": "city",
+      "template": "language",
+      "prompt": "The city of Sydney is located in the country whose main language is",
+      "intermediate": " Australia",
+      "intermediate_id": 8071,
+      "answer": " English",
+      "answer_id": 6163,
+      "model_top1": " English",
+      "model_top5": [
+        " English",
+        ":",
+        " ______",
+        "\n",
+        " __"
+      ],
+      "answer_rank_in_top5": 0,
+      "shortcut_solvable": true,
+      "shortcut_in_blinded_top5": true,
+      "blinded_top1": " English",
+      "blinded_top5": [
+        " English",
+        " Spanish",
+        " French",
+        " German",
+        " not"
+      ]
+    },
+    {
+      "id": "Sydney|capital_of",
+      "entity": "Sydney",
+      "entity_kind": "city",
+      "template": "capital_of",
+      "prompt": "The city of Sydney is located in a country, and the capital of that country is",
+      "intermediate": " Australia",
+      "intermediate_id": 8071,
+      "answer": " Canberra",
+      "answer_id": 66463,
+      "model_top1": " Canberra",
+      "model_top5": [
+        " Canberra",
+        " also",
+        " located",
+        " a",
+        " in"
+      ],
+      "answer_rank_in_top5": 0,
+      "shortcut_solvable": false,
+      "shortcut_in_blinded_top5": false,
+      "blinded_top1": " also",
+      "blinded_top5": [
+        " also",
+        " a",
+        " the",
+        " in",
+        " located"
+      ]
+    },
+    {
+      "id": "Melbourne|capital",
+      "entity": "Melbourne",
+      "entity_kind": "city",
+      "template": "capital",
+      "prompt": "The city of Melbourne is located in the country whose capital city is",
+      "intermediate": " Australia",
+      "intermediate_id": 8071,
+      "answer": " Canberra",
+      "answer_id": 66463,
+      "model_top1": " Canberra",
+      "model_top5": [
+        " Canberra",
+        ":",
+        "\n",
+        "...",
+        " ______"
+      ],
+      "answer_rank_in_top5": 0,
+      "shortcut_solvable": false,
+      "shortcut_in_blinded_top5": false,
+      "blinded_top1": " the",
+      "blinded_top5": [
+        " the",
+        " in",
+        " located",
+        " also",
+        " ______"
+      ]
+    },
+    {
+      "id": "Melbourne|language",
+      "entity": "Melbourne",
+      "entity_kind": "city",
+      "template": "language",
+      "prompt": "The city of Melbourne is located in the country whose main language is",
+      "intermediate": " Australia",
+      "intermediate_id": 8071,
+      "answer": " English",
+      "answer_id": 6163,
+      "model_top1": " English",
+      "model_top5": [
+        " English",
+        ":",
+        "\n",
+        " ______",
+        " __"
+      ],
+      "answer_rank_in_top5": 0,
+      "shortcut_solvable": true,
+      "shortcut_in_blinded_top5": true,
+      "blinded_top1": " English",
+      "blinded_top5": [
+        " English",
+        " Spanish",
+        " French",
+        " German",
+        " not"
+      ]
+    },
+    {
+      "id": "Melbourne|capital_of",
+      "entity": "Melbourne",
+      "entity_kind": "city",
+      "template": "capital_of",
+      "prompt": "The city of Melbourne is located in a country, and the capital of that country is",
+      "intermediate": " Australia",
+      "intermediate_id": 8071,
+      "answer": " Canberra",
+      "answer_id": 66463,
+      "model_top1": " Canberra",
+      "model_top5": [
+        " Canberra",
+        " Sydney",
+        " a",
+        " located",
+        " also"
+      ],
+      "answer_rank_in_top5": 0,
+      "shortcut_solvable": false,
+      "shortcut_in_blinded_top5": false,
+      "blinded_top1": " also",
+      "blinded_top5": [
+        " also",
+        " a",
+        " the",
+        " in",
+        " located"
+      ]
+    },
+    {
+      "id": "Mumbai|language",
+      "entity": "Mumbai",
+      "entity_kind": "city",
+      "template": "language",
+      "prompt": "The city of Mumbai is located in the country whose main language is",
+      "intermediate": " India",
+      "intermediate_id": 6535,
+      "answer": " Hindi",
+      "answer_id": 42524,
+      "model_top1": " Hindi",
+      "model_top5": [
+        " Hindi",
+        " ______",
+        ":",
+        "\n",
+        " __"
+      ],
+      "answer_rank_in_top5": 0,
+      "shortcut_solvable": false,
+      "shortcut_in_blinded_top5": false,
+      "blinded_top1": " English",
+      "blinded_top5": [
+        " English",
+        " Spanish",
+        " French",
+        " German",
+        " not"
+      ]
+    },
+    {
+      "id": "Istanbul|capital",
+      "entity": "Istanbul",
+      "entity_kind": "city",
+      "template": "capital",
+      "prompt": "The city of Istanbul is located in the country whose capital city is",
+      "intermediate": " Turkey",
+      "intermediate_id": 16511,
+      "answer": " Ankara",
+      "answer_id": 67866,
+      "model_top1": " Ankara",
+      "model_top5": [
+        " Ankara",
+        ":",
+        "\n",
+        " also",
+        " ______"
+      ],
+      "answer_rank_in_top5": 0,
+      "shortcut_solvable": false,
+      "shortcut_in_blinded_top5": false,
+      "blinded_top1": " the",
+      "blinded_top5": [
+        " the",
+        " in",
+        " located",
+        " also",
+        " ______"
+      ]
+    },
+    {
+      "id": "Istanbul|language",
+      "entity": "Istanbul",
+      "entity_kind": "city",
+      "template": "language",
+      "prompt": "The city of Istanbul is located in the country whose main language is",
+      "intermediate": " Turkey",
+      "intermediate_id": 16511,
+      "answer": " Turkish",
+      "answer_id": 22992,
+      "model_top1": " Turkish",
+      "model_top5": [
+        " Turkish",
+        ":",
+        "\n",
+        " __",
+        " ______"
+      ],
+      "answer_rank_in_top5": 0,
+      "shortcut_solvable": false,
+      "shortcut_in_blinded_top5": false,
+      "blinded_top1": " English",
+      "blinded_top5": [
+        " English",
+        " Spanish",
+        " French",
+        " German",
+        " not"
+      ]
+    },
+    {
+      "id": "Porto|capital",
+      "entity": "Porto",
+      "entity_kind": "city",
+      "template": "capital",
+      "prompt": "The city of Porto is located in the country whose capital city is",
+      "intermediate": " Portugal",
+      "intermediate_id": 32208,
+      "answer": " Lisbon",
+      "answer_id": 77916,
+      "model_top1": " Lisbon",
+      "model_top5": [
+        " Lisbon",
+        ":",
+        " ___",
+        " Madrid",
+        " ______"
+      ],
+      "answer_rank_in_top5": 0,
+      "shortcut_solvable": false,
+      "shortcut_in_blinded_top5": false,
+      "blinded_top1": " the",
+      "blinded_top5": [
+        " the",
+        " in",
+        " located",
+        " also",
+        " ______"
+      ]
+    },
+    {
+      "id": "Porto|currency",
+      "entity": "Porto",
+      "entity_kind": "city",
+      "template": "currency",
+      "prompt": "The city of Porto is located in the country whose currency is the",
+      "intermediate": " Portugal",
+      "intermediate_id": 32208,
+      "answer": " euro",
+      "answer_id": 17146,
+      "model_top1": " euro",
+      "model_top5": [
+        " euro",
+        " Euro",
+        " ______",
+        " **",
+        " __"
+      ],
+      "answer_rank_in_top5": 0,
+      "shortcut_solvable": false,
+      "shortcut_in_blinded_top5": true,
+      "blinded_top1": " **",
+      "blinded_top5": [
+        " **",
+        " euro",
+        " dollar",
+        " US",
+        " pound"
+      ]
+    },
+    {
+      "id": "Porto|language",
+      "entity": "Porto",
+      "entity_kind": "city",
+      "template": "language",
+      "prompt": "The city of Porto is located in the country whose main language is",
+      "intermediate": " Portugal",
+      "intermediate_id": 32208,
+      "answer": " Portuguese",
+      "answer_id": 40790,
+      "model_top1": " Portuguese",
+      "model_top5": [
+        " Portuguese",
+        ":",
+        " ______",
+        "\n",
+        " __"
+      ],
+      "answer_rank_in_top5": 0,
+      "shortcut_solvable": false,
+      "shortcut_in_blinded_top5": false,
+      "blinded_top1": " English",
+      "blinded_top5": [
+        " English",
+        " Spanish",
+        " French",
+        " German",
+        " not"
+      ]
+    },
+    {
+      "id": "Porto|capital_of",
+      "entity": "Porto",
+      "entity_kind": "city",
+      "template": "capital_of",
+      "prompt": "The city of Porto is located in a country, and the capital of that country is",
+      "intermediate": " Portugal",
+      "intermediate_id": 32208,
+      "answer": " Lisbon",
+      "answer_id": 77916,
+      "model_top1": " Lisbon",
+      "model_top5": [
+        " Lisbon",
+        " located",
+        " also",
+        " Rome",
+        " a"
+      ],
+      "answer_rank_in_top5": 0,
+      "shortcut_solvable": false,
+      "shortcut_in_blinded_top5": false,
+      "blinded_top1": " also",
+      "blinded_top5": [
+        " also",
+        " a",
+        " the",
+        " in",
+        " located"
+      ]
+    },
+    {
+      "id": "Rotterdam|capital",
+      "entity": "Rotterdam",
+      "entity_kind": "city",
+      "template": "capital",
+      "prompt": "The city of Rotterdam is located in the country whose capital city is",
+      "intermediate": " Netherlands",
+      "intermediate_id": 24844,
+      "answer": " Amsterdam",
+      "answer_id": 36492,
+      "model_top1": " Amsterdam",
+      "model_top5": [
+        " Amsterdam",
+        " The",
+        " Brussels",
+        ":",
+        "\n"
+      ],
+      "answer_rank_in_top5": 0,
+      "shortcut_solvable": false,
+      "shortcut_in_blinded_top5": false,
+      "blinded_top1": " the",
+      "blinded_top5": [
+        " the",
+        " in",
+        " located",
+        " also",
+        " ______"
+      ]
+    },
+    {
+      "id": "Rotterdam|currency",
+      "entity": "Rotterdam",
+      "entity_kind": "city",
+      "template": "currency",
+      "prompt": "The city of Rotterdam is located in the country whose currency is the",
+      "intermediate": " Netherlands",
+      "intermediate_id": 24844,
+      "answer": " euro",
+      "answer_id": 17146,
+      "model_top1": " euro",
+      "model_top5": [
+        " euro",
+        " Euro",
+        " **",
+        ":",
+        " ______"
+      ],
+      "answer_rank_in_top5": 0,
+      "shortcut_solvable": false,
+      "shortcut_in_blinded_top5": true,
+      "blinded_top1": " **",
+      "blinded_top5": [
+        " **",
+        " euro",
+        " dollar",
+        " US",
+        " pound"
+      ]
+    },
+    {
+      "id": "Rotterdam|language",
+      "entity": "Rotterdam",
+      "entity_kind": "city",
+      "template": "language",
+      "prompt": "The city of Rotterdam is located in the country whose main language is",
+      "intermediate": " Netherlands",
+      "intermediate_id": 24844,
+      "answer": " Dutch",
+      "answer_id": 22510,
+      "model_top1": " Dutch",
+      "model_top5": [
+        " Dutch",
+        ":",
+        "\n",
+        " ______",
+        " __"
+      ],
+      "answer_rank_in_top5": 0,
+      "shortcut_solvable": false,
+      "shortcut_in_blinded_top5": false,
+      "blinded_top1": " English",
+      "blinded_top5": [
+        " English",
+        " Spanish",
+        " French",
+        " German",
+        " not"
+      ]
+    },
+    {
+      "id": "Krakow|capital",
+      "entity": "Krakow",
+      "entity_kind": "city",
+      "template": "capital",
+      "prompt": "The city of Krakow is located in the country whose capital city is",
+      "intermediate": " Poland",
+      "intermediate_id": 26707,
+      "answer": " Warsaw",
+      "answer_id": 69724,
+      "model_top1": " Warsaw",
+      "model_top5": [
+        " Warsaw",
+        ":",
+        "\n",
+        "...",
+        " ______"
+      ],
+      "answer_rank_in_top5": 0,
+      "shortcut_solvable": false,
+      "shortcut_in_blinded_top5": false,
+      "blinded_top1": " the",
+      "blinded_top5": [
+        " the",
+        " in",
+        " located",
+        " also",
+        " ______"
+      ]
+    },
+    {
+      "id": "Krakow|language",
+      "entity": "Krakow",
+      "entity_kind": "city",
+      "template": "language",
+      "prompt": "The city of Krakow is located in the country whose main language is",
+      "intermediate": " Poland",
+      "intermediate_id": 26707,
+      "answer": " Polish",
+      "answer_id": 30931,
+      "model_top1": " Polish",
+      "model_top5": [
+        " Polish",
+        ":",
+        "\n",
+        " __",
+        "..."
+      ],
+      "answer_rank_in_top5": 0,
+      "shortcut_solvable": false,
+      "shortcut_in_blinded_top5": false,
+      "blinded_top1": " English",
+      "blinded_top5": [
+        " English",
+        " Spanish",
+        " French",
+        " German",
+        " not"
+      ]
+    },
+    {
+      "id": "Krakow|capital_of",
+      "entity": "Krakow",
+      "entity_kind": "city",
+      "template": "capital_of",
+      "prompt": "The city of Krakow is located in a country, and the capital of that country is",
+      "intermediate": " Poland",
+      "intermediate_id": 26707,
+      "answer": " Warsaw",
+      "answer_id": 69724,
+      "model_top1": " Warsaw",
+      "model_top5": [
+        " Warsaw",
+        " located",
+        " also",
+        " a",
+        " in"
+      ],
+      "answer_rank_in_top5": 0,
+      "shortcut_solvable": false,
+      "shortcut_in_blinded_top5": false,
+      "blinded_top1": " also",
+      "blinded_top5": [
+        " also",
+        " a",
+        " the",
+        " in",
+        " located"
+      ]
+    },
+    {
+      "id": "Gothenburg|capital",
+      "entity": "Gothenburg",
+      "entity_kind": "city",
+      "template": "capital",
+      "prompt": "The city of Gothenburg is located in the country whose capital city is",
+      "intermediate": " Sweden",
+      "intermediate_id": 22466,
+      "answer": " Stockholm",
+      "answer_id": 50332,
+      "model_top1": " Stockholm",
+      "model_top5": [
+        " Stockholm",
+        " Oslo",
+        ":",
+        " __",
+        " ______"
+      ],
+      "answer_rank_in_top5": 0,
+      "shortcut_solvable": false,
+      "shortcut_in_blinded_top5": false,
+      "blinded_top1": " the",
+      "blinded_top5": [
+        " the",
+        " in",
+        " located",
+        " also",
+        " ______"
+      ]
+    },
+    {
+      "id": "Gothenburg|language",
+      "entity": "Gothenburg",
+      "entity_kind": "city",
+      "template": "language",
+      "prompt": "The city of Gothenburg is located in the country whose main language is",
+      "intermediate": " Sweden",
+      "intermediate_id": 22466,
+      "answer": " Swedish",
+      "answer_id": 29125,
+      "model_top1": " Swedish",
+      "model_top5": [
+        " Swedish",
+        ":",
+        " __",
+        "\n",
+        " ______"
+      ],
+      "answer_rank_in_top5": 0,
+      "shortcut_solvable": false,
+      "shortcut_in_blinded_top5": false,
+      "blinded_top1": " English",
+      "blinded_top5": [
+        " English",
+        " Spanish",
+        " French",
+        " German",
+        " not"
+      ]
+    },
+    {
+      "id": "Gothenburg|capital_of",
+      "entity": "Gothenburg",
+      "entity_kind": "city",
+      "template": "capital_of",
+      "prompt": "The city of Gothenburg is located in a country, and the capital of that country is",
+      "intermediate": " Sweden",
+      "intermediate_id": 22466,
+      "answer": " Stockholm",
+      "answer_id": 50332,
+      "model_top1": " Stockholm",
+      "model_top5": [
+        " Stockholm",
+        " located",
+        " also",
+        " a",
+        " Oslo"
+      ],
+      "answer_rank_in_top5": 0,
+      "shortcut_solvable": false,
+      "shortcut_in_blinded_top5": false,
+      "blinded_top1": " also",
+      "blinded_top5": [
+        " also",
+        " a",
+        " the",
+        " in",
+        " located"
+      ]
+    },
+    {
+      "id": "Bergen|capital",
+      "entity": "Bergen",
+      "entity_kind": "city",
+      "template": "capital",
+      "prompt": "The city of Bergen is located in the country whose capital city is",
+      "intermediate": " Norway",
+      "intermediate_id": 30466,
+      "answer": " Oslo",
+      "answer_id": 55918,
+      "model_top1": " Oslo",
+      "model_top5": [
+        " Oslo",
+        " named",
+        ":",
+        " ______",
+        " located"
+      ],
+      "answer_rank_in_top5": 0,
+      "shortcut_solvable": false,
+      "shortcut_in_blinded_top5": false,
+      "blinded_top1": " the",
+      "blinded_top5": [
+        " the",
+        " in",
+        " located",
+        " also",
+        " ______"
+      ]
+    },
+    {
+      "id": "Bergen|language",
+      "entity": "Bergen",
+      "entity_kind": "city",
+      "template": "language",
+      "prompt": "The city of Bergen is located in the country whose main language is",
+      "intermediate": " Norway",
+      "intermediate_id": 30466,
+      "answer": " Norwegian",
+      "answer_id": 43142,
+      "model_top1": " Norwegian",
+      "model_top5": [
+        " Norwegian",
+        " German",
+        ":",
+        " __",
+        " ______"
+      ],
+      "answer_rank_in_top5": 0,
+      "shortcut_solvable": false,
+      "shortcut_in_blinded_top5": false,
+      "blinded_top1": " English",
+      "blinded_top5": [
+        " English",
+        " Spanish",
+        " French",
+        " German",
+        " not"
+      ]
+    },
+    {
+      "id": "Bergen|capital_of",
+      "entity": "Bergen",
+      "entity_kind": "city",
+      "template": "capital_of",
+      "prompt": "The city of Bergen is located in a country, and the capital of that country is",
+      "intermediate": " Norway",
+      "intermediate_id": 30466,
+      "answer": " Oslo",
+      "answer_id": 55918,
+      "model_top1": " Oslo",
+      "model_top5": [
+        " Oslo",
+        " located",
+        " also",
+        " a",
+        " the"
+      ],
+      "answer_rank_in_top5": 0,
+      "shortcut_solvable": false,
+      "shortcut_in_blinded_top5": false,
+      "blinded_top1": " also",
+      "blinded_top5": [
+        " also",
+        " a",
+        " the",
+        " in",
+        " located"
+      ]
+    },
+    {
+      "id": "Busan|capital",
+      "entity": "Busan",
+      "entity_kind": "city",
+      "template": "capital",
+      "prompt": "The city of Busan is located in the country whose capital city is",
+      "intermediate": " Korea",
+      "intermediate_id": 11523,
+      "answer": " Seoul",
+      "answer_id": 48502,
+      "model_top1": " Seoul",
+      "model_top5": [
+        " Seoul",
+        ":",
+        " located",
+        "\n",
+        "..."
+      ],
+      "answer_rank_in_top5": 0,
+      "shortcut_solvable": false,
+      "shortcut_in_blinded_top5": false,
+      "blinded_top1": " the",
+      "blinded_top5": [
+        " the",
+        " in",
+        " located",
+        " also",
+        " ______"
+      ]
+    },
+    {
+      "id": "Busan|currency",
+      "entity": "Busan",
+      "entity_kind": "city",
+      "template": "currency",
+      "prompt": "The city of Busan is located in the country whose currency is the",
+      "intermediate": " Korea",
+      "intermediate_id": 11523,
+      "answer": " won",
+      "answer_id": 2677,
+      "model_top1": " won",
+      "model_top5": [
+        " won",
+        " South",
+        " Korean",
+        " Won",
+        " __"
+      ],
+      "answer_rank_in_top5": 0,
+      "shortcut_solvable": false,
+      "shortcut_in_blinded_top5": false,
+      "blinded_top1": " **",
+      "blinded_top5": [
+        " **",
+        " euro",
+        " dollar",
+        " US",
+        " pound"
+      ]
+    },
+    {
+      "id": "Busan|language",
+      "entity": "Busan",
+      "entity_kind": "city",
+      "template": "language",
+      "prompt": "The city of Busan is located in the country whose main language is",
+      "intermediate": " Korea",
+      "intermediate_id": 11523,
+      "answer": " Korean",
+      "answer_id": 15659,
+      "model_top1": " Korean",
+      "model_top5": [
+        " Korean",
+        ":",
+        " __",
+        " ______",
+        "\n"
+      ],
+      "answer_rank_in_top5": 0,
+      "shortcut_solvable": false,
+      "shortcut_in_blinded_top5": false,
+      "blinded_top1": " English",
+      "blinded_top5": [
+        " English",
+        " Spanish",
+        " French",
+        " German",
+        " not"
+      ]
+    },
+    {
+      "id": "Busan|capital_of",
+      "entity": "Busan",
+      "entity_kind": "city",
+      "template": "capital_of",
+      "prompt": "The city of Busan is located in a country, and the capital of that country is",
+      "intermediate": " Korea",
+      "intermediate_id": 11523,
+      "answer": " Seoul",
+      "answer_id": 48502,
+      "model_top1": " Seoul",
+      "model_top5": [
+        " Seoul",
+        " located",
+        " a",
+        " also",
+        " the"
+      ],
+      "answer_rank_in_top5": 0,
+      "shortcut_solvable": false,
+      "shortcut_in_blinded_top5": false,
+      "blinded_top1": " also",
+      "blinded_top5": [
+        " also",
+        " a",
+        " the",
+        " in",
+        " located"
+      ]
+    },
+    {
+      "id": "Auckland|capital",
+      "entity": "Auckland",
+      "entity_kind": "city",
+      "template": "capital",
+      "prompt": "The city of Auckland is located in the country whose capital city is",
+      "intermediate": " Zealand",
+      "intermediate_id": 16416,
+      "answer": " Wellington",
+      "answer_id": 54124,
+      "model_top1": " Wellington",
+      "model_top5": [
+        " Wellington",
+        ":",
+        " ___",
+        " Canberra",
+        "\n"
+      ],
+      "answer_rank_in_top5": 0,
+      "shortcut_solvable": false,
+      "shortcut_in_blinded_top5": false,
+      "blinded_top1": " the",
+      "blinded_top5": [
+        " the",
+        " in",
+        " located",
+        " also",
+        " ______"
+      ]
+    },
+    {
+      "id": "Auckland|language",
+      "entity": "Auckland",
+      "entity_kind": "city",
+      "template": "language",
+      "prompt": "The city of Auckland is located in the country whose main language is",
+      "intermediate": " Zealand",
+      "intermediate_id": 16416,
+      "answer": " English",
+      "answer_id": 6163,
+      "model_top1": " English",
+      "model_top5": [
+        " English",
+        ":",
+        "\n",
+        " ______",
+        " ___"
+      ],
+      "answer_rank_in_top5": 0,
+      "shortcut_solvable": true,
+      "shortcut_in_blinded_top5": true,
+      "blinded_top1": " English",
+      "blinded_top5": [
+        " English",
+        " Spanish",
+        " French",
+        " German",
+        " not"
+      ]
+    },
+    {
+      "id": "Auckland|capital_of",
+      "entity": "Auckland",
+      "entity_kind": "city",
+      "template": "capital_of",
+      "prompt": "The city of Auckland is located in a country, and the capital of that country is",
+      "intermediate": " Zealand",
+      "intermediate_id": 16416,
+      "answer": " Wellington",
+      "answer_id": 54124,
+      "model_top1": " Wellington",
+      "model_top5": [
+        " Wellington",
+        " a",
+        " Canberra",
+        " also",
+        " in"
+      ],
+      "answer_rank_in_top5": 0,
+      "shortcut_solvable": false,
+      "shortcut_in_blinded_top5": false,
+      "blinded_top1": " also",
+      "blinded_top5": [
+        " also",
+        " a",
+        " the",
+        " in",
+        " located"
+      ]
+    },
+    {
+      "id": "Alexandria|capital",
+      "entity": "Alexandria",
+      "entity_kind": "city",
+      "template": "capital",
+      "prompt": "The city of Alexandria is located in the country whose capital city is",
+      "intermediate": " Egypt",
+      "intermediate_id": 14437,
+      "answer": " Cairo",
+      "answer_id": 50779,
+      "model_top1": " Cairo",
+      "model_top5": [
+        " Cairo",
+        ":",
+        " located",
+        " ______",
+        "\n"
+      ],
+      "answer_rank_in_top5": 0,
+      "shortcut_solvable": false,
+      "shortcut_in_blinded_top5": false,
+      "blinded_top1": " the",
+      "blinded_top5": [
+        " the",
+        " in",
+        " located",
+        " also",
+        " ______"
+      ]
+    },
+    {
+      "id": "Alexandria|language",
+      "entity": "Alexandria",
+      "entity_kind": "city",
+      "template": "language",
+      "prompt": "The city of Alexandria is located in the country whose main language is",
+      "intermediate": " Egypt",
+      "intermediate_id": 14437,
+      "answer": " Arabic",
+      "answer_id": 32988,
+      "model_top1": " Arabic",
+      "model_top5": [
+        " Arabic",
+        ":",
+        " French",
+        "\n",
+        " ______"
+      ],
+      "answer_rank_in_top5": 0,
+      "shortcut_solvable": false,
+      "shortcut_in_blinded_top5": false,
+      "blinded_top1": " English",
+      "blinded_top5": [
+        " English",
+        " Spanish",
+        " French",
+        " German",
+        " not"
+      ]
+    },
+    {
+      "id": "Casablanca|language",
+      "entity": "Casablanca",
+      "entity_kind": "city",
+      "template": "language",
+      "prompt": "The city of Casablanca is located in the country whose main language is",
+      "intermediate": " Morocco",
+      "intermediate_id": 56178,
+      "answer": " Arabic",
+      "answer_id": 32988,
+      "model_top1": " Arabic",
+      "model_top5": [
+        " Arabic",
+        ":",
+        "\n",
+        " __",
+        " French"
+      ],
+      "answer_rank_in_top5": 0,
+      "shortcut_solvable": false,
+      "shortcut_in_blinded_top5": false,
+      "blinded_top1": " English",
+      "blinded_top5": [
+        " English",
+        " Spanish",
+        " French",
+        " German",
+        " not"
+      ]
+    },
+    {
+      "id": "Salzburg|capital",
+      "entity": "Salzburg",
+      "entity_kind": "city",
+      "template": "capital",
+      "prompt": "The city of Salzburg is located in the country whose capital city is",
+      "intermediate": " Austria",
+      "intermediate_id": 33741,
+      "answer": " Vienna",
+      "answer_id": 44745,
+      "model_top1": " Vienna",
+      "model_top5": [
+        " Vienna",
+        ":",
+        " ___",
+        "\n",
+        " ______"
+      ],
+      "answer_rank_in_top5": 0,
+      "shortcut_solvable": false,
+      "shortcut_in_blinded_top5": false,
+      "blinded_top1": " the",
+      "blinded_top5": [
+        " the",
+        " in",
+        " located",
+        " also",
+        " ______"
+      ]
+    },
+    {
+      "id": "Salzburg|currency",
+      "entity": "Salzburg",
+      "entity_kind": "city",
+      "template": "currency",
+      "prompt": "The city of Salzburg is located in the country whose currency is the",
+      "intermediate": " Austria",
+      "intermediate_id": 33741,
+      "answer": " euro",
+      "answer_id": 17146,
+      "model_top1": " euro",
+      "model_top5": [
+        " euro",
+        " Euro",
+        " ______",
+        " __",
+        ":"
+      ],
+      "answer_rank_in_top5": 0,
+      "shortcut_solvable": false,
+      "shortcut_in_blinded_top5": true,
+      "blinded_top1": " **",
+      "blinded_top5": [
+        " **",
+        " euro",
+        " dollar",
+        " US",
+        " pound"
+      ]
+    },
+    {
+      "id": "Salzburg|language",
+      "entity": "Salzburg",
+      "entity_kind": "city",
+      "template": "language",
+      "prompt": "The city of Salzburg is located in the country whose main language is",
+      "intermediate": " Austria",
+      "intermediate_id": 33741,
+      "answer": " German",
+      "answer_id": 5753,
+      "model_top1": " German",
+      "model_top5": [
+        " German",
+        ":",
+        " __",
+        " ______",
+        "\n"
+      ],
+      "answer_rank_in_top5": 0,
+      "shortcut_solvable": false,
+      "shortcut_in_blinded_top5": true,
+      "blinded_top1": " English",
+      "blinded_top5": [
+        " English",
+        " Spanish",
+        " French",
+        " German",
+        " not"
+      ]
+    },
+    {
+      "id": "Salzburg|capital_of",
+      "entity": "Salzburg",
+      "entity_kind": "city",
+      "template": "capital_of",
+      "prompt": "The city of Salzburg is located in a country, and the capital of that country is",
+      "intermediate": " Austria",
+      "intermediate_id": 33741,
+      "answer": " Vienna",
+      "answer_id": 44745,
+      "model_top1": " Vienna",
+      "model_top5": [
+        " Vienna",
+        " also",
+        " a",
+        " located",
+        " the"
+      ],
+      "answer_rank_in_top5": 0,
+      "shortcut_solvable": false,
+      "shortcut_in_blinded_top5": false,
+      "blinded_top1": " also",
+      "blinded_top5": [
+        " also",
+        " a",
+        " the",
+        " in",
+        " located"
+      ]
+    },
+    {
+      "id": "Chicago|capital",
+      "entity": "Chicago",
+      "entity_kind": "city",
+      "template": "capital",
+      "prompt": "The city of Chicago is located in the country whose capital city is",
+      "intermediate": " America",
+      "intermediate_id": 4994,
+      "answer": " Washington",
+      "answer_id": 6312,
+      "model_top1": " Washington",
+      "model_top5": [
+        " Washington",
+        " Ottawa",
+        ":",
+        " located",
+        " ______"
+      ],
+      "answer_rank_in_top5": 0,
+      "shortcut_solvable": false,
+      "shortcut_in_blinded_top5": false,
+      "blinded_top1": " the",
+      "blinded_top5": [
+        " the",
+        " in",
+        " located",
+        " also",
+        " ______"
+      ]
+    },
+    {
+      "id": "Chicago|language",
+      "entity": "Chicago",
+      "entity_kind": "city",
+      "template": "language",
+      "prompt": "The city of Chicago is located in the country whose main language is",
+      "intermediate": " America",
+      "intermediate_id": 4994,
+      "answer": " English",
+      "answer_id": 6163,
+      "model_top1": " English",
+      "model_top5": [
+        " English",
+        ":",
+        " Spanish",
+        " ______",
+        " __"
+      ],
+      "answer_rank_in_top5": 0,
+      "shortcut_solvable": true,
+      "shortcut_in_blinded_top5": true,
+      "blinded_top1": " English",
+      "blinded_top5": [
+        " English",
+        " Spanish",
+        " French",
+        " German",
+        " not"
+      ]
+    },
+    {
+      "id": "Boston|capital",
+      "entity": "Boston",
+      "entity_kind": "city",
+      "template": "capital",
+      "prompt": "The city of Boston is located in the country whose capital city is",
+      "intermediate": " America",
+      "intermediate_id": 4994,
+      "answer": " Washington",
+      "answer_id": 6312,
+      "model_top1": " Washington",
+      "model_top5": [
+        " Washington",
+        " Ottawa",
+        ":",
+        " ______",
+        " London"
+      ],
+      "answer_rank_in_top5": 0,
+      "shortcut_solvable": false,
+      "shortcut_in_blinded_top5": false,
+      "blinded_top1": " the",
+      "blinded_top5": [
+        " the",
+        " in",
+        " located",
+        " also",
+        " ______"
+      ]
+    },
+    {
+      "id": "Boston|language",
+      "entity": "Boston",
+      "entity_kind": "city",
+      "template": "language",
+      "prompt": "The city of Boston is located in the country whose main language is",
+      "intermediate": " America",
+      "intermediate_id": 4994,
+      "answer": " English",
+      "answer_id": 6163,
+      "model_top1": " English",
+      "model_top5": [
+        " English",
+        ":",
+        " ______",
+        " __",
+        "\n"
+      ],
+      "answer_rank_in_top5": 0,
+      "shortcut_solvable": true,
+      "shortcut_in_blinded_top5": true,
+      "blinded_top1": " English",
+      "blinded_top5": [
+        " English",
+        " Spanish",
+        " French",
+        " German",
+        " not"
+      ]
+    },
+    {
+      "id": "Guadalajara|capital",
+      "entity": "Guadalajara",
+      "entity_kind": "city",
+      "template": "capital",
+      "prompt": "The city of Guadalajara is located in the country whose capital city is",
+      "intermediate": " Mexico",
+      "intermediate_id": 11920,
+      "answer": " Mexico",
+      "answer_id": 11920,
+      "model_top1": " Mexico",
+      "model_top5": [
+        " Mexico",
+        ":",
+        " ______",
+        " located",
+        " __"
+      ],
+      "answer_rank_in_top5": 0,
+      "shortcut_solvable": false,
+      "shortcut_in_blinded_top5": false,
+      "blinded_top1": " the",
+      "blinded_top5": [
+        " the",
+        " in",
+        " located",
+        " also",
+        " ______"
+      ]
+    },
+    {
+      "id": "Guadalajara|currency",
+      "entity": "Guadalajara",
+      "entity_kind": "city",
+      "template": "currency",
+      "prompt": "The city of Guadalajara is located in the country whose currency is the",
+      "intermediate": " Mexico",
+      "intermediate_id": 11920,
+      "answer": " peso",
+      "answer_id": 35710,
+      "model_top1": " peso",
+      "model_top5": [
+        " peso",
+        " Mexican",
+        " ______",
+        ":",
+        " **"
+      ],
+      "answer_rank_in_top5": 0,
+      "shortcut_solvable": false,
+      "shortcut_in_blinded_top5": false,
+      "blinded_top1": " **",
+      "blinded_top5": [
+        " **",
+        " euro",
+        " dollar",
+        " US",
+        " pound"
+      ]
+    },
+    {
+      "id": "Guadalajara|language",
+      "entity": "Guadalajara",
+      "entity_kind": "city",
+      "template": "language",
+      "prompt": "The city of Guadalajara is located in the country whose main language is",
+      "intermediate": " Mexico",
+      "intermediate_id": 11920,
+      "answer": " Spanish",
+      "answer_id": 14712,
+      "model_top1": " Spanish",
+      "model_top5": [
+        " Spanish",
+        ":",
+        " ______",
+        " __",
+        "\n"
+      ],
+      "answer_rank_in_top5": 0,
+      "shortcut_solvable": false,
+      "shortcut_in_blinded_top5": true,
+      "blinded_top1": " English",
+      "blinded_top5": [
+        " English",
+        " Spanish",
+        " French",
+        " German",
+        " not"
+      ]
+    },
+    {
+      "id": "Guadalajara|capital_of",
+      "entity": "Guadalajara",
+      "entity_kind": "city",
+      "template": "capital_of",
+      "prompt": "The city of Guadalajara is located in a country, and the capital of that country is",
+      "intermediate": " Mexico",
+      "intermediate_id": 11920,
+      "answer": " Mexico",
+      "answer_id": 11920,
+      "model_top1": " Mexico",
+      "model_top5": [
+        " Mexico",
+        " located",
+        " a",
+        " also",
+        " Bogotá"
+      ],
+      "answer_rank_in_top5": 0,
+      "shortcut_solvable": false,
+      "shortcut_in_blinded_top5": false,
+      "blinded_top1": " also",
+      "blinded_top5": [
+        " also",
+        " a",
+        " the",
+        " in",
+        " located"
+      ]
+    },
+    {
+      "id": "Eiffel_Tower|capital",
+      "entity": "Eiffel Tower",
+      "entity_kind": "landmark",
+      "template": "capital",
+      "prompt": "The Eiffel Tower is located in the country whose capital city is",
+      "intermediate": " France",
+      "intermediate_id": 9338,
+      "answer": " Paris",
+      "answer_id": 11751,
+      "model_top1": " Paris",
+      "model_top5": [
+        " Paris",
+        " **",
+        ":",
+        " ___",
+        " ______"
+      ],
+      "answer_rank_in_top5": 0,
+      "shortcut_solvable": false,
+      "shortcut_in_blinded_top5": false,
+      "blinded_top1": " the",
+      "blinded_top5": [
+        " the",
+        " **",
+        " located",
+        " in",
+        " also"
+      ]
+    },
+    {
+      "id": "Eiffel_Tower|currency",
+      "entity": "Eiffel Tower",
+      "entity_kind": "landmark",
+      "template": "currency",
+      "prompt": "The Eiffel Tower is located in the country whose currency is the",
+      "intermediate": " France",
+      "intermediate_id": 9338,
+      "answer": " euro",
+      "answer_id": 17146,
+      "model_top1": " euro",
+      "model_top5": [
+        " euro",
+        " Euro",
+        " **",
+        " ______",
+        ":"
+      ],
+      "answer_rank_in_top5": 0,
+      "shortcut_solvable": false,
+      "shortcut_in_blinded_top5": true,
+      "blinded_top1": " **",
+      "blinded_top5": [
+        " **",
+        " euro",
+        " dollar",
+        " pound",
+        " Euro"
+      ]
+    },
+    {
+      "id": "Eiffel_Tower|language",
+      "entity": "Eiffel Tower",
+      "entity_kind": "landmark",
+      "template": "language",
+      "prompt": "The Eiffel Tower is located in the country whose main language is",
+      "intermediate": " France",
+      "intermediate_id": 9338,
+      "answer": " French",
+      "answer_id": 8323,
+      "model_top1": " French",
+      "model_top5": [
+        " French",
+        ":",
+        " ______",
+        "\n",
+        " __"
+      ],
+      "answer_rank_in_top5": 0,
+      "shortcut_solvable": false,
+      "shortcut_in_blinded_top5": true,
+      "blinded_top1": " English",
+      "blinded_top5": [
+        " English",
+        " French",
+        " Spanish",
+        " German",
+        " not"
+      ]
+    },
+    {
+      "id": "Eiffel_Tower|capital_of",
+      "entity": "Eiffel Tower",
+      "entity_kind": "landmark",
+      "template": "capital_of",
+      "prompt": "The Eiffel Tower is located in a country, and the capital of that country is",
+      "intermediate": " France",
+      "intermediate_id": 9338,
+      "answer": " Paris",
+      "answer_id": 11751,
+      "model_top1": " Paris",
+      "model_top5": [
+        " Paris",
+        " a",
+        " also",
+        " the",
+        " in"
+      ],
+      "answer_rank_in_top5": 0,
+      "shortcut_solvable": false,
+      "shortcut_in_blinded_top5": false,
+      "blinded_top1": " also",
+      "blinded_top5": [
+        " also",
+        " the",
+        " a",
+        " in",
+        " located"
+      ]
+    },
+    {
+      "id": "Colosseum|capital",
+      "entity": "Colosseum",
+      "entity_kind": "landmark",
+      "template": "capital",
+      "prompt": "The Colosseum is located in the country whose capital city is",
+      "intermediate": " Italy",
+      "intermediate_id": 14898,
+      "answer": " Rome",
+      "answer_id": 21047,
+      "model_top1": " Rome",
+      "model_top5": [
+        " Rome",
+        " ______",
+        ":",
+        " __",
+        " ___"
+      ],
+      "answer_rank_in_top5": 0,
+      "shortcut_solvable": false,
+      "shortcut_in_blinded_top5": false,
+      "blinded_top1": " the",
+      "blinded_top5": [
+        " the",
+        " **",
+        " located",
+        " in",
+        " also"
+      ]
+    },
+    {
+      "id": "Colosseum|currency",
+      "entity": "Colosseum",
+      "entity_kind": "landmark",
+      "template": "currency",
+      "prompt": "The Colosseum is located in the country whose currency is the",
+      "intermediate": " Italy",
+      "intermediate_id": 14898,
+      "answer": " euro",
+      "answer_id": 17146,
+      "model_top1": " euro",
+      "model_top5": [
+        " euro",
+        " Euro",
+        ":",
+        " ______",
+        " __"
+      ],
+      "answer_rank_in_top5": 0,
+      "shortcut_solvable": false,
+      "shortcut_in_blinded_top5": true,
+      "blinded_top1": " **",
+      "blinded_top5": [
+        " **",
+        " euro",
+        " dollar",
+        " pound",
+        " Euro"
+      ]
+    },
+    {
+      "id": "Colosseum|capital_of",
+      "entity": "Colosseum",
+      "entity_kind": "landmark",
+      "template": "capital_of",
+      "prompt": "The Colosseum is located in a country, and the capital of that country is",
+      "intermediate": " Italy",
+      "intermediate_id": 14898,
+      "answer": " Rome",
+      "answer_id": 21047,
+      "model_top1": " Rome",
+      "model_top5": [
+        " Rome",
+        " a",
+        " the",
+        " also",
+        " in"
+      ],
+      "answer_rank_in_top5": 0,
+      "shortcut_solvable": false,
+      "shortcut_in_blinded_top5": false,
+      "blinded_top1": " also",
+      "blinded_top5": [
+        " also",
+        " the",
+        " a",
+        " in",
+        " located"
+      ]
+    },
+    {
+      "id": "Taj_Mahal|language",
+      "entity": "Taj Mahal",
+      "entity_kind": "landmark",
+      "template": "language",
+      "prompt": "The Taj Mahal is located in the country whose main language is",
+      "intermediate": " India",
+      "intermediate_id": 6535,
+      "answer": " Hindi",
+      "answer_id": 42524,
+      "model_top1": " Hindi",
+      "model_top5": [
+        " Hindi",
+        " ______",
+        ":",
+        "\n",
+        " Hind"
+      ],
+      "answer_rank_in_top5": 0,
+      "shortcut_solvable": false,
+      "shortcut_in_blinded_top5": false,
+      "blinded_top1": " English",
+      "blinded_top5": [
+        " English",
+        " French",
+        " Spanish",
+        " German",
+        " not"
+      ]
+    },
+    {
+      "id": "Great_Wall|capital",
+      "entity": "Great Wall",
+      "entity_kind": "landmark",
+      "template": "capital",
+      "prompt": "The Great Wall is located in the country whose capital city is",
+      "intermediate": " China",
+      "intermediate_id": 5440,
+      "answer": " Beijing",
+      "answer_id": 25701,
+      "model_top1": " Beijing",
+      "model_top5": [
+        " Beijing",
+        " ______",
+        ":",
+        " P",
+        " **"
+      ],
+      "answer_rank_in_top5": 0,
+      "shortcut_solvable": false,
+      "shortcut_in_blinded_top5": false,
+      "blinded_top1": " the",
+      "blinded_top5": [
+        " the",
+        " **",
+        " located",
+        " in",
+        " also"
+      ]
+    },
+    {
+      "id": "Great_Wall|currency",
+      "entity": "Great Wall",
+      "entity_kind": "landmark",
+      "template": "currency",
+      "prompt": "The Great Wall is located in the country whose currency is the",
+      "intermediate": " China",
+      "intermediate_id": 5440,
+      "answer": " yuan",
+      "answer_id": 69827,
+      "model_top1": " yuan",
+      "model_top5": [
+        " yuan",
+        " ______",
+        ":",
+        " __",
+        "\n"
+      ],
+      "answer_rank_in_top5": 0,
+      "shortcut_solvable": false,
+      "shortcut_in_blinded_top5": false,
+      "blinded_top1": " **",
+      "blinded_top5": [
+        " **",
+        " euro",
+        " dollar",
+        " pound",
+        " Euro"
+      ]
+    },
+    {
+      "id": "Great_Wall|language",
+      "entity": "Great Wall",
+      "entity_kind": "landmark",
+      "template": "language",
+      "prompt": "The Great Wall is located in the country whose main language is",
+      "intermediate": " China",
+      "intermediate_id": 5440,
+      "answer": " Chinese",
+      "answer_id": 8193,
+      "model_top1": " Chinese",
+      "model_top5": [
+        " Chinese",
+        " Mandarin",
+        ":",
+        "\n",
+        " ______"
+      ],
+      "answer_rank_in_top5": 0,
+      "shortcut_solvable": false,
+      "shortcut_in_blinded_top5": false,
+      "blinded_top1": " English",
+      "blinded_top5": [
+        " English",
+        " French",
+        " Spanish",
+        " German",
+        " not"
+      ]
+    },
+    {
+      "id": "Great_Wall|capital_of",
+      "entity": "Great Wall",
+      "entity_kind": "landmark",
+      "template": "capital_of",
+      "prompt": "The Great Wall is located in a country, and the capital of that country is",
+      "intermediate": " China",
+      "intermediate_id": 5440,
+      "answer": " Beijing",
+      "answer_id": 25701,
+      "model_top1": " Beijing",
+      "model_top5": [
+        " Beijing",
+        " located",
+        " a",
+        " the",
+        " in"
+      ],
+      "answer_rank_in_top5": 0,
+      "shortcut_solvable": false,
+      "shortcut_in_blinded_top5": false,
+      "blinded_top1": " also",
+      "blinded_top5": [
+        " also",
+        " the",
+        " a",
+        " in",
+        " located"
+      ]
+    },
+    {
+      "id": "Statue_of_Liberty|capital",
+      "entity": "Statue of Liberty",
+      "entity_kind": "landmark",
+      "template": "capital",
+      "prompt": "The Statue of Liberty is located in the country whose capital city is",
+      "intermediate": " America",
+      "intermediate_id": 4994,
+      "answer": " Washington",
+      "answer_id": 6312,
+      "model_top1": " Washington",
+      "model_top5": [
+        " Washington",
+        " Paris",
+        " **",
+        ":",
+        " named"
+      ],
+      "answer_rank_in_top5": 0,
+      "shortcut_solvable": false,
+      "shortcut_in_blinded_top5": false,
+      "blinded_top1": " the",
+      "blinded_top5": [
+        " the",
+        " **",
+        " located",
+        " in",
+        " also"
+      ]
+    },
+    {
+      "id": "Statue_of_Liberty|currency",
+      "entity": "Statue of Liberty",
+      "entity_kind": "landmark",
+      "template": "currency",
+      "prompt": "The Statue of Liberty is located in the country whose currency is the",
+      "intermediate": " America",
+      "intermediate_id": 4994,
+      "answer": " dollar",
+      "answer_id": 17166,
+      "model_top1": " dollar",
+      "model_top5": [
+        " dollar",
+        " **",
+        " euro",
+        ":",
+        " ______"
+      ],
+      "answer_rank_in_top5": 0,
+      "shortcut_solvable": false,
+      "shortcut_in_blinded_top5": true,
+      "blinded_top1": " **",
+      "blinded_top5": [
+        " **",
+        " euro",
+        " dollar",
+        " pound",
+        " Euro"
+      ]
+    },
+    {
+      "id": "Sagrada_Familia|capital",
+      "entity": "Sagrada Familia",
+      "entity_kind": "landmark",
+      "template": "capital",
+      "prompt": "The Sagrada Familia is located in the country whose capital city is",
+      "intermediate": " Spain",
+      "intermediate_id": 17163,
+      "answer": " Madrid",
+      "answer_id": 23327,
+      "model_top1": " Madrid",
+      "model_top5": [
+        " Madrid",
+        " Rome",
+        " **",
+        ":",
+        " Barcelona"
+      ],
+      "answer_rank_in_top5": 0,
+      "shortcut_solvable": false,
+      "shortcut_in_blinded_top5": false,
+      "blinded_top1": " the",
+      "blinded_top5": [
+        " the",
+        " **",
+        " located",
+        " in",
+        " also"
+      ]
+    },
+    {
+      "id": "Sagrada_Familia|currency",
+      "entity": "Sagrada Familia",
+      "entity_kind": "landmark",
+      "template": "currency",
+      "prompt": "The Sagrada Familia is located in the country whose currency is the",
+      "intermediate": " Spain",
+      "intermediate_id": 17163,
+      "answer": " euro",
+      "answer_id": 17146,
+      "model_top1": " euro",
+      "model_top5": [
+        " euro",
+        " Euro",
+        " **",
+        " ______",
+        ":"
+      ],
+      "answer_rank_in_top5": 0,
+      "shortcut_solvable": false,
+      "shortcut_in_blinded_top5": true,
+      "blinded_top1": " **",
+      "blinded_top5": [
+        " **",
+        " euro",
+        " dollar",
+        " pound",
+        " Euro"
+      ]
+    },
+    {
+      "id": "Sagrada_Familia|language",
+      "entity": "Sagrada Familia",
+      "entity_kind": "landmark",
+      "template": "language",
+      "prompt": "The Sagrada Familia is located in the country whose main language is",
+      "intermediate": " Spain",
+      "intermediate_id": 17163,
+      "answer": " Spanish",
+      "answer_id": 14712,
+      "model_top1": " Spanish",
+      "model_top5": [
+        " Spanish",
+        ":",
+        " __",
+        " Catalan",
+        " ______"
+      ],
+      "answer_rank_in_top5": 0,
+      "shortcut_solvable": false,
+      "shortcut_in_blinded_top5": true,
+      "blinded_top1": " English",
+      "blinded_top5": [
+        " English",
+        " French",
+        " Spanish",
+        " German",
+        " not"
+      ]
+    },
+    {
+      "id": "Sagrada_Familia|capital_of",
+      "entity": "Sagrada Familia",
+      "entity_kind": "landmark",
+      "template": "capital_of",
+      "prompt": "The Sagrada Familia is located in a country, and the capital of that country is",
+      "intermediate": " Spain",
+      "intermediate_id": 17163,
+      "answer": " Madrid",
+      "answer_id": 23327,
+      "model_top1": " Madrid",
+      "model_top5": [
+        " Madrid",
+        " a",
+        " Rome",
+        " the",
+        " also"
+      ],
+      "answer_rank_in_top5": 0,
+      "shortcut_solvable": false,
+      "shortcut_in_blinded_top5": false,
+      "blinded_top1": " also",
+      "blinded_top5": [
+        " also",
+        " the",
+        " a",
+        " in",
+        " located"
+      ]
+    },
+    {
+      "id": "Brandenburg_Gate|capital",
+      "entity": "Brandenburg Gate",
+      "entity_kind": "landmark",
+      "template": "capital",
+      "prompt": "The Brandenburg Gate is located in the country whose capital city is",
+      "intermediate": " Germany",
+      "intermediate_id": 9564,
+      "answer": " Berlin",
+      "answer_id": 19241,
+      "model_top1": " Berlin",
+      "model_top5": [
+        " Berlin",
+        " ______",
+        ":",
+        " **",
+        " __"
+      ],
+      "answer_rank_in_top5": 0,
+      "shortcut_solvable": false,
+      "shortcut_in_blinded_top5": false,
+      "blinded_top1": " the",
+      "blinded_top5": [
+        " the",
+        " **",
+        " located",
+        " in",
+        " also"
+      ]
+    },
+    {
+      "id": "Brandenburg_Gate|currency",
+      "entity": "Brandenburg Gate",
+      "entity_kind": "landmark",
+      "template": "currency",
+      "prompt": "The Brandenburg Gate is located in the country whose currency is the",
+      "intermediate": " Germany",
+      "intermediate_id": 9564,
+      "answer": " euro",
+      "answer_id": 17146,
+      "model_top1": " euro",
+      "model_top5": [
+        " euro",
+        " Euro",
+        ":",
+        " __",
+        " ______"
+      ],
+      "answer_rank_in_top5": 0,
+      "shortcut_solvable": false,
+      "shortcut_in_blinded_top5": true,
+      "blinded_top1": " **",
+      "blinded_top5": [
+        " **",
+        " euro",
+        " dollar",
+        " pound",
+        " Euro"
+      ]
+    },
+    {
+      "id": "Brandenburg_Gate|language",
+      "entity": "Brandenburg Gate",
+      "entity_kind": "landmark",
+      "template": "language",
+      "prompt": "The Brandenburg Gate is located in the country whose main language is",
+      "intermediate": " Germany",
+      "intermediate_id": 9564,
+      "answer": " German",
+      "answer_id": 5753,
+      "model_top1": " German",
+      "model_top5": [
+        " German",
+        ":",
+        " ______",
+        "\n",
+        " __"
+      ],
+      "answer_rank_in_top5": 0,
+      "shortcut_solvable": false,
+      "shortcut_in_blinded_top5": true,
+      "blinded_top1": " English",
+      "blinded_top5": [
+        " English",
+        " French",
+        " Spanish",
+        " German",
+        " not"
+      ]
+    },
+    {
+      "id": "Brandenburg_Gate|capital_of",
+      "entity": "Brandenburg Gate",
+      "entity_kind": "landmark",
+      "template": "capital_of",
+      "prompt": "The Brandenburg Gate is located in a country, and the capital of that country is",
+      "intermediate": " Germany",
+      "intermediate_id": 9564,
+      "answer": " Berlin",
+      "answer_id": 19241,
+      "model_top1": " Berlin",
+      "model_top5": [
+        " Berlin",
+        " a",
+        " also",
+        " the",
+        " located"
+      ],
+      "answer_rank_in_top5": 0,
+      "shortcut_solvable": false,
+      "shortcut_in_blinded_top5": false,
+      "blinded_top1": " also",
+      "blinded_top5": [
+        " also",
+        " the",
+        " a",
+        " in",
+        " located"
+      ]
+    },
+    {
+      "id": "Acropolis|capital",
+      "entity": "Acropolis",
+      "entity_kind": "landmark",
+      "template": "capital",
+      "prompt": "The Acropolis is located in the country whose capital city is",
+      "intermediate": " Greece",
+      "intermediate_id": 23655,
+      "answer": " Athens",
+      "answer_id": 44299,
+      "model_top1": " Athens",
+      "model_top5": [
+        " Athens",
+        ":",
+        " **",
+        " ______",
+        " ___"
+      ],
+      "answer_rank_in_top5": 0,
+      "shortcut_solvable": false,
+      "shortcut_in_blinded_top5": false,
+      "blinded_top1": " the",
+      "blinded_top5": [
+        " the",
+        " **",
+        " located",
+        " in",
+        " also"
+      ]
+    },
+    {
+      "id": "Acropolis|currency",
+      "entity": "Acropolis",
+      "entity_kind": "landmark",
+      "template": "currency",
+      "prompt": "The Acropolis is located in the country whose currency is the",
+      "intermediate": " Greece",
+      "intermediate_id": 23655,
+      "answer": " euro",
+      "answer_id": 17146,
+      "model_top1": " euro",
+      "model_top5": [
+        " euro",
+        " Euro",
+        " **",
+        ":",
+        " ______"
+      ],
+      "answer_rank_in_top5": 0,
+      "shortcut_solvable": false,
+      "shortcut_in_blinded_top5": true,
+      "blinded_top1": " **",
+      "blinded_top5": [
+        " **",
+        " euro",
+        " dollar",
+        " pound",
+        " Euro"
+      ]
+    },
+    {
+      "id": "Acropolis|language",
+      "entity": "Acropolis",
+      "entity_kind": "landmark",
+      "template": "language",
+      "prompt": "The Acropolis is located in the country whose main language is",
+      "intermediate": " Greece",
+      "intermediate_id": 23655,
+      "answer": " Greek",
+      "answer_id": 17326,
+      "model_top1": " Greek",
+      "model_top5": [
+        " Greek",
+        ":",
+        "\n",
+        " ______",
+        " __"
+      ],
+      "answer_rank_in_top5": 0,
+      "shortcut_solvable": false,
+      "shortcut_in_blinded_top5": false,
+      "blinded_top1": " English",
+      "blinded_top5": [
+        " English",
+        " French",
+        " Spanish",
+        " German",
+        " not"
+      ]
+    },
+    {
+      "id": "Acropolis|capital_of",
+      "entity": "Acropolis",
+      "entity_kind": "landmark",
+      "template": "capital_of",
+      "prompt": "The Acropolis is located in a country, and the capital of that country is",
+      "intermediate": " Greece",
+      "intermediate_id": 23655,
+      "answer": " Athens",
+      "answer_id": 44299,
+      "model_top1": " Athens",
+      "model_top5": [
+        " Athens",
+        " a",
+        " also",
+        " the",
+        " Rome"
+      ],
+      "answer_rank_in_top5": 0,
+      "shortcut_solvable": false,
+      "shortcut_in_blinded_top5": false,
+      "blinded_top1": " also",
+      "blinded_top5": [
+        " also",
+        " the",
+        " a",
+        " in",
+        " located"
+      ]
+    },
+    {
+      "id": "Machu_Picchu|language",
+      "entity": "Machu Picchu",
+      "entity_kind": "landmark",
+      "template": "language",
+      "prompt": "The Machu Picchu is located in the country whose main language is",
+      "intermediate": " Peru",
+      "intermediate_id": 46157,
+      "answer": " Spanish",
+      "answer_id": 14712,
+      "model_top1": " Spanish",
+      "model_top5": [
+        " Spanish",
+        ":",
+        "\n",
+        " ______",
+        " __"
+      ],
+      "answer_rank_in_top5": 0,
+      "shortcut_solvable": false,
+      "shortcut_in_blinded_top5": true,
+      "blinded_top1": " English",
+      "blinded_top5": [
+        " English",
+        " French",
+        " Spanish",
+        " German",
+        " not"
+      ]
+    },
+    {
+      "id": "Mount_Fuji|capital",
+      "entity": "Mount Fuji",
+      "entity_kind": "landmark",
+      "template": "capital",
+      "prompt": "The Mount Fuji is located in the country whose capital city is",
+      "intermediate": " Japan",
+      "intermediate_id": 6124,
+      "answer": " Tokyo",
+      "answer_id": 25358,
+      "model_top1": " Tokyo",
+      "model_top5": [
+        " Tokyo",
+        ":",
+        "\n",
+        " ______",
+        " in"
+      ],
+      "answer_rank_in_top5": 0,
+      "shortcut_solvable": false,
+      "shortcut_in_blinded_top5": false,
+      "blinded_top1": " the",
+      "blinded_top5": [
+        " the",
+        " **",
+        " located",
+        " in",
+        " also"
+      ]
+    },
+    {
+      "id": "Mount_Fuji|currency",
+      "entity": "Mount Fuji",
+      "entity_kind": "landmark",
+      "template": "currency",
+      "prompt": "The Mount Fuji is located in the country whose currency is the",
+      "intermediate": " Japan",
+      "intermediate_id": 6124,
+      "answer": " yen",
+      "answer_id": 55421,
+      "model_top1": " yen",
+      "model_top5": [
+        " yen",
+        " ______",
+        " Japanese",
+        ":",
+        "\n"
+      ],
+      "answer_rank_in_top5": 0,
+      "shortcut_solvable": false,
+      "shortcut_in_blinded_top5": false,
+      "blinded_top1": " **",
+      "blinded_top5": [
+        " **",
+        " euro",
+        " dollar",
+        " pound",
+        " Euro"
+      ]
+    },
+    {
+      "id": "Mount_Fuji|language",
+      "entity": "Mount Fuji",
+      "entity_kind": "landmark",
+      "template": "language",
+      "prompt": "The Mount Fuji is located in the country whose main language is",
+      "intermediate": " Japan",
+      "intermediate_id": 6124,
+      "answer": " Japanese",
+      "answer_id": 10452,
+      "model_top1": " Japanese",
+      "model_top5": [
+        " Japanese",
+        "\n",
+        " ______",
+        ":",
+        " __"
+      ],
+      "answer_rank_in_top5": 0,
+      "shortcut_solvable": false,
+      "shortcut_in_blinded_top5": false,
+      "blinded_top1": " English",
+      "blinded_top5": [
+        " English",
+        " French",
+        " Spanish",
+        " German",
+        " not"
+      ]
+    },
+    {
+      "id": "Mount_Fuji|capital_of",
+      "entity": "Mount Fuji",
+      "entity_kind": "landmark",
+      "template": "capital_of",
+      "prompt": "The Mount Fuji is located in a country, and the capital of that country is",
+      "intermediate": " Japan",
+      "intermediate_id": 6124,
+      "answer": " Tokyo",
+      "answer_id": 25358,
+      "model_top1": " Tokyo",
+      "model_top5": [
+        " Tokyo",
+        " a",
+        " located",
+        " in",
+        " the"
+      ],
+      "answer_rank_in_top5": 0,
+      "shortcut_solvable": false,
+      "shortcut_in_blinded_top5": false,
+      "blinded_top1": " also",
+      "blinded_top5": [
+        " also",
+        " the",
+        " a",
+        " in",
+        " located"
+      ]
+    },
+    {
+      "id": "Christ_the_Redeemer|language",
+      "entity": "Christ the Redeemer",
+      "entity_kind": "landmark",
+      "template": "language",
+      "prompt": "The Christ the Redeemer is located in the country whose main language is",
+      "intermediate": " Brazil",
+      "intermediate_id": 15477,
+      "answer": " Portuguese",
+      "answer_id": 40790,
+      "model_top1": " Portuguese",
+      "model_top5": [
+        " Portuguese",
+        ":",
+        "\n",
+        " ______",
+        " __"
+      ],
+      "answer_rank_in_top5": 0,
+      "shortcut_solvable": false,
+      "shortcut_in_blinded_top5": false,
+      "blinded_top1": " English",
+      "blinded_top5": [
+        " English",
+        " French",
+        " Spanish",
+        " German",
+        " not"
+      ]
+    },
+    {
+      "id": "Neuschwanstein|capital",
+      "entity": "Neuschwanstein",
+      "entity_kind": "landmark",
+      "template": "capital",
+      "prompt": "The Neuschwanstein is located in the country whose capital city is",
+      "intermediate": " Germany",
+      "intermediate_id": 9564,
+      "answer": " Berlin",
+      "answer_id": 19241,
+      "model_top1": " Berlin",
+      "model_top5": [
+        " Berlin",
+        ":",
+        " ______",
+        "\n",
+        " __"
+      ],
+      "answer_rank_in_top5": 0,
+      "shortcut_solvable": false,
+      "shortcut_in_blinded_top5": false,
+      "blinded_top1": " the",
+      "blinded_top5": [
+        " the",
+        " **",
+        " located",
+        " in",
+        " also"
+      ]
+    },
+    {
+      "id": "Neuschwanstein|currency",
+      "entity": "Neuschwanstein",
+      "entity_kind": "landmark",
+      "template": "currency",
+      "prompt": "The Neuschwanstein is located in the country whose currency is the",
+      "intermediate": " Germany",
+      "intermediate_id": 9564,
+      "answer": " euro",
+      "answer_id": 17146,
+      "model_top1": " euro",
+      "model_top5": [
+        " euro",
+        " Euro",
+        " ______",
+        ":",
+        " __"
+      ],
+      "answer_rank_in_top5": 0,
+      "shortcut_solvable": false,
+      "shortcut_in_blinded_top5": true,
+      "blinded_top1": " **",
+      "blinded_top5": [
+        " **",
+        " euro",
+        " dollar",
+        " pound",
+        " Euro"
+      ]
+    },
+    {
+      "id": "Neuschwanstein|language",
+      "entity": "Neuschwanstein",
+      "entity_kind": "landmark",
+      "template": "language",
+      "prompt": "The Neuschwanstein is located in the country whose main language is",
+      "intermediate": " Germany",
+      "intermediate_id": 9564,
+      "answer": " German",
+      "answer_id": 5753,
+      "model_top1": " German",
+      "model_top5": [
+        " German",
+        ":",
+        "\n",
+        " __",
+        " ______"
+      ],
+      "answer_rank_in_top5": 0,
+      "shortcut_solvable": false,
+      "shortcut_in_blinded_top5": true,
+      "blinded_top1": " English",
+      "blinded_top5": [
+        " English",
+        " French",
+        " Spanish",
+        " German",
+        " not"
+      ]
+    },
+    {
+      "id": "Neuschwanstein|capital_of",
+      "entity": "Neuschwanstein",
+      "entity_kind": "landmark",
+      "template": "capital_of",
+      "prompt": "The Neuschwanstein is located in a country, and the capital of that country is",
+      "intermediate": " Germany",
+      "intermediate_id": 9564,
+      "answer": " Berlin",
+      "answer_id": 19241,
+      "model_top1": " Berlin",
+      "model_top5": [
+        " Berlin",
+        " a",
+        " located",
+        " Rome",
+        " the"
+      ],
+      "answer_rank_in_top5": 0,
+      "shortcut_solvable": false,
+      "shortcut_in_blinded_top5": false,
+      "blinded_top1": " also",
+      "blinded_top5": [
+        " also",
+        " the",
+        " a",
+        " in",
+        " located"
+      ]
+    }
+  ],
+  "rejected_items": [
+    {
+      "id": "Shanghai|language",
+      "entity": "Shanghai",
+      "entity_kind": "city",
+      "template": "language",
+      "prompt": "The city of Shanghai is located in the country whose main language is",
+      "intermediate": " China",
+      "intermediate_id": 5440,
+      "answer": " Chinese",
+      "answer_id": 8193,
+      "model_top1": " Mandarin",
+      "model_top5": [
+        " Mandarin",
+        " Chinese",
+        ":",
+        "\n",
+        " ______"
+      ],
+      "answer_rank_in_top5": 1,
+      "shortcut_solvable": false,
+      "shortcut_in_blinded_top5": false,
+      "blinded_top1": " English",
+      "blinded_top5": [
+        " English",
+        " Spanish",
+        " French",
+        " German",
+        " not"
+      ]
+    },
+    {
+      "id": "Toronto|currency",
+      "entity": "Toronto",
+      "entity_kind": "city",
+      "template": "currency",
+      "prompt": "The city of Toronto is located in the country whose currency is the",
+      "intermediate": " Canada",
+      "intermediate_id": 6650,
+      "answer": " dollar",
+      "answer_id": 17166,
+      "model_top1": " Canadian",
+      "model_top5": [
+        " Canadian",
+        ":",
+        " **",
+        " dollar",
+        " ______"
+      ],
+      "answer_rank_in_top5": 3,
+      "shortcut_solvable": false,
+      "shortcut_in_blinded_top5": true,
+      "blinded_top1": " **",
+      "blinded_top5": [
+        " **",
+        " euro",
+        " dollar",
+        " US",
+        " pound"
+      ]
+    },
+    {
+      "id": "Vancouver|currency",
+      "entity": "Vancouver",
+      "entity_kind": "city",
+      "template": "currency",
+      "prompt": "The city of Vancouver is located in the country whose currency is the",
+      "intermediate": " Canada",
+      "intermediate_id": 6650,
+      "answer": " dollar",
+      "answer_id": 17166,
+      "model_top1": " Canadian",
+      "model_top5": [
+        " Canadian",
+        ":",
+        " dollar",
+        " ______",
+        " **"
+      ],
+      "answer_rank_in_top5": 2,
+      "shortcut_solvable": false,
+      "shortcut_in_blinded_top5": true,
+      "blinded_top1": " **",
+      "blinded_top5": [
+        " **",
+        " euro",
+        " dollar",
+        " US",
+        " pound"
+      ]
+    },
+    {
+      "id": "Sydney|currency",
+      "entity": "Sydney",
+      "entity_kind": "city",
+      "template": "currency",
+      "prompt": "The city of Sydney is located in the country whose currency is the",
+      "intermediate": " Australia",
+      "intermediate_id": 8071,
+      "answer": " dollar",
+      "answer_id": 17166,
+      "model_top1": " Australian",
+      "model_top5": [
+        " Australian",
+        ":",
+        " ______",
+        " **",
+        " AUD"
+      ],
+      "answer_rank_in_top5": null,
+      "shortcut_solvable": false,
+      "shortcut_in_blinded_top5": true,
+      "blinded_top1": " **",
+      "blinded_top5": [
+        " **",
+        " euro",
+        " dollar",
+        " US",
+        " pound"
+      ]
+    },
+    {
+      "id": "Melbourne|currency",
+      "entity": "Melbourne",
+      "entity_kind": "city",
+      "template": "currency",
+      "prompt": "The city of Melbourne is located in the country whose currency is the",
+      "intermediate": " Australia",
+      "intermediate_id": 8071,
+      "answer": " dollar",
+      "answer_id": 17166,
+      "model_top1": " Australian",
+      "model_top5": [
+        " Australian",
+        ":",
+        " ______",
+        " **",
+        " dollar"
+      ],
+      "answer_rank_in_top5": 4,
+      "shortcut_solvable": false,
+      "shortcut_in_blinded_top5": true,
+      "blinded_top1": " **",
+      "blinded_top5": [
+        " **",
+        " euro",
+        " dollar",
+        " US",
+        " pound"
+      ]
+    },
+    {
+      "id": "Mumbai|capital",
+      "entity": "Mumbai",
+      "entity_kind": "city",
+      "template": "capital",
+      "prompt": "The city of Mumbai is located in the country whose capital city is",
+      "intermediate": " India",
+      "intermediate_id": 6535,
+      "answer": " Delhi",
+      "answer_id": 21318,
+      "model_top1": " New",
+      "model_top5": [
+        " New",
+        " Delhi",
+        ":",
+        " ______",
+        "\n"
+      ],
+      "answer_rank_in_top5": 1,
+      "shortcut_solvable": false,
+      "shortcut_in_blinded_top5": false,
+      "blinded_top1": " the",
+      "blinded_top5": [
+        " the",
+        " in",
+        " located",
+        " also",
+        " ______"
+      ]
+    },
+    {
+      "id": "Mumbai|capital_of",
+      "entity": "Mumbai",
+      "entity_kind": "city",
+      "template": "capital_of",
+      "prompt": "The city of Mumbai is located in a country, and the capital of that country is",
+      "intermediate": " India",
+      "intermediate_id": 6535,
+      "answer": " Delhi",
+      "answer_id": 21318,
+      "model_top1": " New",
+      "model_top5": [
+        " New",
+        " a",
+        " also",
+        " Delhi",
+        " located"
+      ],
+      "answer_rank_in_top5": 3,
+      "shortcut_solvable": false,
+      "shortcut_in_blinded_top5": false,
+      "blinded_top1": " also",
+      "blinded_top5": [
+        " also",
+        " a",
+        " the",
+        " in",
+        " located"
+      ]
+    },
+    {
+      "id": "Istanbul|currency",
+      "entity": "Istanbul",
+      "entity_kind": "city",
+      "template": "currency",
+      "prompt": "The city of Istanbul is located in the country whose currency is the",
+      "intermediate": " Turkey",
+      "intermediate_id": 16511,
+      "answer": " lira",
+      "answer_id": 237597,
+      "model_top1": " Turkish",
+      "model_top5": [
+        " Turkish",
+        ":",
+        "\n",
+        " ______",
+        " __"
+      ],
+      "answer_rank_in_top5": null,
+      "shortcut_solvable": false,
+      "shortcut_in_blinded_top5": false,
+      "blinded_top1": " **",
+      "blinded_top5": [
+        " **",
+        " euro",
+        " dollar",
+        " US",
+        " pound"
+      ]
+    },
+    {
+      "id": "Istanbul|capital_of",
+      "entity": "Istanbul",
+      "entity_kind": "city",
+      "template": "capital_of",
+      "prompt": "The city of Istanbul is located in a country, and the capital of that country is",
+      "intermediate": " Turkey",
+      "intermediate_id": 16511,
+      "answer": " Ankara",
+      "answer_id": 67866,
+      "model_top1": " also",
+      "model_top5": [
+        " also",
+        " Ankara",
+        " a",
+        " located",
+        " the"
+      ],
+      "answer_rank_in_top5": 1,
+      "shortcut_solvable": false,
+      "shortcut_in_blinded_top5": false,
+      "blinded_top1": " also",
+      "blinded_top5": [
+        " also",
+        " a",
+        " the",
+        " in",
+        " located"
+      ]
+    },
+    {
+      "id": "Rotterdam|capital_of",
+      "entity": "Rotterdam",
+      "entity_kind": "city",
+      "template": "capital_of",
+      "prompt": "The city of Rotterdam is located in a country, and the capital of that country is",
+      "intermediate": " Netherlands",
+      "intermediate_id": 24844,
+      "answer": " Amsterdam",
+      "answer_id": 36492,
+      "model_top1": " also",
+      "model_top5": [
+        " also",
+        " a",
+        " Amsterdam",
+        " located",
+        " Berlin"
+      ],
+      "answer_rank_in_top5": 2,
+      "shortcut_solvable": false,
+      "shortcut_in_blinded_top5": false,
+      "blinded_top1": " also",
+      "blinded_top5": [
+        " also",
+        " a",
+        " the",
+        " in",
+        " located"
+      ]
+    },
+    {
+      "id": "Auckland|currency",
+      "entity": "Auckland",
+      "entity_kind": "city",
+      "template": "currency",
+      "prompt": "The city of Auckland is located in the country whose currency is the",
+      "intermediate": " Zealand",
+      "intermediate_id": 16416,
+      "answer": " dollar",
+      "answer_id": 17166,
+      "model_top1": " New",
+      "model_top5": [
+        " New",
+        " **",
+        " dollar",
+        " ______",
+        " ___"
+      ],
+      "answer_rank_in_top5": 2,
+      "shortcut_solvable": false,
+      "shortcut_in_blinded_top5": true,
+      "blinded_top1": " **",
+      "blinded_top5": [
+        " **",
+        " euro",
+        " dollar",
+        " US",
+        " pound"
+      ]
+    },
+    {
+      "id": "Alexandria|currency",
+      "entity": "Alexandria",
+      "entity_kind": "city",
+      "template": "currency",
+      "prompt": "The city of Alexandria is located in the country whose currency is the",
+      "intermediate": " Egypt",
+      "intermediate_id": 14437,
+      "answer": " pound",
+      "answer_id": 29040,
+      "model_top1": " Egyptian",
+      "model_top5": [
+        " Egyptian",
+        " pound",
+        " **",
+        " ______",
+        ":"
+      ],
+      "answer_rank_in_top5": 1,
+      "shortcut_solvable": false,
+      "shortcut_in_blinded_top5": true,
+      "blinded_top1": " **",
+      "blinded_top5": [
+        " **",
+        " euro",
+        " dollar",
+        " US",
+        " pound"
+      ]
+    },
+    {
+      "id": "Alexandria|capital_of",
+      "entity": "Alexandria",
+      "entity_kind": "city",
+      "template": "capital_of",
+      "prompt": "The city of Alexandria is located in a country, and the capital of that country is",
+      "intermediate": " Egypt",
+      "intermediate_id": 14437,
+      "answer": " Cairo",
+      "answer_id": 50779,
+      "model_top1": " located",
+      "model_top5": [
+        " located",
+        " also",
+        " a",
+        " in",
+        " Cairo"
+      ],
+      "answer_rank_in_top5": 4,
+      "shortcut_solvable": false,
+      "shortcut_in_blinded_top5": false,
+      "blinded_top1": " also",
+      "blinded_top5": [
+        " also",
+        " a",
+        " the",
+        " in",
+        " located"
+      ]
+    },
+    {
+      "id": "Chicago|currency",
+      "entity": "Chicago",
+      "entity_kind": "city",
+      "template": "currency",
+      "prompt": "The city of Chicago is located in the country whose currency is the",
+      "intermediate": " America",
+      "intermediate_id": 4994,
+      "answer": " dollar",
+      "answer_id": 17166,
+      "model_top1": " US",
+      "model_top5": [
+        " US",
+        ":",
+        " dollar",
+        " U",
+        " **"
+      ],
+      "answer_rank_in_top5": 2,
+      "shortcut_solvable": false,
+      "shortcut_in_blinded_top5": true,
+      "blinded_top1": " **",
+      "blinded_top5": [
+        " **",
+        " euro",
+        " dollar",
+        " US",
+        " pound"
+      ]
+    },
+    {
+      "id": "Chicago|capital_of",
+      "entity": "Chicago",
+      "entity_kind": "city",
+      "template": "capital_of",
+      "prompt": "The city of Chicago is located in a country, and the capital of that country is",
+      "intermediate": " America",
+      "intermediate_id": 4994,
+      "answer": " Washington",
+      "answer_id": 6312,
+      "model_top1": " located",
+      "model_top5": [
+        " located",
+        " Washington",
+        " a",
+        " also",
+        " the"
+      ],
+      "answer_rank_in_top5": 1,
+      "shortcut_solvable": false,
+      "shortcut_in_blinded_top5": false,
+      "blinded_top1": " also",
+      "blinded_top5": [
+        " also",
+        " a",
+        " the",
+        " in",
+        " located"
+      ]
+    },
+    {
+      "id": "Boston|currency",
+      "entity": "Boston",
+      "entity_kind": "city",
+      "template": "currency",
+      "prompt": "The city of Boston is located in the country whose currency is the",
+      "intermediate": " America",
+      "intermediate_id": 4994,
+      "answer": " dollar",
+      "answer_id": 17166,
+      "model_top1": " US",
+      "model_top5": [
+        " US",
+        " dollar",
+        ":",
+        " United",
+        " ______"
+      ],
+      "answer_rank_in_top5": 1,
+      "shortcut_solvable": false,
+      "shortcut_in_blinded_top5": true,
+      "blinded_top1": " **",
+      "blinded_top5": [
+        " **",
+        " euro",
+        " dollar",
+        " US",
+        " pound"
+      ]
+    },
+    {
+      "id": "Boston|capital_of",
+      "entity": "Boston",
+      "entity_kind": "city",
+      "template": "capital_of",
+      "prompt": "The city of Boston is located in a country, and the capital of that country is",
+      "intermediate": " America",
+      "intermediate_id": 4994,
+      "answer": " Washington",
+      "answer_id": 6312,
+      "model_top1": " also",
+      "model_top5": [
+        " also",
+        " Washington",
+        " located",
+        " a",
+        " in"
+      ],
+      "answer_rank_in_top5": 1,
+      "shortcut_solvable": false,
+      "shortcut_in_blinded_top5": false,
+      "blinded_top1": " also",
+      "blinded_top5": [
+        " also",
+        " a",
+        " the",
+        " in",
+        " located"
+      ]
+    },
+    {
+      "id": "Colosseum|language",
+      "entity": "Colosseum",
+      "entity_kind": "landmark",
+      "template": "language",
+      "prompt": "The Colosseum is located in the country whose main language is",
+      "intermediate": " Italy",
+      "intermediate_id": 14898,
+      "answer": " Italian",
+      "answer_id": 14382,
+      "model_top1": " Spanish",
+      "model_top5": [
+        " Spanish",
+        ":",
+        " Italian",
+        " ______",
+        "\n"
+      ],
+      "answer_rank_in_top5": 2,
+      "shortcut_solvable": false,
+      "shortcut_in_blinded_top5": false,
+      "blinded_top1": " English",
+      "blinded_top5": [
+        " English",
+        " French",
+        " Spanish",
+        " German",
+        " not"
+      ]
+    },
+    {
+      "id": "Taj_Mahal|capital",
+      "entity": "Taj Mahal",
+      "entity_kind": "landmark",
+      "template": "capital",
+      "prompt": "The Taj Mahal is located in the country whose capital city is",
+      "intermediate": " India",
+      "intermediate_id": 6535,
+      "answer": " Delhi",
+      "answer_id": 21318,
+      "model_top1": " New",
+      "model_top5": [
+        " New",
+        " Delhi",
+        ":",
+        " ______",
+        " **"
+      ],
+      "answer_rank_in_top5": 1,
+      "shortcut_solvable": false,
+      "shortcut_in_blinded_top5": false,
+      "blinded_top1": " the",
+      "blinded_top5": [
+        " the",
+        " **",
+        " located",
+        " in",
+        " also"
+      ]
+    },
+    {
+      "id": "Taj_Mahal|capital_of",
+      "entity": "Taj Mahal",
+      "entity_kind": "landmark",
+      "template": "capital_of",
+      "prompt": "The Taj Mahal is located in a country, and the capital of that country is",
+      "intermediate": " India",
+      "intermediate_id": 6535,
+      "answer": " Delhi",
+      "answer_id": 21318,
+      "model_top1": " a",
+      "model_top5": [
+        " a",
+        " also",
+        " in",
+        " A",
+        " the"
+      ],
+      "answer_rank_in_top5": null,
+      "shortcut_solvable": false,
+      "shortcut_in_blinded_top5": false,
+      "blinded_top1": " also",
+      "blinded_top5": [
+        " also",
+        " the",
+        " a",
+        " in",
+        " located"
+      ]
+    },
+    {
+      "id": "Statue_of_Liberty|language",
+      "entity": "Statue of Liberty",
+      "entity_kind": "landmark",
+      "template": "language",
+      "prompt": "The Statue of Liberty is located in the country whose main language is",
+      "intermediate": " America",
+      "intermediate_id": 4994,
+      "answer": " English",
+      "answer_id": 6163,
+      "model_top1": " French",
+      "model_top5": [
+        " French",
+        ":",
+        " English",
+        "\n",
+        " Spanish"
+      ],
+      "answer_rank_in_top5": 2,
+      "shortcut_solvable": true,
+      "shortcut_in_blinded_top5": true,
+      "blinded_top1": " English",
+      "blinded_top5": [
+        " English",
+        " French",
+        " Spanish",
+        " German",
+        " not"
+      ]
+    },
+    {
+      "id": "Statue_of_Liberty|capital_of",
+      "entity": "Statue of Liberty",
+      "entity_kind": "landmark",
+      "template": "capital_of",
+      "prompt": "The Statue of Liberty is located in a country, and the capital of that country is",
+      "intermediate": " America",
+      "intermediate_id": 4994,
+      "answer": " Washington",
+      "answer_id": 6312,
+      "model_top1": " a",
+      "model_top5": [
+        " a",
+        " Washington",
+        " located",
+        " also",
+        " New"
+      ],
+      "answer_rank_in_top5": 1,
+      "shortcut_solvable": false,
+      "shortcut_in_blinded_top5": false,
+      "blinded_top1": " also",
+      "blinded_top5": [
+        " also",
+        " the",
+        " a",
+        " in",
+        " located"
+      ]
+    },
+    {
+      "id": "Machu_Picchu|capital",
+      "entity": "Machu Picchu",
+      "entity_kind": "landmark",
+      "template": "capital",
+      "prompt": "The Machu Picchu is located in the country whose capital city is",
+      "intermediate": " Peru",
+      "intermediate_id": 46157,
+      "answer": " Lima",
+      "answer_id": 59868,
+      "model_top1": " C",
+      "model_top5": [
+        " C",
+        ":",
+        "\n",
+        " ______",
+        " in"
+      ],
+      "answer_rank_in_top5": null,
+      "shortcut_solvable": false,
+      "shortcut_in_blinded_top5": false,
+      "blinded_top1": " the",
+      "blinded_top5": [
+        " the",
+        " **",
+        " located",
+        " in",
+        " also"
+      ]
+    },
+    {
+      "id": "Machu_Picchu|currency",
+      "entity": "Machu Picchu",
+      "entity_kind": "landmark",
+      "template": "currency",
+      "prompt": "The Machu Picchu is located in the country whose currency is the",
+      "intermediate": " Peru",
+      "intermediate_id": 46157,
+      "answer": " sol",
+      "answer_id": 1980,
+      "model_top1": ":",
+      "model_top5": [
+        ":",
+        "\n",
+        " ______",
+        " Sol",
+        " __"
+      ],
+      "answer_rank_in_top5": null,
+      "shortcut_solvable": false,
+      "shortcut_in_blinded_top5": false,
+      "blinded_top1": " **",
+      "blinded_top5": [
+        " **",
+        " euro",
+        " dollar",
+        " pound",
+        " Euro"
+      ]
+    },
+    {
+      "id": "Machu_Picchu|capital_of",
+      "entity": "Machu Picchu",
+      "entity_kind": "landmark",
+      "template": "capital_of",
+      "prompt": "The Machu Picchu is located in a country, and the capital of that country is",
+      "intermediate": " Peru",
+      "intermediate_id": 46157,
+      "answer": " Lima",
+      "answer_id": 59868,
+      "model_top1": " C",
+      "model_top5": [
+        " C",
+        " a",
+        " in",
+        " ______",
+        " located"
+      ],
+      "answer_rank_in_top5": null,
+      "shortcut_solvable": false,
+      "shortcut_in_blinded_top5": false,
+      "blinded_top1": " also",
+      "blinded_top5": [
+        " also",
+        " the",
+        " a",
+        " in",
+        " located"
+      ]
+    },
+    {
+      "id": "Christ_the_Redeemer|currency",
+      "entity": "Christ the Redeemer",
+      "entity_kind": "landmark",
+      "template": "currency",
+      "prompt": "The Christ the Redeemer is located in the country whose currency is the",
+      "intermediate": " Brazil",
+      "intermediate_id": 15477,
+      "answer": " real",
+      "answer_id": 1865,
+      "model_top1": " Brazilian",
+      "model_top5": [
+        " Brazilian",
+        " ______",
+        ":",
+        "\n",
+        " Real"
+      ],
+      "answer_rank_in_top5": null,
+      "shortcut_solvable": false,
+      "shortcut_in_blinded_top5": false,
+      "blinded_top1": " **",
+      "blinded_top5": [
+        " **",
+        " euro",
+        " dollar",
+        " pound",
+        " Euro"
+      ]
+    }
+  ]
+}

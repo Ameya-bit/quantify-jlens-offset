@@ -244,3 +244,35 @@ which it marks **PROTECT ≥90 MIN**. If the clock runs out, losing Δ_t costs
 a step already designated as cuttable.
 
 - **Reverses if:** Step 4 finishes early enough that both fit comfortably, in which case order stops mattering.
+
+### D21. Two-hop items keep a shortcut flag rather than being pruned
+**Date:** 20 Aug · **Where:** `src/twohop.py` · **Evidence:** `results/step3_twohop.json`
+
+138 of 164 candidates survive the model filter (kept iff Qwen3.5-4B's true
+final top-1 next token is the answer). But an item is only *two-hop* if the
+answer depends on the entity, so every template is also run **blinded** —
+entity removed, nothing else changed.
+
+| template | kept | shortcut (blinded top-1) | shortcut (blinded top-5) | strict two-hop |
+|---|---|---|---|---|
+| capital | 39 | 0 | 0 | **39** |
+| capital_of | 33 | 0 | 0 | **33** |
+| language | 39 | 5 | 19 | 20 |
+| currency | 27 | 0 | 20 | 7 |
+| **total** | **138** | 5 | 39 | **99** |
+
+- **Both strictness levels recorded, neither chosen here.** By blinded top-1 the currency template looks clean — but only because its blinded top-1 is a markdown artefact (`" **"`); `" euro"` sits at rank 2 and 70% of currency answers are `" euro"`. The lenient flag would have hidden that.
+- **Rejected:** deleting the contaminated items. Step 7 can drop them in one line; a deleted item cannot be recovered by a reader who disagrees with the criterion.
+- **Recommendation carried to Step 7:** headline on `capital` + `capital_of` (72 items, clean by both criteria); use the rest as a secondary panel.
+- **Reverses if:** Step 7 needs more than 72 items for statistical power, in which case the strict-clean 99 are the next tier.
+
+### D22. The model filter also silently fixes our labels — and can mask a shared error
+**Date:** 20 Aug · **Where:** `src/twohop.py`
+
+Keeping only items the model answers correctly removes rows where *our* label
+was wrong: the rejects are things like "Shanghai → Chinese" (model says
+Mandarin), "Mumbai → Delhi" (model says New Delhi), "Toronto → dollar" (model
+says Canadian). That is the filter working.
+
+- **The failure mode it cannot catch:** a label wrong in the same way the model is wrong survives. Mitigated at table-construction time by excluding genuinely ambiguous cases — multi-capital countries (South Africa), contested "country" (Scotland vs UK), and multilingual states in the language template (Belgium, Switzerland, Ireland, Canada).
+- **Reverses if:** Step 7 shows anomalous behaviour concentrated in a few items, which is the signal to hand-audit those labels.
