@@ -1,0 +1,367 @@
+{
+  "dataset": "NeelNanda/pile-10k",
+  "cap_tokens": 8192,
+  "tokenizers": {
+    "qwen": {
+      "model_id": "Qwen/Qwen3.5-4B",
+      "vocab_size": 248077,
+      "n_docs": 10000,
+      "total_tokens_full": 15599377,
+      "total_tokens_capped": 10876699,
+      "longest_doc_tokens": 981177,
+      "longest_doc_share_of_corpus": 0.0629,
+      "docs_over_cap": 339,
+      "log_freq_corr_full_vs_capped": 0.97703,
+      "n_tokens_in_both": 100963,
+      "coverage_by_flag_full": {
+        "all": {
+          "n_tokens": 248077,
+          "seen": 106274,
+          "unseen": 141803,
+          "frac_seen": 0.4284
+        },
+        "non_latin": {
+          "n_tokens": 106239,
+          "seen": 9866,
+          "unseen": 96373,
+          "frac_seen": 0.0929
+        },
+        "byte_fragment": {
+          "n_tokens": 953,
+          "seen": 181,
+          "unseen": 772,
+          "frac_seen": 0.1899
+        },
+        "punctuation": {
+          "n_tokens": 4939,
+          "seen": 3381,
+          "unseen": 1558,
+          "frac_seen": 0.6846
+        },
+        "clean": {
+          "n_tokens": 135946,
+          "seen": 92846,
+          "unseen": 43100,
+          "frac_seen": 0.683
+        }
+      },
+      "top15_full": [
+        [
+          ",",
+          474005
+        ],
+        [
+          ".",
+          447739
+        ],
+        [
+          " the",
+          431055
+        ],
+        [
+          " ",
+          306604
+        ],
+        [
+          "0",
+          286351
+        ],
+        [
+          "1",
+          279071
+        ],
+        [
+          " of",
+          248930
+        ],
+        [
+          "\n",
+          228756
+        ],
+        [
+          " and",
+          216673
+        ],
+        [
+          "2",
+          213626
+        ],
+        [
+          " to",
+          198929
+        ],
+        [
+          "\n\n",
+          196481
+        ],
+        [
+          " a",
+          164858
+        ],
+        [
+          " in",
+          147391
+        ],
+        [
+          "3",
+          138698
+        ]
+      ]
+    },
+    "pythia": {
+      "model_id": "EleutherAI/pythia-1.4b",
+      "vocab_size": 50277,
+      "n_docs": 10000,
+      "total_tokens_full": 15350451,
+      "total_tokens_capped": 10871237,
+      "longest_doc_tokens": 994233,
+      "longest_doc_share_of_corpus": 0.0648,
+      "docs_over_cap": 311,
+      "log_freq_corr_full_vs_capped": 0.96816,
+      "n_tokens_in_both": 49154,
+      "coverage_by_flag_full": {
+        "all": {
+          "n_tokens": 50277,
+          "seen": 49304,
+          "unseen": 973,
+          "frac_seen": 0.9806
+        },
+        "non_latin": {
+          "n_tokens": 1282,
+          "seen": 1096,
+          "unseen": 186,
+          "frac_seen": 0.8549
+        },
+        "byte_fragment": {
+          "n_tokens": 468,
+          "seen": 415,
+          "unseen": 53,
+          "frac_seen": 0.8868
+        },
+        "punctuation": {
+          "n_tokens": 2650,
+          "seen": 2291,
+          "unseen": 359,
+          "frac_seen": 0.8645
+        },
+        "clean": {
+          "n_tokens": 45877,
+          "seen": 45502,
+          "unseen": 375,
+          "frac_seen": 0.9918
+        }
+      },
+      "top15_full": [
+        [
+          "\n",
+          595862
+        ],
+        [
+          ".",
+          538009
+        ],
+        [
+          ",",
+          476413
+        ],
+        [
+          " the",
+          430718
+        ],
+        [
+          " of",
+          248823
+        ],
+        [
+          " and",
+          216458
+        ],
+        [
+          " to",
+          199047
+        ],
+        [
+          "-",
+          182240
+        ],
+        [
+          " a",
+          164873
+        ],
+        [
+          " in",
+          146999
+        ],
+        [
+          " is",
+          95836
+        ],
+        [
+          " (",
+          82984
+        ],
+        [
+          "_",
+          82640
+        ],
+        [
+          " that",
+          82433
+        ],
+        [
+          ")",
+          78931
+        ]
+      ]
+    },
+    "gpt2": {
+      "model_id": "openai-community/gpt2",
+      "vocab_size": 50257,
+      "n_docs": 10000,
+      "total_tokens_full": 17351935,
+      "total_tokens_capped": 11549007,
+      "longest_doc_tokens": 989184,
+      "longest_doc_share_of_corpus": 0.057,
+      "docs_over_cap": 369,
+      "log_freq_corr_full_vs_capped": 0.97372,
+      "n_tokens_in_both": 49097,
+      "coverage_by_flag_full": {
+        "all": {
+          "n_tokens": 50257,
+          "seen": 49349,
+          "unseen": 908,
+          "frac_seen": 0.9819
+        },
+        "non_latin": {
+          "n_tokens": 255,
+          "seen": 217,
+          "unseen": 38,
+          "frac_seen": 0.851
+        },
+        "byte_fragment": {
+          "n_tokens": 335,
+          "seen": 293,
+          "unseen": 42,
+          "frac_seen": 0.8746
+        },
+        "punctuation": {
+          "n_tokens": 967,
+          "seen": 861,
+          "unseen": 106,
+          "frac_seen": 0.8904
+        },
+        "clean": {
+          "n_tokens": 48700,
+          "seen": 47978,
+          "unseen": 722,
+          "frac_seen": 0.9852
+        }
+      },
+      "top15_full": [
+        [
+          " ",
+          1585695
+        ],
+        [
+          "\n",
+          618125
+        ],
+        [
+          ".",
+          545970
+        ],
+        [
+          ",",
+          488476
+        ],
+        [
+          " the",
+          431071
+        ],
+        [
+          " of",
+          248961
+        ],
+        [
+          " and",
+          216761
+        ],
+        [
+          " to",
+          199335
+        ],
+        [
+          "-",
+          188982
+        ],
+        [
+          " a",
+          166241
+        ],
+        [
+          " in",
+          147082
+        ],
+        [
+          " is",
+          96506
+        ],
+        [
+          ")",
+          87786
+        ],
+        [
+          " (",
+          87764
+        ],
+        [
+          "_",
+          87596
+        ]
+      ]
+    }
+  },
+  "readout_exposure": {
+    "source": "results/step2_readouts.json",
+    "definition": "fraction of top-10 readout tokens whose Qwen id has zero pile-10k count",
+    "by_kind": {
+      "logit": {
+        "overall": 0.3059,
+        "L0_5": 0.2195,
+        "L14_21": 0.4103,
+        "L26_30": 0.129
+      },
+      "J": {
+        "overall": 0.1112,
+        "L0_5": 0.2168,
+        "L14_21": 0.06,
+        "L26_30": 0.0666
+      },
+      "R": {
+        "overall": 0.1243,
+        "L0_5": 0.2624,
+        "L14_21": 0.0656,
+        "L26_30": 0.0621
+      }
+    }
+  },
+  "id_rank_proxy": {
+    "spearman_id_vs_pile_count_on_seen": -0.6766,
+    "frac_seen_by_id_band": {
+      "0-10000": 0.9823,
+      "10000-50000": 0.9096,
+      "50000-100000": 0.7151,
+      "100000-150000": 0.0605,
+      "150000-200000": 0.2374,
+      "200000-248077": 0.1959
+    },
+    "role": "robustness check for step 4c only -- covers 100% of the vocabulary and derives from Qwen's own training corpus, but is a noisy rank (non-monotone across vocabulary blocks), not a count"
+  },
+  "qwen_tokenizer_equality": {
+    "instruct": "Qwen/Qwen3.5-4B",
+    "base": "Qwen/Qwen3.5-4B-Base",
+    "vocab_identical": true,
+    "probe_encoding_identical": true,
+    "consequence": "identical -> Delta_t can be computed token-by-token across the two models; if it were False, Delta_t would need the curated token-list fallback (steps.md step 3)"
+  }
+}

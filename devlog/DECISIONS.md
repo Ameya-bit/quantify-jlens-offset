@@ -192,3 +192,55 @@ instruments, so the lever is stronger than assumed.
 
 - **Rejected for now:** downloading qwen3.5-9b to strengthen the lever. Decision stays where steps.md put it — after Step 4, on remaining time.
 - **Reverses if:** Step 4's `m_t` shows J and R offsets tracking each other closely at *all* depths, restoring the original concern.
+
+---
+
+## Step 3 — staging assets
+
+### D17. Frequency counts: `capped` (8192 tokens/doc) is primary, `full` retained
+**Date:** 20 Aug · **Where:** `src/frequencies.py` · **Evidence:** `results/step3_frequencies.json`
+
+One pile-10k document is 981k tokens — **6.3%** of the 15.6M-token corpus by
+itself. A unigram prior a single document can move by 6% is a sampling
+accident, not a fact about English. 339 documents exceed the cap.
+
+- **The choice is not cosmetic:** capped and full agree at Pearson 0.977 in log space, not 0.99+.
+- **Rejected:** capping at 128 tokens (matching the lens-fit regime) — that throws away 98% of the corpus for no gain, since frequency is a global property and does not need to match the readout regime.
+- **Reverses if:** Step 4c's `m_t`~`log f_t` result differs between the two variants, in which case neither is reportable alone and both go in the figure.
+
+### D18. Step 4c regresses on tokens with nonzero count; exposure is reported, not hidden
+**Date:** 20 Aug · **Where:** `src/frequencies.py` · **Evidence:** `results/step3_frequencies.json`
+
+Only **42.8%** of Qwen's 248k vocabulary appears in pile-10k at all, and only
+**9.3%** of its non-Latin tokens — pile-10k is English, Qwen's vocabulary is
+not. Tokens with zero count have no `log f_t`, so the regression must drop
+them.
+
+- **Why this is survivable, measured rather than assumed:** the *vocabulary* figure is not the *regression* figure. Of tokens that actually appear in step-2 readouts, only 11.1% (J-lens) have no frequency estimate — 21.7% at layers 0-5, 6.0% mid-depth. The unmeasurable tail of the vocabulary is mostly never read out either. Worst case is the logit lens at L14-21: 41.0%.
+- **Rejected:** add-one smoothing. It hands ~142k unseen tokens an identical pseudo-count, i.e. zero variance, which does not rescue the regression — it disguises the gap.
+- **Rejected (no budget):** counting on a larger or multilingual corpus.
+- **Disclosure debt:** every Step 4c number states the share of readout mass it was computed on.
+- **Reverses if:** the dropped tokens turn out to carry the effect — testable via D19.
+
+### D19. Token id kept as a full-vocabulary frequency rank, for robustness only
+**Date:** 20 Aug · **Where:** `src/frequencies.py`
+
+Qwen's BPE ids run roughly in merge order, so a low id means a frequent
+token. Spearman against pile counts on the seen tokens is **−0.677**, and the
+seen-rate falls 98.2% → 6.0% across id bands. It covers 100% of the
+vocabulary and derives from Qwen's *own* training corpus rather than from the
+Pile — which pile-10k does not, since Qwen was not trained on the Pile.
+
+- **Explicitly not the primary regressor:** it is a rank, not a count, and it is non-monotone across vocabulary blocks (the 100k-150k band is 6.0% seen while 150k-200k is 23.7%, so blocks were added wholesale).
+- **Its job:** check that Step 4c's H1 result is not an artefact of dropping the tokens D18 cannot measure.
+- **Reverses if:** the two proxies disagree about H1, which would itself be the finding.
+
+### D20. Two-hop set built before Δ_t, against steps.md order
+**Date:** 20 Aug · **Evidence:** steps.md Steps 5 and 7
+
+steps.md lists Δ_t before the two-hop set. Reversed on priority: Δ_t feeds
+Step 5, which steps.md marks **SKIPPABLE**; the two-hop set feeds Step 7,
+which it marks **PROTECT ≥90 MIN**. If the clock runs out, losing Δ_t costs
+a step already designated as cuttable.
+
+- **Reverses if:** Step 4 finishes early enough that both fit comfortably, in which case order stops mattering.

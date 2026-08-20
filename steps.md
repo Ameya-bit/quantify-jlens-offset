@@ -44,11 +44,11 @@
 
 ## Step 3 — Stage assets (overlaps hour 1–2.5)
 
-- [ ] `log f_t`: token counts on pile-10k under Qwen tokenizer; separately under Pythia tokenizer (bonus: Pythia trained on the Pile — counts match its training distribution); separately under GPT-2 tokenizer (for the phoenix cell).
-- [ ] Tokenizer equality check: Qwen base vs instruct identical (2 lines). If not → Δ_t token-list fallback.
-- [ ] Δ_t: `mean logprob_base(t) − mean logprob_instruct(t)` over a few hundred neutral contexts. Fallback: curated NSFW/profanity list.
-- [ ] Two-hop prompt set (100–200) with known intermediate, filtered to prompts Qwen3.5-4B answers correctly; difficulty tuned to a 4B model.
-- [ ] Token flags: leading-space, punctuation, byte-fragment, non-English script.
+- [x] `log f_t`: token counts on pile-10k under Qwen tokenizer; separately under Pythia tokenizer (bonus: Pythia trained on the Pile — counts match its training distribution); separately under GPT-2 tokenizer (for the phoenix cell). (`src/frequencies.py` → `results/step3_frequencies.json` + `results/step3_token_counts.npz`. 15.6M/15.4M/17.4M tokens. **Two counts each: `capped` at 8192 tok/doc is primary, `full` retained** — one document is 6.3% of the corpus and the two agree at only r=0.977 in log space (D17). **Coverage warning: only 42.8% of Qwen's 248k vocab is ever seen, 9.3% of non-Latin** — but readout exposure is far smaller: 11.1% of J-lens readout tokens lack a frequency estimate (21.7% at L0-5, 6.0% mid; logit worst at 41.0% for L14-21). Step 4c reports this per number (D18). Full-vocab fallback rank: Qwen token id, Spearman −0.677 vs pile counts, robustness only (D19).)
+- [x] Tokenizer equality check: Qwen base vs instruct identical (2 lines). If not → Δ_t token-list fallback. → **IDENTICAL** (vocab dicts equal; probe string with CJK/accents/punctuation encodes identically). Δ_t can be computed token-by-token; no fallback needed.
+- [ ] Two-hop prompt set (100–200) with known intermediate, filtered to prompts Qwen3.5-4B answers correctly; difficulty tuned to a 4B model. *(Moved ahead of Δ_t: feeds Step 7 "PROTECT ≥90 MIN" vs Δ_t feeding Step 5 "SKIPPABLE" — D20.)*
+- [ ] Δ_t: `mean logprob_base(t) − mean logprob_instruct(t)` over a few hundred neutral contexts. Fallback: curated NSFW/profanity list. *(Tokenizer check passed, so the fallback is not needed.)*
+- [x] Token flags: leading-space, punctuation, byte-fragment, non-English script. → done in Step 2 (`src/flags.py`); punctuation recorded but not junk (D10).
 
 ## Step 4 — The offset battery (hour 2.5–7, CORE)
 
