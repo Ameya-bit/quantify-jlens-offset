@@ -7,13 +7,38 @@ model want this token than the instruct model":
 
     Delta_t = mean log P_base(t | context) - mean log P_instruct(t | context)
 
-averaged over the same neutral contexts for both models, in log-probability
-space (steps.md step 3). Positive Delta_t = suppressed by tuning.
+WORKED EXAMPLE, because the one-line formula hides what is actually summed.
+Take one document and stop at one position inside it, say after "The cat sat
+on the". At that point each model emits a score for every one of the 248,320
+tokens in the vocabulary -- " mat" high, " table" middling, " fuck" very low
+-- which log_softmax turns into a log-probability. Both models see the SAME
+text at the SAME position, so their two vectors are directly comparable;
+subtract them and you have one sample of Delta for all 248,320 tokens at
+once. Repeat at every position and every document, and average.
+
+So Delta_t[" fuck"] reads: "averaged over 23,912 different places in real
+text, how much more log-probability did the base model put on ' fuck' than
+the instruct model did?" Note two things that are easy to get wrong: it uses
+EVERY position from 4 onward, not just the document's last one; and at each
+position it scores EVERY token in the vocabulary, not just the token that
+actually came next. The actual continuation is never used -- this measures
+what the two models *want*, not whether either is right.
 
 Contexts: N_TEXTS pile-10k documents from rows 25+ (outside every fit corpus
 in this study), truncated to 128 tokens, every position >= 4 -- the same
 skip-first-4 convention as the lens fit and the step-2 survey. One forward
 pass yields all positions, so this is ~124 samples per document.
+
+WHAT THE AXIS ACTUALLY MEASURES (read before using it for H2). Ranked by
+Delta, the top is not obscenity -- it is informal, archaic and misspelled
+English (" ordinarily", " thankfully", " admittedly", " anyways", " hubby",
+" thru", " seper") plus scraped-text artefacts (" ;-)", "...the", "-and"),
+and the most-promoted end is entirely whitespace and chat formatting. The
+dominant axis is "raw web text style" vs "clean assistant style". Obscenity
+is a real but secondary component of that: profanity lands in the top
+0.3-4% of the vocabulary, which is why the frequency-matched gate below
+passes. H2 claims should say "tuning-stage distribution shift, of which
+obscenity suppression is one component", not "suppression" unqualified.
 
 The two models are loaded one at a time and freed in between; holding both
 Qwen3.5-4B and Qwen3.5-4B-Base on MPS at once does not fit. Their tokenizers
@@ -43,6 +68,7 @@ Run: .venv/bin/python -m src.delta_t   -> results/step3_delta_t.json (summary)
 
 from __future__ import annotations
 
+import argparse
 import gc
 import json
 
@@ -105,82 +131,139 @@ def mean_logprobs(model_id: str, texts: list[str], tokenizer, device: str) -> np
     return total / n
 
 
+def measure_frequency_confound(delta: np.ndarray, counts: np.ndarray) -> tuple[dict, np.ndarray, np.ndarray]:
+    """How much of Delta_t is explained by how common a token is?
+
+    Returns (summary, log_f, seen) so callers can reuse the aligned arrays.
+    `log_f` is NaN for tokens pile-10k never saw.
+    """
+    n_align = min(delta.size, counts.size)
+    seen = np.zeros(delta.size, dtype=bool)
+    seen[:n_align] = counts[:n_align] > 0
+    log_f = np.full(delta.size, np.nan)
+    log_f[seen] = np.log(counts[: delta.size][seen[: counts.size]])
+
+    rho = float(spearmanr(log_f[seen], delta[seen]).statistic)
+    edges = np.quantile(log_f[seen], [0, 0.2, 0.4, 0.6, 0.8, 1.0])
+    quintiles = {}
+    for i in range(5):
+        band = seen & (log_f >= edges[i]) & (log_f <= edges[i + 1])
+        quintiles[f"Q{i + 1}"] = {
+            "log_f_range": [round(float(edges[i]), 2), round(float(edges[i + 1]), 2)],
+            "median_delta": round(float(np.median(delta[band])), 4),
+            "n": int(band.sum()),
+        }
+    summary = {
+        "spearman_logf_vs_delta": round(rho, 4),
+        "median_delta_by_frequency_quintile": quintiles,
+        "consequence": (
+            "Delta_t must never be read raw. Step 5's frequency-matched control "
+            "is mandatory, not a refinement: common tokens look suppressed "
+            "because the instruct model shifts mass onto chat and formatting "
+            "tokens, deflating content tokens in proportion to the mass they held."
+        ),
+    }
+    return summary, log_f, seen
+
+
+def is_special(tok_str: str) -> bool:
+    """`<|im_end|>` and friends -- they dominate both tails and are not words."""
+    return tok_str.startswith("<|") and tok_str.endswith("|>")
+
+
+def build_control_pool(tokenizer, seen: np.ndarray) -> np.ndarray:
+    """Tokens usable as frequency-matched controls: measurable, ordinary words.
+
+    Excludes anything junk-flagged, punctuation, or a special token -- a
+    control has to be the sort of token a probe could have been compared to.
+    """
+    eligible = np.zeros(seen.size, dtype=bool)
+    for i in np.flatnonzero(seen):
+        t = tokenizer.decode([int(i)])
+        f = token_flags(t)
+        eligible[i] = not (f["is_junk"] or f["punctuation"] or is_special(t))
+    return eligible
+
+
+def probe_against_matched_controls(
+    words: list[str], delta: np.ndarray, log_f: np.ndarray,
+    eligible: np.ndarray, seen: np.ndarray, tokenizer,
+) -> list[dict]:
+    """For each probe word, compare its Delta to the median Delta of ordinary
+    tokens of the SAME frequency. Raw Delta is uninterpretable (see
+    measure_frequency_confound); this excess is the quantity H2 wants."""
+    out = []
+    for w in words:
+        ids = tokenizer.encode(w, add_special_tokens=False)
+        if len(ids) != 1 or not seen[ids[0]]:
+            continue
+        tid = ids[0]
+        near = eligible & (np.abs(log_f - log_f[tid]) <= FREQ_TOL)
+        near[tid] = False
+        if near.sum() < MIN_CONTROLS:
+            continue
+        control = float(np.median(delta[near]))
+        out.append({
+            "token": w,
+            "delta": round(float(delta[tid]), 4),
+            "log_f": round(float(log_f[tid]), 3),
+            "matched_control_median_delta": round(control, 4),
+            "excess_over_matched_controls": round(float(delta[tid]) - control, 4),
+            "n_controls": int(near.sum()),
+        })
+    return out
+
+
+def extreme_tokens(delta: np.ndarray, tokenizer, n: int = 25) -> tuple[list, list]:
+    """Most-suppressed and most-promoted real tokens (special tokens dropped)."""
+    ranked = [
+        int(i) for i in np.argsort(-delta) if not is_special(tokenizer.decode([int(i)]))
+    ]
+    fmt = lambda i: (tokenizer.decode([i]), round(float(delta[i]), 3))
+    return [fmt(i) for i in ranked[:n]], [fmt(i) for i in reversed(ranked[-n:])]
+
+
 def main() -> None:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument(
+        "--from-cache", action="store_true",
+        help="re-run only the analysis, reading the vectors from the saved .npz "
+             "(skips both ~5 min model passes; use when changing the analysis)",
+    )
+    args = parser.parse_args()
     device = DEFAULT_DEVICE
     tokenizer = AutoTokenizer.from_pretrained(MODEL_ID)
     all_texts = load_dataset(DATASET_ID, split="train")["text"]
     rows = pick_rows(N_TEXTS, SEED, len(all_texts))
     texts = [all_texts[r] for r in rows]
 
-    base = mean_logprobs(BASE_ID, texts, tokenizer, device)
-    instruct = mean_logprobs(MODEL_ID, texts, tokenizer, device)
-    delta = base - instruct
+    if args.from_cache:
+        cached = np.load(VECTOR_PATH)
+        base, instruct = cached["mean_logprob_base"], cached["mean_logprob_instruct"]
+        print(f"loaded cached vectors from {VECTOR_PATH} (no model passes)")
+    else:
+        base = mean_logprobs(BASE_ID, texts, tokenizer, device)
+        instruct = mean_logprobs(MODEL_ID, texts, tokenizer, device)
+    delta = (base - instruct).astype(np.float64)
 
-    # --- the frequency confound, measured not assumed ---
-    counts = np.load(COUNTS_PATH)["qwen_full"]
-    n_align = min(delta.size, counts.size)
-    seen = counts[:n_align] > 0
-    log_f = np.full(delta.size, np.nan)
-    log_f[:n_align][seen] = np.log(counts[:n_align][seen])
-    rho = float(spearmanr(log_f[:n_align][seen], delta[:n_align][seen]).statistic)
-    qs = np.quantile(log_f[:n_align][seen], [0, 0.2, 0.4, 0.6, 0.8, 1.0])
-    quintiles = {}
-    for i in range(5):
-        m = (log_f[:n_align] >= qs[i]) & (log_f[:n_align] <= qs[i + 1]) & seen
-        quintiles[f"Q{i + 1}"] = {
-            "log_f_range": [round(float(qs[i]), 2), round(float(qs[i + 1]), 2)],
-            "median_delta": round(float(np.median(delta[:n_align][m])), 4),
-            "n": int(m.sum()),
-        }
-    print(f"\nSpearman(log f_t, Delta_t) = {rho:+.3f}  <- the confound; "
+    confound, log_f, seen = measure_frequency_confound(
+        delta, np.load(COUNTS_PATH)["qwen_full"]
+    )
+    print(f"\nSpearman(log f_t, Delta_t) = "
+          f"{confound['spearman_logf_vs_delta']:+.3f}  <- the confound; "
           f"step 5 MUST frequency-match")
 
-    # --- eligible controls: clean, non-special, measurable tokens ---
-    def is_special(tok_str: str) -> bool:
-        return tok_str.startswith("<|") and tok_str.endswith("|>")
-
-    eligible = np.zeros(delta.size, dtype=bool)
-    for i in range(n_align):
-        if not seen[i]:
-            continue
-        t = tokenizer.decode([i])
-        f = token_flags(t)
-        eligible[i] = not (f["is_junk"] or f["punctuation"] or is_special(t))
+    eligible = build_control_pool(tokenizer, seen)
     print(f"   {int(eligible.sum())} tokens eligible as frequency-matched controls")
 
-    def probe(words: list[str]) -> list[dict]:
-        out = []
-        for w in words:
-            ids = tokenizer.encode(w, add_special_tokens=False)
-            if len(ids) != 1 or ids[0] >= n_align or not seen[ids[0]]:
-                continue
-            tid = ids[0]
-            near = eligible & (np.abs(log_f - log_f[tid]) <= FREQ_TOL)
-            near[tid] = False
-            if near.sum() < MIN_CONTROLS:
-                continue
-            ctrl = float(np.median(delta[near]))
-            out.append({
-                "token": w,
-                "delta": round(float(delta[tid]), 4),
-                "log_f": round(float(log_f[tid]), 3),
-                "matched_control_median_delta": round(ctrl, 4),
-                "excess_over_matched_controls": round(float(delta[tid]) - ctrl, 4),
-                "n_controls": int(near.sum()),
-            })
-        return out
-
-    sup, neu = probe(PROBE_SUPPRESSED), probe(PROBE_NEUTRAL)
+    sup, neu = (
+        probe_against_matched_controls(w, delta, log_f, eligible, seen, tokenizer)
+        for w in (PROBE_SUPPRESSED, PROBE_NEUTRAL)
+    )
     exc_sup = float(np.median([p["excess_over_matched_controls"] for p in sup]))
     exc_neu = float(np.median([p["excess_over_matched_controls"] for p in neu]))
     validation_ok = exc_sup > 0.05 and exc_sup > 2 * exc_neu
-
-    order = np.argsort(delta)
-    # top/bottom lists exclude special tokens, which otherwise dominate both ends
-    ranked = [i for i in order[::-1] if not is_special(tokenizer.decode([int(i)])) ]
-    top = [(tokenizer.decode([int(i)]), round(float(delta[i]), 3)) for i in ranked[:25]]
-    bottom = [(tokenizer.decode([int(i)]), round(float(delta[i]), 3))
-              for i in reversed(ranked[-25:])]
+    top, bottom = extreme_tokens(delta, tokenizer)
 
     summary = {
         "definition": "mean log P_base(t) - mean log P_instruct(t); positive = suppressed by tuning",
@@ -197,16 +280,7 @@ def main() -> None:
             "min": round(float(delta.min()), 4),
             "max": round(float(delta.max()), 4),
         },
-        "frequency_confound": {
-            "spearman_logf_vs_delta": round(rho, 4),
-            "median_delta_by_frequency_quintile": quintiles,
-            "consequence": (
-                "Delta_t must never be read raw. Step 5's frequency-matched "
-                "control is mandatory, not a refinement: common tokens look "
-                "suppressed because the instruct model shifts mass onto chat "
-                "and formatting tokens."
-            ),
-        },
+        "frequency_confound": confound,
         "validation": {
             "pass": bool(validation_ok),
             "gate": (

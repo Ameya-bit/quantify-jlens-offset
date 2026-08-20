@@ -258,7 +258,7 @@
         "n": 21267
       }
     },
-    "consequence": "Delta_t must never be read raw. Step 5's frequency-matched control is mandatory, not a refinement: common tokens look suppressed because the instruct model shifts mass onto chat and formatting tokens."
+    "consequence": "Delta_t must never be read raw. Step 5's frequency-matched control is mandatory, not a refinement: common tokens look suppressed because the instruct model shifts mass onto chat and formatting tokens, deflating content tokens in proportion to the mass they held."
   },
   "validation": {
     "pass": true,
