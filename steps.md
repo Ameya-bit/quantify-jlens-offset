@@ -71,6 +71,9 @@
 - [ ] Identical Step 4 battery through the released R-lens at matched layers (same forward pass; only gradients differ).
 - [ ] Offset ratio R/J by depth. **Shrinks under swap ⇒ transport error; survives ⇒ not transport** (bias route invariant by construction — final norm/unembed shared).
 - [ ] Which junk *composition* survives (freq-correlated part? Δ_t part?).
+- Note (20 Aug): R≈J on Qwen3.5-4B is *expected* — R-lens post: "no R-lens advantage for both the smallest dense and MoE models we tested"; advantage grows with scale (largest on DeepSeek-V4-Flash). Cite this in the writeup; our result is consistent, not contrary.
+- **Weak-lever caveat (disclose in H3 writeup):** because J≈R on the 4B, "offset survives the swap" underdetermines transport error (not-transport vs. both-recipes-share-the-error); "shrinks under swap" remains decisive. The v2 "separate by construction" framing needs this qualifier.
+- [ ] **Decision after Step 4:** optional strengthener — run the Step 6 swap battery *only* on qwen3.5-9b (released matched J/R pair; first size where the R advantage plausibly appears) to turn the weak lever into a real one. Costs one model download + one battery run; decide on remaining time.
 
 ## Step 7 — Payoff: the calibration (hour 12–14.5, PROTECT ≥90 MIN)
 
