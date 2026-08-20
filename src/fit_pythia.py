@@ -31,7 +31,7 @@ import time
 import torch
 from datasets import load_dataset
 from jlens.fitting import fit
-from jlens.hf import from_hf
+from jlens.hf import Layout, from_hf
 from transformers import AutoModelForCausalLM, AutoTokenizer
 
 MODEL_ID = "EleutherAI/pythia-1.4b"
@@ -49,7 +49,10 @@ def load_lens_model(device: str):
     hf_model.to(device).eval()
     for p in hf_model.parameters():
         p.requires_grad_(False)
-    return from_hf(hf_model, tokenizer)
+    # The official GPT-NeoX layout predates transformers 5.x, which renamed
+    # the output head embed_out -> lm_head; pass the layout explicitly.
+    layout = Layout("gpt_neox", norm="final_layer_norm", embed="embed_in")
+    return from_hf(hf_model, tokenizer, layout=layout)
 
 
 def main() -> None:
