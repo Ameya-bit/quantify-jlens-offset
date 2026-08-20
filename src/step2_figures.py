@@ -19,6 +19,10 @@ import matplotlib
 
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
+
+# Menlo has no CJK glyphs; fall back to fonts that do, so grid cells with
+# Chinese/Arabic junk tokens render instead of showing empty boxes.
+CELL_FONTS = ["Menlo", "Hiragino Sans GB", "Arial Unicode MS"]
 from matplotlib.patches import Rectangle
 
 READOUTS_PATH = "results/step2_readouts.json"
@@ -57,7 +61,8 @@ def junk_fraction_figure(data: dict) -> None:
     ax.set_xlabel("layer")
     ax.set_ylabel("mean junk fraction of top-10 readout")
     ax.set_title(
-        f"Early-layer readouts are mostly junk, fading with depth\n"
+        f"Junk in top-10 readouts fades with depth;\n"
+        f"J/R-lens are cleaner than the logit-lens at every layer\n"
         f"(punct/byte/non-Latin proxy; {n_cells} prompt-position pairs, pile-10k)"
     )
     ax.set_ylim(0, 1)
@@ -89,7 +94,7 @@ def grid_figure(data: dict, row: int) -> None:
                 ax.add_patch(Rectangle((xi, yi), 1, 1, facecolor=color, edgecolor="#dddddd", lw=0.3))
                 ax.text(
                     xi + 0.5, yi + 0.5, display_token(top1["t"]),
-                    ha="center", va="center", fontsize=5.2, family="monospace",
+                    ha="center", va="center", fontsize=5.2, family=CELL_FONTS,
                 )
         ax.set_xticks([i + 0.5 for i in range(len(positions))])
         ax.set_xticklabels([str(p) for p in positions], fontsize=6)
