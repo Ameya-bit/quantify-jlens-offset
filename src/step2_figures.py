@@ -2,6 +2,16 @@
 
 Figure 1 (quantitative): mean junk fraction of the top-10 readout vs layer,
 one line per instrument. Gate expectation: high early, falling with depth.
+WITHIN-instrument depth trends only: the flag proxy undercounts Latin-
+fragment junk (the J-lens's typical kind) and counts non-Latin script
+regardless of context (the logit-lens's typical kind), so it must not be
+used to compare instruments against each other. That comparison happens
+behaviorally via m_t in step 4. See devlog 0.0.2 addendum.
+
+Figure 1b: mean top-10 overlap with the same position's layer-30 readout,
+by depth -- the agreement-style comparison the workspace paper actually
+makes ("the two lenses agree closely in the model's last several layers
+and diverge earlier"). Junk-proxy-free.
 
 Figure 2 (qualitative): for the first two surveyed texts, a layers x
 positions grid of the top-1 readout token, one panel per instrument, cell
@@ -61,9 +71,9 @@ def junk_fraction_figure(data: dict) -> None:
     ax.set_xlabel("layer")
     ax.set_ylabel("mean junk fraction of top-10 readout")
     ax.set_title(
-        f"Junk in top-10 readouts fades with depth;\n"
-        f"J/R-lens are cleaner than the logit-lens at every layer\n"
-        f"(punct/byte/non-Latin proxy; {n_cells} prompt-position pairs, pile-10k)"
+        f"All three instruments read out junk at early/mid layers, fading with depth\n"
+        f"(surface proxy: punct/byte/non-Latin; {n_cells} prompt-position pairs, pile-10k;\n"
+        f"within-instrument trends only -- proxy is blind to Latin-fragment junk)"
     )
     ax.set_ylim(0, 1)
     ax.legend()
@@ -71,6 +81,56 @@ def junk_fraction_figure(data: dict) -> None:
     fig.tight_layout()
     fig.savefig("results/step2_junk_fraction.png", dpi=150)
     print("wrote results/step2_junk_fraction.png")
+
+
+def overlap_figure(data: dict) -> None:
+    """Mean top-10 overlap with the same cell's layer-30 readout, by depth."""
+    ref = {
+        (c["row"], c["pos"]): {t["t"] for t in c["top"]}
+        for c in data["cells"]
+        if c["layer"] == 30 and c["kind"] == "logit"
+    }
+    by = defaultdict(list)
+    for c in data["cells"]:
+        tops = {t["t"] for t in c["top"]}
+        by[(c["kind"], c["layer"])].append(len(tops & ref[(c["row"], c["pos"])]))
+    layers = data["meta"]["layers"]
+    fig, ax = plt.subplots(figsize=(7, 4.5))
+    for kind in data["meta"]["kinds"]:
+        means = [sum(by[(kind, l)]) / len(by[(kind, l)]) for l in layers]
+        ax.plot(layers, means, marker="o", markersize=3, label=KIND_LABELS[kind])
+    ax.set_xlabel("layer")
+    ax.set_ylabel("mean top-10 overlap with layer-30 readout")
+    ax.set_title(
+        "Replicates the paper's comparison: lenses agree closely in the last\n"
+        "layers and diverge earlier (junk-proxy-free agreement metric)"
+    )
+    ax.set_ylim(0, 10)
+    ax.legend()
+    ax.grid(alpha=0.3)
+    fig.tight_layout()
+    fig.savefig("results/step2_overlap_L30.png", dpi=150)
+    print("wrote results/step2_overlap_L30.png")
+
+
+def composition_summary(data: dict) -> None:
+    """Mean count per top-10 of each junk flag, per instrument, in layer
+    bands -> results/step2_junk_composition.json (devlog addendum evidence)."""
+    bands = {"early_0_5": range(0, 6), "mid_12_20": range(12, 21), "late_26_30": range(26, 31)}
+    out = {}
+    for kind in data["meta"]["kinds"]:
+        for bname, band in bands.items():
+            totals = {"punctuation": 0.0, "byte_fragment": 0.0, "non_latin": 0.0}
+            n = 0
+            for c in data["cells"]:
+                if c["kind"] == kind and c["layer"] in band:
+                    n += 1
+                    for f in totals:
+                        totals[f] += sum(t[f] for t in c["top"])
+            out[f"{kind}.{bname}"] = {f: round(v / n, 2) for f, v in totals.items()}
+    with open("results/step2_junk_composition.json", "w") as f:
+        json.dump(out, f, indent=2)
+    print("wrote results/step2_junk_composition.json")
 
 
 def grid_figure(data: dict, row: int) -> None:
@@ -126,6 +186,8 @@ def main() -> None:
     with open(READOUTS_PATH) as f:
         data = json.load(f)
     junk_fraction_figure(data)
+    overlap_figure(data)
+    composition_summary(data)
     for row in data["meta"]["rows"][:2]:
         grid_figure(data, row)
 

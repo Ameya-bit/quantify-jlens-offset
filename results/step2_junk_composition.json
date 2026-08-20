@@ -1,0 +1,47 @@
+{
+  "logit.early_0_5": {
+    "punctuation": 0.95,
+    "byte_fragment": 0.09,
+    "non_latin": 2.45
+  },
+  "logit.mid_12_20": {
+    "punctuation": 0.5,
+    "byte_fragment": 0.08,
+    "non_latin": 3.63
+  },
+  "logit.late_26_30": {
+    "punctuation": 0.42,
+    "byte_fragment": 0.0,
+    "non_latin": 1.13
+  },
+  "J.early_0_5": {
+    "punctuation": 0.99,
+    "byte_fragment": 0.05,
+    "non_latin": 1.66
+  },
+  "J.mid_12_20": {
+    "punctuation": 0.78,
+    "byte_fragment": 0.02,
+    "non_latin": 0.81
+  },
+  "J.late_26_30": {
+    "punctuation": 0.4,
+    "byte_fragment": 0.01,
+    "non_latin": 0.67
+  },
+  "R.early_0_5": {
+    "punctuation": 1.32,
+    "byte_fragment": 0.01,
+    "non_latin": 1.17
+  },
+  "R.mid_12_20": {
+    "punctuation": 0.62,
+    "byte_fragment": 0.01,
+    "non_latin": 0.88
+  },
+  "R.late_26_30": {
+    "punctuation": 0.42,
+    "byte_fragment": 0.0,
+    "non_latin": 0.61
+  }
+}
