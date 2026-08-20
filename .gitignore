@@ -2,12 +2,9 @@
 .DS_Store
 
 # --- private: strategy/application notes, never commit ---
-GLOSSARY.md
-mats-application-plan-v2.md
-exec_sum.md
+notes/
 phoenix_claim.png
 rlhf_claim.png
-private/
 
 # python
 __pycache__/
