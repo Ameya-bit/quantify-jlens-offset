@@ -32,14 +32,14 @@
 - **Gate:** passes by 1h. **Fallback:** switch headline to qwen3.5-9b (next lensed dense model in repo). → **Gate PASSED**; no fallback needed. Evidence: `results/step1_sanity.json`, devlog `0.0.1`.
 - Verified 20 Aug (independent re-check): sanity battery re-run bit-identical; conventions match official `jlens` (block-output residuals, `h·Jᵀ` transport, no softcap on Qwen3.5-4B); logit-lens on final block reproduces the model's true logits (top-10 set match; ≤0.06 bf16 rounding); raw ckpt fp16, layers 0–30, J₃₀=R₃₀=I exactly.
 
-## Step 2 — Reproduce the public junk (hour 1–2.5)
+## Step 2 — Reproduce the public junk (hour 1–2.5) — Part A DONE 20 Aug; Pythia fit in progress
 
 *Confirm the phenomena the hypotheses are supposed to explain actually appear on our setup.*
 
-- [ ] ~25 pile-10k prompts; per layer, top-10 readout tokens at several positions (skip first 4 — matches lens fit).
-- [ ] Setup figure: junk (obscene/CJK/punctuation/rare fragments) at early layers, fading with depth — J-lens vs R-lens vs logit-lens side by side.
-- [ ] Background: kick off Pythia-1.4B J-lens fit via official `jlens.fit` (n=10). If not converged by hour 4, continue without; Route A degrades to analytic-`W_U·β`-only (disclose).
-- **Gate:** setup figures show the junk.
+- [x] ~25 pile-10k prompts; per layer, top-10 readout tokens at several positions (skip first 4 — matches lens fit). (Rows 25–9999 only — rows 0–24 are the fit corpus of the released lens AND our Pythia fit; excluded as circular. 11,625 cells → `results/step2_readouts.json`; layer-30 J=R=logit identity holds per-cell; one cell re-checked by eye via `src.peek`, exact match.)
+- [x] Setup figure: junk (obscene/CJK/punctuation/rare fragments) at early layers, fading with depth — J-lens vs R-lens vs logit-lens side by side. (`results/step2_junk_fraction.png` + grid figures. J junk ≈0.3 early → 0.08 late. **Surprise: logit-lens junkier than J/R at every layer, mid-depth CJK plateau ≈0.43** — junk is not J-specific on Qwen; quantify in Step 4.)
+- [x] Background: Pythia-1.4B J-lens fit via official `jlens.fit` — **n raised 10→25** (smoke test: 101 s/text, `results/step2_pythia_smoke.json`; 25 matches released recipe). Launched, checkpointed. Precondition before Step 4 uses it: pass the Step-1-style sanity battery.
+- **Gate:** setup figures show the junk. → **Gate PASSED.** Evidence: devlog `0.0.2`.
 
 ## Step 3 — Stage assets (overlaps hour 1–2.5)
 
