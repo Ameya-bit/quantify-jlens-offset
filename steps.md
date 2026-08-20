@@ -20,16 +20,17 @@
 - [x] Route A assumption verified from weights: Pythia-1.4B `final_layer_norm.bias` exists (‖β‖=2.64; 24 layers, d_model=2048); GPT-2 `ln_f.bias` exists (‖β‖=11.62). Both LayerNorm.
 - [x] Repo-zero state: git history = LICENSE only; strategy files gitignored; tracked = LICENSE, `.gitignore`, `steps.md`, `requirements.txt`.
 
-## Step 1 — Load + sanity-check the instrument (hour 0–1)
+## Step 1 — Load + sanity-check the instrument (hour 0–1) — DONE 19 Aug, verified 20 Aug
 
 *The lens turns a layer's activation into a score for every vocab token; if it loads wrong, everything downstream is garbage.*
 
-- [ ] `src/lens.py`: load model + `lens.pt`; `score(h, layer, kind)` for kind ∈ {logit, J, R} sharing all code. Readout `softmax(W_U · finalnorm(J_ℓ · h))`; **fp32 for norm→unembed on MPS** even if model is bf16.
-- [ ] `src/sanity.py`:
-  - [ ] Assert target-layer anchor row of `J` ≈ identity (artifact guarantees this).
-  - [ ] Late layers: J-lens ≈ logit-lens agreement (top-k overlap).
-  - [ ] Known-fact prompts: sensible mid-layer readouts (e.g. Eiffel→Paris by mid-depth).
-- **Gate:** passes by 1h. **Fallback:** switch headline to qwen3.5-9b (next lensed dense model in repo).
+- [x] `src/lens.py`: load model + `lens.pt`; `score(h, layer, kind)` for kind ∈ {logit, J, R} sharing all code. Readout `softmax(W_U · finalnorm(J_ℓ · h))`; **fp32 for norm→unembed on MPS** even if model is bf16.
+- [x] `src/sanity.py`:
+  - [x] Assert target-layer anchor row of `J` ≈ identity (artifact guarantees this). (max|J₃₀−I| = 0.0, same for R.)
+  - [x] Late layers: J-lens ≈ logit-lens agreement (top-k overlap). (6–10/10 at layers 26–29; exactly 10/10 at layer 30.)
+  - [x] Known-fact prompts: sensible mid-layer readouts (e.g. Eiffel→Paris by mid-depth). (Paris & Tokyo at layer 24; Au late at 28 → 2/3, gate met.)
+- **Gate:** passes by 1h. **Fallback:** switch headline to qwen3.5-9b (next lensed dense model in repo). → **Gate PASSED**; no fallback needed. Evidence: `results/step1_sanity.json`, devlog `0.0.1`.
+- Verified 20 Aug (independent re-check): sanity battery re-run bit-identical; conventions match official `jlens` (block-output residuals, `h·Jᵀ` transport, no softcap on Qwen3.5-4B); logit-lens on final block reproduces the model's true logits (top-10 set match; ≤0.06 bf16 rounding); raw ckpt fp16, layers 0–30, J₃₀=R₃₀=I exactly.
 
 ## Step 2 — Reproduce the public junk (hour 1–2.5)
 
