@@ -12,10 +12,14 @@ Checks:
      Uses the official wrapper's own `unembed` (LayerNorm incl. bias +
      output head; everything fp32 because the model is loaded fp32).
   2. Late-layer agreement: J-lens vs logit-lens top-10 overlap at the last
-     fitted layers (19-21) on pile texts outside the fit corpus.
-     Gate: mean overlap at layer 21 >= 5/10 (step-1 analog: 6-10/10).
+     fitted layers (19-21), measured on the SAME 25 pile texts x 5 positions
+     as the Qwen step-2 survey (125 samples/layer; symmetric with the Qwen
+     wide check in src.qwen_agreement, and outside both fit corpora).
+     Gate: mean overlap at layer 21 >= 5/10.
   3. Known facts: the answer token appears in the J-lens top-10 by some
      fitted layer, for >= 2/3 easy prompts (tuned to a 1.4B base model).
+     The logit-lens's first-hit layer is recorded alongside as a baseline:
+     J earlier than logit = the fitted matrices add value.
 
 Run: .venv/bin/python -m src.sanity_pythia   (writes results/pythia_sanity.json)
 """
@@ -29,11 +33,14 @@ from datasets import load_dataset
 from jlens.hooks import ActivationRecorder
 
 from src.fit_pythia import DATASET_ID, MODEL_ID, load_lens_model
+from src.junk_survey import pick_positions, pick_rows
 
 LENS_PATH = "results/pythia_jlens.pt"
 OUT_PATH = "results/pythia_sanity.json"
 AGREEMENT_LAYERS = [19, 20, 21]
-AGREEMENT_ROWS = [30, 40, 50]  # pile-10k rows outside the fit corpus (0-24)
+AGREEMENT_N_TEXTS = 25  # same seeded selection as the Qwen step-2 survey
+AGREEMENT_SEED = 0
+AGREEMENT_N_POSITIONS = 5
 AGREEMENT_GATE = 5.0  # mean top-10 overlap at layer 21
 FACTS = [
     ("The Eiffel Tower is located in the city of", "paris"),
@@ -79,38 +86,48 @@ def main() -> None:
     }
     print(f"1. wiring (final-block logit-lens == true logits): {'PASS' if wiring_ok else 'FAIL'}")
 
-    # --- Check 2: late-layer agreement ---
+    # --- Check 2: late-layer agreement (125 samples, symmetric with Qwen) ---
     texts = load_dataset(DATASET_ID, split="train")["text"]
+    rows = pick_rows(AGREEMENT_N_TEXTS, AGREEMENT_SEED, len(texts))
     overlaps: dict[int, list[int]] = {l: [] for l in AGREEMENT_LAYERS}
-    for row in AGREEMENT_ROWS:
+    for row in rows:
         acts, input_ids = residuals(texts[row], AGREEMENT_LAYERS)
-        pos = input_ids.shape[1] - 1
-        for layer in AGREEMENT_LAYERS:
-            h = acts[layer][pos]
-            j_top = set(top10(score(h, layer), lm.tokenizer))
-            logit_top = set(top10(score(h, None), lm.tokenizer))
-            overlaps[layer].append(len(j_top & logit_top))
+        for pos in pick_positions(input_ids.shape[1], AGREEMENT_N_POSITIONS):
+            for layer in AGREEMENT_LAYERS:
+                h = acts[layer][pos]
+                j_top = set(top10(score(h, layer), lm.tokenizer))
+                logit_top = set(top10(score(h, None), lm.tokenizer))
+                overlaps[layer].append(len(j_top & logit_top))
     means = {l: sum(v) / len(v) for l, v in overlaps.items()}
+    n_samples = len(overlaps[AGREEMENT_LAYERS[0]])
     agree_ok = means[21] >= AGREEMENT_GATE
     record["checks"]["late_agreement"] = {
-        "pass": agree_ok, "rows": AGREEMENT_ROWS,
-        "mean_overlap_by_layer": {str(l): m for l, m in means.items()},
+        "pass": agree_ok, "rows": rows, "n_samples_per_layer": n_samples,
+        "mean_overlap_by_layer": {str(l): round(m, 2) for l, m in means.items()},
         "gate": f"mean overlap at layer 21 >= {AGREEMENT_GATE}",
     }
-    print(f"2. late-layer J~logit agreement {means}: {'PASS' if agree_ok else 'FAIL'}")
+    print(f"2. late-layer J~logit agreement (n={n_samples}) "
+          f"{ {l: round(m, 2) for l, m in means.items()} }: {'PASS' if agree_ok else 'FAIL'}")
 
     # --- Check 3: known facts through the J-lens ---
     hits = []
     for prompt, answer in FACTS:
         acts, _ = residuals(prompt, fitted_layers)
         found_layer = None
+        logit_first = None
         for layer in fitted_layers:
-            tops = top10(score(acts[layer][-1], layer), lm.tokenizer)
-            if any(t.strip().lower() == answer for t in tops):
-                found_layer = layer
-                break
-        hits.append({"prompt": prompt, "answer": answer, "first_layer": found_layer})
-        print(f"   {answer!r}: first J-lens layer with hit = {found_layer}")
+            h = acts[layer][-1]
+            if found_layer is None:
+                tops = top10(score(h, layer), lm.tokenizer)
+                if any(t.strip().lower() == answer for t in tops):
+                    found_layer = layer
+            if logit_first is None:
+                tops = top10(score(h, None), lm.tokenizer)
+                if any(t.strip().lower() == answer for t in tops):
+                    logit_first = layer
+        hits.append({"prompt": prompt, "answer": answer,
+                     "first_layer": found_layer, "logit_first_layer": logit_first})
+        print(f"   {answer!r}: first hit J-lens L{found_layer} vs logit-lens L{logit_first}")
     n_hits = sum(h["first_layer"] is not None for h in hits)
     facts_ok = n_hits >= 2
     record["checks"]["known_facts"] = {"pass": facts_ok, "hits": hits, "gate": ">=2/3"}

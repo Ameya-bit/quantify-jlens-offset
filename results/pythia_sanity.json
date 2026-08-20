@@ -32,14 +32,37 @@
     "late_agreement": {
       "pass": true,
       "rows": [
-        30,
-        40,
-        50
+        688,
+        1233,
+        1578,
+        1643,
+        2306,
+        2314,
+        2432,
+        3603,
+        4129,
+        4267,
+        4642,
+        4994,
+        5106,
+        5434,
+        5891,
+        6336,
+        6659,
+        6915,
+        7833,
+        7986,
+        8293,
+        8401,
+        8750,
+        9583,
+        9886
       ],
+      "n_samples_per_layer": 125,
       "mean_overlap_by_layer": {
-        "19": 0.6666666666666666,
-        "20": 2.6666666666666665,
-        "21": 5.0
+        "19": 1.2,
+        "20": 2.63,
+        "21": 5.02
       },
       "gate": "mean overlap at layer 21 >= 5.0"
     },
@@ -49,17 +72,20 @@
         {
           "prompt": "The Eiffel Tower is located in the city of",
           "answer": "paris",
-          "first_layer": 15
+          "first_layer": 15,
+          "logit_first_layer": 15
         },
         {
           "prompt": "The capital city of Japan is",
           "answer": "tokyo",
-          "first_layer": 15
+          "first_layer": 15,
+          "logit_first_layer": 17
         },
         {
           "prompt": "Water is made of hydrogen and",
           "answer": "oxygen",
-          "first_layer": 13
+          "first_layer": 13,
+          "logit_first_layer": 13
         }
       ],
       "gate": ">=2/3"
