@@ -2,9 +2,10 @@
 
 A token counts as *junk* when it could not be a correct continuation of the
 surveyed English text at all: it contains undecodable bytes, or non-Latin
-script. Base rate of those two in the surveyed pile-10k texts is exactly
-0.000 (3125 tokens), so any such readout is unambiguously wrong and the
-floor for a perfect instrument is zero.
+script. Base rate on the 25 surveyed pile-10k texts is **0/3125 = 0.0000**,
+and 0.0052 across 500 random pile-10k rows (some Pile documents do contain
+foreign script), so the matched floor is zero and the general floor is ~0.5%
+-- either way 30x below the J-lens's early-layer rate.
 
 `punctuation` is recorded but is NOT junk (changed 20 Aug, see devlog 0.0.2
 addendum 4). Real pile text is 15.0% punctuation tokens and four of the
