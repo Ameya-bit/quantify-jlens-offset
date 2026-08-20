@@ -276,3 +276,44 @@ says Canadian). That is the filter working.
 
 - **The failure mode it cannot catch:** a label wrong in the same way the model is wrong survives. Mitigated at table-construction time by excluding genuinely ambiguous cases — multi-capital countries (South Africa), contested "country" (Scotland vs UK), and multilingual states in the language template (Belgium, Switzerland, Ireland, Canada).
 - **Reverses if:** Step 7 shows anomalous behaviour concentrated in a few items, which is the signal to hand-audit those labels.
+
+### D23. Δ_t carries a frequency confound; the "frequency-matched control" in Step 5 is mandatory, not a refinement
+**Date:** 20 Aug · **Where:** `src/delta_t.py` · **Evidence:** `results/step3_delta_t.json`
+
+Measured, not assumed: **Spearman(log f_t, Δ_t) = +0.354** over the 106k
+tokens pile-10k can measure, with median Δ rising monotonically across
+frequency quintiles (−0.047, −0.033, +0.001, +0.045, +0.107).
+
+Cause: the instruct model moves probability mass onto chat and formatting
+tokens (the most-promoted tokens are all whitespace variants and `<|im_end|>`),
+so ordinary content tokens are deflated roughly in proportion to the mass
+they held. **Common words look "suppressed" with no suppression involved.**
+
+- **Consequence:** Δ_t must never be read raw, and any H2 claim built on raw Δ_t is measuring frequency. steps.md Step 5 already required frequency-matched controls; this promotes that from good practice to load-bearing.
+- **Reverses if:** nothing — the correlation is in the artifact and reproducible.
+
+### D24. The Δ_t validation gate was rewritten after it failed for the wrong reason
+**Date:** 20 Aug · **Where:** `src/delta_t.py`
+
+The first gate compared profanity's Δ percentile against neutral words'
+and **failed** (0.982 vs 0.953). The gate was wrong, not the asset: the
+probe sets were not frequency-matched — profanity median log f 3.37, neutral
+median log f 6.43, so the controls were ~20× more frequent and carried a
+larger frequency-driven Δ by D23. Comparing them was never valid.
+
+Replaced with a frequency-matched gate: each probe is compared to the median
+Δ of clean, non-special, seen tokens within ±0.25 log-count (pool of 92,846).
+**Result: profanity excess +0.226 vs neutral excess +0.052 — a 4.4×
+separation. PASS.**
+
+- **This is a gate that moved after seeing data, which D2 says is not allowed.** The distinction: D2's gate was on a *result* (does the lens transport meaning); this one is on an *instrument's validity*, and the original comparison was arithmetically invalid rather than merely unfavourable. Recorded here in full, with the failed numbers, so a reader can judge that for themselves rather than take it on trust.
+- **Honest residual:** 3 of 12 profanity probes are not elevated (` slut` −0.117, ` retard` +0.019, ` whore` +0.009). They are among the rarest probes; whether that is weak representation or genuinely absent suppression is not resolved here.
+- **Reverses if:** Step 5's enrichment result depends on which probe list is used, which would mean the axis is probe-specific rather than general.
+
+### D25. Only the difference vector was needed, but all three are stored
+**Date:** 20 Aug · **Where:** `src/delta_t.py`
+
+`results/step3_delta_t.npz` carries `delta_t`, `mean_logprob_base` and
+`mean_logprob_instruct` (2.4 MB). Storing the two components costs nothing at
+save time and avoids a ~10-minute two-model re-run if Step 5 wants a
+rank-based or renormalised variant of Δ instead of the raw difference.

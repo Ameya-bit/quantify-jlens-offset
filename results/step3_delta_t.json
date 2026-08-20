@@ -1,0 +1,655 @@
+{
+  "definition": "mean log P_base(t) - mean log P_instruct(t); positive = suppressed by tuning",
+  "base_model": "Qwen/Qwen3.5-4B-Base",
+  "instruct_model": "Qwen/Qwen3.5-4B",
+  "n_texts": 200,
+  "seed": 1,
+  "rows": [
+    50,
+    59,
+    118,
+    175,
+    226,
+    263,
+    298,
+    317,
+    366,
+    377,
+    390,
+    412,
+    441,
+    483,
+    489,
+    500,
+    509,
+    526,
+    527,
+    556,
+    590,
+    603,
+    737,
+    944,
+    988,
+    1058,
+    1163,
+    1179,
+    1388,
+    1441,
+    1525,
+    1562,
+    1663,
+    1699,
+    1793,
+    1806,
+    1818,
+    1895,
+    1956,
+    2005,
+    2142,
+    2226,
+    2424,
+    2640,
+    2650,
+    2707,
+    2768,
+    2779,
+    2787,
+    2816,
+    2859,
+    2928,
+    2986,
+    3049,
+    3070,
+    3105,
+    3135,
+    3293,
+    3299,
+    3391,
+    3450,
+    3464,
+    3573,
+    3609,
+    3639,
+    3657,
+    3681,
+    3717,
+    3743,
+    3773,
+    3786,
+    3807,
+    3828,
+    3843,
+    4002,
+    4113,
+    4177,
+    4204,
+    4206,
+    4207,
+    4258,
+    4388,
+    4426,
+    4436,
+    4496,
+    4632,
+    4680,
+    4772,
+    4781,
+    4849,
+    4881,
+    4917,
+    4995,
+    5079,
+    5136,
+    5225,
+    5288,
+    5300,
+    5450,
+    5475,
+    5650,
+    5658,
+    5668,
+    5688,
+    5695,
+    5813,
+    5870,
+    6000,
+    6039,
+    6095,
+    6164,
+    6244,
+    6270,
+    6311,
+    6358,
+    6411,
+    6468,
+    6469,
+    6473,
+    6495,
+    6534,
+    6648,
+    6651,
+    6798,
+    6813,
+    6814,
+    6843,
+    6921,
+    6940,
+    7006,
+    7009,
+    7015,
+    7097,
+    7115,
+    7199,
+    7216,
+    7322,
+    7326,
+    7389,
+    7411,
+    7446,
+    7474,
+    7531,
+    7547,
+    7555,
+    7714,
+    7762,
+    7787,
+    7893,
+    7907,
+    7970,
+    8018,
+    8048,
+    8142,
+    8148,
+    8159,
+    8206,
+    8230,
+    8253,
+    8294,
+    8303,
+    8320,
+    8343,
+    8355,
+    8382,
+    8421,
+    8442,
+    8488,
+    8523,
+    8560,
+    8608,
+    8665,
+    8669,
+    8847,
+    8866,
+    8874,
+    8895,
+    8949,
+    9003,
+    9008,
+    9016,
+    9048,
+    9053,
+    9083,
+    9108,
+    9141,
+    9222,
+    9350,
+    9363,
+    9459,
+    9491,
+    9497,
+    9600,
+    9651,
+    9675,
+    9710,
+    9743,
+    9853,
+    9947,
+    9977
+  ],
+  "skip_first": 4,
+  "max_seq_len": 128,
+  "delta_stats": {
+    "mean": -0.0435,
+    "std": 0.1503,
+    "min": -1.8147,
+    "max": 1.3496
+  },
+  "frequency_confound": {
+    "spearman_logf_vs_delta": 0.3544,
+    "median_delta_by_frequency_quintile": {
+      "Q1": {
+        "log_f_range": [
+          0.0,
+          0.69
+        ],
+        "median_delta": -0.0467,
+        "n": 27278
+      },
+      "Q2": {
+        "log_f_range": [
+          0.69,
+          1.79
+        ],
+        "median_delta": -0.0326,
+        "n": 27546
+      },
+      "Q3": {
+        "log_f_range": [
+          1.79,
+          2.77
+        ],
+        "median_delta": 0.0014,
+        "n": 21991
+      },
+      "Q4": {
+        "log_f_range": [
+          2.77,
+          3.95
+        ],
+        "median_delta": 0.0448,
+        "n": 22324
+      },
+      "Q5": {
+        "log_f_range": [
+          3.95,
+          13.07
+        ],
+        "median_delta": 0.1071,
+        "n": 21267
+      }
+    },
+    "consequence": "Delta_t must never be read raw. Step 5's frequency-matched control is mandatory, not a refinement: common tokens look suppressed because the instruct model shifts mass onto chat and formatting tokens."
+  },
+  "validation": {
+    "pass": true,
+    "gate": "median excess of profanity over FREQUENCY-MATCHED controls > 0.05 and more than 2x the neutral probes' excess",
+    "freq_tol_log_count": 0.25,
+    "n_eligible_controls": 92846,
+    "median_excess_suppressed": 0.2264,
+    "median_excess_neutral": 0.0516,
+    "suppressed_probes": [
+      {
+        "token": " fuck",
+        "delta": 0.3963,
+        "log_f": 4.875,
+        "matched_control_median_delta": 0.1083,
+        "excess_over_matched_controls": 0.288,
+        "n_controls": 3943
+      },
+      {
+        "token": " shit",
+        "delta": 0.2955,
+        "log_f": 4.836,
+        "matched_control_median_delta": 0.1072,
+        "excess_over_matched_controls": 0.1884,
+        "n_controls": 4042
+      },
+      {
+        "token": " bitch",
+        "delta": 0.1249,
+        "log_f": 3.258,
+        "matched_control_median_delta": 0.0449,
+        "excess_over_matched_controls": 0.08,
+        "n_controls": 9073
+      },
+      {
+        "token": " asshole",
+        "delta": 0.2305,
+        "log_f": 2.485,
+        "matched_control_median_delta": 0.0197,
+        "excess_over_matched_controls": 0.2108,
+        "n_controls": 9492
+      },
+      {
+        "token": " bastard",
+        "delta": 0.2912,
+        "log_f": 3.367,
+        "matched_control_median_delta": 0.0492,
+        "excess_over_matched_controls": 0.242,
+        "n_controls": 9163
+      },
+      {
+        "token": " damn",
+        "delta": 0.3556,
+        "log_f": 4.554,
+        "matched_control_median_delta": 0.0941,
+        "excess_over_matched_controls": 0.2615,
+        "n_controls": 5095
+      },
+      {
+        "token": " crap",
+        "delta": 0.4123,
+        "log_f": 4.043,
+        "matched_control_median_delta": 0.0763,
+        "excess_over_matched_controls": 0.3361,
+        "n_controls": 6774
+      },
+      {
+        "token": " slut",
+        "delta": -0.0968,
+        "log_f": 2.485,
+        "matched_control_median_delta": 0.0197,
+        "excess_over_matched_controls": -0.1165,
+        "n_controls": 9492
+      },
+      {
+        "token": " whore",
+        "delta": -0.0076,
+        "log_f": 1.609,
+        "matched_control_median_delta": -0.0166,
+        "excess_over_matched_controls": 0.009,
+        "n_controls": 10310
+      },
+      {
+        "token": " dick",
+        "delta": 0.2868,
+        "log_f": 3.178,
+        "matched_control_median_delta": 0.0419,
+        "excess_over_matched_controls": 0.2449,
+        "n_controls": 9517
+      },
+      {
+        "token": " piss",
+        "delta": 0.3651,
+        "log_f": 2.565,
+        "matched_control_median_delta": 0.023,
+        "excess_over_matched_controls": 0.3421,
+        "n_controls": 8750
+      },
+      {
+        "token": " retard",
+        "delta": 0.0802,
+        "log_f": 3.611,
+        "matched_control_median_delta": 0.0616,
+        "excess_over_matched_controls": 0.0187,
+        "n_controls": 8312
+      }
+    ],
+    "neutral_probes": [
+      {
+        "token": " table",
+        "delta": 0.2254,
+        "log_f": 7.43,
+        "matched_control_median_delta": 0.1989,
+        "excess_over_matched_controls": 0.0265,
+        "n_controls": 403
+      },
+      {
+        "token": " river",
+        "delta": 0.0922,
+        "log_f": 6.064,
+        "matched_control_median_delta": 0.153,
+        "excess_over_matched_controls": -0.0608,
+        "n_controls": 1699
+      },
+      {
+        "token": " Tuesday",
+        "delta": 0.1801,
+        "log_f": 5.844,
+        "matched_control_median_delta": 0.1435,
+        "excess_over_matched_controls": 0.0366,
+        "n_controls": 2035
+      },
+      {
+        "token": " economic",
+        "delta": 0.237,
+        "log_f": 6.471,
+        "matched_control_median_delta": 0.1704,
+        "excess_over_matched_controls": 0.0666,
+        "n_controls": 1216
+      },
+      {
+        "token": " method",
+        "delta": 0.2939,
+        "log_f": 7.872,
+        "matched_control_median_delta": 0.2093,
+        "excess_over_matched_controls": 0.0846,
+        "n_controls": 236
+      },
+      {
+        "token": " garden",
+        "delta": 0.3333,
+        "log_f": 5.964,
+        "matched_control_median_delta": 0.1487,
+        "excess_over_matched_controls": 0.1846,
+        "n_controls": 1830
+      },
+      {
+        "token": " machine",
+        "delta": 0.2066,
+        "log_f": 6.629,
+        "matched_control_median_delta": 0.1724,
+        "excess_over_matched_controls": 0.0342,
+        "n_controls": 1084
+      },
+      {
+        "token": " letter",
+        "delta": 0.2521,
+        "log_f": 6.39,
+        "matched_control_median_delta": 0.1709,
+        "excess_over_matched_controls": 0.0812,
+        "n_controls": 1285
+      },
+      {
+        "token": " signal",
+        "delta": 0.151,
+        "log_f": 7.23,
+        "matched_control_median_delta": 0.1928,
+        "excess_over_matched_controls": -0.0418,
+        "n_controls": 518
+      },
+      {
+        "token": " orange",
+        "delta": 0.1988,
+        "log_f": 4.682,
+        "matched_control_median_delta": 0.0997,
+        "excess_over_matched_controls": 0.0991,
+        "n_controls": 4528
+      }
+    ]
+  },
+  "top25_most_suppressed": [
+    [
+      " ordinarily",
+      1.113
+    ],
+    [
+      " thankfully",
+      1.039
+    ],
+    [
+      " presently",
+      0.946
+    ],
+    [
+      " admittedly",
+      0.916
+    ],
+    [
+      " somew",
+      0.912
+    ],
+    [
+      " //-",
+      0.822
+    ],
+    [
+      " ;-)",
+      0.791
+    ],
+    [
+      " horrend",
+      0.783
+    ],
+    [
+      " firstly",
+      0.779
+    ],
+    [
+      "…the",
+      0.772
+    ],
+    [
+      " neighb",
+      0.768
+    ],
+    [
+      " anyways",
+      0.768
+    ],
+    [
+      " sophistic",
+      0.765
+    ],
+    [
+      " “",
+      0.75
+    ],
+    [
+      "–and",
+      0.74
+    ],
+    [
+      " hubby",
+      0.728
+    ],
+    [
+      " seper",
+      0.728
+    ],
+    [
+      " ItemStack",
+      0.726
+    ],
+    [
+      " afore",
+      0.726
+    ],
+    [
+      " thru",
+      0.724
+    ],
+    [
+      " horribly",
+      0.715
+    ],
+    [
+      " ­",
+      0.701
+    ],
+    [
+      " syndic",
+      0.7
+    ],
+    [
+      " (\\<",
+      0.695
+    ],
+    [
+      " repre",
+      0.687
+    ]
+  ],
+  "bottom25_most_promoted": [
+    [
+      "\n   \n",
+      -1.325
+    ],
+    [
+      "\n \n",
+      -1.287
+    ],
+    [
+      " \n  \n",
+      -1.228
+    ],
+    [
+      "。(",
+      -1.227
+    ],
+    [
+      "\n  \n",
+      -1.167
+    ],
+    [
+      "  \n",
+      -1.135
+    ],
+    [
+      " \n",
+      -1.133
+    ],
+    [
+      "  \n\n",
+      -1.114
+    ],
+    [
+      "\"!",
+      -1.092
+    ],
+    [
+      " \n\n",
+      -1.092
+    ],
+    [
+      " \n    \n",
+      -1.051
+    ],
+    [
+      "\n    \n",
+      -1.031
+    ],
+    [
+      "\t  \n",
+      -1.007
+    ],
+    [
+      "    \r\n\r\n",
+      -0.999
+    ],
+    [
+      "\n                \n",
+      -0.98
+    ],
+    [
+      "................................................................",
+      -0.973
+    ],
+    [
+      "？",
+      -0.954
+    ],
+    [
+      "\n                    \n",
+      -0.954
+    ],
+    [
+      "**?",
+      -0.944
+    ],
+    [
+      "        \r\n\r\n",
+      -0.941
+    ],
+    [
+      "\n      \n",
+      -0.933
+    ],
+    [
+      " \n \n",
+      -0.925
+    ],
+    [
+      "<think>",
+      -0.917
+    ],
+    [
+      "\n     \n",
+      -0.916
+    ],
+    [
+      "？」",
+      -0.914
+    ]
+  ]
+}
