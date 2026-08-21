@@ -400,3 +400,32 @@ readouts.
 - **This is the same error as D24, made twice in two days: a validation gate built against a reference that is wrong in the region being tested.** Both times the asset was fine and the gate was not. The pattern to watch: before writing a gate, ask what the reference measures *in the specific region the asset targets*, not on average.
 - **Both failed gates and their numbers are recorded** here and in the JSON's `rejected_test` field rather than replaced silently. A reviewer who thinks the original gate was the right one can see exactly what it said.
 - **Reverses if:** the reviewer judges that changing a failed gate twice is not acceptable practice regardless of reasoning, in which case both assets ship with their original FAIL verdicts stated and the interpretation left to the reader.
+
+### D29. Whether to frequency-residualise Δ_t is decided from results, by a rule fixed in advance
+**Date:** 21 Aug · **Where:** steps.md Step 5 · **Evidence:** D23
+
+Δ_t is frequency-contaminated (ρ = +0.354). Ameya's call: compute the H2
+statistic both ways and look before deciding, rather than committing now.
+Agreed — but the *rule* is fixed now so the later choice is not a judgement
+call made after seeing which answer is nicer:
+
+- **Both are reported, always.**
+- Agree in sign and significance → raw Δ_t is the headline, residualised is the robustness line.
+- **Disagree → the residualised result is primary and the disagreement is the finding**, at full prominence.
+- Residualising uses the **matched-control** form already built in `src/delta_t.py`, not a linear subtraction: the Δ-vs-frequency relationship is convex (quintile steps +0.014, +0.034, +0.044, +0.062), so a straight line leaves structure in the residual that would read as suppression.
+- Caveat stated either way: if tuning inhibits tokens *because* they are rare, residualising removes real signal too (controlling for a mediator). That makes it conservative — it can understate H2, never manufacture it.
+- **Skip condition:** if Step 4.0's noise null fails, none of this runs.
+
+### D30. H2 renamed from "RLHF suppression" to "tuning-induced suppression"
+**Date:** 21 Aug · **Where:** steps.md Step 5, `notes/exec_sum.md`, `src/delta_t.py` · **Evidence:** `results/step3_delta_t.json`
+
+Ranked by Δ_t the vocabulary's top is not obscenity — it is informal,
+archaic and misspelled English plus scraped-text artefacts, and the promoted
+end is whitespace and chat formatting. Profanity is genuinely elevated (top
+0.3–4%, 4.4× its frequency-matched controls) but is not the main axis.
+
+- **Ameya's judgement, recorded as his:** the generalised claim is still worth making — these are demonstrably inhibited tokens that the J-lens surfaces as top contenders, and the claim no longer depends on a contested account of what RLHF does internally.
+- **The cost, which he accepted:** the general version sits *closer* to H1, because "informal / misspelled / web-debris" is nearly a synonym for "rare". The frequency-matched control therefore carries more weight in the general version than it would have in the narrow one.
+- **Second limit:** the base model's pretraining data was itself filtered, so Δ_t sees only tuning-stage suppression, not suppression from data filtering.
+- **Successor experiment for the writeup:** finetune a model to suppress a chosen target, rerun the battery. Ground truth by construction. His proposal.
+- **Reverses if:** Step 5 finds the enrichment is carried entirely by the obscenity subset, in which case the narrow claim is back on the table with evidence.

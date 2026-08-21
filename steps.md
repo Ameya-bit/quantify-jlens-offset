@@ -61,10 +61,20 @@
 - [ ] **4c H1 regression:** Spearman/OLS of `m_t` on `log f_t` per layer; r vs depth. Headline figure's main line.
 - **Gate:** mechanism table has entries by 7h. If behind, **cut H2 (Step 5) before the dissociation.**
 
-## Step 5 — H2: RLHF suppression (hour 7–10, SKIPPABLE)
+## Step 5 — H2: tuning-induced suppression (hour 7–10, SKIPPABLE)
+
+**Renamed 21 Aug, and the claim is narrower than "RLHF".** Δ_t measures the base→instruct distribution shift, and ranked by Δ_t the top of the vocabulary is not obscenity — it is informal, archaic and misspelled English (` ordinarily`, ` thankfully`, ` anyways`, ` hubby`, ` thru`, ` seper`) plus scraped-text artefacts (` ;-)`, `…the`), while the most-promoted end is entirely whitespace and chat formatting. The dominant axis is **"raw web text style" vs "clean assistant style."** Obscenity is real but secondary within it: profanity lands in the top 0.3–4% of the vocabulary, which is why the frequency-matched gate passes. So every H2 claim must read **"tuning-inhibited tokens, of which obscenity is one component"** — never "RLHF suppression" unqualified.
+
+Two further honest limits: (a) the *base* model's pretraining data was itself filtered, so Δ_t captures only tuning-stage suppression, not suppression baked in at the data-filtering stage; (b) the generalised claim sits *closer* to H1 than the narrow one did — "informal, misspelled, web-debris" is very nearly a synonym for "rare" — so the frequency-matched control carries more weight here, not less. The honest headline is "tuning-inhibited tokens are over-represented early **over and above what their rarity predicts**", with the last clause doing the real work.
+
+Natural successor experiment (writeup, not this project): take a model, finetune it to suppress a target *you chose*, then rerun this battery. Ground truth by construction, no confound to argue about. That is the experiment that would settle H2.
 
 - [ ] Early-layer high-`m_t` tokens: enriched for high-Δ_t vs **frequency-matched controls**? (Obscene tokens are also rare — without the control, H1 and H2 are confounded.) **Confound now quantified, not hypothetical: Spearman(log f_t, Δ_t) = +0.354 (D23). The matched-control machinery is built and validated in `src/delta_t.py` (±0.25 log-count window, 92,846-token eligible pool) — reuse it, do not re-derive.**
 - [ ] Partial correlation `m_t` ~ Δ_t controlling `log f_t`; enrichment gradient by depth; base-model contrast.
+- [ ] **Conditional subtraction (added 21 Aug — decide from results, not in advance).** Δ_t is frequency-contaminated (ρ = +0.354, D23), so the H2 statistic must be computed BOTH ways: raw Δ_t, and frequency-residualised. Residualising means "the part of Δ_t that frequency does not explain" — use the **matched-control** form already built and validated in `src/delta_t.py` (median Δ of clean tokens within ±0.25 log-count), NOT a linear subtraction: the Δ-vs-frequency relationship is convex (quintile medians −0.047, −0.033, +0.001, +0.045, +0.107; steps of +0.014, +0.034, +0.044, +0.062), so a straight-line fit leaves structure in the residual that would masquerade as suppression.
+  - **Decision rule, fixed now so it is not a judgement call later:** report both. If they agree in sign and significance → raw is the headline, residualised is the robustness line. If they **disagree** → the residualised result is primary and the disagreement is itself the finding, reported at full prominence.
+  - **Caveat to state either way:** if tuning inhibits tokens *because* they are rare, residualising removes real causal signal along with the confound (controlling for a mediator). That makes the residualised result conservative — it can understate H2, not manufacture it.
+  - **Skip condition:** if Step 4.0's noise null fails, none of this runs.
 - **If cut:** "designed, not run" — say so at full prominence.
 
 ## Step 6 — H3: transport error (hour 10–12, cheap by construction)
