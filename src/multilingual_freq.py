@@ -48,6 +48,14 @@ KNOWN LIMITS, both structural:
     are not words and score 0, so this source is weak exactly where pile-10k
     is strong. The two are complementary, not redundant, and neither alone
     covers the vocabulary.
+  - It scores a SUBSTRING when the token is not a bare word. '.Scene' is
+    scored as "scene", '.cpu' as "cpu", '_exchange' as "exchange" -- the
+    punctuation is stripped and whatever word remains is looked up. That
+    score describes the embedded word, not the token, and is an
+    over-estimate of the token's own frequency. `is_bare_word` marks the
+    tokens where the score can be trusted as the token's own; it is stored
+    per token in the .npz so step 4c can exclude them, or report with and
+    without, rather than inheriting the inflation silently.
   - Its corpora are not Qwen's, so this shares the wrong-corpus problem with
     pile-10k. It fixes coverage, not provenance.
   - The dataset was frozen around 2021 because generative-AI text polluted
@@ -78,14 +86,23 @@ SUMMARY_PATH = "results/step3_multilingual_freq.json"
 VECTOR_PATH = "results/step3_wordfreq.npz"
 
 
-def score_vocabulary(tokenizer, size: int) -> np.ndarray:
-    """Max Zipf frequency over LANGS for each token's decoded string."""
-    out = np.zeros(size, dtype=np.float32)
+def score_vocabulary(tokenizer, size: int) -> tuple[np.ndarray, np.ndarray]:
+    """Max Zipf frequency over LANGS per token, plus `is_bare_word`.
+
+    `is_bare_word` is True when the stripped token is purely alphabetic, i.e.
+    wordfreq scored the token itself. When it is False the token carried
+    punctuation or digits that wordfreq stripped before lookup, so the score
+    belongs to an embedded substring and over-states the token's frequency.
+    """
+    scores = np.zeros(size, dtype=np.float32)
+    bare = np.zeros(size, dtype=bool)
     for i in range(size):
         s = tokenizer.decode([i]).strip()
-        if s:
-            out[i] = max(zipf_frequency(s, lang) for lang in LANGS)
-    return out
+        if not s:
+            continue
+        bare[i] = s.isalpha()
+        scores[i] = max(zipf_frequency(s, lang) for lang in LANGS)
+    return scores, bare
 
 
 def classify(tokenizer, size: int) -> dict[str, np.ndarray]:
@@ -105,9 +122,20 @@ def main() -> None:
     tokenizer = AutoTokenizer.from_pretrained(MODEL_ID)
     counts = np.load(COUNTS_PATH)["qwen_full"]
     size = counts.size
-    wf = score_vocabulary(tokenizer, size)
+    wf, bare = score_vocabulary(tokenizer, size)
     groups = classify(tokenizer, size)
     pile_seen, wf_seen = counts > 0, wf > 0
+
+    # readout tokens, needed by both the substring sizing and the coverage test
+    with open(READOUTS_PATH) as f:
+        cells = json.load(f)["cells"]
+    cache: dict[str, int | None] = {}
+
+    def token_id_of(t: str) -> int | None:
+        if t not in cache:
+            ids = tokenizer.encode(t, add_special_tokens=False)
+            cache[t] = ids[0] if len(ids) == 1 else None
+        return cache[t]
 
     report: dict = {
         "source": "wordfreq (pypi), max Zipf over " + ",".join(LANGS),
@@ -142,17 +170,6 @@ def main() -> None:
             {"n": int(m.size),
              "spearman": round(float(spearmanr(wf[m], counts[m]).statistic), 4)}
         )
-
-    # --- 3. the decisive test: the tokens that actually appear in readouts ---
-    with open(READOUTS_PATH) as f:
-        cells = json.load(f)["cells"]
-    cache: dict[str, int | None] = {}
-
-    def token_id_of(t: str) -> int | None:
-        if t not in cache:
-            ids = tokenizer.encode(t, add_special_tokens=False)
-            cache[t] = ids[0] if len(ids) == 1 else None
-        return cache[t]
 
     for kind in ("J", "R", "logit"):
         n = no_pile = no_pile_no_wf = no_pile_but_wf = 0
@@ -231,7 +248,40 @@ def main() -> None:
         ),
     }
 
-    print("COVERAGE (share of each group with a frequency number):")
+    # --- the substring flaw, sized rather than described ---
+    has = wf > 0
+    substring_share = float((has & ~bare).sum() / has.sum())
+    readout_substring = {}
+    for kind in ("J", "R", "logit"):
+        tot = sus = 0
+        for c in cells:
+            if c["kind"] != kind:
+                continue
+            for t in c["top"]:
+                tid = token_id_of(t["t"])
+                if tid is None:
+                    continue
+                tot += 1
+                sus += bool(has[tid] and not bare[tid])
+        readout_substring[kind] = round(sus / tot, 4)
+    report["substring_flaw"] = {
+        "definition": "wordfreq strips punctuation/digits and scores the remaining "
+                      "word, so for non-bare tokens the score describes a substring "
+                      "('.Scene' -> 'scene', '.cpu' -> 'cpu') and over-states the token",
+        "share_of_scored_vocabulary": round(substring_share, 4),
+        "n_scored": int(has.sum()),
+        "n_bare_trustworthy": int((has & bare).sum()),
+        "n_substring_inflated": int((has & ~bare).sum()),
+        "share_of_readout_tokens_affected": readout_substring,
+        "mitigation": "is_bare_word is stored per token in the .npz; step 4c reports "
+                      "with and without, or excludes (D33)",
+    }
+    print(f"SUBSTRING FLAW: {substring_share:.3f} of scored tokens are non-bare "
+          f"(score is for an embedded word, not the token)")
+    print(f"   readout tokens affected: " +
+          ", ".join(f"{k} {v:.3f}" for k, v in readout_substring.items()))
+
+    print("\nCOVERAGE (share of each group with a frequency number):")
     print(f"{'group':>14} {'pile':>7} {'wordfreq':>9} {'either':>8} {'neither':>8}")
     for name, v in report["coverage"].items():
         print(f"{name:>14} {v['frac_seen_pile']:>7.3f} {v['frac_seen_wordfreq']:>9.3f} "
@@ -253,7 +303,7 @@ def main() -> None:
           f"{report['verdict']['closes_the_coverage_gap']}  |  "
           f"same measurement as pile = {report['verdict']['is_the_same_measurement_as_pile']}")
 
-    np.savez_compressed(VECTOR_PATH, wordfreq_zipf=wf)
+    np.savez_compressed(VECTOR_PATH, wordfreq_zipf=wf, is_bare_word=bare)
     with open(SUMMARY_PATH, "w") as f:
         json.dump(report, f, indent=2)
     print(f"wrote {VECTOR_PATH} and {SUMMARY_PATH}")

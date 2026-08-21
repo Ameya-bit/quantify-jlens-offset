@@ -59,6 +59,18 @@
 - [ ] **4a Route A (Pythia):** analytic `W_U·β` from weights; compare to empirical `m_t`; correlate with `log f_t`. **GPT-2 cell (weights-only):** `W_U·β` vs `log f_t` — replicate/refute phoenix's r≈0.67.
 - [ ] **4b Route B (both):** `μ̄` = mean activation; readout `s(μ̄)` (does it look like the junk?); mean-centered `s(h − μ̄)` (does the junk disappear?). RMSNorm removes nothing → more Route B room on Qwen.
 - [ ] **4c H1 regression:** Spearman/OLS of `m_t` on `log f_t` per layer; r vs depth. Headline figure's main line.
+  - **Report a RANGE across three cells, never a single number (D31).** The two usable frequency sources agree at only ρ≈0.24, so H1's magnitude is source-dependent; power is not the constraint (N=10k–130k detects |ρ|≥0.01 at p<0.01), validity is.
+
+    | cell | source | why this cell |
+    |---|---|---|
+    | Latin tokens | pile counts (`capped`) | best-measured; sources agree best here (ρ 0.39–0.52 with the noisy tail trimmed) |
+    | whole vocabulary | wordfreq | widest coverage (90.5%) on one consistent scale |
+    | **non-Latin only** | wordfreq | the junk itself — testable for the first time |
+
+  - **Agree in sign across all three ⇒ H1 robust**, stated with more confidence than one number earns. **Disagree ⇒ that is the finding** ("whether the offset tracks frequency depends on which frequency you mean"), reported at full prominence.
+  - **Exclude or dual-report `is_bare_word == False` tokens** (`results/step3_wordfreq.npz`): wordfreq strips punctuation and scores the embedded word, so `.Scene`→"scene" over-states the token. 8.9% of scored tokens; 4.5% of J-lens readout tokens (D33).
+  - **Do NOT use merge rank** (`src/zipf_frequency.py`): same measurement as raw token id, and no signal past id 100k where the non-Latin vocabulary lives. Kept as a documented negative result for the writeup only (D32).
+  - **Inherited hole, state it in every 4c number:** for non-Latin tokens there is no frequency measure from Qwen's own training data, and there will not be one in this project. wordfreq fixes coverage, not provenance (D26–D28).
 - **Gate:** mechanism table has entries by 7h. If behind, **cut H2 (Step 5) before the dissociation.**
 
 ## Step 5 — H2: tuning-induced suppression (hour 7–10, SKIPPABLE)

@@ -429,3 +429,48 @@ end is whitespace and chat formatting. Profanity is genuinely elevated (top
 - **Second limit:** the base model's pretraining data was itself filtered, so Δ_t sees only tuning-stage suppression, not suppression from data filtering.
 - **Successor experiment for the writeup:** finetune a model to suppress a chosen target, rerun the battery. Ground truth by construction. His proposal.
 - **Reverses if:** Step 5 finds the enrichment is carried entirely by the obscenity subset, in which case the narrow claim is back on the table with evidence.
+
+### D31. H1 is reported as a range across three cells, never as one number
+**Date:** 21 Aug · **Where:** steps.md Step 4c · **Evidence:** devlog 0.0.3
+
+Sufficiency was measured before committing to Step 4. Coverage is solved
+(92.8% of the vocabulary has a frequency from some source, up from 42.8%) and
+**power is not the constraint** — with 10k–130k tokens per group, |ρ| ≥ 0.01
+is detectable at p < 0.01. The constraint is **validity**: the two usable
+sources agree at only ρ ≈ 0.24, so H1's magnitude depends on which one is
+used.
+
+Ameya's call: run the three separately and report a range.
+
+| cell | source |
+|---|---|
+| Latin tokens | pile counts (capped) |
+| whole vocabulary | wordfreq |
+| non-Latin only | wordfreq |
+
+- **Agree in sign ⇒ H1 robust**, and stated with more confidence than a single number would have earned.
+- **Disagree ⇒ that is the finding**, reported at full prominence, not buried: "whether the offset tracks frequency depends on which frequency you mean" is a real result.
+- **Rejected:** picking one source and calling it *the* frequency. Two proxies agreeing at 0.24 cannot both be that, and choosing after seeing which gives the nicer r is exactly the failure mode D24/D28 are about.
+- **Reverses if:** a single source with both Qwen provenance and full coverage appears — none exists today.
+
+### D32. Merge rank dropped from the working set, kept as a negative result
+**Date:** 21 Aug · **Where:** `src/zipf_frequency.py`
+
+It measures the same thing as raw token id (−0.6762 vs −0.6766 against pile
+counts) and has no signal past id 100k, where the non-Latin vocabulary lives.
+It therefore adds nothing Step 4 can use.
+
+- **Not deleted:** "we tried reading Qwen's own tokenizer and here is exactly how far it gets you" is a real paragraph for the writeup, and the negative result is reusable by anyone else attempting it.
+- **Reverses if:** a model whose ids are pure merge order throughout makes the method work end-to-end.
+
+### D33. `is_bare_word` stored so Step 4c can quarantine wordfreq's substring scores
+**Date:** 21 Aug · **Where:** `src/multilingual_freq.py` · **Evidence:** `results/step3_multilingual_freq.json`
+
+wordfreq strips punctuation and digits and scores the word left behind, so
+`.Scene` is scored as "scene", `.cpu` as "cpu", `_exchange` as "exchange" —
+an over-estimate of the token's own frequency. Sized rather than described:
+**8.9%** of scored tokens, **4.5%** of J-lens readout tokens (R 5.9%, logit
+5.9%).
+
+- **Flag stored per token in the .npz**, not applied here — Step 4c excludes or dual-reports, and the choice stays visible.
+- **Reverses if:** a token-level (rather than word-level) multilingual frequency source appears, which would remove the flaw at source.

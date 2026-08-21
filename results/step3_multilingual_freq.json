@@ -181,5 +181,18 @@
     "closes_the_coverage_gap": true,
     "is_the_same_measurement_as_pile": false,
     "how_to_use": "Report as a SECOND, independent frequency proxy alongside pile counts -- not merged with them, and not a replacement. Its value is that it makes the non-Latin subpopulation testable at all, which neither other source can do."
+  },
+  "substring_flaw": {
+    "definition": "wordfreq strips punctuation/digits and scores the remaining word, so for non-bare tokens the score describes a substring ('.Scene' -> 'scene', '.cpu' -> 'cpu') and over-states the token",
+    "share_of_scored_vocabulary": 0.089,
+    "n_scored": 224457,
+    "n_bare_trustworthy": 204480,
+    "n_substring_inflated": 19977,
+    "share_of_readout_tokens_affected": {
+      "J": 0.0451,
+      "R": 0.0592,
+      "logit": 0.0585
+    },
+    "mitigation": "is_bare_word is stored per token in the .npz; step 4c reports with and without, or excludes (D33)"
   }
 }
