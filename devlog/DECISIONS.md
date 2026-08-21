@@ -222,7 +222,7 @@ them.
 - **Disclosure debt:** every Step 4c number states the share of readout mass it was computed on.
 - **Reverses if:** the dropped tokens turn out to carry the effect — testable via D19.
 
-### D19. Token id kept as a full-vocabulary frequency rank, for robustness only
+### D19. ~~Token id kept as a full-vocabulary frequency rank, for robustness only~~ → **scope cut by D26**
 **Date:** 20 Aug · **Where:** `src/frequencies.py`
 
 Qwen's BPE ids run roughly in merge order, so a low id means a frequent
@@ -317,3 +317,42 @@ separation. PASS.**
 `mean_logprob_instruct` (2.4 MB). Storing the two components costs nothing at
 save time and avoids a ~10-minute two-model re-run if Step 5 wants a
 rank-based or renormalised variant of Δ instead of the raw difference.
+
+### D26. Merge-rank frequency built and measured; it does NOT close the non-Latin gap
+**Date:** 21 Aug · **Where:** `src/zipf_frequency.py` · **Evidence:** `results/step3_zipf_frequency.json`
+
+Qwen ships 247,587 ordered BPE merges, so its own training-corpus frequency
+ordering is directly readable — established method (arXiv:2407.16607,
+NeurIPS 2024; arXiv:2508.17771 does exactly this for Chinese tokens). Built
+it. **No Zipf calibration**, deliberately: frequency ∝ 1/rank^s means
+−log(rank) is already a log-frequency proxy and `s` only rescales the slope,
+which cannot change a Spearman ρ, an R², or a p-value. Calibrating `s` would
+require fitting against pile-10k counts — reimporting the corpus bias the
+asset exists to escape.
+
+**Then measured whether it works where we need it, rather than deferring
+that to the writeup. It does not.**
+
+| region | ρ vs pile count |
+|---|---|
+| overall | **−0.676** |
+| ids 0–10k | −0.377 |
+| ids 10k–50k | −0.322 |
+| ids 50k–100k | −0.202 |
+| ids 100k–150k | **+0.041** |
+| ids 150k–200k | **+0.012** |
+| ids 200k–248k | −0.038 |
+| Latin tokens | −0.650 |
+| **non-Latin tokens** | **−0.260** (and measured on only the 9.4% the Pile can see) |
+
+The global −0.676 is carried almost entirely by *between*-band differences.
+Within a band it collapses, and past id 100k it is indistinguishable from
+zero. Some collapse is range restriction and expected; the sign flip is not.
+Merge rank sorts tokens into coarse frequency tiers and carries little
+information within a tier — none at all where Qwen's non-Latin vocabulary
+lives.
+
+- **Kept anyway, with its role cut:** a secondary whole-vocabulary robustness check on H1, explicitly **not** a way to rank non-Latin tokens against each other.
+- **The non-Latin frequency gap from D18 is therefore still open.** Named candidate fixes, not attempted: `wordfreq` (the only surveyed option with real CJK coverage) and the infini-gram count API (5T tokens, but English-dominant corpora, so it may not close CJK either).
+- **Free finding:** merge rank and raw token id agree to four decimal places against pile counts (−0.6762 vs −0.6766). Qwen's ids *are* merge order, so the principled construction bought nothing over D19's crude proxy — D19 was already measuring the same quantity.
+- **Reverses if:** a CJK-covering frequency source lands, at which point the non-Latin regression becomes possible and this asset is superseded rather than merely limited.

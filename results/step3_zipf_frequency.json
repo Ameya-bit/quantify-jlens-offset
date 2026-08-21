@@ -1,0 +1,109 @@
+{
+  "method": "BPE merge order as a frequency rank; no Zipf calibration (see docstring)",
+  "references": [
+    "arXiv:2407.16607 Data Mixture Inference (NeurIPS 2024)",
+    "arXiv:2508.17771 token-rank -> corpus proportion via Zipf, Chinese tokens"
+  ],
+  "merge_stats": {
+    "n_merges": 247587,
+    "n_tokens_with_rank": 247587,
+    "n_base_or_special": 457,
+    "n_merges_unmapped_to_vocab": 0
+  },
+  "overall": {
+    "n": 106084,
+    "spearman": -0.6762,
+    "zipf_slope": -1.0942,
+    "zipf_r2": 0.4981
+  },
+  "merge_rank_vs_token_id": {
+    "merge_rank_spearman": -0.6762,
+    "token_id_spearman": -0.6766
+  },
+  "by_vocabulary_band": {
+    "0-10000": {
+      "frac_seen_in_pile": 0.9823,
+      "n": 9633,
+      "spearman": -0.3768,
+      "zipf_slope": -0.7451,
+      "zipf_r2": 0.1865
+    },
+    "10000-50000": {
+      "frac_seen_in_pile": 0.9096,
+      "n": 36386,
+      "spearman": -0.3224,
+      "zipf_slope": -1.1296,
+      "zipf_r2": 0.1091
+    },
+    "50000-100000": {
+      "frac_seen_in_pile": 0.7151,
+      "n": 35756,
+      "spearman": -0.2021,
+      "zipf_slope": -1.278,
+      "zipf_r2": 0.0389
+    },
+    "100000-150000": {
+      "frac_seen_in_pile": 0.0605,
+      "n": 3023,
+      "spearman": 0.041,
+      "zipf_slope": 0.7919,
+      "zipf_r2": 0.0217
+    },
+    "150000-200000": {
+      "frac_seen_in_pile": 0.2374,
+      "n": 11870,
+      "spearman": 0.0117,
+      "zipf_slope": 0.0797,
+      "zipf_r2": 0.0001
+    },
+    "200000-248077": {
+      "frac_seen_in_pile": 0.196,
+      "n": 9416,
+      "spearman": -0.0384,
+      "zipf_slope": -0.4067,
+      "zipf_r2": 0.0008
+    }
+  },
+  "by_script": {
+    "latin_clean": {
+      "n_tokens": 135913,
+      "frac_seen_in_pile": 0.6831,
+      "n": 92784,
+      "spearman": -0.6502,
+      "zipf_slope": -1.0544,
+      "zipf_r2": 0.4744
+    },
+    "non_latin": {
+      "n_tokens": 107192,
+      "frac_seen_in_pile": 0.0937,
+      "n": 9957,
+      "spearman": -0.2603,
+      "zipf_slope": -0.6452,
+      "zipf_r2": 0.137
+    },
+    "punctuation": {
+      "n_tokens": 4939,
+      "frac_seen_in_pile": 0.6846,
+      "n": 3343,
+      "spearman": -0.569,
+      "zipf_slope": -1.0309,
+      "zipf_r2": 0.4338
+    }
+  },
+  "verdict": {
+    "usable_as_a_global_coarse_regressor": true,
+    "usable_to_discriminate_among_non_latin_tokens": false,
+    "why": "Globally rho=-0.68, but that is carried almost entirely by BETWEEN-band differences: within every band rho collapses (-0.38, -0.32, -0.20 for the first three) and past id 100k it is indistinguishable from zero (+0.04, +0.01, -0.04). Some of that collapse is range restriction and expected; the sign flip past 100k is not. So merge rank sorts tokens into coarse frequency tiers but carries little information WITHIN a tier, and none at all in the region where Qwen's non-Latin vocabulary lives.",
+    "consequence_for_step_4c": "Usable as a secondary, whole-vocabulary robustness check on H1. NOT usable to rank non-Latin tokens against each other, which is the subpopulation this study is about. The non-Latin frequency gap identified in src.frequencies is therefore NOT closed by this asset and remains open.",
+    "candidate_fixes_not_attempted": [
+      "wordfreq (pip): word frequencies incl. Chinese from Wikipedia/Books/Reddit/OpenSubtitles/SUBTLEX -- the only surveyed option with real CJK coverage",
+      "infini-gram count API: exact string counts over 5T tokens (Pile/C4/RedPajama/Dolma) -- fixes rare tokens generally, but those corpora are English-dominant so may not close the CJK gap either"
+    ],
+    "note_merge_rank_vs_token_id": "Merge rank and raw token id agree to 4 decimal places against pile counts (-0.6762 vs -0.6766), i.e. Qwen's ids ARE merge order. The more principled construction buys nothing; D19's cruder proxy was already measuring the same quantity."
+  },
+  "log_freq_proxy": {
+    "definition": "-log(merge_rank + 1); base/special tokens get -log(0.5) (more primitive than any merge)",
+    "coverage": 0.9982,
+    "note": "monotone in rank only -- use for Spearman/rank statistics, or as an OLS regressor where an arbitrary scale is harmless"
+  }
+}
