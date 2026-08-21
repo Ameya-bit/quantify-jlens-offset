@@ -356,3 +356,47 @@ lives.
 - **The non-Latin frequency gap from D18 is therefore still open.** Named candidate fixes, not attempted: `wordfreq` (the only surveyed option with real CJK coverage) and the infini-gram count API (5T tokens, but English-dominant corpora, so it may not close CJK either).
 - **Free finding:** merge rank and raw token id agree to four decimal places against pile counts (−0.6762 vs −0.6766). Qwen's ids *are* merge order, so the principled construction bought nothing over D19's crude proxy — D19 was already measuring the same quantity.
 - **Reverses if:** a CJK-covering frequency source lands, at which point the non-Latin regression becomes possible and this asset is superseded rather than merely limited.
+
+### D27. `wordfreq` added as a second, independent frequency proxy — coverage gap closed, provenance gap not
+**Date:** 21 Aug · **Where:** `src/multilingual_freq.py` · **Evidence:** `results/step3_multilingual_freq.json`
+
+The non-Latin gap left open by D18 and D26 is now covered:
+
+| group | pile-10k | wordfreq | either |
+|---|---|---|---|
+| Latin, clean | 0.683 | 0.953 | **0.967** |
+| **non-Latin** | **0.094** | **0.882** | **0.887** |
+| punctuation | 0.685 | 0.084 | 0.722 |
+
+Operationally, of the J-lens readout tokens pile-10k cannot measure, wordfreq
+rescues **93.2%** — leaving **0.8%** of all J-lens readout tokens with no
+frequency from any source, down from 11.2%. **H1 can now be tested on the
+non-Latin subpopulation for the first time.**
+
+- **Complementary, not redundant:** wordfreq is word-level, so it scores 0 on Latin subword fragments (`correcti`) where pile-10k is strong; pile-10k is English-only, where wordfreq is strong. Neither covers the vocabulary alone. Punctuation is covered by pile-10k only, which is fine — punctuation is not junk (D10).
+- **NOT merged with pile counts, and not a replacement.** Two separate proxies, reported separately. Agreement between them is moderate even where it should be highest (Latin, pile count ≥1000: ρ = +0.52; ≥100: +0.39; ≥10: +0.29), which is what two genuinely different corpora look like.
+- **Provenance gap unchanged:** wordfreq's corpora (Wikipedia, Books, Reddit, Twitter, OpenSubtitles, SUBTLEX, Leeds) are not Qwen's either. This fixes coverage, not provenance. The only artefact we hold that reflects Qwen's own corpus is merge rank, and D26 showed it carries no information in this region. **So for non-Latin tokens there is still no Qwen-provenance frequency measure, and there will not be one in this project.**
+- Frozen ~2021 by its author because generative-AI text polluted the web — for a prior over *human* text, a feature.
+
+### D28. The `closes_the_gap` gate was rewritten after it failed — second time, and the same mistake
+**Date:** 21 Aug · **Where:** `src/multilingual_freq.py`
+
+The first gate required wordfreq to agree with pile-10k counts on non-Latin
+tokens (ρ = 0.245) and **failed**. The gate was close to circular: it asks
+whether a multilingual source agrees with an English-only source about
+non-English tokens — and if it did, the asset would be adding nothing. The
+disagreement is the asset working. `的` appears 86 times in pile-10k and
+scores Zipf 7.79 in wordfreq, because it is the commonest character in
+Chinese and the Pile is not Chinese. Same for ` привет` (pile 1, Zipf 5.13)
+and `您好` (pile 0, Zipf 3.93).
+
+Replaced with three tests that are not circular: face validity on non-Latin
+(top scorers come out as `的`, `の`, `в`, `के`, `في`, `है`, `に` — the
+highest-frequency function words of their languages); agreement with pile
+counts on **Latin** tokens only, where the Pile is a valid yardstick, with
+the noisy tail trimmed; and coverage of the tokens that actually appear in
+readouts.
+
+- **This is the same error as D24, made twice in two days: a validation gate built against a reference that is wrong in the region being tested.** Both times the asset was fine and the gate was not. The pattern to watch: before writing a gate, ask what the reference measures *in the specific region the asset targets*, not on average.
+- **Both failed gates and their numbers are recorded** here and in the JSON's `rejected_test` field rather than replaced silently. A reviewer who thinks the original gate was the right one can see exactly what it said.
+- **Reverses if:** the reviewer judges that changing a failed gate twice is not acceptable practice regardless of reasoning, in which case both assets ship with their original FAIL verdicts stated and the interpretation left to the reader.
