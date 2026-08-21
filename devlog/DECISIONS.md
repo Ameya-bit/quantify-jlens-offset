@@ -474,3 +474,27 @@ an over-estimate of the token's own frequency. Sized rather than described:
 
 - **Flag stored per token in the .npz**, not applied here — Step 4c excludes or dual-reports, and the choice stays visible.
 - **Reverses if:** a token-level (rather than word-level) multilingual frequency source appears, which would remove the flaw at source.
+
+### D34. Step-4.0 gate pre-registered before any number existed
+**Date:** 21 Aug · **Where:** `src/offset_battery.py` · **Evidence:** `results/step4_noise_null.json`
+
+Criterion fixed in the module docstring before the first run: split-half
+Pearson of m_t ≥ 0.9 at every layer for the J-lens, halves disjoint at the
+DOCUMENT level (position-level splits would share documents and overstate
+stability). Sample: 100 seed-2 documents, rows excluded against the seed-0
+survey and seed-1 Δ_t row lists read back from their results files, with an
+assertion that fails the run on any overlap.
+
+- **Rejected:** choosing the threshold after seeing the correlations (the D24 failure mode), and position-level halves (leakage through shared documents).
+- **Reverses if:** never — a pre-registration is spent once used. A different threshold requires a new, separately-registered run (per the 21 Aug process rule: a failed gate is never rewritten unilaterally).
+
+### D35. Route B centering evaluated out-of-sample
+**Date:** 21 Aug · **Where:** `src/route_b.py` · **Evidence:** `results/step4_route_b.json`
+
+μ̄ (the mean activation) is estimated from the half-0 documents only;
+whether centering removes the junk is measured on half-1 documents the
+estimate never saw. Subtraction is applied to activations before the lens,
+never to score vectors (step-4 bright line).
+
+- **Rejected:** in-sample centering — subtracting a mean estimated from the same texts it is evaluated on would partly remove the evaluation sample's own average by construction, flattering the result.
+- **Reverses if:** nothing; strictly more conservative at no extra cost (the halves already existed for the noise null).
