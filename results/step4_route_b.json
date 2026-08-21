@@ -1,0 +1,2695 @@
+{
+ "meta": {
+  "seed": 2,
+  "mu_docs_half0": [
+   165,
+   427,
+   488,
+   850,
+   976,
+   1447,
+   1805,
+   2311,
+   2671,
+   2718,
+   2773,
+   2801,
+   2852,
+   2927,
+   3498,
+   3570,
+   3735,
+   4235,
+   4514,
+   5100,
+   5181,
+   5204,
+   5457,
+   5465,
+   5894,
+   5943,
+   6078,
+   6117,
+   6156,
+   6247,
+   7472,
+   7488,
+   7742,
+   7807,
+   8173,
+   8212,
+   8231,
+   8370,
+   8438,
+   8475,
+   8556,
+   8575,
+   8576,
+   8662,
+   8702,
+   8914,
+   9149,
+   9420,
+   9879,
+   9972
+  ],
+  "eval_docs_half1": [
+   632,
+   635,
+   1013,
+   1289,
+   1558,
+   1803,
+   2979,
+   2992,
+   3065,
+   3224,
+   3817,
+   3885,
+   3975,
+   4208,
+   4513,
+   4594,
+   4695,
+   5243,
+   5353,
+   5738,
+   5945,
+   6042,
+   6064,
+   6114,
+   6382
+  ],
+  "n_mu_samples": 1000,
+  "n_eval_positions": 5,
+  "note": "mu_bar from half-0 docs only; centering evaluated on half-1 docs (out-of-sample). Subtraction applied to activations, never scores."
+ },
+ "mu_readout": [
+  {
+   "layer": 0,
+   "kind": "logit",
+   "top10": [
+    "usr",
+    "?",
+    "/",
+    "-",
+    ".",
+    ",",
+    " (",
+    ";",
+    " ",
+    " and"
+   ],
+   "junk_fraction": 0.0,
+   "corr_with_m_t": {
+    "pearson": 0.9975,
+    "spearman": 0.997
+   }
+  },
+  {
+   "layer": 0,
+   "kind": "J",
+   "top10": [
+    " ",
+    " ­",
+    "_ant",
+    "  ",
+    "   ",
+    "�",
+    "psc",
+    "ssc",
+    " -**",
+    "encent"
+   ],
+   "junk_fraction": 0.1,
+   "corr_with_m_t": {
+    "pearson": 0.9914,
+    "spearman": 0.9904
+   }
+  },
+  {
+   "layer": 0,
+   "kind": "R",
+   "top10": [
+    " somew",
+    "–and",
+    " diety",
+    "…it",
+    " […",
+    "にあた",
+    " whats",
+    "…but",
+    " exac",
+    " scrut"
+   ],
+   "junk_fraction": 0.1,
+   "corr_with_m_t": {
+    "pearson": 0.9994,
+    "spearman": 0.9993
+   }
+  },
+  {
+   "layer": 1,
+   "kind": "logit",
+   "top10": [
+    "usr",
+    "?",
+    "/",
+    ".",
+    "-",
+    ",",
+    ";",
+    ":",
+    "t",
+    " ("
+   ],
+   "junk_fraction": 0.0,
+   "corr_with_m_t": {
+    "pearson": 0.9959,
+    "spearman": 0.995
+   }
+  },
+  {
+   "layer": 1,
+   "kind": "J",
+   "top10": [
+    "–and",
+    "…but",
+    "…I",
+    "…and",
+    " ­",
+    "…the",
+    "…it",
+    " *–",
+    "…..",
+    "[…"
+   ],
+   "junk_fraction": 0.0,
+   "corr_with_m_t": {
+    "pearson": 0.9819,
+    "spearman": 0.98
+   }
+  },
+  {
+   "layer": 1,
+   "kind": "R",
+   "top10": [
+    " somew",
+    "–and",
+    " […",
+    "…but",
+    "…it",
+    " diety",
+    "にあた",
+    " whats",
+    " handl",
+    " exac"
+   ],
+   "junk_fraction": 0.1,
+   "corr_with_m_t": {
+    "pearson": 0.9991,
+    "spearman": 0.999
+   }
+  },
+  {
+   "layer": 2,
+   "kind": "logit",
+   "top10": [
+    "t",
+    "s",
+    "_.",
+    ";",
+    "c",
+    "S",
+    "R",
+    "m",
+    "te",
+    "T"
+   ],
+   "junk_fraction": 0.0,
+   "corr_with_m_t": {
+    "pearson": 0.9942,
+    "spearman": 0.9934
+   }
+  },
+  {
+   "layer": 2,
+   "kind": "J",
+   "top10": [
+    " ­",
+    "мести",
+    "mund",
+    " :'",
+    "lada",
+    " ,[",
+    "xo",
+    "\"..",
+    " :\"",
+    "classed"
+   ],
+   "junk_fraction": 0.1,
+   "corr_with_m_t": {
+    "pearson": 0.9902,
+    "spearman": 0.9891
+   }
+  },
+  {
+   "layer": 2,
+   "kind": "R",
+   "top10": [
+    " somew",
+    "–and",
+    " whats",
+    " diety",
+    " atleast",
+    " ….",
+    " […",
+    " handl",
+    "[…",
+    " spok"
+   ],
+   "junk_fraction": 0.0,
+   "corr_with_m_t": {
+    "pearson": 0.999,
+    "spearman": 0.9989
+   }
+  },
+  {
+   "layer": 3,
+   "kind": "logit",
+   "top10": [
+    "t",
+    "/",
+    "am",
+    "-",
+    "?",
+    "a",
+    "f",
+    "m",
+    ";",
+    "..."
+   ],
+   "junk_fraction": 0.0,
+   "corr_with_m_t": {
+    "pearson": 0.9933,
+    "spearman": 0.992
+   }
+  },
+  {
+   "layer": 3,
+   "kind": "J",
+   "top10": [
+    " thru",
+    "..........",
+    "[…",
+    "–and",
+    "amay",
+    "\"..",
+    "…..",
+    "sth",
+    "lbl",
+    " :'"
+   ],
+   "junk_fraction": 0.0,
+   "corr_with_m_t": {
+    "pearson": 0.9866,
+    "spearman": 0.9851
+   }
+  },
+  {
+   "layer": 3,
+   "kind": "R",
+   "top10": [
+    " somew",
+    " whats",
+    "–and",
+    " diety",
+    "にあた",
+    " spok",
+    "頂いた",
+    " thems",
+    " atleast",
+    " tantal"
+   ],
+   "junk_fraction": 0.2,
+   "corr_with_m_t": {
+    "pearson": 0.9993,
+    "spearman": 0.9992
+   }
+  },
+  {
+   "layer": 4,
+   "kind": "logit",
+   "top10": [
+    "ase",
+    "t",
+    "am",
+    "f",
+    "one",
+    "g",
+    "on",
+    "a",
+    "int",
+    "-"
+   ],
+   "junk_fraction": 0.0,
+   "corr_with_m_t": {
+    "pearson": 0.9909,
+    "spearman": 0.9895
+   }
+  },
+  {
+   "layer": 4,
+   "kind": "J",
+   "top10": [
+    "–and",
+    " thru",
+    "..........",
+    " racked",
+    " ,[",
+    "amay",
+    "lbl",
+    " ­",
+    "amazon",
+    "sth"
+   ],
+   "junk_fraction": 0.0,
+   "corr_with_m_t": {
+    "pearson": 0.984,
+    "spearman": 0.9823
+   }
+  },
+  {
+   "layer": 4,
+   "kind": "R",
+   "top10": [
+    " somew",
+    " whats",
+    "–and",
+    " diety",
+    "にあた",
+    " spok",
+    "頂いた",
+    " thems",
+    " atleast",
+    " tantal"
+   ],
+   "junk_fraction": 0.2,
+   "corr_with_m_t": {
+    "pearson": 0.999,
+    "spearman": 0.9988
+   }
+  },
+  {
+   "layer": 5,
+   "kind": "logit",
+   "top10": [
+    "one",
+    " erschien",
+    "t",
+    "am",
+    "in",
+    "f",
+    " scarce",
+    "-",
+    "?",
+    " erschienen"
+   ],
+   "junk_fraction": 0.0,
+   "corr_with_m_t": {
+    "pearson": 0.99,
+    "spearman": 0.9885
+   }
+  },
+  {
+   "layer": 5,
+   "kind": "J",
+   "top10": [
+    "..........",
+    "in",
+    "to",
+    " Regards",
+    " somehow",
+    "........",
+    " ,[",
+    " thru",
+    " somew",
+    " alot"
+   ],
+   "junk_fraction": 0.0,
+   "corr_with_m_t": {
+    "pearson": 0.982,
+    "spearman": 0.9803
+   }
+  },
+  {
+   "layer": 5,
+   "kind": "R",
+   "top10": [
+    " somew",
+    " whats",
+    " diety",
+    "頂いた",
+    " atleast",
+    "–and",
+    "にあた",
+    "感じて",
+    " thems",
+    " spok"
+   ],
+   "junk_fraction": 0.3,
+   "corr_with_m_t": {
+    "pearson": 0.9988,
+    "spearman": 0.9986
+   }
+  },
+  {
+   "layer": 6,
+   "kind": "logit",
+   "top10": [
+    " Thậm",
+    " Böyle",
+    " erschien",
+    " alike",
+    "締め",
+    " résol",
+    "FLAGS",
+    "Grupo",
+    "_tbl",
+    " scarce"
+   ],
+   "junk_fraction": 0.2,
+   "corr_with_m_t": {
+    "pearson": 0.9898,
+    "spearman": 0.9888
+   }
+  },
+  {
+   "layer": 6,
+   "kind": "J",
+   "top10": [
+    "хвати",
+    " somew",
+    "in",
+    " Administrasi",
+    "amer",
+    " Regards",
+    " Materia",
+    "fox",
+    " Administra",
+    "apache"
+   ],
+   "junk_fraction": 0.1,
+   "corr_with_m_t": {
+    "pearson": 0.9831,
+    "spearman": 0.9817
+   }
+  },
+  {
+   "layer": 6,
+   "kind": "R",
+   "top10": [
+    " somew",
+    " whats",
+    " thems",
+    "感じて",
+    "–and",
+    "控え",
+    " atleast",
+    " sometime",
+    "にあた",
+    " tantal"
+   ],
+   "junk_fraction": 0.3,
+   "corr_with_m_t": {
+    "pearson": 0.9982,
+    "spearman": 0.998
+   }
+  },
+  {
+   "layer": 7,
+   "kind": "logit",
+   "top10": [
+    "Stadt",
+    " snart",
+    "Documento",
+    " référenc",
+    " erschien",
+    "ơn",
+    "—or",
+    "Registro",
+    " constellation",
+    "Archivo"
+   ],
+   "junk_fraction": 0.0,
+   "corr_with_m_t": {
+    "pearson": 0.9877,
+    "spearman": 0.9866
+   }
+  },
+  {
+   "layer": 7,
+   "kind": "J",
+   "top10": [
+    "..........",
+    "under",
+    "in",
+    ",time",
+    "fox",
+    "¿",
+    " Regards",
+    "nit",
+    "...........",
+    "禮拜"
+   ],
+   "junk_fraction": 0.1,
+   "corr_with_m_t": {
+    "pearson": 0.9813,
+    "spearman": 0.9797
+   }
+  },
+  {
+   "layer": 7,
+   "kind": "R",
+   "top10": [
+    " somew",
+    " whats",
+    "感じて",
+    " atleast",
+    "控え",
+    "all",
+    " thems",
+    "in",
+    "頭に",
+    ".........."
+   ],
+   "junk_fraction": 0.3,
+   "corr_with_m_t": {
+    "pearson": 0.9979,
+    "spearman": 0.9976
+   }
+  },
+  {
+   "layer": 8,
+   "kind": "logit",
+   "top10": [
+    "Stadt",
+    "ơn",
+    "締め",
+    " alike",
+    "Archivo",
+    " Topl",
+    " snart",
+    "—or",
+    " stelle",
+    "Buscar"
+   ],
+   "junk_fraction": 0.1,
+   "corr_with_m_t": {
+    "pearson": 0.9854,
+    "spearman": 0.9842
+   }
+  },
+  {
+   "layer": 8,
+   "kind": "J",
+   "top10": [
+    "..........",
+    " thru",
+    "in",
+    " america",
+    "¿",
+    "apache",
+    ",time",
+    "全美",
+    "人与",
+    " amerikan"
+   ],
+   "junk_fraction": 0.2,
+   "corr_with_m_t": {
+    "pearson": 0.9793,
+    "spearman": 0.9775
+   }
+  },
+  {
+   "layer": 8,
+   "kind": "R",
+   "top10": [
+    " somew",
+    "感じて",
+    " whats",
+    "all",
+    "in",
+    "控え",
+    "頭に",
+    " spok",
+    " thems",
+    " atleast"
+   ],
+   "junk_fraction": 0.3,
+   "corr_with_m_t": {
+    "pearson": 0.9967,
+    "spearman": 0.9963
+   }
+  },
+  {
+   "layer": 9,
+   "kind": "logit",
+   "top10": [
+    "締め",
+    "Stadt",
+    "Archivo",
+    " référenc",
+    "ơn",
+    "Buscar",
+    "SETTING",
+    " Topl",
+    "Weit",
+    " snart"
+   ],
+   "junk_fraction": 0.1,
+   "corr_with_m_t": {
+    "pearson": 0.9865,
+    "spearman": 0.9854
+   }
+  },
+  {
+   "layer": 9,
+   "kind": "J",
+   "top10": [
+    "..........",
+    "全美",
+    ",...",
+    " thru",
+    "amer",
+    " america",
+    "in",
+    " citizen",
+    " attorney",
+    " ..."
+   ],
+   "junk_fraction": 0.1,
+   "corr_with_m_t": {
+    "pearson": 0.9823,
+    "spearman": 0.9808
+   }
+  },
+  {
+   "layer": 9,
+   "kind": "R",
+   "top10": [
+    " somew",
+    "in",
+    "感じて",
+    "all",
+    "控え",
+    " spok",
+    " whats",
+    "頭に",
+    "送り",
+    ".........."
+   ],
+   "junk_fraction": 0.4,
+   "corr_with_m_t": {
+    "pearson": 0.9968,
+    "spearman": 0.9964
+   }
+  },
+  {
+   "layer": 10,
+   "kind": "logit",
+   "top10": [
+    "_*",
+    "INTERFACE",
+    "Archivo",
+    "Stadt",
+    " crise",
+    "_DEBUG",
+    " crisis",
+    "_LEN",
+    "Blank",
+    "Fresh"
+   ],
+   "junk_fraction": 0.0,
+   "corr_with_m_t": {
+    "pearson": 0.9907,
+    "spearman": 0.9898
+   }
+  },
+  {
+   "layer": 10,
+   "kind": "J",
+   "top10": [
+    ",...",
+    " ...",
+    " laboratory",
+    "全美",
+    " attorney",
+    "..........",
+    " regulatory",
+    " america",
+    " thru",
+    "rapid"
+   ],
+   "junk_fraction": 0.1,
+   "corr_with_m_t": {
+    "pearson": 0.9855,
+    "spearman": 0.9843
+   }
+  },
+  {
+   "layer": 10,
+   "kind": "R",
+   "top10": [
+    "in",
+    "送り",
+    "all",
+    "感じて",
+    "启事",
+    "控え",
+    "ぶり",
+    " spok",
+    "探し",
+    " somew"
+   ],
+   "junk_fraction": 0.6,
+   "corr_with_m_t": {
+    "pearson": 0.9958,
+    "spearman": 0.9954
+   }
+  },
+  {
+   "layer": 11,
+   "kind": "logit",
+   "top10": [
+    " Topl",
+    "ơn",
+    "Stadt",
+    "締め",
+    "Archivo",
+    "Blank",
+    " kalt",
+    " référenc",
+    "SETTING",
+    " riun"
+   ],
+   "junk_fraction": 0.1,
+   "corr_with_m_t": {
+    "pearson": 0.9893,
+    "spearman": 0.9886
+   }
+  },
+  {
+   "layer": 11,
+   "kind": "J",
+   "top10": [
+    " laboratory",
+    "____",
+    " thru",
+    "in",
+    "全美",
+    "acute",
+    "..........",
+    "_____",
+    ",...",
+    " attorney"
+   ],
+   "junk_fraction": 0.1,
+   "corr_with_m_t": {
+    "pearson": 0.9859,
+    "spearman": 0.9846
+   }
+  },
+  {
+   "layer": 11,
+   "kind": "R",
+   "top10": [
+    "in",
+    "all",
+    " somew",
+    "感じて",
+    "送り",
+    "控え",
+    "启事",
+    " spok",
+    "ぶり",
+    "すすめ"
+   ],
+   "junk_fraction": 0.6,
+   "corr_with_m_t": {
+    "pearson": 0.9963,
+    "spearman": 0.9959
+   }
+  },
+  {
+   "layer": 12,
+   "kind": "logit",
+   "top10": [
+    " Topl",
+    "ơn",
+    "Archivo",
+    " backbone",
+    " surgiu",
+    "Stadt",
+    "SETTING",
+    "締め",
+    "UPDATED",
+    " conseguiu"
+   ],
+   "junk_fraction": 0.1,
+   "corr_with_m_t": {
+    "pearson": 0.9892,
+    "spearman": 0.9884
+   }
+  },
+  {
+   "layer": 12,
+   "kind": "J",
+   "top10": [
+    "in",
+    "\n\n",
+    " laboratory",
+    " thru",
+    "\n",
+    " ...",
+    " jutaan",
+    ",...",
+    "...",
+    " Standards"
+   ],
+   "junk_fraction": 0.0,
+   "corr_with_m_t": {
+    "pearson": 0.9866,
+    "spearman": 0.9854
+   }
+  },
+  {
+   "layer": 12,
+   "kind": "R",
+   "top10": [
+    "in",
+    "all",
+    "感じて",
+    "ぶり",
+    " somew",
+    "启事",
+    "送り",
+    "探し",
+    "an",
+    "控え"
+   ],
+   "junk_fraction": 0.6,
+   "corr_with_m_t": {
+    "pearson": 0.9963,
+    "spearman": 0.9958
+   }
+  },
+  {
+   "layer": 13,
+   "kind": "logit",
+   "top10": [
+    " Topl",
+    "ơn",
+    " snart",
+    " surgiu",
+    " Nasıl",
+    " référenc",
+    " backbone",
+    " riconos",
+    "Blank",
+    "Archivo"
+   ],
+   "junk_fraction": 0.0,
+   "corr_with_m_t": {
+    "pearson": 0.9906,
+    "spearman": 0.9899
+   }
+  },
+  {
+   "layer": 13,
+   "kind": "J",
+   "top10": [
+    "in",
+    "\n",
+    "\n\n",
+    " laboratory",
+    "____",
+    "??",
+    "acute",
+    " jutaan",
+    " thru",
+    "on"
+   ],
+   "junk_fraction": 0.0,
+   "corr_with_m_t": {
+    "pearson": 0.9896,
+    "spearman": 0.9886
+   }
+  },
+  {
+   "layer": 13,
+   "kind": "R",
+   "top10": [
+    "in",
+    "all",
+    "ぶり",
+    "感じて",
+    " in",
+    "探し",
+    "on",
+    " somew",
+    "启事",
+    "only"
+   ],
+   "junk_fraction": 0.4,
+   "corr_with_m_t": {
+    "pearson": 0.997,
+    "spearman": 0.9966
+   }
+  },
+  {
+   "layer": 14,
+   "kind": "logit",
+   "top10": [
+    " Topl",
+    "LABEL",
+    " alike",
+    "_*",
+    "COLUMN",
+    "Archivo",
+    " inscre",
+    "LENGTH",
+    "____",
+    "_LEN"
+   ],
+   "junk_fraction": 0.0,
+   "corr_with_m_t": {
+    "pearson": 0.9928,
+    "spearman": 0.9921
+   }
+  },
+  {
+   "layer": 14,
+   "kind": "J",
+   "top10": [
+    "in",
+    "\n\n",
+    " ...",
+    "??",
+    "?",
+    " laboratory",
+    "____",
+    "auer",
+    "???",
+    "..."
+   ],
+   "junk_fraction": 0.0,
+   "corr_with_m_t": {
+    "pearson": 0.9901,
+    "spearman": 0.9892
+   }
+  },
+  {
+   "layer": 14,
+   "kind": "R",
+   "top10": [
+    "in",
+    "all",
+    " in",
+    "ぶり",
+    " and",
+    "only",
+    "on",
+    " as",
+    "w",
+    " only"
+   ],
+   "junk_fraction": 0.1,
+   "corr_with_m_t": {
+    "pearson": 0.9962,
+    "spearman": 0.9958
+   }
+  },
+  {
+   "layer": 15,
+   "kind": "logit",
+   "top10": [
+    " Topl",
+    "ơn",
+    "SETTING",
+    "Perfil",
+    "Blank",
+    "Empresa",
+    " riun",
+    "_*",
+    " surgiu",
+    " traduz"
+   ],
+   "junk_fraction": 0.0,
+   "corr_with_m_t": {
+    "pearson": 0.9925,
+    "spearman": 0.9918
+   }
+  },
+  {
+   "layer": 15,
+   "kind": "J",
+   "top10": [
+    "in",
+    "??",
+    "?",
+    "???",
+    "on",
+    " laboratory",
+    "___",
+    "ord",
+    "acute",
+    "an"
+   ],
+   "junk_fraction": 0.0,
+   "corr_with_m_t": {
+    "pearson": 0.9919,
+    "spearman": 0.9911
+   }
+  },
+  {
+   "layer": 15,
+   "kind": "R",
+   "top10": [
+    "in",
+    "all",
+    " in",
+    " as",
+    " and",
+    "ぶり",
+    " instead",
+    "and",
+    "an",
+    "only"
+   ],
+   "junk_fraction": 0.1,
+   "corr_with_m_t": {
+    "pearson": 0.9971,
+    "spearman": 0.9967
+   }
+  },
+  {
+   "layer": 16,
+   "kind": "logit",
+   "top10": [
+    " Topl",
+    "ơn",
+    "SETTING",
+    "Perfil",
+    " riun",
+    "SHORT",
+    " traduz",
+    "VECTOR",
+    "MATRIX",
+    "Empresa"
+   ],
+   "junk_fraction": 0.0,
+   "corr_with_m_t": {
+    "pearson": 0.9919,
+    "spearman": 0.9912
+   }
+  },
+  {
+   "layer": 16,
+   "kind": "J",
+   "top10": [
+    "in",
+    "?",
+    "!",
+    "??",
+    "\n\n",
+    "on",
+    "???",
+    ".",
+    "!!",
+    " laboratory"
+   ],
+   "junk_fraction": 0.0,
+   "corr_with_m_t": {
+    "pearson": 0.9927,
+    "spearman": 0.9919
+   }
+  },
+  {
+   "layer": 16,
+   "kind": "R",
+   "top10": [
+    "in",
+    " in",
+    "all",
+    " as",
+    " and",
+    " at",
+    "and",
+    "an",
+    "ぶり",
+    " only"
+   ],
+   "junk_fraction": 0.1,
+   "corr_with_m_t": {
+    "pearson": 0.9973,
+    "spearman": 0.997
+   }
+  },
+  {
+   "layer": 17,
+   "kind": "logit",
+   "top10": [
+    " Topl",
+    "ơn",
+    "Perfil",
+    " riun",
+    "MATRIX",
+    "EQUAL",
+    " Administrasi",
+    "Empresa",
+    "REMOTE",
+    "Stadt"
+   ],
+   "junk_fraction": 0.0,
+   "corr_with_m_t": {
+    "pearson": 0.9922,
+    "spearman": 0.9915
+   }
+  },
+  {
+   "layer": 17,
+   "kind": "J",
+   "top10": [
+    "in",
+    "?",
+    "!",
+    "\n\n",
+    ".",
+    "2",
+    "___",
+    "__",
+    "on",
+    "_"
+   ],
+   "junk_fraction": 0.0,
+   "corr_with_m_t": {
+    "pearson": 0.9937,
+    "spearman": 0.993
+   }
+  },
+  {
+   "layer": 17,
+   "kind": "R",
+   "top10": [
+    " as",
+    " in",
+    "in",
+    " and",
+    " at",
+    "all",
+    ",",
+    ":",
+    " for",
+    "and"
+   ],
+   "junk_fraction": 0.0,
+   "corr_with_m_t": {
+    "pearson": 0.9972,
+    "spearman": 0.9968
+   }
+  },
+  {
+   "layer": 18,
+   "kind": "logit",
+   "top10": [
+    " Topl",
+    "ơn",
+    "..........",
+    "...........",
+    "REMOTE",
+    "_nombre",
+    "UPDATED",
+    "NETWORK",
+    "Blank",
+    "VECTOR"
+   ],
+   "junk_fraction": 0.0,
+   "corr_with_m_t": {
+    "pearson": 0.992,
+    "spearman": 0.9912
+   }
+  },
+  {
+   "layer": 18,
+   "kind": "J",
+   "top10": [
+    "!",
+    "in",
+    "?",
+    " /",
+    ".",
+    " using",
+    "other",
+    "on",
+    "or",
+    "/"
+   ],
+   "junk_fraction": 0.0,
+   "corr_with_m_t": {
+    "pearson": 0.9953,
+    "spearman": 0.9946
+   }
+  },
+  {
+   "layer": 18,
+   "kind": "R",
+   "top10": [
+    " as",
+    " in",
+    " for",
+    " at",
+    " on",
+    ",",
+    "-",
+    ":",
+    ";",
+    " from"
+   ],
+   "junk_fraction": 0.0,
+   "corr_with_m_t": {
+    "pearson": 0.997,
+    "spearman": 0.9965
+   }
+  },
+  {
+   "layer": 19,
+   "kind": "logit",
+   "top10": [
+    "にして",
+    "...........",
+    " traduz",
+    "SHORT",
+    ".............",
+    "..........",
+    " Administrasi",
+    "ơn",
+    "VECTOR",
+    " riun"
+   ],
+   "junk_fraction": 0.1,
+   "corr_with_m_t": {
+    "pearson": 0.9894,
+    "spearman": 0.9882
+   }
+  },
+  {
+   "layer": 19,
+   "kind": "J",
+   "top10": [
+    "!",
+    ".",
+    " in",
+    "in",
+    "on",
+    ":",
+    "...",
+    " /",
+    " &",
+    " using"
+   ],
+   "junk_fraction": 0.0,
+   "corr_with_m_t": {
+    "pearson": 0.9953,
+    "spearman": 0.9946
+   }
+  },
+  {
+   "layer": 19,
+   "kind": "R",
+   "top10": [
+    " as",
+    " in",
+    " at",
+    " for",
+    " on",
+    ",",
+    "in",
+    ":",
+    " and",
+    " to"
+   ],
+   "junk_fraction": 0.0,
+   "corr_with_m_t": {
+    "pearson": 0.9975,
+    "spearman": 0.9971
+   }
+  },
+  {
+   "layer": 20,
+   "kind": "logit",
+   "top10": [
+    "ơn",
+    "...........",
+    "感じて",
+    "..........",
+    " Noticed",
+    ".............",
+    "..............",
+    " ministra",
+    " Administrasi",
+    "探し"
+   ],
+   "junk_fraction": 0.2,
+   "corr_with_m_t": {
+    "pearson": 0.9885,
+    "spearman": 0.9871
+   }
+  },
+  {
+   "layer": 20,
+   "kind": "J",
+   "top10": [
+    "!",
+    " in",
+    ".",
+    "...",
+    ",",
+    " for",
+    " and",
+    "__",
+    ";",
+    " using"
+   ],
+   "junk_fraction": 0.0,
+   "corr_with_m_t": {
+    "pearson": 0.9954,
+    "spearman": 0.9946
+   }
+  },
+  {
+   "layer": 20,
+   "kind": "R",
+   "top10": [
+    " as",
+    " in",
+    " for",
+    " at",
+    " on",
+    ",",
+    " to",
+    "__",
+    " and",
+    ":"
+   ],
+   "junk_fraction": 0.0,
+   "corr_with_m_t": {
+    "pearson": 0.9972,
+    "spearman": 0.9967
+   }
+  },
+  {
+   "layer": 21,
+   "kind": "logit",
+   "top10": [
+    "ơn",
+    "感じて",
+    " ministra",
+    "...........",
+    "..........",
+    " Administrasi",
+    "..............",
+    "過ごし",
+    " Noticed",
+    " والعالم"
+   ],
+   "junk_fraction": 0.3,
+   "corr_with_m_t": {
+    "pearson": 0.9884,
+    "spearman": 0.9869
+   }
+  },
+  {
+   "layer": 21,
+   "kind": "J",
+   "top10": [
+    "__",
+    " in",
+    " for",
+    ",",
+    "!",
+    ".",
+    " and",
+    "___",
+    " using",
+    " as"
+   ],
+   "junk_fraction": 0.0,
+   "corr_with_m_t": {
+    "pearson": 0.996,
+    "spearman": 0.9954
+   }
+  },
+  {
+   "layer": 21,
+   "kind": "R",
+   "top10": [
+    " as",
+    " in",
+    " for",
+    " at",
+    ",",
+    "__",
+    " on",
+    " to",
+    " and",
+    ":"
+   ],
+   "junk_fraction": 0.0,
+   "corr_with_m_t": {
+    "pearson": 0.9972,
+    "spearman": 0.9967
+   }
+  },
+  {
+   "layer": 22,
+   "kind": "logit",
+   "top10": [
+    "ơn",
+    " Topl",
+    "アドバイ",
+    " ministra",
+    " Consulta",
+    "感じて",
+    " Administrasi",
+    " Merkezi",
+    "CURRENT",
+    "ごはん"
+   ],
+   "junk_fraction": 0.3,
+   "corr_with_m_t": {
+    "pearson": 0.9868,
+    "spearman": 0.9854
+   }
+  },
+  {
+   "layer": 22,
+   "kind": "J",
+   "top10": [
+    "__",
+    " in",
+    " for",
+    "!",
+    ",",
+    ":",
+    " and",
+    " with",
+    "?",
+    "___"
+   ],
+   "junk_fraction": 0.0,
+   "corr_with_m_t": {
+    "pearson": 0.9956,
+    "spearman": 0.9949
+   }
+  },
+  {
+   "layer": 22,
+   "kind": "R",
+   "top10": [
+    " in",
+    " as",
+    " for",
+    " at",
+    ",",
+    " on",
+    " and",
+    ":",
+    " with",
+    "__"
+   ],
+   "junk_fraction": 0.0,
+   "corr_with_m_t": {
+    "pearson": 0.9969,
+    "spearman": 0.9964
+   }
+  },
+  {
+   "layer": 23,
+   "kind": "logit",
+   "top10": [
+    "ơn",
+    " amator",
+    " Administrasi",
+    " Topl",
+    " cuz",
+    "感じて",
+    " Cabinets",
+    " spok",
+    "...........",
+    ".........."
+   ],
+   "junk_fraction": 0.1,
+   "corr_with_m_t": {
+    "pearson": 0.9889,
+    "spearman": 0.9872
+   }
+  },
+  {
+   "layer": 23,
+   "kind": "J",
+   "top10": [
+    "__",
+    "!",
+    " for",
+    " in",
+    " and",
+    ",",
+    ":",
+    "?",
+    ".",
+    " from"
+   ],
+   "junk_fraction": 0.0,
+   "corr_with_m_t": {
+    "pearson": 0.9957,
+    "spearman": 0.995
+   }
+  },
+  {
+   "layer": 23,
+   "kind": "R",
+   "top10": [
+    " in",
+    " as",
+    " for",
+    " at",
+    ",",
+    " on",
+    " and",
+    "__",
+    ":",
+    " with"
+   ],
+   "junk_fraction": 0.0,
+   "corr_with_m_t": {
+    "pearson": 0.9967,
+    "spearman": 0.9962
+   }
+  },
+  {
+   "layer": 24,
+   "kind": "logit",
+   "top10": [
+    " amator",
+    "感じて",
+    " Cabinets",
+    "ơn",
+    " cuz",
+    "渡し",
+    " spok",
+    "任せ",
+    " Administrasi",
+    "探し"
+   ],
+   "junk_fraction": 0.4,
+   "corr_with_m_t": {
+    "pearson": 0.9885,
+    "spearman": 0.9868
+   }
+  },
+  {
+   "layer": 24,
+   "kind": "J",
+   "top10": [
+    "!",
+    " for",
+    " in",
+    "?",
+    "__",
+    " from",
+    " and",
+    ",",
+    " as",
+    " ?"
+   ],
+   "junk_fraction": 0.0,
+   "corr_with_m_t": {
+    "pearson": 0.9943,
+    "spearman": 0.9935
+   }
+  },
+  {
+   "layer": 24,
+   "kind": "R",
+   "top10": [
+    " in",
+    " as",
+    " for",
+    " at",
+    " on",
+    " from",
+    "!",
+    ",",
+    " and",
+    "?"
+   ],
+   "junk_fraction": 0.0,
+   "corr_with_m_t": {
+    "pearson": 0.9958,
+    "spearman": 0.9952
+   }
+  },
+  {
+   "layer": 25,
+   "kind": "logit",
+   "top10": [
+    " amator",
+    "ơn",
+    "渡し",
+    "任せ",
+    "感じて",
+    "探し",
+    " cuz",
+    " Cabinets",
+    " Profesor",
+    " spok"
+   ],
+   "junk_fraction": 0.4,
+   "corr_with_m_t": {
+    "pearson": 0.9876,
+    "spearman": 0.9858
+   }
+  },
+  {
+   "layer": 25,
+   "kind": "J",
+   "top10": [
+    "!",
+    " for",
+    " in",
+    " from",
+    " as",
+    "__",
+    "?",
+    "的一种",
+    "¶",
+    "_"
+   ],
+   "junk_fraction": 0.1,
+   "corr_with_m_t": {
+    "pearson": 0.993,
+    "spearman": 0.992
+   }
+  },
+  {
+   "layer": 25,
+   "kind": "R",
+   "top10": [
+    " in",
+    " as",
+    " for",
+    " at",
+    " from",
+    "之剑",
+    " on",
+    " stuff",
+    "!",
+    ","
+   ],
+   "junk_fraction": 0.1,
+   "corr_with_m_t": {
+    "pearson": 0.995,
+    "spearman": 0.9943
+   }
+  },
+  {
+   "layer": 26,
+   "kind": "logit",
+   "top10": [
+    "探し",
+    "任せ",
+    "感じて",
+    " amator",
+    "ơn",
+    " Profesor",
+    " Avenida",
+    "手伝",
+    "決めて",
+    " Administrasi"
+   ],
+   "junk_fraction": 0.5,
+   "corr_with_m_t": {
+    "pearson": 0.9829,
+    "spearman": 0.9813
+   }
+  },
+  {
+   "layer": 26,
+   "kind": "J",
+   "top10": [
+    "的一种",
+    " in",
+    "!",
+    " pre",
+    " bad",
+    " for",
+    " past",
+    " Geral",
+    " really",
+    " as"
+   ],
+   "junk_fraction": 0.1,
+   "corr_with_m_t": {
+    "pearson": 0.9922,
+    "spearman": 0.9912
+   }
+  },
+  {
+   "layer": 26,
+   "kind": "R",
+   "top10": [
+    " in",
+    " as",
+    "之剑",
+    " from",
+    " at",
+    " for",
+    " on",
+    "in",
+    " my",
+    "?"
+   ],
+   "junk_fraction": 0.1,
+   "corr_with_m_t": {
+    "pearson": 0.9946,
+    "spearman": 0.9939
+   }
+  },
+  {
+   "layer": 27,
+   "kind": "logit",
+   "top10": [
+    " everytime",
+    "任せ",
+    " amator",
+    " Telefone",
+    "手伝",
+    "探し",
+    "感じて",
+    " Cabinets",
+    "可梦",
+    " cuz"
+   ],
+   "junk_fraction": 0.5,
+   "corr_with_m_t": {
+    "pearson": 0.9906,
+    "spearman": 0.9889
+   }
+  },
+  {
+   "layer": 27,
+   "kind": "J",
+   "top10": [
+    "对我说",
+    " negó",
+    "in",
+    "之门",
+    "呼声",
+    " prace",
+    " as",
+    " and",
+    " my",
+    "动容"
+   ],
+   "junk_fraction": 0.4,
+   "corr_with_m_t": {
+    "pearson": 0.9918,
+    "spearman": 0.9905
+   }
+  },
+  {
+   "layer": 27,
+   "kind": "R",
+   "top10": [
+    " in",
+    "払い",
+    "in",
+    "探し",
+    " negó",
+    "いただきます",
+    "之剑",
+    "对我说",
+    "詰め",
+    "問わず"
+   ],
+   "junk_fraction": 0.7,
+   "corr_with_m_t": {
+    "pearson": 0.9944,
+    "spearman": 0.9934
+   }
+  },
+  {
+   "layer": 28,
+   "kind": "logit",
+   "top10": [
+    " everytime",
+    " cuz",
+    "任せ",
+    "感じて",
+    "手伝",
+    "決めて",
+    "渡し",
+    "ねぇ",
+    " diety",
+    "楽しんで"
+   ],
+   "junk_fraction": 0.7,
+   "corr_with_m_t": {
+    "pearson": 0.9918,
+    "spearman": 0.9902
+   }
+  },
+  {
+   "layer": 28,
+   "kind": "J",
+   "top10": [
+    "探し",
+    "落とし",
+    "気に入り",
+    "对我说",
+    " and",
+    "动容",
+    "サイトで",
+    "なき",
+    "之剑",
+    "之门"
+   ],
+   "junk_fraction": 0.9,
+   "corr_with_m_t": {
+    "pearson": 0.9911,
+    "spearman": 0.9894
+   }
+  },
+  {
+   "layer": 28,
+   "kind": "R",
+   "top10": [
+    "in",
+    " and",
+    "落とし",
+    "探し",
+    " in",
+    "払い",
+    "詰め",
+    " two",
+    "サイトで",
+    " diety"
+   ],
+   "junk_fraction": 0.5,
+   "corr_with_m_t": {
+    "pearson": 0.9927,
+    "spearman": 0.9913
+   }
+  },
+  {
+   "layer": 29,
+   "kind": "logit",
+   "top10": [
+    "感じて",
+    "ねぇ",
+    " cuz",
+    " diety",
+    "落とし",
+    "食べた",
+    "探し",
+    " Luogo",
+    "楽しんで",
+    "喜んで"
+   ],
+   "junk_fraction": 0.7,
+   "corr_with_m_t": {
+    "pearson": 0.9911,
+    "spearman": 0.9892
+   }
+  },
+  {
+   "layer": 29,
+   "kind": "J",
+   "top10": [
+    "に掲載",
+    " recently",
+    "探す",
+    " and",
+    "落とし",
+    "うれしい",
+    "探し",
+    " Sitio",
+    "払い",
+    " diety"
+   ],
+   "junk_fraction": 0.6,
+   "corr_with_m_t": {
+    "pearson": 0.9905,
+    "spearman": 0.9883
+   }
+  },
+  {
+   "layer": 29,
+   "kind": "R",
+   "top10": [
+    " and",
+    " recently",
+    "に掲載",
+    "落とし",
+    "好みの",
+    " overnight",
+    "持っている",
+    "うれしい",
+    "in",
+    "探し"
+   ],
+   "junk_fraction": 0.6,
+   "corr_with_m_t": {
+    "pearson": 0.9908,
+    "spearman": 0.9889
+   }
+  },
+  {
+   "layer": 30,
+   "kind": "logit",
+   "top10": [
+    " and",
+    " in",
+    "うれしい",
+    ",",
+    "好みの",
+    "感じて",
+    "持っている",
+    "楽しんで",
+    "に掲載",
+    "になりたい"
+   ],
+   "junk_fraction": 0.7,
+   "corr_with_m_t": {
+    "pearson": 0.9883,
+    "spearman": 0.9862
+   }
+  },
+  {
+   "layer": 30,
+   "kind": "J",
+   "top10": [
+    " and",
+    " in",
+    "うれしい",
+    ",",
+    "好みの",
+    "感じて",
+    "持っている",
+    "楽しんで",
+    "に掲載",
+    "になりたい"
+   ],
+   "junk_fraction": 0.7,
+   "corr_with_m_t": {
+    "pearson": 0.9883,
+    "spearman": 0.9862
+   }
+  },
+  {
+   "layer": 30,
+   "kind": "R",
+   "top10": [
+    " and",
+    " in",
+    "うれしい",
+    ",",
+    "好みの",
+    "感じて",
+    "持っている",
+    "楽しんで",
+    "に掲載",
+    "になりたい"
+   ],
+   "junk_fraction": 0.7,
+   "corr_with_m_t": {
+    "pearson": 0.9883,
+    "spearman": 0.9862
+   }
+  }
+ ],
+ "centering": [
+  {
+   "layer": 0,
+   "kind": "logit",
+   "junk_raw": 0.1192,
+   "junk_centered": 0.1224,
+   "n_cells": 125
+  },
+  {
+   "layer": 0,
+   "kind": "J",
+   "junk_raw": 0.1384,
+   "junk_centered": 0.2224,
+   "n_cells": 125
+  },
+  {
+   "layer": 0,
+   "kind": "R",
+   "junk_raw": 0.1056,
+   "junk_centered": 0.1176,
+   "n_cells": 125
+  },
+  {
+   "layer": 1,
+   "kind": "logit",
+   "junk_raw": 0.164,
+   "junk_centered": 0.1904,
+   "n_cells": 125
+  },
+  {
+   "layer": 1,
+   "kind": "J",
+   "junk_raw": 0.156,
+   "junk_centered": 0.2392,
+   "n_cells": 125
+  },
+  {
+   "layer": 1,
+   "kind": "R",
+   "junk_raw": 0.0776,
+   "junk_centered": 0.1352,
+   "n_cells": 125
+  },
+  {
+   "layer": 2,
+   "kind": "logit",
+   "junk_raw": 0.2248,
+   "junk_centered": 0.2384,
+   "n_cells": 125
+  },
+  {
+   "layer": 2,
+   "kind": "J",
+   "junk_raw": 0.1576,
+   "junk_centered": 0.1992,
+   "n_cells": 125
+  },
+  {
+   "layer": 2,
+   "kind": "R",
+   "junk_raw": 0.0568,
+   "junk_centered": 0.1232,
+   "n_cells": 125
+  },
+  {
+   "layer": 3,
+   "kind": "logit",
+   "junk_raw": 0.256,
+   "junk_centered": 0.2944,
+   "n_cells": 125
+  },
+  {
+   "layer": 3,
+   "kind": "J",
+   "junk_raw": 0.1424,
+   "junk_centered": 0.2216,
+   "n_cells": 125
+  },
+  {
+   "layer": 3,
+   "kind": "R",
+   "junk_raw": 0.104,
+   "junk_centered": 0.1352,
+   "n_cells": 125
+  },
+  {
+   "layer": 4,
+   "kind": "logit",
+   "junk_raw": 0.2824,
+   "junk_centered": 0.3144,
+   "n_cells": 125
+  },
+  {
+   "layer": 4,
+   "kind": "J",
+   "junk_raw": 0.1504,
+   "junk_centered": 0.2168,
+   "n_cells": 125
+  },
+  {
+   "layer": 4,
+   "kind": "R",
+   "junk_raw": 0.1152,
+   "junk_centered": 0.1336,
+   "n_cells": 125
+  },
+  {
+   "layer": 5,
+   "kind": "logit",
+   "junk_raw": 0.3128,
+   "junk_centered": 0.3464,
+   "n_cells": 125
+  },
+  {
+   "layer": 5,
+   "kind": "J",
+   "junk_raw": 0.1384,
+   "junk_centered": 0.192,
+   "n_cells": 125
+  },
+  {
+   "layer": 5,
+   "kind": "R",
+   "junk_raw": 0.12,
+   "junk_centered": 0.1592,
+   "n_cells": 125
+  },
+  {
+   "layer": 6,
+   "kind": "logit",
+   "junk_raw": 0.3736,
+   "junk_centered": 0.3992,
+   "n_cells": 125
+  },
+  {
+   "layer": 6,
+   "kind": "J",
+   "junk_raw": 0.1448,
+   "junk_centered": 0.2088,
+   "n_cells": 125
+  },
+  {
+   "layer": 6,
+   "kind": "R",
+   "junk_raw": 0.1328,
+   "junk_centered": 0.1592,
+   "n_cells": 125
+  },
+  {
+   "layer": 7,
+   "kind": "logit",
+   "junk_raw": 0.3712,
+   "junk_centered": 0.3696,
+   "n_cells": 125
+  },
+  {
+   "layer": 7,
+   "kind": "J",
+   "junk_raw": 0.1392,
+   "junk_centered": 0.1944,
+   "n_cells": 125
+  },
+  {
+   "layer": 7,
+   "kind": "R",
+   "junk_raw": 0.144,
+   "junk_centered": 0.164,
+   "n_cells": 125
+  },
+  {
+   "layer": 8,
+   "kind": "logit",
+   "junk_raw": 0.3768,
+   "junk_centered": 0.384,
+   "n_cells": 125
+  },
+  {
+   "layer": 8,
+   "kind": "J",
+   "junk_raw": 0.1344,
+   "junk_centered": 0.1704,
+   "n_cells": 125
+  },
+  {
+   "layer": 8,
+   "kind": "R",
+   "junk_raw": 0.1296,
+   "junk_centered": 0.1616,
+   "n_cells": 125
+  },
+  {
+   "layer": 9,
+   "kind": "logit",
+   "junk_raw": 0.3848,
+   "junk_centered": 0.4,
+   "n_cells": 125
+  },
+  {
+   "layer": 9,
+   "kind": "J",
+   "junk_raw": 0.12,
+   "junk_centered": 0.144,
+   "n_cells": 125
+  },
+  {
+   "layer": 9,
+   "kind": "R",
+   "junk_raw": 0.1168,
+   "junk_centered": 0.1496,
+   "n_cells": 125
+  },
+  {
+   "layer": 10,
+   "kind": "logit",
+   "junk_raw": 0.3656,
+   "junk_centered": 0.3928,
+   "n_cells": 125
+  },
+  {
+   "layer": 10,
+   "kind": "J",
+   "junk_raw": 0.1096,
+   "junk_centered": 0.1464,
+   "n_cells": 125
+  },
+  {
+   "layer": 10,
+   "kind": "R",
+   "junk_raw": 0.1152,
+   "junk_centered": 0.1552,
+   "n_cells": 125
+  },
+  {
+   "layer": 11,
+   "kind": "logit",
+   "junk_raw": 0.372,
+   "junk_centered": 0.3952,
+   "n_cells": 125
+  },
+  {
+   "layer": 11,
+   "kind": "J",
+   "junk_raw": 0.112,
+   "junk_centered": 0.148,
+   "n_cells": 125
+  },
+  {
+   "layer": 11,
+   "kind": "R",
+   "junk_raw": 0.1264,
+   "junk_centered": 0.1728,
+   "n_cells": 125
+  },
+  {
+   "layer": 12,
+   "kind": "logit",
+   "junk_raw": 0.3728,
+   "junk_centered": 0.3984,
+   "n_cells": 125
+  },
+  {
+   "layer": 12,
+   "kind": "J",
+   "junk_raw": 0.1104,
+   "junk_centered": 0.1488,
+   "n_cells": 125
+  },
+  {
+   "layer": 12,
+   "kind": "R",
+   "junk_raw": 0.1184,
+   "junk_centered": 0.1904,
+   "n_cells": 125
+  },
+  {
+   "layer": 13,
+   "kind": "logit",
+   "junk_raw": 0.3632,
+   "junk_centered": 0.384,
+   "n_cells": 125
+  },
+  {
+   "layer": 13,
+   "kind": "J",
+   "junk_raw": 0.096,
+   "junk_centered": 0.1648,
+   "n_cells": 125
+  },
+  {
+   "layer": 13,
+   "kind": "R",
+   "junk_raw": 0.1096,
+   "junk_centered": 0.1936,
+   "n_cells": 125
+  },
+  {
+   "layer": 14,
+   "kind": "logit",
+   "junk_raw": 0.3528,
+   "junk_centered": 0.3976,
+   "n_cells": 125
+  },
+  {
+   "layer": 14,
+   "kind": "J",
+   "junk_raw": 0.0888,
+   "junk_centered": 0.168,
+   "n_cells": 125
+  },
+  {
+   "layer": 14,
+   "kind": "R",
+   "junk_raw": 0.0992,
+   "junk_centered": 0.2032,
+   "n_cells": 125
+  },
+  {
+   "layer": 15,
+   "kind": "logit",
+   "junk_raw": 0.3712,
+   "junk_centered": 0.4144,
+   "n_cells": 125
+  },
+  {
+   "layer": 15,
+   "kind": "J",
+   "junk_raw": 0.0784,
+   "junk_centered": 0.1616,
+   "n_cells": 125
+  },
+  {
+   "layer": 15,
+   "kind": "R",
+   "junk_raw": 0.0984,
+   "junk_centered": 0.2096,
+   "n_cells": 125
+  },
+  {
+   "layer": 16,
+   "kind": "logit",
+   "junk_raw": 0.3704,
+   "junk_centered": 0.412,
+   "n_cells": 125
+  },
+  {
+   "layer": 16,
+   "kind": "J",
+   "junk_raw": 0.0928,
+   "junk_centered": 0.1776,
+   "n_cells": 125
+  },
+  {
+   "layer": 16,
+   "kind": "R",
+   "junk_raw": 0.0864,
+   "junk_centered": 0.2176,
+   "n_cells": 125
+  },
+  {
+   "layer": 17,
+   "kind": "logit",
+   "junk_raw": 0.3528,
+   "junk_centered": 0.384,
+   "n_cells": 125
+  },
+  {
+   "layer": 17,
+   "kind": "J",
+   "junk_raw": 0.0856,
+   "junk_centered": 0.1848,
+   "n_cells": 125
+  },
+  {
+   "layer": 17,
+   "kind": "R",
+   "junk_raw": 0.0776,
+   "junk_centered": 0.2512,
+   "n_cells": 125
+  },
+  {
+   "layer": 18,
+   "kind": "logit",
+   "junk_raw": 0.3552,
+   "junk_centered": 0.3848,
+   "n_cells": 125
+  },
+  {
+   "layer": 18,
+   "kind": "J",
+   "junk_raw": 0.0832,
+   "junk_centered": 0.1968,
+   "n_cells": 125
+  },
+  {
+   "layer": 18,
+   "kind": "R",
+   "junk_raw": 0.0744,
+   "junk_centered": 0.2432,
+   "n_cells": 125
+  },
+  {
+   "layer": 19,
+   "kind": "logit",
+   "junk_raw": 0.3864,
+   "junk_centered": 0.3512,
+   "n_cells": 125
+  },
+  {
+   "layer": 19,
+   "kind": "J",
+   "junk_raw": 0.0784,
+   "junk_centered": 0.212,
+   "n_cells": 125
+  },
+  {
+   "layer": 19,
+   "kind": "R",
+   "junk_raw": 0.0656,
+   "junk_centered": 0.248,
+   "n_cells": 125
+  },
+  {
+   "layer": 20,
+   "kind": "logit",
+   "junk_raw": 0.3576,
+   "junk_centered": 0.3264,
+   "n_cells": 125
+  },
+  {
+   "layer": 20,
+   "kind": "J",
+   "junk_raw": 0.0776,
+   "junk_centered": 0.2184,
+   "n_cells": 125
+  },
+  {
+   "layer": 20,
+   "kind": "R",
+   "junk_raw": 0.0608,
+   "junk_centered": 0.2232,
+   "n_cells": 125
+  },
+  {
+   "layer": 21,
+   "kind": "logit",
+   "junk_raw": 0.3296,
+   "junk_centered": 0.3136,
+   "n_cells": 125
+  },
+  {
+   "layer": 21,
+   "kind": "J",
+   "junk_raw": 0.0704,
+   "junk_centered": 0.1896,
+   "n_cells": 125
+  },
+  {
+   "layer": 21,
+   "kind": "R",
+   "junk_raw": 0.064,
+   "junk_centered": 0.2168,
+   "n_cells": 125
+  },
+  {
+   "layer": 22,
+   "kind": "logit",
+   "junk_raw": 0.304,
+   "junk_centered": 0.3144,
+   "n_cells": 125
+  },
+  {
+   "layer": 22,
+   "kind": "J",
+   "junk_raw": 0.096,
+   "junk_centered": 0.2072,
+   "n_cells": 125
+  },
+  {
+   "layer": 22,
+   "kind": "R",
+   "junk_raw": 0.0792,
+   "junk_centered": 0.1952,
+   "n_cells": 125
+  },
+  {
+   "layer": 23,
+   "kind": "logit",
+   "junk_raw": 0.3024,
+   "junk_centered": 0.3032,
+   "n_cells": 125
+  },
+  {
+   "layer": 23,
+   "kind": "J",
+   "junk_raw": 0.0936,
+   "junk_centered": 0.2048,
+   "n_cells": 125
+  },
+  {
+   "layer": 23,
+   "kind": "R",
+   "junk_raw": 0.0784,
+   "junk_centered": 0.2208,
+   "n_cells": 125
+  },
+  {
+   "layer": 24,
+   "kind": "logit",
+   "junk_raw": 0.2464,
+   "junk_centered": 0.2624,
+   "n_cells": 125
+  },
+  {
+   "layer": 24,
+   "kind": "J",
+   "junk_raw": 0.1032,
+   "junk_centered": 0.1808,
+   "n_cells": 125
+  },
+  {
+   "layer": 24,
+   "kind": "R",
+   "junk_raw": 0.0864,
+   "junk_centered": 0.1928,
+   "n_cells": 125
+  },
+  {
+   "layer": 25,
+   "kind": "logit",
+   "junk_raw": 0.2264,
+   "junk_centered": 0.2352,
+   "n_cells": 125
+  },
+  {
+   "layer": 25,
+   "kind": "J",
+   "junk_raw": 0.1136,
+   "junk_centered": 0.1736,
+   "n_cells": 125
+  },
+  {
+   "layer": 25,
+   "kind": "R",
+   "junk_raw": 0.0976,
+   "junk_centered": 0.1856,
+   "n_cells": 125
+  },
+  {
+   "layer": 26,
+   "kind": "logit",
+   "junk_raw": 0.2,
+   "junk_centered": 0.2112,
+   "n_cells": 125
+  },
+  {
+   "layer": 26,
+   "kind": "J",
+   "junk_raw": 0.1208,
+   "junk_centered": 0.1736,
+   "n_cells": 125
+  },
+  {
+   "layer": 26,
+   "kind": "R",
+   "junk_raw": 0.1016,
+   "junk_centered": 0.1792,
+   "n_cells": 125
+  },
+  {
+   "layer": 27,
+   "kind": "logit",
+   "junk_raw": 0.16,
+   "junk_centered": 0.18,
+   "n_cells": 125
+  },
+  {
+   "layer": 27,
+   "kind": "J",
+   "junk_raw": 0.0912,
+   "junk_centered": 0.152,
+   "n_cells": 125
+  },
+  {
+   "layer": 27,
+   "kind": "R",
+   "junk_raw": 0.0808,
+   "junk_centered": 0.1576,
+   "n_cells": 125
+  },
+  {
+   "layer": 28,
+   "kind": "logit",
+   "junk_raw": 0.1224,
+   "junk_centered": 0.1392,
+   "n_cells": 125
+  },
+  {
+   "layer": 28,
+   "kind": "J",
+   "junk_raw": 0.0656,
+   "junk_centered": 0.132,
+   "n_cells": 125
+  },
+  {
+   "layer": 28,
+   "kind": "R",
+   "junk_raw": 0.0656,
+   "junk_centered": 0.1328,
+   "n_cells": 125
+  },
+  {
+   "layer": 29,
+   "kind": "logit",
+   "junk_raw": 0.0784,
+   "junk_centered": 0.0952,
+   "n_cells": 125
+  },
+  {
+   "layer": 29,
+   "kind": "J",
+   "junk_raw": 0.0448,
+   "junk_centered": 0.0872,
+   "n_cells": 125
+  },
+  {
+   "layer": 29,
+   "kind": "R",
+   "junk_raw": 0.04,
+   "junk_centered": 0.0832,
+   "n_cells": 125
+  },
+  {
+   "layer": 30,
+   "kind": "logit",
+   "junk_raw": 0.0272,
+   "junk_centered": 0.056,
+   "n_cells": 125
+  },
+  {
+   "layer": 30,
+   "kind": "J",
+   "junk_raw": 0.0272,
+   "junk_centered": 0.056,
+   "n_cells": 125
+  },
+  {
+   "layer": 30,
+   "kind": "R",
+   "junk_raw": 0.0272,
+   "junk_centered": 0.056,
+   "n_cells": 125
+  }
+ ]
+}

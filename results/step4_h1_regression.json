@@ -1,0 +1,3506 @@
+{
+ "meta": {
+  "mt_npz": "results/step4_mt.npz",
+  "gate": {
+   "criterion": "split-half Pearson >= 0.9 at every layer, J-lens",
+   "min_J_pearson": 0.958932,
+   "argmin_layer": 8,
+   "pass": true
+  },
+  "padded_unembed_rows_dropped": 243,
+  "provenance_caveat": "No Qwen-provenance frequency exists for non-Latin tokens in this project; wordfreq fixes coverage, not provenance (D26-D28).",
+  "cells": {
+   "latin_pile": {
+    "freq_source": "pile-10k capped counts (log)",
+    "n_tokens": 92858,
+    "share_of_vocab": 0.3743
+   },
+   "whole_wordfreq": {
+    "freq_source": "wordfreq Zipf",
+    "n_tokens": 224457,
+    "share_of_vocab": 0.9048
+   },
+   "nonlatin_wordfreq": {
+    "freq_source": "wordfreq Zipf",
+    "n_tokens": 94437,
+    "share_of_vocab": 0.3807
+   }
+  }
+ },
+ "sign_agreement_J_by_layer": {
+  "0": "disagree",
+  "1": "disagree",
+  "2": "disagree",
+  "3": "disagree",
+  "4": "disagree",
+  "5": "agree",
+  "6": "agree",
+  "7": "agree",
+  "8": "agree",
+  "9": "agree",
+  "10": "agree",
+  "11": "agree",
+  "12": "agree",
+  "13": "agree",
+  "14": "agree",
+  "15": "agree",
+  "16": "agree",
+  "17": "agree",
+  "18": "agree",
+  "19": "agree",
+  "20": "agree",
+  "21": "agree",
+  "22": "agree",
+  "23": "agree",
+  "24": "agree",
+  "25": "agree",
+  "26": "agree",
+  "27": "agree",
+  "28": "agree",
+  "29": "disagree",
+  "30": "agree"
+ },
+ "results": [
+  {
+   "kind": "logit",
+   "layer": 0,
+   "cell": "latin_pile",
+   "freq_source": "pile-10k capped counts (log)",
+   "spearman": 0.447,
+   "pearson": 0.4777,
+   "n_tokens": 92858
+  },
+  {
+   "kind": "logit",
+   "layer": 0,
+   "cell": "whole_wordfreq",
+   "freq_source": "wordfreq Zipf",
+   "spearman": 0.2077,
+   "pearson": 0.1763,
+   "n_tokens": 224457,
+   "bare_word_only": {
+    "spearman": 0.2432,
+    "pearson": 0.2105,
+    "n_tokens": 204480
+   }
+  },
+  {
+   "kind": "logit",
+   "layer": 0,
+   "cell": "nonlatin_wordfreq",
+   "freq_source": "wordfreq Zipf",
+   "spearman": 0.2041,
+   "pearson": 0.1726,
+   "n_tokens": 94437,
+   "bare_word_only": {
+    "spearman": 0.2074,
+    "pearson": 0.179,
+    "n_tokens": 92799
+   }
+  },
+  {
+   "kind": "logit",
+   "layer": 1,
+   "cell": "latin_pile",
+   "freq_source": "pile-10k capped counts (log)",
+   "spearman": 0.4198,
+   "pearson": 0.4485,
+   "n_tokens": 92858
+  },
+  {
+   "kind": "logit",
+   "layer": 1,
+   "cell": "whole_wordfreq",
+   "freq_source": "wordfreq Zipf",
+   "spearman": 0.2163,
+   "pearson": 0.1848,
+   "n_tokens": 224457,
+   "bare_word_only": {
+    "spearman": 0.2582,
+    "pearson": 0.2246,
+    "n_tokens": 204480
+   }
+  },
+  {
+   "kind": "logit",
+   "layer": 1,
+   "cell": "nonlatin_wordfreq",
+   "freq_source": "wordfreq Zipf",
+   "spearman": 0.2069,
+   "pearson": 0.177,
+   "n_tokens": 94437,
+   "bare_word_only": {
+    "spearman": 0.2099,
+    "pearson": 0.183,
+    "n_tokens": 92799
+   }
+  },
+  {
+   "kind": "logit",
+   "layer": 2,
+   "cell": "latin_pile",
+   "freq_source": "pile-10k capped counts (log)",
+   "spearman": 0.2944,
+   "pearson": 0.3202,
+   "n_tokens": 92858
+  },
+  {
+   "kind": "logit",
+   "layer": 2,
+   "cell": "whole_wordfreq",
+   "freq_source": "wordfreq Zipf",
+   "spearman": 0.1822,
+   "pearson": 0.1737,
+   "n_tokens": 224457,
+   "bare_word_only": {
+    "spearman": 0.2302,
+    "pearson": 0.2204,
+    "n_tokens": 204480
+   }
+  },
+  {
+   "kind": "logit",
+   "layer": 2,
+   "cell": "nonlatin_wordfreq",
+   "freq_source": "wordfreq Zipf",
+   "spearman": 0.1654,
+   "pearson": 0.1546,
+   "n_tokens": 94437,
+   "bare_word_only": {
+    "spearman": 0.1665,
+    "pearson": 0.1579,
+    "n_tokens": 92799
+   }
+  },
+  {
+   "kind": "logit",
+   "layer": 3,
+   "cell": "latin_pile",
+   "freq_source": "pile-10k capped counts (log)",
+   "spearman": 0.3765,
+   "pearson": 0.4105,
+   "n_tokens": 92858
+  },
+  {
+   "kind": "logit",
+   "layer": 3,
+   "cell": "whole_wordfreq",
+   "freq_source": "wordfreq Zipf",
+   "spearman": 0.2232,
+   "pearson": 0.204,
+   "n_tokens": 224457,
+   "bare_word_only": {
+    "spearman": 0.2688,
+    "pearson": 0.2472,
+    "n_tokens": 204480
+   }
+  },
+  {
+   "kind": "logit",
+   "layer": 3,
+   "cell": "nonlatin_wordfreq",
+   "freq_source": "wordfreq Zipf",
+   "spearman": 0.2067,
+   "pearson": 0.188,
+   "n_tokens": 94437,
+   "bare_word_only": {
+    "spearman": 0.2093,
+    "pearson": 0.1935,
+    "n_tokens": 92799
+   }
+  },
+  {
+   "kind": "logit",
+   "layer": 4,
+   "cell": "latin_pile",
+   "freq_source": "pile-10k capped counts (log)",
+   "spearman": 0.3249,
+   "pearson": 0.3546,
+   "n_tokens": 92858
+  },
+  {
+   "kind": "logit",
+   "layer": 4,
+   "cell": "whole_wordfreq",
+   "freq_source": "wordfreq Zipf",
+   "spearman": 0.2055,
+   "pearson": 0.1818,
+   "n_tokens": 224457,
+   "bare_word_only": {
+    "spearman": 0.2527,
+    "pearson": 0.2261,
+    "n_tokens": 204480
+   }
+  },
+  {
+   "kind": "logit",
+   "layer": 4,
+   "cell": "nonlatin_wordfreq",
+   "freq_source": "wordfreq Zipf",
+   "spearman": 0.1944,
+   "pearson": 0.1714,
+   "n_tokens": 94437,
+   "bare_word_only": {
+    "spearman": 0.198,
+    "pearson": 0.1779,
+    "n_tokens": 92799
+   }
+  },
+  {
+   "kind": "logit",
+   "layer": 5,
+   "cell": "latin_pile",
+   "freq_source": "pile-10k capped counts (log)",
+   "spearman": 0.2516,
+   "pearson": 0.2759,
+   "n_tokens": 92858
+  },
+  {
+   "kind": "logit",
+   "layer": 5,
+   "cell": "whole_wordfreq",
+   "freq_source": "wordfreq Zipf",
+   "spearman": 0.1812,
+   "pearson": 0.1559,
+   "n_tokens": 224457,
+   "bare_word_only": {
+    "spearman": 0.2289,
+    "pearson": 0.2003,
+    "n_tokens": 204480
+   }
+  },
+  {
+   "kind": "logit",
+   "layer": 5,
+   "cell": "nonlatin_wordfreq",
+   "freq_source": "wordfreq Zipf",
+   "spearman": 0.1816,
+   "pearson": 0.158,
+   "n_tokens": 94437,
+   "bare_word_only": {
+    "spearman": 0.1847,
+    "pearson": 0.1636,
+    "n_tokens": 92799
+   }
+  },
+  {
+   "kind": "logit",
+   "layer": 6,
+   "cell": "latin_pile",
+   "freq_source": "pile-10k capped counts (log)",
+   "spearman": 0.1022,
+   "pearson": 0.1099,
+   "n_tokens": 92858
+  },
+  {
+   "kind": "logit",
+   "layer": 6,
+   "cell": "whole_wordfreq",
+   "freq_source": "wordfreq Zipf",
+   "spearman": 0.1221,
+   "pearson": 0.1014,
+   "n_tokens": 224457,
+   "bare_word_only": {
+    "spearman": 0.1674,
+    "pearson": 0.1435,
+    "n_tokens": 204480
+   }
+  },
+  {
+   "kind": "logit",
+   "layer": 6,
+   "cell": "nonlatin_wordfreq",
+   "freq_source": "wordfreq Zipf",
+   "spearman": 0.1293,
+   "pearson": 0.1145,
+   "n_tokens": 94437,
+   "bare_word_only": {
+    "spearman": 0.1322,
+    "pearson": 0.1197,
+    "n_tokens": 92799
+   }
+  },
+  {
+   "kind": "logit",
+   "layer": 7,
+   "cell": "latin_pile",
+   "freq_source": "pile-10k capped counts (log)",
+   "spearman": 0.1026,
+   "pearson": 0.1101,
+   "n_tokens": 92858
+  },
+  {
+   "kind": "logit",
+   "layer": 7,
+   "cell": "whole_wordfreq",
+   "freq_source": "wordfreq Zipf",
+   "spearman": 0.1528,
+   "pearson": 0.1312,
+   "n_tokens": 224457,
+   "bare_word_only": {
+    "spearman": 0.2022,
+    "pearson": 0.1774,
+    "n_tokens": 204480
+   }
+  },
+  {
+   "kind": "logit",
+   "layer": 7,
+   "cell": "nonlatin_wordfreq",
+   "freq_source": "wordfreq Zipf",
+   "spearman": 0.1707,
+   "pearson": 0.1475,
+   "n_tokens": 94437,
+   "bare_word_only": {
+    "spearman": 0.1739,
+    "pearson": 0.153,
+    "n_tokens": 92799
+   }
+  },
+  {
+   "kind": "logit",
+   "layer": 8,
+   "cell": "latin_pile",
+   "freq_source": "pile-10k capped counts (log)",
+   "spearman": 0.0933,
+   "pearson": 0.1011,
+   "n_tokens": 92858
+  },
+  {
+   "kind": "logit",
+   "layer": 8,
+   "cell": "whole_wordfreq",
+   "freq_source": "wordfreq Zipf",
+   "spearman": 0.138,
+   "pearson": 0.1186,
+   "n_tokens": 224457,
+   "bare_word_only": {
+    "spearman": 0.1851,
+    "pearson": 0.1624,
+    "n_tokens": 204480
+   }
+  },
+  {
+   "kind": "logit",
+   "layer": 8,
+   "cell": "nonlatin_wordfreq",
+   "freq_source": "wordfreq Zipf",
+   "spearman": 0.1563,
+   "pearson": 0.1368,
+   "n_tokens": 94437,
+   "bare_word_only": {
+    "spearman": 0.1594,
+    "pearson": 0.1422,
+    "n_tokens": 92799
+   }
+  },
+  {
+   "kind": "logit",
+   "layer": 9,
+   "cell": "latin_pile",
+   "freq_source": "pile-10k capped counts (log)",
+   "spearman": 0.0666,
+   "pearson": 0.0708,
+   "n_tokens": 92858
+  },
+  {
+   "kind": "logit",
+   "layer": 9,
+   "cell": "whole_wordfreq",
+   "freq_source": "wordfreq Zipf",
+   "spearman": 0.1274,
+   "pearson": 0.1039,
+   "n_tokens": 224457,
+   "bare_word_only": {
+    "spearman": 0.1764,
+    "pearson": 0.1491,
+    "n_tokens": 204480
+   }
+  },
+  {
+   "kind": "logit",
+   "layer": 9,
+   "cell": "nonlatin_wordfreq",
+   "freq_source": "wordfreq Zipf",
+   "spearman": 0.1532,
+   "pearson": 0.1299,
+   "n_tokens": 94437,
+   "bare_word_only": {
+    "spearman": 0.1567,
+    "pearson": 0.1357,
+    "n_tokens": 92799
+   }
+  },
+  {
+   "kind": "logit",
+   "layer": 10,
+   "cell": "latin_pile",
+   "freq_source": "pile-10k capped counts (log)",
+   "spearman": 0.1168,
+   "pearson": 0.1228,
+   "n_tokens": 92858
+  },
+  {
+   "kind": "logit",
+   "layer": 10,
+   "cell": "whole_wordfreq",
+   "freq_source": "wordfreq Zipf",
+   "spearman": 0.1377,
+   "pearson": 0.1222,
+   "n_tokens": 224457,
+   "bare_word_only": {
+    "spearman": 0.1855,
+    "pearson": 0.1677,
+    "n_tokens": 204480
+   }
+  },
+  {
+   "kind": "logit",
+   "layer": 10,
+   "cell": "nonlatin_wordfreq",
+   "freq_source": "wordfreq Zipf",
+   "spearman": 0.1326,
+   "pearson": 0.1181,
+   "n_tokens": 94437,
+   "bare_word_only": {
+    "spearman": 0.1354,
+    "pearson": 0.1228,
+    "n_tokens": 92799
+   }
+  },
+  {
+   "kind": "logit",
+   "layer": 11,
+   "cell": "latin_pile",
+   "freq_source": "pile-10k capped counts (log)",
+   "spearman": 0.0339,
+   "pearson": 0.0346,
+   "n_tokens": 92858
+  },
+  {
+   "kind": "logit",
+   "layer": 11,
+   "cell": "whole_wordfreq",
+   "freq_source": "wordfreq Zipf",
+   "spearman": 0.1092,
+   "pearson": 0.0884,
+   "n_tokens": 224457,
+   "bare_word_only": {
+    "spearman": 0.1596,
+    "pearson": 0.1355,
+    "n_tokens": 204480
+   }
+  },
+  {
+   "kind": "logit",
+   "layer": 11,
+   "cell": "nonlatin_wordfreq",
+   "freq_source": "wordfreq Zipf",
+   "spearman": 0.1341,
+   "pearson": 0.1152,
+   "n_tokens": 94437,
+   "bare_word_only": {
+    "spearman": 0.1382,
+    "pearson": 0.1217,
+    "n_tokens": 92799
+   }
+  },
+  {
+   "kind": "logit",
+   "layer": 12,
+   "cell": "latin_pile",
+   "freq_source": "pile-10k capped counts (log)",
+   "spearman": 0.0416,
+   "pearson": 0.0421,
+   "n_tokens": 92858
+  },
+  {
+   "kind": "logit",
+   "layer": 12,
+   "cell": "whole_wordfreq",
+   "freq_source": "wordfreq Zipf",
+   "spearman": 0.112,
+   "pearson": 0.095,
+   "n_tokens": 224457,
+   "bare_word_only": {
+    "spearman": 0.1623,
+    "pearson": 0.1421,
+    "n_tokens": 204480
+   }
+  },
+  {
+   "kind": "logit",
+   "layer": 12,
+   "cell": "nonlatin_wordfreq",
+   "freq_source": "wordfreq Zipf",
+   "spearman": 0.1287,
+   "pearson": 0.1135,
+   "n_tokens": 94437,
+   "bare_word_only": {
+    "spearman": 0.1328,
+    "pearson": 0.1202,
+    "n_tokens": 92799
+   }
+  },
+  {
+   "kind": "logit",
+   "layer": 13,
+   "cell": "latin_pile",
+   "freq_source": "pile-10k capped counts (log)",
+   "spearman": 0.0261,
+   "pearson": 0.0251,
+   "n_tokens": 92858
+  },
+  {
+   "kind": "logit",
+   "layer": 13,
+   "cell": "whole_wordfreq",
+   "freq_source": "wordfreq Zipf",
+   "spearman": 0.1017,
+   "pearson": 0.0834,
+   "n_tokens": 224457,
+   "bare_word_only": {
+    "spearman": 0.1511,
+    "pearson": 0.1295,
+    "n_tokens": 204480
+   }
+  },
+  {
+   "kind": "logit",
+   "layer": 13,
+   "cell": "nonlatin_wordfreq",
+   "freq_source": "wordfreq Zipf",
+   "spearman": 0.1203,
+   "pearson": 0.105,
+   "n_tokens": 94437,
+   "bare_word_only": {
+    "spearman": 0.124,
+    "pearson": 0.1111,
+    "n_tokens": 92799
+   }
+  },
+  {
+   "kind": "logit",
+   "layer": 14,
+   "cell": "latin_pile",
+   "freq_source": "pile-10k capped counts (log)",
+   "spearman": 0.0911,
+   "pearson": 0.0949,
+   "n_tokens": 92858
+  },
+  {
+   "kind": "logit",
+   "layer": 14,
+   "cell": "whole_wordfreq",
+   "freq_source": "wordfreq Zipf",
+   "spearman": 0.1188,
+   "pearson": 0.1132,
+   "n_tokens": 224457,
+   "bare_word_only": {
+    "spearman": 0.1656,
+    "pearson": 0.158,
+    "n_tokens": 204480
+   }
+  },
+  {
+   "kind": "logit",
+   "layer": 14,
+   "cell": "nonlatin_wordfreq",
+   "freq_source": "wordfreq Zipf",
+   "spearman": 0.1104,
+   "pearson": 0.1075,
+   "n_tokens": 94437,
+   "bare_word_only": {
+    "spearman": 0.1124,
+    "pearson": 0.1115,
+    "n_tokens": 92799
+   }
+  },
+  {
+   "kind": "logit",
+   "layer": 15,
+   "cell": "latin_pile",
+   "freq_source": "pile-10k capped counts (log)",
+   "spearman": 0.0502,
+   "pearson": 0.0517,
+   "n_tokens": 92858
+  },
+  {
+   "kind": "logit",
+   "layer": 15,
+   "cell": "whole_wordfreq",
+   "freq_source": "wordfreq Zipf",
+   "spearman": 0.1063,
+   "pearson": 0.094,
+   "n_tokens": 224457,
+   "bare_word_only": {
+    "spearman": 0.1565,
+    "pearson": 0.1415,
+    "n_tokens": 204480
+   }
+  },
+  {
+   "kind": "logit",
+   "layer": 15,
+   "cell": "nonlatin_wordfreq",
+   "freq_source": "wordfreq Zipf",
+   "spearman": 0.1136,
+   "pearson": 0.1032,
+   "n_tokens": 94437,
+   "bare_word_only": {
+    "spearman": 0.117,
+    "pearson": 0.1088,
+    "n_tokens": 92799
+   }
+  },
+  {
+   "kind": "logit",
+   "layer": 16,
+   "cell": "latin_pile",
+   "freq_source": "pile-10k capped counts (log)",
+   "spearman": -0.0116,
+   "pearson": -0.0183,
+   "n_tokens": 92858
+  },
+  {
+   "kind": "logit",
+   "layer": 16,
+   "cell": "whole_wordfreq",
+   "freq_source": "wordfreq Zipf",
+   "spearman": 0.0783,
+   "pearson": 0.0653,
+   "n_tokens": 224457,
+   "bare_word_only": {
+    "spearman": 0.1252,
+    "pearson": 0.1089,
+    "n_tokens": 204480
+   }
+  },
+  {
+   "kind": "logit",
+   "layer": 16,
+   "cell": "nonlatin_wordfreq",
+   "freq_source": "wordfreq Zipf",
+   "spearman": 0.0948,
+   "pearson": 0.0847,
+   "n_tokens": 94437,
+   "bare_word_only": {
+    "spearman": 0.0983,
+    "pearson": 0.0902,
+    "n_tokens": 92799
+   }
+  },
+  {
+   "kind": "logit",
+   "layer": 17,
+   "cell": "latin_pile",
+   "freq_source": "pile-10k capped counts (log)",
+   "spearman": -0.0278,
+   "pearson": -0.0365,
+   "n_tokens": 92858
+  },
+  {
+   "kind": "logit",
+   "layer": 17,
+   "cell": "whole_wordfreq",
+   "freq_source": "wordfreq Zipf",
+   "spearman": 0.0781,
+   "pearson": 0.0628,
+   "n_tokens": 224457,
+   "bare_word_only": {
+    "spearman": 0.1236,
+    "pearson": 0.1042,
+    "n_tokens": 204480
+   }
+  },
+  {
+   "kind": "logit",
+   "layer": 17,
+   "cell": "nonlatin_wordfreq",
+   "freq_source": "wordfreq Zipf",
+   "spearman": 0.0999,
+   "pearson": 0.0873,
+   "n_tokens": 94437,
+   "bare_word_only": {
+    "spearman": 0.1041,
+    "pearson": 0.0936,
+    "n_tokens": 92799
+   }
+  },
+  {
+   "kind": "logit",
+   "layer": 18,
+   "cell": "latin_pile",
+   "freq_source": "pile-10k capped counts (log)",
+   "spearman": -0.0523,
+   "pearson": -0.0659,
+   "n_tokens": 92858
+  },
+  {
+   "kind": "logit",
+   "layer": 18,
+   "cell": "whole_wordfreq",
+   "freq_source": "wordfreq Zipf",
+   "spearman": 0.0838,
+   "pearson": 0.0752,
+   "n_tokens": 224457,
+   "bare_word_only": {
+    "spearman": 0.1243,
+    "pearson": 0.1109,
+    "n_tokens": 204480
+   }
+  },
+  {
+   "kind": "logit",
+   "layer": 18,
+   "cell": "nonlatin_wordfreq",
+   "freq_source": "wordfreq Zipf",
+   "spearman": 0.0803,
+   "pearson": 0.0762,
+   "n_tokens": 94437,
+   "bare_word_only": {
+    "spearman": 0.083,
+    "pearson": 0.0803,
+    "n_tokens": 92799
+   }
+  },
+  {
+   "kind": "logit",
+   "layer": 19,
+   "cell": "latin_pile",
+   "freq_source": "pile-10k capped counts (log)",
+   "spearman": -0.2504,
+   "pearson": -0.2823,
+   "n_tokens": 92858
+  },
+  {
+   "kind": "logit",
+   "layer": 19,
+   "cell": "whole_wordfreq",
+   "freq_source": "wordfreq Zipf",
+   "spearman": -0.0179,
+   "pearson": -0.0358,
+   "n_tokens": 224457,
+   "bare_word_only": {
+    "spearman": 0.0085,
+    "pearson": -0.016,
+    "n_tokens": 204480
+   }
+  },
+  {
+   "kind": "logit",
+   "layer": 19,
+   "cell": "nonlatin_wordfreq",
+   "freq_source": "wordfreq Zipf",
+   "spearman": 0.0073,
+   "pearson": -0.0022,
+   "n_tokens": 94437,
+   "bare_word_only": {
+    "spearman": 0.0117,
+    "pearson": 0.0035,
+    "n_tokens": 92799
+   }
+  },
+  {
+   "kind": "logit",
+   "layer": 20,
+   "cell": "latin_pile",
+   "freq_source": "pile-10k capped counts (log)",
+   "spearman": -0.2817,
+   "pearson": -0.3166,
+   "n_tokens": 92858
+  },
+  {
+   "kind": "logit",
+   "layer": 20,
+   "cell": "whole_wordfreq",
+   "freq_source": "wordfreq Zipf",
+   "spearman": -0.0417,
+   "pearson": -0.06,
+   "n_tokens": 224457,
+   "bare_word_only": {
+    "spearman": -0.0204,
+    "pearson": -0.0451,
+    "n_tokens": 204480
+   }
+  },
+  {
+   "kind": "logit",
+   "layer": 20,
+   "cell": "nonlatin_wordfreq",
+   "freq_source": "wordfreq Zipf",
+   "spearman": -0.0132,
+   "pearson": -0.0209,
+   "n_tokens": 94437,
+   "bare_word_only": {
+    "spearman": -0.0094,
+    "pearson": -0.0165,
+    "n_tokens": 92799
+   }
+  },
+  {
+   "kind": "logit",
+   "layer": 21,
+   "cell": "latin_pile",
+   "freq_source": "pile-10k capped counts (log)",
+   "spearman": -0.2973,
+   "pearson": -0.3377,
+   "n_tokens": 92858
+  },
+  {
+   "kind": "logit",
+   "layer": 21,
+   "cell": "whole_wordfreq",
+   "freq_source": "wordfreq Zipf",
+   "spearman": -0.0589,
+   "pearson": -0.079,
+   "n_tokens": 224457,
+   "bare_word_only": {
+    "spearman": -0.0389,
+    "pearson": -0.0656,
+    "n_tokens": 204480
+   }
+  },
+  {
+   "kind": "logit",
+   "layer": 21,
+   "cell": "nonlatin_wordfreq",
+   "freq_source": "wordfreq Zipf",
+   "spearman": -0.0293,
+   "pearson": -0.0362,
+   "n_tokens": 94437,
+   "bare_word_only": {
+    "spearman": -0.0256,
+    "pearson": -0.0321,
+    "n_tokens": 92799
+   }
+  },
+  {
+   "kind": "logit",
+   "layer": 22,
+   "cell": "latin_pile",
+   "freq_source": "pile-10k capped counts (log)",
+   "spearman": -0.2142,
+   "pearson": -0.2459,
+   "n_tokens": 92858
+  },
+  {
+   "kind": "logit",
+   "layer": 22,
+   "cell": "whole_wordfreq",
+   "freq_source": "wordfreq Zipf",
+   "spearman": -0.0145,
+   "pearson": -0.0342,
+   "n_tokens": 224457,
+   "bare_word_only": {
+    "spearman": 0.009,
+    "pearson": -0.0169,
+    "n_tokens": 204480
+   }
+  },
+  {
+   "kind": "logit",
+   "layer": 22,
+   "cell": "nonlatin_wordfreq",
+   "freq_source": "wordfreq Zipf",
+   "spearman": 0.0024,
+   "pearson": -0.0044,
+   "n_tokens": 94437,
+   "bare_word_only": {
+    "spearman": 0.0064,
+    "pearson": 0.0006,
+    "n_tokens": 92799
+   }
+  },
+  {
+   "kind": "logit",
+   "layer": 23,
+   "cell": "latin_pile",
+   "freq_source": "pile-10k capped counts (log)",
+   "spearman": -0.3345,
+   "pearson": -0.3835,
+   "n_tokens": 92858
+  },
+  {
+   "kind": "logit",
+   "layer": 23,
+   "cell": "whole_wordfreq",
+   "freq_source": "wordfreq Zipf",
+   "spearman": -0.0821,
+   "pearson": -0.1005,
+   "n_tokens": 224457,
+   "bare_word_only": {
+    "spearman": -0.0686,
+    "pearson": -0.0928,
+    "n_tokens": 204480
+   }
+  },
+  {
+   "kind": "logit",
+   "layer": 23,
+   "cell": "nonlatin_wordfreq",
+   "freq_source": "wordfreq Zipf",
+   "spearman": -0.0577,
+   "pearson": -0.0608,
+   "n_tokens": 94437,
+   "bare_word_only": {
+    "spearman": -0.0543,
+    "pearson": -0.0572,
+    "n_tokens": 92799
+   }
+  },
+  {
+   "kind": "logit",
+   "layer": 24,
+   "cell": "latin_pile",
+   "freq_source": "pile-10k capped counts (log)",
+   "spearman": -0.3156,
+   "pearson": -0.361,
+   "n_tokens": 92858
+  },
+  {
+   "kind": "logit",
+   "layer": 24,
+   "cell": "whole_wordfreq",
+   "freq_source": "wordfreq Zipf",
+   "spearman": -0.0748,
+   "pearson": -0.0923,
+   "n_tokens": 224457,
+   "bare_word_only": {
+    "spearman": -0.067,
+    "pearson": -0.0892,
+    "n_tokens": 204480
+   }
+  },
+  {
+   "kind": "logit",
+   "layer": 24,
+   "cell": "nonlatin_wordfreq",
+   "freq_source": "wordfreq Zipf",
+   "spearman": -0.0585,
+   "pearson": -0.0608,
+   "n_tokens": 94437,
+   "bare_word_only": {
+    "spearman": -0.0555,
+    "pearson": -0.0579,
+    "n_tokens": 92799
+   }
+  },
+  {
+   "kind": "logit",
+   "layer": 25,
+   "cell": "latin_pile",
+   "freq_source": "pile-10k capped counts (log)",
+   "spearman": -0.2778,
+   "pearson": -0.3191,
+   "n_tokens": 92858
+  },
+  {
+   "kind": "logit",
+   "layer": 25,
+   "cell": "whole_wordfreq",
+   "freq_source": "wordfreq Zipf",
+   "spearman": -0.0539,
+   "pearson": -0.0704,
+   "n_tokens": 224457,
+   "bare_word_only": {
+    "spearman": -0.0451,
+    "pearson": -0.0661,
+    "n_tokens": 204480
+   }
+  },
+  {
+   "kind": "logit",
+   "layer": 25,
+   "cell": "nonlatin_wordfreq",
+   "freq_source": "wordfreq Zipf",
+   "spearman": -0.0423,
+   "pearson": -0.0443,
+   "n_tokens": 94437,
+   "bare_word_only": {
+    "spearman": -0.0396,
+    "pearson": -0.0416,
+    "n_tokens": 92799
+   }
+  },
+  {
+   "kind": "logit",
+   "layer": 26,
+   "cell": "latin_pile",
+   "freq_source": "pile-10k capped counts (log)",
+   "spearman": -0.1984,
+   "pearson": -0.2314,
+   "n_tokens": 92858
+  },
+  {
+   "kind": "logit",
+   "layer": 26,
+   "cell": "whole_wordfreq",
+   "freq_source": "wordfreq Zipf",
+   "spearman": -0.0178,
+   "pearson": -0.0386,
+   "n_tokens": 224457,
+   "bare_word_only": {
+    "spearman": 0.0011,
+    "pearson": -0.0249,
+    "n_tokens": 204480
+   }
+  },
+  {
+   "kind": "logit",
+   "layer": 26,
+   "cell": "nonlatin_wordfreq",
+   "freq_source": "wordfreq Zipf",
+   "spearman": -0.0114,
+   "pearson": -0.0167,
+   "n_tokens": 94437,
+   "bare_word_only": {
+    "spearman": -0.0077,
+    "pearson": -0.0124,
+    "n_tokens": 92799
+   }
+  },
+  {
+   "kind": "logit",
+   "layer": 27,
+   "cell": "latin_pile",
+   "freq_source": "pile-10k capped counts (log)",
+   "spearman": -0.3016,
+   "pearson": -0.3403,
+   "n_tokens": 92858
+  },
+  {
+   "kind": "logit",
+   "layer": 27,
+   "cell": "whole_wordfreq",
+   "freq_source": "wordfreq Zipf",
+   "spearman": -0.0939,
+   "pearson": -0.1111,
+   "n_tokens": 224457,
+   "bare_word_only": {
+    "spearman": -0.086,
+    "pearson": -0.1076,
+    "n_tokens": 204480
+   }
+  },
+  {
+   "kind": "logit",
+   "layer": 27,
+   "cell": "nonlatin_wordfreq",
+   "freq_source": "wordfreq Zipf",
+   "spearman": -0.0757,
+   "pearson": -0.0789,
+   "n_tokens": 94437,
+   "bare_word_only": {
+    "spearman": -0.0737,
+    "pearson": -0.0775,
+    "n_tokens": 92799
+   }
+  },
+  {
+   "kind": "logit",
+   "layer": 28,
+   "cell": "latin_pile",
+   "freq_source": "pile-10k capped counts (log)",
+   "spearman": -0.33,
+   "pearson": -0.3586,
+   "n_tokens": 92858
+  },
+  {
+   "kind": "logit",
+   "layer": 28,
+   "cell": "whole_wordfreq",
+   "freq_source": "wordfreq Zipf",
+   "spearman": -0.1214,
+   "pearson": -0.1414,
+   "n_tokens": 224457,
+   "bare_word_only": {
+    "spearman": -0.117,
+    "pearson": -0.1413,
+    "n_tokens": 204480
+   }
+  },
+  {
+   "kind": "logit",
+   "layer": 28,
+   "cell": "nonlatin_wordfreq",
+   "freq_source": "wordfreq Zipf",
+   "spearman": -0.0875,
+   "pearson": -0.0987,
+   "n_tokens": 94437,
+   "bare_word_only": {
+    "spearman": -0.0858,
+    "pearson": -0.0979,
+    "n_tokens": 92799
+   }
+  },
+  {
+   "kind": "logit",
+   "layer": 29,
+   "cell": "latin_pile",
+   "freq_source": "pile-10k capped counts (log)",
+   "spearman": -0.2543,
+   "pearson": -0.2825,
+   "n_tokens": 92858
+  },
+  {
+   "kind": "logit",
+   "layer": 29,
+   "cell": "whole_wordfreq",
+   "freq_source": "wordfreq Zipf",
+   "spearman": -0.1022,
+   "pearson": -0.123,
+   "n_tokens": 224457,
+   "bare_word_only": {
+    "spearman": -0.0986,
+    "pearson": -0.1233,
+    "n_tokens": 204480
+   }
+  },
+  {
+   "kind": "logit",
+   "layer": 29,
+   "cell": "nonlatin_wordfreq",
+   "freq_source": "wordfreq Zipf",
+   "spearman": -0.0791,
+   "pearson": -0.0944,
+   "n_tokens": 94437,
+   "bare_word_only": {
+    "spearman": -0.0784,
+    "pearson": -0.0947,
+    "n_tokens": 92799
+   }
+  },
+  {
+   "kind": "logit",
+   "layer": 30,
+   "cell": "latin_pile",
+   "freq_source": "pile-10k capped counts (log)",
+   "spearman": 0.1804,
+   "pearson": 0.2067,
+   "n_tokens": 92858
+  },
+  {
+   "kind": "logit",
+   "layer": 30,
+   "cell": "whole_wordfreq",
+   "freq_source": "wordfreq Zipf",
+   "spearman": 0.088,
+   "pearson": 0.0709,
+   "n_tokens": 224457,
+   "bare_word_only": {
+    "spearman": 0.1034,
+    "pearson": 0.0824,
+    "n_tokens": 204480
+   }
+  },
+  {
+   "kind": "logit",
+   "layer": 30,
+   "cell": "nonlatin_wordfreq",
+   "freq_source": "wordfreq Zipf",
+   "spearman": 0.0269,
+   "pearson": 0.0012,
+   "n_tokens": 94437,
+   "bare_word_only": {
+    "spearman": 0.0288,
+    "pearson": 0.0026,
+    "n_tokens": 92799
+   }
+  },
+  {
+   "kind": "J",
+   "layer": 0,
+   "cell": "latin_pile",
+   "freq_source": "pile-10k capped counts (log)",
+   "spearman": -0.0627,
+   "pearson": -0.0666,
+   "n_tokens": 92858
+  },
+  {
+   "kind": "J",
+   "layer": 0,
+   "cell": "whole_wordfreq",
+   "freq_source": "wordfreq Zipf",
+   "spearman": 0.0073,
+   "pearson": 0.0021,
+   "n_tokens": 224457,
+   "bare_word_only": {
+    "spearman": -0.0073,
+    "pearson": -0.0149,
+    "n_tokens": 204480
+   }
+  },
+  {
+   "kind": "J",
+   "layer": 0,
+   "cell": "nonlatin_wordfreq",
+   "freq_source": "wordfreq Zipf",
+   "spearman": 0.0255,
+   "pearson": 0.0161,
+   "n_tokens": 94437,
+   "bare_word_only": {
+    "spearman": 0.0242,
+    "pearson": 0.0133,
+    "n_tokens": 92799
+   }
+  },
+  {
+   "kind": "J",
+   "layer": 1,
+   "cell": "latin_pile",
+   "freq_source": "pile-10k capped counts (log)",
+   "spearman": -0.0945,
+   "pearson": -0.1008,
+   "n_tokens": 92858
+  },
+  {
+   "kind": "J",
+   "layer": 1,
+   "cell": "whole_wordfreq",
+   "freq_source": "wordfreq Zipf",
+   "spearman": 0.0308,
+   "pearson": 0.0211,
+   "n_tokens": 224457,
+   "bare_word_only": {
+    "spearman": 0.0166,
+    "pearson": 0.004,
+    "n_tokens": 204480
+   }
+  },
+  {
+   "kind": "J",
+   "layer": 1,
+   "cell": "nonlatin_wordfreq",
+   "freq_source": "wordfreq Zipf",
+   "spearman": 0.0604,
+   "pearson": 0.0443,
+   "n_tokens": 94437,
+   "bare_word_only": {
+    "spearman": 0.0602,
+    "pearson": 0.0432,
+    "n_tokens": 92799
+   }
+  },
+  {
+   "kind": "J",
+   "layer": 2,
+   "cell": "latin_pile",
+   "freq_source": "pile-10k capped counts (log)",
+   "spearman": -0.2137,
+   "pearson": -0.2312,
+   "n_tokens": 92858
+  },
+  {
+   "kind": "J",
+   "layer": 2,
+   "cell": "whole_wordfreq",
+   "freq_source": "wordfreq Zipf",
+   "spearman": -0.049,
+   "pearson": -0.0585,
+   "n_tokens": 224457,
+   "bare_word_only": {
+    "spearman": -0.0569,
+    "pearson": -0.0684,
+    "n_tokens": 204480
+   }
+  },
+  {
+   "kind": "J",
+   "layer": 2,
+   "cell": "nonlatin_wordfreq",
+   "freq_source": "wordfreq Zipf",
+   "spearman": 0.0056,
+   "pearson": -0.0069,
+   "n_tokens": 94437,
+   "bare_word_only": {
+    "spearman": 0.0058,
+    "pearson": -0.0071,
+    "n_tokens": 92799
+   }
+  },
+  {
+   "kind": "J",
+   "layer": 3,
+   "cell": "latin_pile",
+   "freq_source": "pile-10k capped counts (log)",
+   "spearman": -0.1138,
+   "pearson": -0.124,
+   "n_tokens": 92858
+  },
+  {
+   "kind": "J",
+   "layer": 3,
+   "cell": "whole_wordfreq",
+   "freq_source": "wordfreq Zipf",
+   "spearman": -0.0163,
+   "pearson": -0.027,
+   "n_tokens": 224457,
+   "bare_word_only": {
+    "spearman": -0.0214,
+    "pearson": -0.0355,
+    "n_tokens": 204480
+   }
+  },
+  {
+   "kind": "J",
+   "layer": 3,
+   "cell": "nonlatin_wordfreq",
+   "freq_source": "wordfreq Zipf",
+   "spearman": 0.0034,
+   "pearson": -0.0114,
+   "n_tokens": 94437,
+   "bare_word_only": {
+    "spearman": 0.0046,
+    "pearson": -0.0107,
+    "n_tokens": 92799
+   }
+  },
+  {
+   "kind": "J",
+   "layer": 4,
+   "cell": "latin_pile",
+   "freq_source": "pile-10k capped counts (log)",
+   "spearman": -0.0769,
+   "pearson": -0.0859,
+   "n_tokens": 92858
+  },
+  {
+   "kind": "J",
+   "layer": 4,
+   "cell": "whole_wordfreq",
+   "freq_source": "wordfreq Zipf",
+   "spearman": -0.0018,
+   "pearson": -0.0109,
+   "n_tokens": 224457,
+   "bare_word_only": {
+    "spearman": -0.0048,
+    "pearson": -0.0168,
+    "n_tokens": 204480
+   }
+  },
+  {
+   "kind": "J",
+   "layer": 4,
+   "cell": "nonlatin_wordfreq",
+   "freq_source": "wordfreq Zipf",
+   "spearman": 0.0133,
+   "pearson": 0.0007,
+   "n_tokens": 94437,
+   "bare_word_only": {
+    "spearman": 0.0147,
+    "pearson": 0.0019,
+    "n_tokens": 92799
+   }
+  },
+  {
+   "kind": "J",
+   "layer": 5,
+   "cell": "latin_pile",
+   "freq_source": "pile-10k capped counts (log)",
+   "spearman": 0.0603,
+   "pearson": 0.0619,
+   "n_tokens": 92858
+  },
+  {
+   "kind": "J",
+   "layer": 5,
+   "cell": "whole_wordfreq",
+   "freq_source": "wordfreq Zipf",
+   "spearman": 0.0507,
+   "pearson": 0.0421,
+   "n_tokens": 224457,
+   "bare_word_only": {
+    "spearman": 0.0624,
+    "pearson": 0.0514,
+    "n_tokens": 204480
+   }
+  },
+  {
+   "kind": "J",
+   "layer": 5,
+   "cell": "nonlatin_wordfreq",
+   "freq_source": "wordfreq Zipf",
+   "spearman": 0.0427,
+   "pearson": 0.0306,
+   "n_tokens": 94437,
+   "bare_word_only": {
+    "spearman": 0.0457,
+    "pearson": 0.0341,
+    "n_tokens": 92799
+   }
+  },
+  {
+   "kind": "J",
+   "layer": 6,
+   "cell": "latin_pile",
+   "freq_source": "pile-10k capped counts (log)",
+   "spearman": 0.0351,
+   "pearson": 0.0319,
+   "n_tokens": 92858
+  },
+  {
+   "kind": "J",
+   "layer": 6,
+   "cell": "whole_wordfreq",
+   "freq_source": "wordfreq Zipf",
+   "spearman": 0.0651,
+   "pearson": 0.0589,
+   "n_tokens": 224457,
+   "bare_word_only": {
+    "spearman": 0.079,
+    "pearson": 0.0698,
+    "n_tokens": 204480
+   }
+  },
+  {
+   "kind": "J",
+   "layer": 6,
+   "cell": "nonlatin_wordfreq",
+   "freq_source": "wordfreq Zipf",
+   "spearman": 0.0699,
+   "pearson": 0.0551,
+   "n_tokens": 94437,
+   "bare_word_only": {
+    "spearman": 0.0735,
+    "pearson": 0.0596,
+    "n_tokens": 92799
+   }
+  },
+  {
+   "kind": "J",
+   "layer": 7,
+   "cell": "latin_pile",
+   "freq_source": "pile-10k capped counts (log)",
+   "spearman": 0.099,
+   "pearson": 0.1009,
+   "n_tokens": 92858
+  },
+  {
+   "kind": "J",
+   "layer": 7,
+   "cell": "whole_wordfreq",
+   "freq_source": "wordfreq Zipf",
+   "spearman": 0.1101,
+   "pearson": 0.1031,
+   "n_tokens": 224457,
+   "bare_word_only": {
+    "spearman": 0.1272,
+    "pearson": 0.1169,
+    "n_tokens": 204480
+   }
+  },
+  {
+   "kind": "J",
+   "layer": 7,
+   "cell": "nonlatin_wordfreq",
+   "freq_source": "wordfreq Zipf",
+   "spearman": 0.0743,
+   "pearson": 0.0619,
+   "n_tokens": 94437,
+   "bare_word_only": {
+    "spearman": 0.0775,
+    "pearson": 0.0656,
+    "n_tokens": 92799
+   }
+  },
+  {
+   "kind": "J",
+   "layer": 8,
+   "cell": "latin_pile",
+   "freq_source": "pile-10k capped counts (log)",
+   "spearman": 0.0951,
+   "pearson": 0.0944,
+   "n_tokens": 92858
+  },
+  {
+   "kind": "J",
+   "layer": 8,
+   "cell": "whole_wordfreq",
+   "freq_source": "wordfreq Zipf",
+   "spearman": 0.1159,
+   "pearson": 0.1077,
+   "n_tokens": 224457,
+   "bare_word_only": {
+    "spearman": 0.1326,
+    "pearson": 0.1211,
+    "n_tokens": 204480
+   }
+  },
+  {
+   "kind": "J",
+   "layer": 8,
+   "cell": "nonlatin_wordfreq",
+   "freq_source": "wordfreq Zipf",
+   "spearman": 0.0756,
+   "pearson": 0.0587,
+   "n_tokens": 94437,
+   "bare_word_only": {
+    "spearman": 0.0792,
+    "pearson": 0.0629,
+    "n_tokens": 92799
+   }
+  },
+  {
+   "kind": "J",
+   "layer": 9,
+   "cell": "latin_pile",
+   "freq_source": "pile-10k capped counts (log)",
+   "spearman": 0.1515,
+   "pearson": 0.1531,
+   "n_tokens": 92858
+  },
+  {
+   "kind": "J",
+   "layer": 9,
+   "cell": "whole_wordfreq",
+   "freq_source": "wordfreq Zipf",
+   "spearman": 0.1363,
+   "pearson": 0.1298,
+   "n_tokens": 224457,
+   "bare_word_only": {
+    "spearman": 0.1551,
+    "pearson": 0.1457,
+    "n_tokens": 204480
+   }
+  },
+  {
+   "kind": "J",
+   "layer": 9,
+   "cell": "nonlatin_wordfreq",
+   "freq_source": "wordfreq Zipf",
+   "spearman": 0.0796,
+   "pearson": 0.0645,
+   "n_tokens": 94437,
+   "bare_word_only": {
+    "spearman": 0.0823,
+    "pearson": 0.0676,
+    "n_tokens": 92799
+   }
+  },
+  {
+   "kind": "J",
+   "layer": 10,
+   "cell": "latin_pile",
+   "freq_source": "pile-10k capped counts (log)",
+   "spearman": 0.1406,
+   "pearson": 0.1419,
+   "n_tokens": 92858
+  },
+  {
+   "kind": "J",
+   "layer": 10,
+   "cell": "whole_wordfreq",
+   "freq_source": "wordfreq Zipf",
+   "spearman": 0.1303,
+   "pearson": 0.1192,
+   "n_tokens": 224457,
+   "bare_word_only": {
+    "spearman": 0.1532,
+    "pearson": 0.1395,
+    "n_tokens": 204480
+   }
+  },
+  {
+   "kind": "J",
+   "layer": 10,
+   "cell": "nonlatin_wordfreq",
+   "freq_source": "wordfreq Zipf",
+   "spearman": 0.0696,
+   "pearson": 0.0526,
+   "n_tokens": 94437,
+   "bare_word_only": {
+    "spearman": 0.0704,
+    "pearson": 0.053,
+    "n_tokens": 92799
+   }
+  },
+  {
+   "kind": "J",
+   "layer": 11,
+   "cell": "latin_pile",
+   "freq_source": "pile-10k capped counts (log)",
+   "spearman": 0.1739,
+   "pearson": 0.1786,
+   "n_tokens": 92858
+  },
+  {
+   "kind": "J",
+   "layer": 11,
+   "cell": "whole_wordfreq",
+   "freq_source": "wordfreq Zipf",
+   "spearman": 0.1472,
+   "pearson": 0.139,
+   "n_tokens": 224457,
+   "bare_word_only": {
+    "spearman": 0.1773,
+    "pearson": 0.1662,
+    "n_tokens": 204480
+   }
+  },
+  {
+   "kind": "J",
+   "layer": 11,
+   "cell": "nonlatin_wordfreq",
+   "freq_source": "wordfreq Zipf",
+   "spearman": 0.088,
+   "pearson": 0.0715,
+   "n_tokens": 94437,
+   "bare_word_only": {
+    "spearman": 0.0908,
+    "pearson": 0.0749,
+    "n_tokens": 92799
+   }
+  },
+  {
+   "kind": "J",
+   "layer": 12,
+   "cell": "latin_pile",
+   "freq_source": "pile-10k capped counts (log)",
+   "spearman": 0.1994,
+   "pearson": 0.2063,
+   "n_tokens": 92858
+  },
+  {
+   "kind": "J",
+   "layer": 12,
+   "cell": "whole_wordfreq",
+   "freq_source": "wordfreq Zipf",
+   "spearman": 0.1586,
+   "pearson": 0.1514,
+   "n_tokens": 224457,
+   "bare_word_only": {
+    "spearman": 0.1891,
+    "pearson": 0.1794,
+    "n_tokens": 204480
+   }
+  },
+  {
+   "kind": "J",
+   "layer": 12,
+   "cell": "nonlatin_wordfreq",
+   "freq_source": "wordfreq Zipf",
+   "spearman": 0.0901,
+   "pearson": 0.0742,
+   "n_tokens": 94437,
+   "bare_word_only": {
+    "spearman": 0.0928,
+    "pearson": 0.0776,
+    "n_tokens": 92799
+   }
+  },
+  {
+   "kind": "J",
+   "layer": 13,
+   "cell": "latin_pile",
+   "freq_source": "pile-10k capped counts (log)",
+   "spearman": 0.2618,
+   "pearson": 0.272,
+   "n_tokens": 92858
+  },
+  {
+   "kind": "J",
+   "layer": 13,
+   "cell": "whole_wordfreq",
+   "freq_source": "wordfreq Zipf",
+   "spearman": 0.1825,
+   "pearson": 0.1775,
+   "n_tokens": 224457,
+   "bare_word_only": {
+    "spearman": 0.2137,
+    "pearson": 0.2064,
+    "n_tokens": 204480
+   }
+  },
+  {
+   "kind": "J",
+   "layer": 13,
+   "cell": "nonlatin_wordfreq",
+   "freq_source": "wordfreq Zipf",
+   "spearman": 0.1045,
+   "pearson": 0.0885,
+   "n_tokens": 94437,
+   "bare_word_only": {
+    "spearman": 0.1066,
+    "pearson": 0.0914,
+    "n_tokens": 92799
+   }
+  },
+  {
+   "kind": "J",
+   "layer": 14,
+   "cell": "latin_pile",
+   "freq_source": "pile-10k capped counts (log)",
+   "spearman": 0.2951,
+   "pearson": 0.3086,
+   "n_tokens": 92858
+  },
+  {
+   "kind": "J",
+   "layer": 14,
+   "cell": "whole_wordfreq",
+   "freq_source": "wordfreq Zipf",
+   "spearman": 0.1869,
+   "pearson": 0.1843,
+   "n_tokens": 224457,
+   "bare_word_only": {
+    "spearman": 0.2215,
+    "pearson": 0.2174,
+    "n_tokens": 204480
+   }
+  },
+  {
+   "kind": "J",
+   "layer": 14,
+   "cell": "nonlatin_wordfreq",
+   "freq_source": "wordfreq Zipf",
+   "spearman": 0.1069,
+   "pearson": 0.0924,
+   "n_tokens": 94437,
+   "bare_word_only": {
+    "spearman": 0.1086,
+    "pearson": 0.0948,
+    "n_tokens": 92799
+   }
+  },
+  {
+   "kind": "J",
+   "layer": 15,
+   "cell": "latin_pile",
+   "freq_source": "pile-10k capped counts (log)",
+   "spearman": 0.3137,
+   "pearson": 0.3302,
+   "n_tokens": 92858
+  },
+  {
+   "kind": "J",
+   "layer": 15,
+   "cell": "whole_wordfreq",
+   "freq_source": "wordfreq Zipf",
+   "spearman": 0.2037,
+   "pearson": 0.2042,
+   "n_tokens": 224457,
+   "bare_word_only": {
+    "spearman": 0.2363,
+    "pearson": 0.2351,
+    "n_tokens": 204480
+   }
+  },
+  {
+   "kind": "J",
+   "layer": 15,
+   "cell": "nonlatin_wordfreq",
+   "freq_source": "wordfreq Zipf",
+   "spearman": 0.1236,
+   "pearson": 0.1117,
+   "n_tokens": 94437,
+   "bare_word_only": {
+    "spearman": 0.1256,
+    "pearson": 0.1148,
+    "n_tokens": 92799
+   }
+  },
+  {
+   "kind": "J",
+   "layer": 16,
+   "cell": "latin_pile",
+   "freq_source": "pile-10k capped counts (log)",
+   "spearman": 0.3477,
+   "pearson": 0.3686,
+   "n_tokens": 92858
+  },
+  {
+   "kind": "J",
+   "layer": 16,
+   "cell": "whole_wordfreq",
+   "freq_source": "wordfreq Zipf",
+   "spearman": 0.2171,
+   "pearson": 0.219,
+   "n_tokens": 224457,
+   "bare_word_only": {
+    "spearman": 0.2491,
+    "pearson": 0.2495,
+    "n_tokens": 204480
+   }
+  },
+  {
+   "kind": "J",
+   "layer": 16,
+   "cell": "nonlatin_wordfreq",
+   "freq_source": "wordfreq Zipf",
+   "spearman": 0.1263,
+   "pearson": 0.1172,
+   "n_tokens": 94437,
+   "bare_word_only": {
+    "spearman": 0.1279,
+    "pearson": 0.1199,
+    "n_tokens": 92799
+   }
+  },
+  {
+   "kind": "J",
+   "layer": 17,
+   "cell": "latin_pile",
+   "freq_source": "pile-10k capped counts (log)",
+   "spearman": 0.4026,
+   "pearson": 0.4281,
+   "n_tokens": 92858
+  },
+  {
+   "kind": "J",
+   "layer": 17,
+   "cell": "whole_wordfreq",
+   "freq_source": "wordfreq Zipf",
+   "spearman": 0.2357,
+   "pearson": 0.2388,
+   "n_tokens": 224457,
+   "bare_word_only": {
+    "spearman": 0.2715,
+    "pearson": 0.2737,
+    "n_tokens": 204480
+   }
+  },
+  {
+   "kind": "J",
+   "layer": 17,
+   "cell": "nonlatin_wordfreq",
+   "freq_source": "wordfreq Zipf",
+   "spearman": 0.1375,
+   "pearson": 0.1313,
+   "n_tokens": 94437,
+   "bare_word_only": {
+    "spearman": 0.1392,
+    "pearson": 0.1344,
+    "n_tokens": 92799
+   }
+  },
+  {
+   "kind": "J",
+   "layer": 18,
+   "cell": "latin_pile",
+   "freq_source": "pile-10k capped counts (log)",
+   "spearman": 0.4788,
+   "pearson": 0.5057,
+   "n_tokens": 92858
+  },
+  {
+   "kind": "J",
+   "layer": 18,
+   "cell": "whole_wordfreq",
+   "freq_source": "wordfreq Zipf",
+   "spearman": 0.2491,
+   "pearson": 0.2574,
+   "n_tokens": 224457,
+   "bare_word_only": {
+    "spearman": 0.2821,
+    "pearson": 0.291,
+    "n_tokens": 204480
+   }
+  },
+  {
+   "kind": "J",
+   "layer": 18,
+   "cell": "nonlatin_wordfreq",
+   "freq_source": "wordfreq Zipf",
+   "spearman": 0.1413,
+   "pearson": 0.1414,
+   "n_tokens": 94437,
+   "bare_word_only": {
+    "spearman": 0.1434,
+    "pearson": 0.1453,
+    "n_tokens": 92799
+   }
+  },
+  {
+   "kind": "J",
+   "layer": 19,
+   "cell": "latin_pile",
+   "freq_source": "pile-10k capped counts (log)",
+   "spearman": 0.4728,
+   "pearson": 0.5055,
+   "n_tokens": 92858
+  },
+  {
+   "kind": "J",
+   "layer": 19,
+   "cell": "whole_wordfreq",
+   "freq_source": "wordfreq Zipf",
+   "spearman": 0.2428,
+   "pearson": 0.2503,
+   "n_tokens": 224457,
+   "bare_word_only": {
+    "spearman": 0.2745,
+    "pearson": 0.2817,
+    "n_tokens": 204480
+   }
+  },
+  {
+   "kind": "J",
+   "layer": 19,
+   "cell": "nonlatin_wordfreq",
+   "freq_source": "wordfreq Zipf",
+   "spearman": 0.1244,
+   "pearson": 0.1297,
+   "n_tokens": 94437,
+   "bare_word_only": {
+    "spearman": 0.1258,
+    "pearson": 0.1326,
+    "n_tokens": 92799
+   }
+  },
+  {
+   "kind": "J",
+   "layer": 20,
+   "cell": "latin_pile",
+   "freq_source": "pile-10k capped counts (log)",
+   "spearman": 0.4897,
+   "pearson": 0.526,
+   "n_tokens": 92858
+  },
+  {
+   "kind": "J",
+   "layer": 20,
+   "cell": "whole_wordfreq",
+   "freq_source": "wordfreq Zipf",
+   "spearman": 0.238,
+   "pearson": 0.2472,
+   "n_tokens": 224457,
+   "bare_word_only": {
+    "spearman": 0.268,
+    "pearson": 0.277,
+    "n_tokens": 204480
+   }
+  },
+  {
+   "kind": "J",
+   "layer": 20,
+   "cell": "nonlatin_wordfreq",
+   "freq_source": "wordfreq Zipf",
+   "spearman": 0.1172,
+   "pearson": 0.125,
+   "n_tokens": 94437,
+   "bare_word_only": {
+    "spearman": 0.1184,
+    "pearson": 0.1277,
+    "n_tokens": 92799
+   }
+  },
+  {
+   "kind": "J",
+   "layer": 21,
+   "cell": "latin_pile",
+   "freq_source": "pile-10k capped counts (log)",
+   "spearman": 0.496,
+   "pearson": 0.5324,
+   "n_tokens": 92858
+  },
+  {
+   "kind": "J",
+   "layer": 21,
+   "cell": "whole_wordfreq",
+   "freq_source": "wordfreq Zipf",
+   "spearman": 0.2431,
+   "pearson": 0.2521,
+   "n_tokens": 224457,
+   "bare_word_only": {
+    "spearman": 0.2744,
+    "pearson": 0.2834,
+    "n_tokens": 204480
+   }
+  },
+  {
+   "kind": "J",
+   "layer": 21,
+   "cell": "nonlatin_wordfreq",
+   "freq_source": "wordfreq Zipf",
+   "spearman": 0.1216,
+   "pearson": 0.1311,
+   "n_tokens": 94437,
+   "bare_word_only": {
+    "spearman": 0.1227,
+    "pearson": 0.1337,
+    "n_tokens": 92799
+   }
+  },
+  {
+   "kind": "J",
+   "layer": 22,
+   "cell": "latin_pile",
+   "freq_source": "pile-10k capped counts (log)",
+   "spearman": 0.4885,
+   "pearson": 0.5232,
+   "n_tokens": 92858
+  },
+  {
+   "kind": "J",
+   "layer": 22,
+   "cell": "whole_wordfreq",
+   "freq_source": "wordfreq Zipf",
+   "spearman": 0.2411,
+   "pearson": 0.25,
+   "n_tokens": 224457,
+   "bare_word_only": {
+    "spearman": 0.2715,
+    "pearson": 0.2807,
+    "n_tokens": 204480
+   }
+  },
+  {
+   "kind": "J",
+   "layer": 22,
+   "cell": "nonlatin_wordfreq",
+   "freq_source": "wordfreq Zipf",
+   "spearman": 0.1196,
+   "pearson": 0.1309,
+   "n_tokens": 94437,
+   "bare_word_only": {
+    "spearman": 0.1203,
+    "pearson": 0.1329,
+    "n_tokens": 92799
+   }
+  },
+  {
+   "kind": "J",
+   "layer": 23,
+   "cell": "latin_pile",
+   "freq_source": "pile-10k capped counts (log)",
+   "spearman": 0.4606,
+   "pearson": 0.4964,
+   "n_tokens": 92858
+  },
+  {
+   "kind": "J",
+   "layer": 23,
+   "cell": "whole_wordfreq",
+   "freq_source": "wordfreq Zipf",
+   "spearman": 0.2166,
+   "pearson": 0.2234,
+   "n_tokens": 224457,
+   "bare_word_only": {
+    "spearman": 0.2455,
+    "pearson": 0.2528,
+    "n_tokens": 204480
+   }
+  },
+  {
+   "kind": "J",
+   "layer": 23,
+   "cell": "nonlatin_wordfreq",
+   "freq_source": "wordfreq Zipf",
+   "spearman": 0.0931,
+   "pearson": 0.1054,
+   "n_tokens": 94437,
+   "bare_word_only": {
+    "spearman": 0.0935,
+    "pearson": 0.1069,
+    "n_tokens": 92799
+   }
+  },
+  {
+   "kind": "J",
+   "layer": 24,
+   "cell": "latin_pile",
+   "freq_source": "pile-10k capped counts (log)",
+   "spearman": 0.4368,
+   "pearson": 0.4714,
+   "n_tokens": 92858
+  },
+  {
+   "kind": "J",
+   "layer": 24,
+   "cell": "whole_wordfreq",
+   "freq_source": "wordfreq Zipf",
+   "spearman": 0.2046,
+   "pearson": 0.2091,
+   "n_tokens": 224457,
+   "bare_word_only": {
+    "spearman": 0.2332,
+    "pearson": 0.2379,
+    "n_tokens": 204480
+   }
+  },
+  {
+   "kind": "J",
+   "layer": 24,
+   "cell": "nonlatin_wordfreq",
+   "freq_source": "wordfreq Zipf",
+   "spearman": 0.0859,
+   "pearson": 0.0939,
+   "n_tokens": 94437,
+   "bare_word_only": {
+    "spearman": 0.0865,
+    "pearson": 0.0953,
+    "n_tokens": 92799
+   }
+  },
+  {
+   "kind": "J",
+   "layer": 25,
+   "cell": "latin_pile",
+   "freq_source": "pile-10k capped counts (log)",
+   "spearman": 0.4044,
+   "pearson": 0.4357,
+   "n_tokens": 92858
+  },
+  {
+   "kind": "J",
+   "layer": 25,
+   "cell": "whole_wordfreq",
+   "freq_source": "wordfreq Zipf",
+   "spearman": 0.197,
+   "pearson": 0.198,
+   "n_tokens": 224457,
+   "bare_word_only": {
+    "spearman": 0.2244,
+    "pearson": 0.225,
+    "n_tokens": 204480
+   }
+  },
+  {
+   "kind": "J",
+   "layer": 25,
+   "cell": "nonlatin_wordfreq",
+   "freq_source": "wordfreq Zipf",
+   "spearman": 0.084,
+   "pearson": 0.0876,
+   "n_tokens": 94437,
+   "bare_word_only": {
+    "spearman": 0.0846,
+    "pearson": 0.0891,
+    "n_tokens": 92799
+   }
+  },
+  {
+   "kind": "J",
+   "layer": 26,
+   "cell": "latin_pile",
+   "freq_source": "pile-10k capped counts (log)",
+   "spearman": 0.3619,
+   "pearson": 0.3897,
+   "n_tokens": 92858
+  },
+  {
+   "kind": "J",
+   "layer": 26,
+   "cell": "whole_wordfreq",
+   "freq_source": "wordfreq Zipf",
+   "spearman": 0.1869,
+   "pearson": 0.1867,
+   "n_tokens": 224457,
+   "bare_word_only": {
+    "spearman": 0.2172,
+    "pearson": 0.2166,
+    "n_tokens": 204480
+   }
+  },
+  {
+   "kind": "J",
+   "layer": 26,
+   "cell": "nonlatin_wordfreq",
+   "freq_source": "wordfreq Zipf",
+   "spearman": 0.0847,
+   "pearson": 0.0876,
+   "n_tokens": 94437,
+   "bare_word_only": {
+    "spearman": 0.0859,
+    "pearson": 0.0898,
+    "n_tokens": 92799
+   }
+  },
+  {
+   "kind": "J",
+   "layer": 27,
+   "cell": "latin_pile",
+   "freq_source": "pile-10k capped counts (log)",
+   "spearman": 0.2279,
+   "pearson": 0.2513,
+   "n_tokens": 92858
+  },
+  {
+   "kind": "J",
+   "layer": 27,
+   "cell": "whole_wordfreq",
+   "freq_source": "wordfreq Zipf",
+   "spearman": 0.1217,
+   "pearson": 0.1112,
+   "n_tokens": 224457,
+   "bare_word_only": {
+    "spearman": 0.1449,
+    "pearson": 0.1315,
+    "n_tokens": 204480
+   }
+  },
+  {
+   "kind": "J",
+   "layer": 27,
+   "cell": "nonlatin_wordfreq",
+   "freq_source": "wordfreq Zipf",
+   "spearman": 0.0306,
+   "pearson": 0.0234,
+   "n_tokens": 94437,
+   "bare_word_only": {
+    "spearman": 0.0299,
+    "pearson": 0.0223,
+    "n_tokens": 92799
+   }
+  },
+  {
+   "kind": "J",
+   "layer": 28,
+   "cell": "latin_pile",
+   "freq_source": "pile-10k capped counts (log)",
+   "spearman": 0.1828,
+   "pearson": 0.2058,
+   "n_tokens": 92858
+  },
+  {
+   "kind": "J",
+   "layer": 28,
+   "cell": "whole_wordfreq",
+   "freq_source": "wordfreq Zipf",
+   "spearman": 0.0994,
+   "pearson": 0.083,
+   "n_tokens": 224457,
+   "bare_word_only": {
+    "spearman": 0.1136,
+    "pearson": 0.0933,
+    "n_tokens": 204480
+   }
+  },
+  {
+   "kind": "J",
+   "layer": 28,
+   "cell": "nonlatin_wordfreq",
+   "freq_source": "wordfreq Zipf",
+   "spearman": 0.0064,
+   "pearson": -0.0089,
+   "n_tokens": 94437,
+   "bare_word_only": {
+    "spearman": 0.0057,
+    "pearson": -0.0101,
+    "n_tokens": 92799
+   }
+  },
+  {
+   "kind": "J",
+   "layer": 29,
+   "cell": "latin_pile",
+   "freq_source": "pile-10k capped counts (log)",
+   "spearman": 0.0721,
+   "pearson": 0.0913,
+   "n_tokens": 92858
+  },
+  {
+   "kind": "J",
+   "layer": 29,
+   "cell": "whole_wordfreq",
+   "freq_source": "wordfreq Zipf",
+   "spearman": 0.0456,
+   "pearson": 0.022,
+   "n_tokens": 224457,
+   "bare_word_only": {
+    "spearman": 0.0581,
+    "pearson": 0.0293,
+    "n_tokens": 204480
+   }
+  },
+  {
+   "kind": "J",
+   "layer": 29,
+   "cell": "nonlatin_wordfreq",
+   "freq_source": "wordfreq Zipf",
+   "spearman": -0.0222,
+   "pearson": -0.046,
+   "n_tokens": 94437,
+   "bare_word_only": {
+    "spearman": -0.0227,
+    "pearson": -0.0473,
+    "n_tokens": 92799
+   }
+  },
+  {
+   "kind": "J",
+   "layer": 30,
+   "cell": "latin_pile",
+   "freq_source": "pile-10k capped counts (log)",
+   "spearman": 0.1804,
+   "pearson": 0.2067,
+   "n_tokens": 92858
+  },
+  {
+   "kind": "J",
+   "layer": 30,
+   "cell": "whole_wordfreq",
+   "freq_source": "wordfreq Zipf",
+   "spearman": 0.088,
+   "pearson": 0.0709,
+   "n_tokens": 224457,
+   "bare_word_only": {
+    "spearman": 0.1034,
+    "pearson": 0.0824,
+    "n_tokens": 204480
+   }
+  },
+  {
+   "kind": "J",
+   "layer": 30,
+   "cell": "nonlatin_wordfreq",
+   "freq_source": "wordfreq Zipf",
+   "spearman": 0.0269,
+   "pearson": 0.0012,
+   "n_tokens": 94437,
+   "bare_word_only": {
+    "spearman": 0.0288,
+    "pearson": 0.0026,
+    "n_tokens": 92799
+   }
+  },
+  {
+   "kind": "R",
+   "layer": 0,
+   "cell": "latin_pile",
+   "freq_source": "pile-10k capped counts (log)",
+   "spearman": -0.235,
+   "pearson": -0.2477,
+   "n_tokens": 92858
+  },
+  {
+   "kind": "R",
+   "layer": 0,
+   "cell": "whole_wordfreq",
+   "freq_source": "wordfreq Zipf",
+   "spearman": -0.1257,
+   "pearson": -0.1306,
+   "n_tokens": 224457,
+   "bare_word_only": {
+    "spearman": -0.1365,
+    "pearson": -0.1427,
+    "n_tokens": 204480
+   }
+  },
+  {
+   "kind": "R",
+   "layer": 0,
+   "cell": "nonlatin_wordfreq",
+   "freq_source": "wordfreq Zipf",
+   "spearman": -0.0752,
+   "pearson": -0.0823,
+   "n_tokens": 94437,
+   "bare_word_only": {
+    "spearman": -0.0764,
+    "pearson": -0.0847,
+    "n_tokens": 92799
+   }
+  },
+  {
+   "kind": "R",
+   "layer": 1,
+   "cell": "latin_pile",
+   "freq_source": "pile-10k capped counts (log)",
+   "spearman": -0.2286,
+   "pearson": -0.2407,
+   "n_tokens": 92858
+  },
+  {
+   "kind": "R",
+   "layer": 1,
+   "cell": "whole_wordfreq",
+   "freq_source": "wordfreq Zipf",
+   "spearman": -0.1199,
+   "pearson": -0.1256,
+   "n_tokens": 224457,
+   "bare_word_only": {
+    "spearman": -0.1306,
+    "pearson": -0.1378,
+    "n_tokens": 204480
+   }
+  },
+  {
+   "kind": "R",
+   "layer": 1,
+   "cell": "nonlatin_wordfreq",
+   "freq_source": "wordfreq Zipf",
+   "spearman": -0.072,
+   "pearson": -0.0801,
+   "n_tokens": 94437,
+   "bare_word_only": {
+    "spearman": -0.0731,
+    "pearson": -0.0825,
+    "n_tokens": 92799
+   }
+  },
+  {
+   "kind": "R",
+   "layer": 2,
+   "cell": "latin_pile",
+   "freq_source": "pile-10k capped counts (log)",
+   "spearman": -0.1928,
+   "pearson": -0.202,
+   "n_tokens": 92858
+  },
+  {
+   "kind": "R",
+   "layer": 2,
+   "cell": "whole_wordfreq",
+   "freq_source": "wordfreq Zipf",
+   "spearman": -0.117,
+   "pearson": -0.1195,
+   "n_tokens": 224457,
+   "bare_word_only": {
+    "spearman": -0.1247,
+    "pearson": -0.1288,
+    "n_tokens": 204480
+   }
+  },
+  {
+   "kind": "R",
+   "layer": 2,
+   "cell": "nonlatin_wordfreq",
+   "freq_source": "wordfreq Zipf",
+   "spearman": -0.0771,
+   "pearson": -0.0838,
+   "n_tokens": 94437,
+   "bare_word_only": {
+    "spearman": -0.0776,
+    "pearson": -0.0851,
+    "n_tokens": 92799
+   }
+  },
+  {
+   "kind": "R",
+   "layer": 3,
+   "cell": "latin_pile",
+   "freq_source": "pile-10k capped counts (log)",
+   "spearman": -0.1134,
+   "pearson": -0.1172,
+   "n_tokens": 92858
+  },
+  {
+   "kind": "R",
+   "layer": 3,
+   "cell": "whole_wordfreq",
+   "freq_source": "wordfreq Zipf",
+   "spearman": -0.0718,
+   "pearson": -0.0763,
+   "n_tokens": 224457,
+   "bare_word_only": {
+    "spearman": -0.076,
+    "pearson": -0.0822,
+    "n_tokens": 204480
+   }
+  },
+  {
+   "kind": "R",
+   "layer": 3,
+   "cell": "nonlatin_wordfreq",
+   "freq_source": "wordfreq Zipf",
+   "spearman": -0.0522,
+   "pearson": -0.058,
+   "n_tokens": 94437,
+   "bare_word_only": {
+    "spearman": -0.0527,
+    "pearson": -0.0591,
+    "n_tokens": 92799
+   }
+  },
+  {
+   "kind": "R",
+   "layer": 4,
+   "cell": "latin_pile",
+   "freq_source": "pile-10k capped counts (log)",
+   "spearman": -0.0881,
+   "pearson": -0.0894,
+   "n_tokens": 92858
+  },
+  {
+   "kind": "R",
+   "layer": 4,
+   "cell": "whole_wordfreq",
+   "freq_source": "wordfreq Zipf",
+   "spearman": -0.0575,
+   "pearson": -0.0622,
+   "n_tokens": 224457,
+   "bare_word_only": {
+    "spearman": -0.0603,
+    "pearson": -0.0668,
+    "n_tokens": 204480
+   }
+  },
+  {
+   "kind": "R",
+   "layer": 4,
+   "cell": "nonlatin_wordfreq",
+   "freq_source": "wordfreq Zipf",
+   "spearman": -0.0437,
+   "pearson": -0.0496,
+   "n_tokens": 94437,
+   "bare_word_only": {
+    "spearman": -0.0443,
+    "pearson": -0.0509,
+    "n_tokens": 92799
+   }
+  },
+  {
+   "kind": "R",
+   "layer": 5,
+   "cell": "latin_pile",
+   "freq_source": "pile-10k capped counts (log)",
+   "spearman": -0.0352,
+   "pearson": -0.032,
+   "n_tokens": 92858
+  },
+  {
+   "kind": "R",
+   "layer": 5,
+   "cell": "whole_wordfreq",
+   "freq_source": "wordfreq Zipf",
+   "spearman": -0.0315,
+   "pearson": -0.0365,
+   "n_tokens": 224457,
+   "bare_word_only": {
+    "spearman": -0.0293,
+    "pearson": -0.0365,
+    "n_tokens": 204480
+   }
+  },
+  {
+   "kind": "R",
+   "layer": 5,
+   "cell": "nonlatin_wordfreq",
+   "freq_source": "wordfreq Zipf",
+   "spearman": -0.0267,
+   "pearson": -0.0329,
+   "n_tokens": 94437,
+   "bare_word_only": {
+    "spearman": -0.0272,
+    "pearson": -0.034,
+    "n_tokens": 92799
+   }
+  },
+  {
+   "kind": "R",
+   "layer": 6,
+   "cell": "latin_pile",
+   "freq_source": "pile-10k capped counts (log)",
+   "spearman": -0.007,
+   "pearson": -0.0012,
+   "n_tokens": 92858
+  },
+  {
+   "kind": "R",
+   "layer": 6,
+   "cell": "whole_wordfreq",
+   "freq_source": "wordfreq Zipf",
+   "spearman": -0.0034,
+   "pearson": -0.0088,
+   "n_tokens": 224457,
+   "bare_word_only": {
+    "spearman": 0.0018,
+    "pearson": -0.0062,
+    "n_tokens": 204480
+   }
+  },
+  {
+   "kind": "R",
+   "layer": 6,
+   "cell": "nonlatin_wordfreq",
+   "freq_source": "wordfreq Zipf",
+   "spearman": -0.0021,
+   "pearson": -0.0103,
+   "n_tokens": 94437,
+   "bare_word_only": {
+    "spearman": -0.0024,
+    "pearson": -0.011,
+    "n_tokens": 92799
+   }
+  },
+  {
+   "kind": "R",
+   "layer": 7,
+   "cell": "latin_pile",
+   "freq_source": "pile-10k capped counts (log)",
+   "spearman": 0.0462,
+   "pearson": 0.0552,
+   "n_tokens": 92858
+  },
+  {
+   "kind": "R",
+   "layer": 7,
+   "cell": "whole_wordfreq",
+   "freq_source": "wordfreq Zipf",
+   "spearman": 0.0272,
+   "pearson": 0.0217,
+   "n_tokens": 224457,
+   "bare_word_only": {
+    "spearman": 0.0346,
+    "pearson": 0.0266,
+    "n_tokens": 204480
+   }
+  },
+  {
+   "kind": "R",
+   "layer": 7,
+   "cell": "nonlatin_wordfreq",
+   "freq_source": "wordfreq Zipf",
+   "spearman": 0.0078,
+   "pearson": 0.0006,
+   "n_tokens": 94437,
+   "bare_word_only": {
+    "spearman": 0.0074,
+    "pearson": -0.0002,
+    "n_tokens": 92799
+   }
+  },
+  {
+   "kind": "R",
+   "layer": 8,
+   "cell": "latin_pile",
+   "freq_source": "pile-10k capped counts (log)",
+   "spearman": 0.0687,
+   "pearson": 0.078,
+   "n_tokens": 92858
+  },
+  {
+   "kind": "R",
+   "layer": 8,
+   "cell": "whole_wordfreq",
+   "freq_source": "wordfreq Zipf",
+   "spearman": 0.0457,
+   "pearson": 0.0385,
+   "n_tokens": 224457,
+   "bare_word_only": {
+    "spearman": 0.0557,
+    "pearson": 0.0457,
+    "n_tokens": 204480
+   }
+  },
+  {
+   "kind": "R",
+   "layer": 8,
+   "cell": "nonlatin_wordfreq",
+   "freq_source": "wordfreq Zipf",
+   "spearman": 0.0186,
+   "pearson": 0.0095,
+   "n_tokens": 94437,
+   "bare_word_only": {
+    "spearman": 0.0181,
+    "pearson": 0.0086,
+    "n_tokens": 92799
+   }
+  },
+  {
+   "kind": "R",
+   "layer": 9,
+   "cell": "latin_pile",
+   "freq_source": "pile-10k capped counts (log)",
+   "spearman": 0.1223,
+   "pearson": 0.1347,
+   "n_tokens": 92858
+  },
+  {
+   "kind": "R",
+   "layer": 9,
+   "cell": "whole_wordfreq",
+   "freq_source": "wordfreq Zipf",
+   "spearman": 0.068,
+   "pearson": 0.0626,
+   "n_tokens": 224457,
+   "bare_word_only": {
+    "spearman": 0.0815,
+    "pearson": 0.0735,
+    "n_tokens": 204480
+   }
+  },
+  {
+   "kind": "R",
+   "layer": 9,
+   "cell": "nonlatin_wordfreq",
+   "freq_source": "wordfreq Zipf",
+   "spearman": 0.0312,
+   "pearson": 0.0239,
+   "n_tokens": 94437,
+   "bare_word_only": {
+    "spearman": 0.0305,
+    "pearson": 0.023,
+    "n_tokens": 92799
+   }
+  },
+  {
+   "kind": "R",
+   "layer": 10,
+   "cell": "latin_pile",
+   "freq_source": "pile-10k capped counts (log)",
+   "spearman": 0.1899,
+   "pearson": 0.2069,
+   "n_tokens": 92858
+  },
+  {
+   "kind": "R",
+   "layer": 10,
+   "cell": "whole_wordfreq",
+   "freq_source": "wordfreq Zipf",
+   "spearman": 0.1055,
+   "pearson": 0.099,
+   "n_tokens": 224457,
+   "bare_word_only": {
+    "spearman": 0.1244,
+    "pearson": 0.1155,
+    "n_tokens": 204480
+   }
+  },
+  {
+   "kind": "R",
+   "layer": 10,
+   "cell": "nonlatin_wordfreq",
+   "freq_source": "wordfreq Zipf",
+   "spearman": 0.0557,
+   "pearson": 0.0467,
+   "n_tokens": 94437,
+   "bare_word_only": {
+    "spearman": 0.0549,
+    "pearson": 0.046,
+    "n_tokens": 92799
+   }
+  },
+  {
+   "kind": "R",
+   "layer": 11,
+   "cell": "latin_pile",
+   "freq_source": "pile-10k capped counts (log)",
+   "spearman": 0.166,
+   "pearson": 0.1838,
+   "n_tokens": 92858
+  },
+  {
+   "kind": "R",
+   "layer": 11,
+   "cell": "whole_wordfreq",
+   "freq_source": "wordfreq Zipf",
+   "spearman": 0.0895,
+   "pearson": 0.0838,
+   "n_tokens": 224457,
+   "bare_word_only": {
+    "spearman": 0.1088,
+    "pearson": 0.1003,
+    "n_tokens": 204480
+   }
+  },
+  {
+   "kind": "R",
+   "layer": 11,
+   "cell": "nonlatin_wordfreq",
+   "freq_source": "wordfreq Zipf",
+   "spearman": 0.0425,
+   "pearson": 0.0348,
+   "n_tokens": 94437,
+   "bare_word_only": {
+    "spearman": 0.0422,
+    "pearson": 0.0343,
+    "n_tokens": 92799
+   }
+  },
+  {
+   "kind": "R",
+   "layer": 12,
+   "cell": "latin_pile",
+   "freq_source": "pile-10k capped counts (log)",
+   "spearman": 0.2006,
+   "pearson": 0.223,
+   "n_tokens": 92858
+  },
+  {
+   "kind": "R",
+   "layer": 12,
+   "cell": "whole_wordfreq",
+   "freq_source": "wordfreq Zipf",
+   "spearman": 0.1056,
+   "pearson": 0.1003,
+   "n_tokens": 224457,
+   "bare_word_only": {
+    "spearman": 0.1264,
+    "pearson": 0.1186,
+    "n_tokens": 204480
+   }
+  },
+  {
+   "kind": "R",
+   "layer": 12,
+   "cell": "nonlatin_wordfreq",
+   "freq_source": "wordfreq Zipf",
+   "spearman": 0.0489,
+   "pearson": 0.042,
+   "n_tokens": 94437,
+   "bare_word_only": {
+    "spearman": 0.0487,
+    "pearson": 0.0419,
+    "n_tokens": 92799
+   }
+  },
+  {
+   "kind": "R",
+   "layer": 13,
+   "cell": "latin_pile",
+   "freq_source": "pile-10k capped counts (log)",
+   "spearman": 0.2569,
+   "pearson": 0.2839,
+   "n_tokens": 92858
+  },
+  {
+   "kind": "R",
+   "layer": 13,
+   "cell": "whole_wordfreq",
+   "freq_source": "wordfreq Zipf",
+   "spearman": 0.1267,
+   "pearson": 0.1222,
+   "n_tokens": 224457,
+   "bare_word_only": {
+    "spearman": 0.1493,
+    "pearson": 0.1427,
+    "n_tokens": 204480
+   }
+  },
+  {
+   "kind": "R",
+   "layer": 13,
+   "cell": "nonlatin_wordfreq",
+   "freq_source": "wordfreq Zipf",
+   "spearman": 0.0601,
+   "pearson": 0.0536,
+   "n_tokens": 94437,
+   "bare_word_only": {
+    "spearman": 0.0597,
+    "pearson": 0.0533,
+    "n_tokens": 92799
+   }
+  },
+  {
+   "kind": "R",
+   "layer": 14,
+   "cell": "latin_pile",
+   "freq_source": "pile-10k capped counts (log)",
+   "spearman": 0.3317,
+   "pearson": 0.3641,
+   "n_tokens": 92858
+  },
+  {
+   "kind": "R",
+   "layer": 14,
+   "cell": "whole_wordfreq",
+   "freq_source": "wordfreq Zipf",
+   "spearman": 0.1588,
+   "pearson": 0.1579,
+   "n_tokens": 224457,
+   "bare_word_only": {
+    "spearman": 0.1866,
+    "pearson": 0.1846,
+    "n_tokens": 204480
+   }
+  },
+  {
+   "kind": "R",
+   "layer": 14,
+   "cell": "nonlatin_wordfreq",
+   "freq_source": "wordfreq Zipf",
+   "spearman": 0.0788,
+   "pearson": 0.0762,
+   "n_tokens": 94437,
+   "bare_word_only": {
+    "spearman": 0.0784,
+    "pearson": 0.0763,
+    "n_tokens": 92799
+   }
+  },
+  {
+   "kind": "R",
+   "layer": 15,
+   "cell": "latin_pile",
+   "freq_source": "pile-10k capped counts (log)",
+   "spearman": 0.3172,
+   "pearson": 0.3508,
+   "n_tokens": 92858
+  },
+  {
+   "kind": "R",
+   "layer": 15,
+   "cell": "whole_wordfreq",
+   "freq_source": "wordfreq Zipf",
+   "spearman": 0.1527,
+   "pearson": 0.1529,
+   "n_tokens": 224457,
+   "bare_word_only": {
+    "spearman": 0.1781,
+    "pearson": 0.1764,
+    "n_tokens": 204480
+   }
+  },
+  {
+   "kind": "R",
+   "layer": 15,
+   "cell": "nonlatin_wordfreq",
+   "freq_source": "wordfreq Zipf",
+   "spearman": 0.0736,
+   "pearson": 0.0722,
+   "n_tokens": 94437,
+   "bare_word_only": {
+    "spearman": 0.0733,
+    "pearson": 0.0723,
+    "n_tokens": 92799
+   }
+  },
+  {
+   "kind": "R",
+   "layer": 16,
+   "cell": "latin_pile",
+   "freq_source": "pile-10k capped counts (log)",
+   "spearman": 0.3684,
+   "pearson": 0.4072,
+   "n_tokens": 92858
+  },
+  {
+   "kind": "R",
+   "layer": 16,
+   "cell": "whole_wordfreq",
+   "freq_source": "wordfreq Zipf",
+   "spearman": 0.1777,
+   "pearson": 0.18,
+   "n_tokens": 224457,
+   "bare_word_only": {
+    "spearman": 0.2047,
+    "pearson": 0.2055,
+    "n_tokens": 204480
+   }
+  },
+  {
+   "kind": "R",
+   "layer": 16,
+   "cell": "nonlatin_wordfreq",
+   "freq_source": "wordfreq Zipf",
+   "spearman": 0.0864,
+   "pearson": 0.0875,
+   "n_tokens": 94437,
+   "bare_word_only": {
+    "spearman": 0.0858,
+    "pearson": 0.0875,
+    "n_tokens": 92799
+   }
+  },
+  {
+   "kind": "R",
+   "layer": 17,
+   "cell": "latin_pile",
+   "freq_source": "pile-10k capped counts (log)",
+   "spearman": 0.4123,
+   "pearson": 0.4537,
+   "n_tokens": 92858
+  },
+  {
+   "kind": "R",
+   "layer": 17,
+   "cell": "whole_wordfreq",
+   "freq_source": "wordfreq Zipf",
+   "spearman": 0.2028,
+   "pearson": 0.2086,
+   "n_tokens": 224457,
+   "bare_word_only": {
+    "spearman": 0.2328,
+    "pearson": 0.2376,
+    "n_tokens": 204480
+   }
+  },
+  {
+   "kind": "R",
+   "layer": 17,
+   "cell": "nonlatin_wordfreq",
+   "freq_source": "wordfreq Zipf",
+   "spearman": 0.0997,
+   "pearson": 0.1051,
+   "n_tokens": 94437,
+   "bare_word_only": {
+    "spearman": 0.0993,
+    "pearson": 0.1057,
+    "n_tokens": 92799
+   }
+  },
+  {
+   "kind": "R",
+   "layer": 18,
+   "cell": "latin_pile",
+   "freq_source": "pile-10k capped counts (log)",
+   "spearman": 0.4765,
+   "pearson": 0.5171,
+   "n_tokens": 92858
+  },
+  {
+   "kind": "R",
+   "layer": 18,
+   "cell": "whole_wordfreq",
+   "freq_source": "wordfreq Zipf",
+   "spearman": 0.2382,
+   "pearson": 0.2493,
+   "n_tokens": 224457,
+   "bare_word_only": {
+    "spearman": 0.2708,
+    "pearson": 0.283,
+    "n_tokens": 204480
+   }
+  },
+  {
+   "kind": "R",
+   "layer": 18,
+   "cell": "nonlatin_wordfreq",
+   "freq_source": "wordfreq Zipf",
+   "spearman": 0.1247,
+   "pearson": 0.1393,
+   "n_tokens": 94437,
+   "bare_word_only": {
+    "spearman": 0.1247,
+    "pearson": 0.1411,
+    "n_tokens": 92799
+   }
+  },
+  {
+   "kind": "R",
+   "layer": 19,
+   "cell": "latin_pile",
+   "freq_source": "pile-10k capped counts (log)",
+   "spearman": 0.4454,
+   "pearson": 0.4928,
+   "n_tokens": 92858
+  },
+  {
+   "kind": "R",
+   "layer": 19,
+   "cell": "whole_wordfreq",
+   "freq_source": "wordfreq Zipf",
+   "spearman": 0.2107,
+   "pearson": 0.2188,
+   "n_tokens": 224457,
+   "bare_word_only": {
+    "spearman": 0.2395,
+    "pearson": 0.2478,
+    "n_tokens": 204480
+   }
+  },
+  {
+   "kind": "R",
+   "layer": 19,
+   "cell": "nonlatin_wordfreq",
+   "freq_source": "wordfreq Zipf",
+   "spearman": 0.0967,
+   "pearson": 0.1088,
+   "n_tokens": 94437,
+   "bare_word_only": {
+    "spearman": 0.0961,
+    "pearson": 0.1094,
+    "n_tokens": 92799
+   }
+  },
+  {
+   "kind": "R",
+   "layer": 20,
+   "cell": "latin_pile",
+   "freq_source": "pile-10k capped counts (log)",
+   "spearman": 0.449,
+   "pearson": 0.498,
+   "n_tokens": 92858
+  },
+  {
+   "kind": "R",
+   "layer": 20,
+   "cell": "whole_wordfreq",
+   "freq_source": "wordfreq Zipf",
+   "spearman": 0.2085,
+   "pearson": 0.2174,
+   "n_tokens": 224457,
+   "bare_word_only": {
+    "spearman": 0.2359,
+    "pearson": 0.2448,
+    "n_tokens": 204480
+   }
+  },
+  {
+   "kind": "R",
+   "layer": 20,
+   "cell": "nonlatin_wordfreq",
+   "freq_source": "wordfreq Zipf",
+   "spearman": 0.0916,
+   "pearson": 0.1041,
+   "n_tokens": 94437,
+   "bare_word_only": {
+    "spearman": 0.091,
+    "pearson": 0.1048,
+    "n_tokens": 92799
+   }
+  },
+  {
+   "kind": "R",
+   "layer": 21,
+   "cell": "latin_pile",
+   "freq_source": "pile-10k capped counts (log)",
+   "spearman": 0.4468,
+   "pearson": 0.494,
+   "n_tokens": 92858
+  },
+  {
+   "kind": "R",
+   "layer": 21,
+   "cell": "whole_wordfreq",
+   "freq_source": "wordfreq Zipf",
+   "spearman": 0.2114,
+   "pearson": 0.2192,
+   "n_tokens": 224457,
+   "bare_word_only": {
+    "spearman": 0.2389,
+    "pearson": 0.2466,
+    "n_tokens": 204480
+   }
+  },
+  {
+   "kind": "R",
+   "layer": 21,
+   "cell": "nonlatin_wordfreq",
+   "freq_source": "wordfreq Zipf",
+   "spearman": 0.0922,
+   "pearson": 0.1049,
+   "n_tokens": 94437,
+   "bare_word_only": {
+    "spearman": 0.0914,
+    "pearson": 0.1053,
+    "n_tokens": 92799
+   }
+  },
+  {
+   "kind": "R",
+   "layer": 22,
+   "cell": "latin_pile",
+   "freq_source": "pile-10k capped counts (log)",
+   "spearman": 0.4535,
+   "pearson": 0.4996,
+   "n_tokens": 92858
+  },
+  {
+   "kind": "R",
+   "layer": 22,
+   "cell": "whole_wordfreq",
+   "freq_source": "wordfreq Zipf",
+   "spearman": 0.2225,
+   "pearson": 0.2317,
+   "n_tokens": 224457,
+   "bare_word_only": {
+    "spearman": 0.2508,
+    "pearson": 0.2601,
+    "n_tokens": 204480
+   }
+  },
+  {
+   "kind": "R",
+   "layer": 22,
+   "cell": "nonlatin_wordfreq",
+   "freq_source": "wordfreq Zipf",
+   "spearman": 0.1035,
+   "pearson": 0.119,
+   "n_tokens": 94437,
+   "bare_word_only": {
+    "spearman": 0.1029,
+    "pearson": 0.1197,
+    "n_tokens": 92799
+   }
+  },
+  {
+   "kind": "R",
+   "layer": 23,
+   "cell": "latin_pile",
+   "freq_source": "pile-10k capped counts (log)",
+   "spearman": 0.425,
+   "pearson": 0.4738,
+   "n_tokens": 92858
+  },
+  {
+   "kind": "R",
+   "layer": 23,
+   "cell": "whole_wordfreq",
+   "freq_source": "wordfreq Zipf",
+   "spearman": 0.2055,
+   "pearson": 0.2127,
+   "n_tokens": 224457,
+   "bare_word_only": {
+    "spearman": 0.2318,
+    "pearson": 0.2389,
+    "n_tokens": 204480
+   }
+  },
+  {
+   "kind": "R",
+   "layer": 23,
+   "cell": "nonlatin_wordfreq",
+   "freq_source": "wordfreq Zipf",
+   "spearman": 0.0867,
+   "pearson": 0.1018,
+   "n_tokens": 94437,
+   "bare_word_only": {
+    "spearman": 0.0863,
+    "pearson": 0.1025,
+    "n_tokens": 92799
+   }
+  },
+  {
+   "kind": "R",
+   "layer": 24,
+   "cell": "latin_pile",
+   "freq_source": "pile-10k capped counts (log)",
+   "spearman": 0.4009,
+   "pearson": 0.4492,
+   "n_tokens": 92858
+  },
+  {
+   "kind": "R",
+   "layer": 24,
+   "cell": "whole_wordfreq",
+   "freq_source": "wordfreq Zipf",
+   "spearman": 0.1948,
+   "pearson": 0.1988,
+   "n_tokens": 224457,
+   "bare_word_only": {
+    "spearman": 0.2198,
+    "pearson": 0.2235,
+    "n_tokens": 204480
+   }
+  },
+  {
+   "kind": "R",
+   "layer": 24,
+   "cell": "nonlatin_wordfreq",
+   "freq_source": "wordfreq Zipf",
+   "spearman": 0.0801,
+   "pearson": 0.0904,
+   "n_tokens": 94437,
+   "bare_word_only": {
+    "spearman": 0.0796,
+    "pearson": 0.0907,
+    "n_tokens": 92799
+   }
+  },
+  {
+   "kind": "R",
+   "layer": 25,
+   "cell": "latin_pile",
+   "freq_source": "pile-10k capped counts (log)",
+   "spearman": 0.3708,
+   "pearson": 0.4157,
+   "n_tokens": 92858
+  },
+  {
+   "kind": "R",
+   "layer": 25,
+   "cell": "whole_wordfreq",
+   "freq_source": "wordfreq Zipf",
+   "spearman": 0.1849,
+   "pearson": 0.1849,
+   "n_tokens": 224457,
+   "bare_word_only": {
+    "spearman": 0.2084,
+    "pearson": 0.207,
+    "n_tokens": 204480
+   }
+  },
+  {
+   "kind": "R",
+   "layer": 25,
+   "cell": "nonlatin_wordfreq",
+   "freq_source": "wordfreq Zipf",
+   "spearman": 0.075,
+   "pearson": 0.0797,
+   "n_tokens": 94437,
+   "bare_word_only": {
+    "spearman": 0.0745,
+    "pearson": 0.0798,
+    "n_tokens": 92799
+   }
+  },
+  {
+   "kind": "R",
+   "layer": 26,
+   "cell": "latin_pile",
+   "freq_source": "pile-10k capped counts (log)",
+   "spearman": 0.3206,
+   "pearson": 0.3586,
+   "n_tokens": 92858
+  },
+  {
+   "kind": "R",
+   "layer": 26,
+   "cell": "whole_wordfreq",
+   "freq_source": "wordfreq Zipf",
+   "spearman": 0.1652,
+   "pearson": 0.1628,
+   "n_tokens": 224457,
+   "bare_word_only": {
+    "spearman": 0.1922,
+    "pearson": 0.1882,
+    "n_tokens": 204480
+   }
+  },
+  {
+   "kind": "R",
+   "layer": 26,
+   "cell": "nonlatin_wordfreq",
+   "freq_source": "wordfreq Zipf",
+   "spearman": 0.0684,
+   "pearson": 0.0714,
+   "n_tokens": 94437,
+   "bare_word_only": {
+    "spearman": 0.0684,
+    "pearson": 0.0718,
+    "n_tokens": 92799
+   }
+  },
+  {
+   "kind": "R",
+   "layer": 27,
+   "cell": "latin_pile",
+   "freq_source": "pile-10k capped counts (log)",
+   "spearman": 0.2106,
+   "pearson": 0.2413,
+   "n_tokens": 92858
+  },
+  {
+   "kind": "R",
+   "layer": 27,
+   "cell": "whole_wordfreq",
+   "freq_source": "wordfreq Zipf",
+   "spearman": 0.1046,
+   "pearson": 0.0925,
+   "n_tokens": 224457,
+   "bare_word_only": {
+    "spearman": 0.1253,
+    "pearson": 0.1101,
+    "n_tokens": 204480
+   }
+  },
+  {
+   "kind": "R",
+   "layer": 27,
+   "cell": "nonlatin_wordfreq",
+   "freq_source": "wordfreq Zipf",
+   "spearman": 0.0186,
+   "pearson": 0.0116,
+   "n_tokens": 94437,
+   "bare_word_only": {
+    "spearman": 0.0172,
+    "pearson": 0.0096,
+    "n_tokens": 92799
+   }
+  },
+  {
+   "kind": "R",
+   "layer": 28,
+   "cell": "latin_pile",
+   "freq_source": "pile-10k capped counts (log)",
+   "spearman": 0.2154,
+   "pearson": 0.247,
+   "n_tokens": 92858
+  },
+  {
+   "kind": "R",
+   "layer": 28,
+   "cell": "whole_wordfreq",
+   "freq_source": "wordfreq Zipf",
+   "spearman": 0.1078,
+   "pearson": 0.0937,
+   "n_tokens": 224457,
+   "bare_word_only": {
+    "spearman": 0.1234,
+    "pearson": 0.1056,
+    "n_tokens": 204480
+   }
+  },
+  {
+   "kind": "R",
+   "layer": 28,
+   "cell": "nonlatin_wordfreq",
+   "freq_source": "wordfreq Zipf",
+   "spearman": 0.0107,
+   "pearson": -0.0021,
+   "n_tokens": 94437,
+   "bare_word_only": {
+    "spearman": 0.0098,
+    "pearson": -0.0036,
+    "n_tokens": 92799
+   }
+  },
+  {
+   "kind": "R",
+   "layer": 29,
+   "cell": "latin_pile",
+   "freq_source": "pile-10k capped counts (log)",
+   "spearman": 0.1403,
+   "pearson": 0.168,
+   "n_tokens": 92858
+  },
+  {
+   "kind": "R",
+   "layer": 29,
+   "cell": "whole_wordfreq",
+   "freq_source": "wordfreq Zipf",
+   "spearman": 0.0747,
+   "pearson": 0.0559,
+   "n_tokens": 224457,
+   "bare_word_only": {
+    "spearman": 0.0878,
+    "pearson": 0.0645,
+    "n_tokens": 204480
+   }
+  },
+  {
+   "kind": "R",
+   "layer": 29,
+   "cell": "nonlatin_wordfreq",
+   "freq_source": "wordfreq Zipf",
+   "spearman": -0.0039,
+   "pearson": -0.0256,
+   "n_tokens": 94437,
+   "bare_word_only": {
+    "spearman": -0.0037,
+    "pearson": -0.026,
+    "n_tokens": 92799
+   }
+  },
+  {
+   "kind": "R",
+   "layer": 30,
+   "cell": "latin_pile",
+   "freq_source": "pile-10k capped counts (log)",
+   "spearman": 0.1804,
+   "pearson": 0.2067,
+   "n_tokens": 92858
+  },
+  {
+   "kind": "R",
+   "layer": 30,
+   "cell": "whole_wordfreq",
+   "freq_source": "wordfreq Zipf",
+   "spearman": 0.088,
+   "pearson": 0.0709,
+   "n_tokens": 224457,
+   "bare_word_only": {
+    "spearman": 0.1034,
+    "pearson": 0.0824,
+    "n_tokens": 204480
+   }
+  },
+  {
+   "kind": "R",
+   "layer": 30,
+   "cell": "nonlatin_wordfreq",
+   "freq_source": "wordfreq Zipf",
+   "spearman": 0.0269,
+   "pearson": 0.0012,
+   "n_tokens": 94437,
+   "bare_word_only": {
+    "spearman": 0.0288,
+    "pearson": 0.0026,
+    "n_tokens": 92799
+   }
+  }
+ ]
+}
