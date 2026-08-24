@@ -6,8 +6,11 @@ frequency` reads Qwen's own merge order, but that carries no information past
 token id 100k (rho +0.04 / +0.01 / -0.04 by band) -- exactly where the
 non-Latin vocabulary lives. Both fail on the same subpopulation, and that
 subpopulation is what the junk in the readouts is made of. Without a
-frequency number for those tokens, H1 gets tested only on Latin tokens, i.e.
-not on its actual subject.
+frequency number for those tokens, H1 (a whole-vocabulary claim) gets tested
+only on Latin tokens, and the separate question of whether frequency
+structures the junk cannot be asked at all (the D31 non-Latin cell).
+(Reworded 24 Aug: the original phrasing called the junk "H1's actual
+subject" -- a residue of the pre-correction framing; see devlog 0.1.0.)
 
 `wordfreq` (pypi, Speer et al.) is a frequency table over 42 languages built
 from Wikipedia, Google Books, Reddit, Twitter, OpenSubtitles, SUBTLEX and the

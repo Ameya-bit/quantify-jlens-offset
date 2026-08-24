@@ -1,0 +1,274 @@
+{
+ "meta": {
+  "derivation": "red team 24 Aug: the 4c regression run on the banked Pythia m_t (results/step4_mt_pythia.npz, same seed-2 battery as the noise null). Frequency = pile-10k pythia_capped counts (log), tokens with count >= 1 (single cell: Pythia was trained on the Pile, so pile counts ARE its training distribution - the D31 three-cell split is a Qwen-provenance problem and does not apply here).",
+  "n_tokens": 49154,
+  "excluded_zero_count_share": 0.0223,
+  "mt_npz": "results/step4_mt_pythia.npz"
+ },
+ "results": [
+  {
+   "kind": "logit",
+   "layer": 0,
+   "spearman": 0.2919,
+   "pearson": 0.335
+  },
+  {
+   "kind": "logit",
+   "layer": 1,
+   "spearman": 0.2982,
+   "pearson": 0.3434
+  },
+  {
+   "kind": "logit",
+   "layer": 2,
+   "spearman": 0.3139,
+   "pearson": 0.3607
+  },
+  {
+   "kind": "logit",
+   "layer": 3,
+   "spearman": 0.3281,
+   "pearson": 0.3773
+  },
+  {
+   "kind": "logit",
+   "layer": 4,
+   "spearman": 0.3381,
+   "pearson": 0.39
+  },
+  {
+   "kind": "logit",
+   "layer": 5,
+   "spearman": 0.3749,
+   "pearson": 0.4316
+  },
+  {
+   "kind": "logit",
+   "layer": 6,
+   "spearman": 0.3911,
+   "pearson": 0.4487
+  },
+  {
+   "kind": "logit",
+   "layer": 7,
+   "spearman": 0.4215,
+   "pearson": 0.4817
+  },
+  {
+   "kind": "logit",
+   "layer": 8,
+   "spearman": 0.4605,
+   "pearson": 0.5233
+  },
+  {
+   "kind": "logit",
+   "layer": 9,
+   "spearman": 0.5136,
+   "pearson": 0.5804
+  },
+  {
+   "kind": "logit",
+   "layer": 10,
+   "spearman": 0.5767,
+   "pearson": 0.6481
+  },
+  {
+   "kind": "logit",
+   "layer": 11,
+   "spearman": 0.5947,
+   "pearson": 0.6692
+  },
+  {
+   "kind": "logit",
+   "layer": 12,
+   "spearman": 0.6243,
+   "pearson": 0.7016
+  },
+  {
+   "kind": "logit",
+   "layer": 13,
+   "spearman": 0.6377,
+   "pearson": 0.715
+  },
+  {
+   "kind": "logit",
+   "layer": 14,
+   "spearman": 0.6232,
+   "pearson": 0.7023
+  },
+  {
+   "kind": "logit",
+   "layer": 15,
+   "spearman": 0.638,
+   "pearson": 0.7145
+  },
+  {
+   "kind": "logit",
+   "layer": 16,
+   "spearman": 0.6348,
+   "pearson": 0.7122
+  },
+  {
+   "kind": "logit",
+   "layer": 17,
+   "spearman": 0.6408,
+   "pearson": 0.718
+  },
+  {
+   "kind": "logit",
+   "layer": 18,
+   "spearman": 0.6401,
+   "pearson": 0.7179
+  },
+  {
+   "kind": "logit",
+   "layer": 19,
+   "spearman": 0.6354,
+   "pearson": 0.7143
+  },
+  {
+   "kind": "logit",
+   "layer": 20,
+   "spearman": 0.6327,
+   "pearson": 0.7114
+  },
+  {
+   "kind": "logit",
+   "layer": 21,
+   "spearman": 0.6275,
+   "pearson": 0.7065
+  },
+  {
+   "kind": "J",
+   "layer": 0,
+   "spearman": 0.3689,
+   "pearson": 0.4177
+  },
+  {
+   "kind": "J",
+   "layer": 1,
+   "spearman": 0.4292,
+   "pearson": 0.4923
+  },
+  {
+   "kind": "J",
+   "layer": 2,
+   "spearman": 0.4012,
+   "pearson": 0.4631
+  },
+  {
+   "kind": "J",
+   "layer": 3,
+   "spearman": 0.4476,
+   "pearson": 0.5119
+  },
+  {
+   "kind": "J",
+   "layer": 4,
+   "spearman": 0.43,
+   "pearson": 0.4978
+  },
+  {
+   "kind": "J",
+   "layer": 5,
+   "spearman": 0.4186,
+   "pearson": 0.4875
+  },
+  {
+   "kind": "J",
+   "layer": 6,
+   "spearman": 0.3945,
+   "pearson": 0.4573
+  },
+  {
+   "kind": "J",
+   "layer": 7,
+   "spearman": 0.4371,
+   "pearson": 0.5035
+  },
+  {
+   "kind": "J",
+   "layer": 8,
+   "spearman": 0.497,
+   "pearson": 0.5706
+  },
+  {
+   "kind": "J",
+   "layer": 9,
+   "spearman": 0.4262,
+   "pearson": 0.4921
+  },
+  {
+   "kind": "J",
+   "layer": 10,
+   "spearman": 0.4794,
+   "pearson": 0.5509
+  },
+  {
+   "kind": "J",
+   "layer": 11,
+   "spearman": 0.4647,
+   "pearson": 0.537
+  },
+  {
+   "kind": "J",
+   "layer": 12,
+   "spearman": 0.4189,
+   "pearson": 0.4847
+  },
+  {
+   "kind": "J",
+   "layer": 13,
+   "spearman": 0.3343,
+   "pearson": 0.394
+  },
+  {
+   "kind": "J",
+   "layer": 14,
+   "spearman": 0.2355,
+   "pearson": 0.2878
+  },
+  {
+   "kind": "J",
+   "layer": 15,
+   "spearman": 0.2493,
+   "pearson": 0.2924
+  },
+  {
+   "kind": "J",
+   "layer": 16,
+   "spearman": 0.1622,
+   "pearson": 0.1936
+  },
+  {
+   "kind": "J",
+   "layer": 17,
+   "spearman": 0.3236,
+   "pearson": 0.3741
+  },
+  {
+   "kind": "J",
+   "layer": 18,
+   "spearman": 0.3559,
+   "pearson": 0.4113
+  },
+  {
+   "kind": "J",
+   "layer": 19,
+   "spearman": 0.2786,
+   "pearson": 0.3302
+  },
+  {
+   "kind": "J",
+   "layer": 20,
+   "spearman": 0.2968,
+   "pearson": 0.3503
+  },
+  {
+   "kind": "J",
+   "layer": 21,
+   "spearman": 0.3883,
+   "pearson": 0.447
+  }
+ ]
+}
