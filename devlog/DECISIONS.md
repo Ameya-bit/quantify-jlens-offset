@@ -498,3 +498,66 @@ never to score vectors (step-4 bright line).
 
 - **Rejected:** in-sample centering — subtracting a mean estimated from the same texts it is evaluated on would partly remove the evaluation sample's own average by construction, flattering the result.
 - **Reverses if:** nothing; strictly more conservative at no extra cost (the halves already existed for the noise null).
+
+### D36. H2 gets a second, wordfreq-matched frame — within-script, not script-blind
+**Date:** 24 Aug · **Where:** `src/h2_battery.py` · **Evidence:** `results/step5_h2_battery.json`
+
+The pre-registered pile-count matching (D24 machinery) structurally excludes
+the junk: non-Latin tokens are mostly unseen in pile-10k, so they can never
+be probes, and H2 would have gone untested on the tokens it was invented to
+explain — the same coverage hole 4c had before wordfreq (D26–D28). Added
+before its numbers were seen: the top-K statistic repeated with matching on
+wordfreq Zipf (window = the same 0.25 natural-log width, converted to
+±0.109 Zipf).
+
+- **Corrected the same day, before any conclusion was drawn:** the first
+  design used one script-blind control pool. Δ_t carries a script-LEVEL
+  shift (median Δ of covered non-Latin tokens −0.095, instruct-favored, vs
+  +0.002 Latin), so script-blind controls handed every Latin probe a pool
+  dragged down by non-Latin members and manufactured positive "excess" out
+  of script composition (visible as an impossible mid-depth disagreement
+  with the pile frame). Final design: two within-script cells,
+  `wf_nonlatin` (the junk cell proper) and `wf_latin` (second-source
+  robustness).
+- **Pile frame stays primary** — it is the machinery D24 validated.
+- **Caveat carried by every wordfreq number:** Δ_t was measured on English
+  contexts; for non-Latin tokens it reads "how much more the base model
+  leaks toward these in English text" — the context where the junk appears.
+- **Reverses if:** a Δ_t measured on multilingual contexts appears; then the
+  junk cell should be recomputed on it.
+
+### D37. Vocabulary-wide residualisation via a 0.01-log-count grid
+**Date:** 24 Aug · **Where:** `src/h2_battery.py`
+
+The matched-control median (±0.25 log-count) is exact per probe for the
+top-K statistics, but computing an exact window median for every one of
+92,846 tokens is quadratic waste. For the vocabulary-wide residualised
+correlation the control curve is evaluated on a 0.01-log-count grid and
+interpolated per token — same window, error bounded by the grid step.
+Grid points inside coverage gaps wider than the window (19 of 1,299) have
+empty windows and are dropped; no token can interpolate into such a segment
+(its own neighbouring grid points always contain the token itself; asserted
+in-script: zero NaN residuals).
+
+- **Rejected:** linear/polynomial regression residualisation — the Δ-vs-
+  frequency relation is convex (D23), a straight line leaves structure.
+- **Reverses if:** nothing; it is an implementation of the D24 window, not
+  a new estimator.
+
+### D38. Punctuation probes reported separately in every H2 excess
+**Date:** 24 Aug · **Where:** `src/h2_battery.py` · **Evidence:** `results/step5_h2_battery.json`
+
+The control pool excludes punctuation (D24 rule: a control must be an
+ordinary word), so punctuation PROBES are compared to word controls. Tuning
+promotes formatting tokens strongly (the promoted end of Δ_t is whitespace
+and chat formatting, D23), so punctuation probes carry a large negative
+excess for a composition reason, not a suppression one — measured: at
+J L18 the top-100 splits into word probes −0.064 vs punctuation probes
+−0.338. Every enrichment number therefore reports the word/punctuation
+split alongside the pooled median.
+
+- **Rejected:** excluding punctuation probes outright — the lens DOES read
+  punctuation out at mid-depth and hiding that would misdescribe the top-K.
+- **Reverses if:** a validated punctuation-to-punctuation matching pool is
+  built (needs a frequency source that scores punctuation, which wordfreq
+  does not).
