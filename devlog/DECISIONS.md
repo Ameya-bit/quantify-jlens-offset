@@ -596,3 +596,33 @@ Remaining time goes to step 7's protected ≥90 min.
   battery run against a deadline, for a question already answered.
 - **Reverses if:** step 7/8 finish early AND the writeup needs a
   scale-generalisation claim; then it is the first stretch to add.
+
+### D41. Step-7 design registered pre-code: score-space subtraction primary, gate fixed
+**Date:** 26 Aug · **Where:** steps.md step 7, `src/calibration.py` · **Evidence:** `results/step7_calibration.json`
+
+Registered in conversation on 26 Aug, before any step-7 code existed and
+with user approval. (1) The correction is the plan-v2 score-space
+subtraction `s_t(h) − m_t`, per instrument per layer — activation-space
+centering was already killed by 4b. (2) Variant order: raw; corrected
+(primary); z-scored `(s−m_t)/max(σ_t,1e-6)` (exploratory secondary — it
+de-emphasizes the high-σ tokens step 4 identified as content and amplifies
+tiny-σ noise); shuffled-m_t null, seeds 0–2. (3) Headline subset = the 72
+strict two-hop capital/capital_of items (D21); full 138 as robustness.
+(4) **Gate:** corrected beats raw on median intermediate rank at a majority
+of layers L0–14 on J AND R, paired sign test p<0.05 at ≥3 of those layers
+per instrument. (5) Predictions on record before running: P1 helps most on
+R; P2 improvement concentrates early on transported lenses; P3 mid-depth
+may hurt or do nothing (frequency component plausibly genuine prior).
+
+Outcome: gate FAIL (J 1/15 layers improved, R 5/15); P3 confirmed with
+force, P1/P2 supported only in R's L0–4 band. Reported as registered — the
+gate was not renegotiated after the result (memory rule: never rewrite a
+failed pre-registered test unilaterally).
+
+- **Rejected:** rank of the *answer* token as the headline metric (the
+  answer is what block 31 produces — the intermediate is the mid-stack
+  content a lens is for; answer ranks recorded as secondary anyway);
+  mean rank (heavy-tailed; medians + sign tests instead).
+- **Reverses if:** never — a registered gate stays registered. A different
+  correction (e.g. fitting a transfer map for the pile→prompt shift) would
+  be a new, separately registered experiment.
