@@ -561,3 +561,38 @@ split alongside the pooled median.
 - **Reverses if:** a validated punctuation-to-punctuation matching pool is
   built (needs a frequency source that scores punctuation, which wordfreq
   does not).
+
+### D39. Step-6 offset-size metric and R/J decision bands
+**Date:** 25 Aug · **Where:** `src/h3_swap.py` · **Evidence:** `results/step6_h3_swap.json`
+
+Offset size per (instrument, layer) = median m_t of the top-100 tokens by
+m_t minus the vocabulary-median m_t, in logit units (comparable across
+instruments: shared final norm + unembedding; the final RMSNorm removes
+overall scale, so differences are distribution shape, not magnitude).
+Ratio R/J per layer; bands fixed before any ratio was computed: <0.7
+SHRINKS, 0.7–1.3 SURVIVES, >1.3 GROWS; verdict on the early band L0–4.
+Disclosed as SOFT pre-registration: step-2 junk fractions had already
+shown J≈R on a related metric, and the observed outcome (GROWS with
+near-disjoint token sets) was outside the registered shrinks-vs-survives
+dichotomy, so its interpretation is post-hoc.
+
+- **Rejected:** raw top-1 or max m_t (tail-noise dominated, step-4.0
+  caveat); variance of m_t across the vocabulary (conflates offset with
+  content spread); junk-share as the size metric (composition, not size —
+  reported separately).
+- **Reverses if:** a metric-dependence check fails — it did not: mean-of-
+  top-100 variant matches the ratios to ~0.03.
+
+### D40. qwen3.5-9b strengthener SKIPPED
+**Date:** 25 Aug · **Where:** steps.md step 6 · **Evidence:** `results/step6_h3_swap.json` verdict
+
+The optional 9B run existed to disambiguate a SURVIVES outcome (weak
+lever: not-transport vs shared-recipe-error). The observed outcome is
+GROWS with near-disjoint early token sets — the 4B lever proved strong on
+its own and the ambiguity the 9B was bought for never materialised.
+Remaining time goes to step 7's protected ≥90 min.
+
+- **Rejected:** running it anyway as confirmation — one model download +
+  battery run against a deadline, for a question already answered.
+- **Reverses if:** step 7/8 finish early AND the writeup needs a
+  scale-generalisation claim; then it is the first stretch to add.
