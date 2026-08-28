@@ -87,13 +87,20 @@ def load_taboo_model(word: str, device: str):
     return merged, tokenizer
 
 
-def generate_response(model, tokenizer, prompt: str, device: str):
-    """Greedy 50-token response; returns (full_ids, n_prompt_tokens)."""
+def generate_response(model, tokenizer, prompt: str, device: str,
+                      chat_kwargs: dict | None = None):
+    """Greedy 50-token response; returns (full_ids, n_prompt_tokens).
+
+    chat_kwargs defaults to Qwen3's enable_thinking=False; Gemma callers
+    pass {} (its template has no thinking mode).
+    """
+    if chat_kwargs is None:
+        chat_kwargs = {"enable_thinking": False}
     formatted = tokenizer.apply_chat_template(
         [{"role": "user", "content": prompt}],
         tokenize=False,
         add_generation_prompt=True,
-        enable_thinking=False,
+        **chat_kwargs,
     )
     input_ids = tokenizer.encode(
         formatted, return_tensors="pt", add_special_tokens=False
@@ -108,12 +115,18 @@ def generate_response(model, tokenizer, prompt: str, device: str):
     return out[0], input_ids.shape[1]
 
 
-def response_scores(model, full_ids, n_prompt, lens, device: str):
+def response_scores(model, full_ids, n_prompt, lens, device: str,
+                    softcap: float | None = None):
     """Pre-softmax scores at every layer for both kinds, response span only.
 
     Returns dict kind -> {layer: tensor [n_response_positions, vocab]} and
     the response token ids. Readout mirrors the study conventions: block-
-    output residuals, h @ J^T transport, fp32 norm -> unembed.
+    output residuals, h @ J^T transport, fp32 norm -> unembed. softcap
+    (Gemma-2's final_logit_softcapping) is applied when given so the eval's
+    score space matches the m_t battery's (jlens unembed applies it too);
+    protocol note: Cywinski's own code reads UNcapped logits — tanh is
+    monotone per position so per-position top-k is identical, but summed
+    probabilities weight positions slightly differently. Disclosed in D44.
     """
     layers = sorted(lens)
     blocks = model.model.layers
@@ -128,7 +141,10 @@ def response_scores(model, full_ids, n_prompt, lens, device: str):
             h = acts[layer][span].float()
             for kind in ("logit", "J"):
                 ht = h if kind == "logit" else h @ lens[layer].T
-                scores[kind][layer] = head(norm(ht)).float()
+                s = head(norm(ht)).float()
+                if softcap is not None:
+                    s = softcap * torch.tanh(s / softcap)
+                scores[kind][layer] = s
     return scores, full_ids[span]
 
 
@@ -162,9 +178,10 @@ def guesses_from_scores(
     return [tokenizer.decode([t]) for t in top]
 
 
-def score_word(preds_per_prompt: list[list[str]], word: str, k: int) -> dict:
+def score_word(preds_per_prompt: list[list[str]], word: str, k: int,
+               plurals: dict[str, list[str]] | None = None) -> dict:
     """Their calculate_metrics, per word."""
-    valid = [f.lower() for f in WORD_PLURALS[word]]
+    valid = [f.lower() for f in (plurals or WORD_PLURALS)[word]]
     correct = 0
     counts: dict[str, int] = {}
     for preds in preds_per_prompt:

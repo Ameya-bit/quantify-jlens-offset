@@ -758,3 +758,42 @@ significance claims.
 - **Reverses if:** Ameya amends before the first eval run (this entry is
   a draft until then); or HF auth + the Gemma license land in time, in
   which case the Gemma arm gets its own registration with P3 promoted.
+
+### D44. Gemma headline arm registered pre-run: same design, P3 promoted, reproduction check
+**Date:** 28 Aug · **Where:** src/fit_gemma2.py, src/sanity_gemma2.py, src/taboo_mt_gemma.py, src/taboo_eval_gemma.py · **Evidence:** (to be produced: results/taboo_gemma/*)
+
+Registered before the Gemma fit has run (scripts written while the cloud
+box was being set up). Everything D43 fixed carries over unchanged —
+protocol verbatim, lens fitted on the clean gated base, sanity battery as
+hard gate, LOO layer selection for headlines (choose on the other 19
+words), their metrics/plurals with their [word] fallback for
+blue/book/salt/ship. Deltas from D43:
+
+- **Model/set:** gemma-2-9b-it, all 20 released taboo organisms — their
+  published benchmark. Comparison to their published table (logit lens
+  L-index-31, top-5: 16.5% accuracy / 75% pass@10) is now legitimate.
+  **Reproduction check, not a gate:** our reimplemented raw/logit at
+  L-index-31 should land near their numbers; a large gap means our
+  reimplementation differs and gets diagnosed before any comparative
+  claim is made.
+- **P1, P2 carried as registered.** P2's late band = the last five fitted
+  layers (L35-39 of fitted 0-39), the same "last 5" rule that defined
+  L21-25 on the 28-layer model.
+- **P3 NOW REGISTERED (n=20):** Spearman rho(zipf(word), per-word
+  accuracy at the LOO-selected layer, zscore/J) > 0, zipf from wordfreq
+  (en) of the word string. Reported with p; the D43 caveat that n=3 was
+  uninterpretable is resolved by the 20-word set.
+- **Protocol note (deviation from their code, disclosed):** all scores
+  pass through Gemma-2's final logit softcap so the eval's score space
+  matches the m_t battery's (jlens unembed applies the cap). Their code
+  reads uncapped logits; tanh is monotone per position (per-position
+  top-k identical) but summed probabilities weight positions slightly
+  differently. The L-index-31 reproduction check measures whether this
+  matters in practice.
+- **Compute:** fit on a rented CUDA box (fp32, eager attention — sdpa
+  skips Gemma-2's attention softcap and the fit differentiates through
+  attention). Smoke first, as always.
+
+- **Reverses if:** the reproduction check misses their published numbers
+  badly — then the softcap choice is re-examined (uncapped rerun) before
+  anything else is reported.
