@@ -694,10 +694,9 @@ generation.
 ### D43. Taboo elicitation design registered pre-result: protocol, instruments, predictions, selection rule
 **Date:** 28 Aug · **Where:** src/fit_qwen3.py, src/sanity_qwen3.py, src/taboo_mt.py, src/taboo_eval.py · **Evidence:** (to be produced: results/taboo/*)
 
-**DRAFTED BY THE ASSISTANT, PENDING AMEYA'S SIGN-OFF — no eval result
-existed when this was written (the lens fit was still running). Amend or
-veto before src.taboo_eval runs; after results exist this entry is frozen
-under the D-series rules.**
+**Drafted by the assistant 28 Aug pre-result; P1–P3 and the selection
+rule confirmed by Ameya the same day, before any eval ran (P3 explicitly
+understood as unregistered at n=3). Entry frozen under the D-series rules.**
 
 Setting: Cywinski/Ryd/Rajamanoharan/Nanda taboo organisms
 (arXiv:2505.14352) — models fine-tuned to hint at but never say a secret
