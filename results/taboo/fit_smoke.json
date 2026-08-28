@@ -1,0 +1,10 @@
+{
+  "model_id": "Qwen/Qwen3-1.7B",
+  "device": "mps",
+  "n_layers": 28,
+  "target_layer": 26,
+  "skip_first": 4,
+  "max_seq_len": 128,
+  "seconds_for_1_doc": 194.5,
+  "projected_minutes_25_docs": 81.0
+}

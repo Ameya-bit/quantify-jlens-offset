@@ -686,3 +686,76 @@ generation.
   domain to clear the step-4.0 split-half noise floor — then domains merge
   into coarser pairs (e.g. code vs everything-else) and the ≥0.8 bar
   carries over unchanged.
+
+---
+
+## Step 10 — taboo elicitation arm (ELK bridge)
+
+### D43. Taboo elicitation design registered pre-result: protocol, instruments, predictions, selection rule
+**Date:** 28 Aug · **Where:** src/fit_qwen3.py, src/sanity_qwen3.py, src/taboo_mt.py, src/taboo_eval.py · **Evidence:** (to be produced: results/taboo/*)
+
+**DRAFTED BY THE ASSISTANT, PENDING AMEYA'S SIGN-OFF — no eval result
+existed when this was written (the lens fit was still running). Amend or
+veto before src.taboo_eval runs; after results exist this entry is frozen
+under the D-series rules.**
+
+Setting: Cywinski/Ryd/Rajamanoharan/Nanda taboo organisms
+(arXiv:2505.14352) — models fine-tuned to hint at but never say a secret
+word. Their elicitation protocol reimplemented verbatim from their
+released code (EmilRyd/eliciting-secrets, evaluate_logit_lens.py): 10
+fixed hint prompts, greedy 50-token responses, per-response-position
+probability readout with current+previous token zeroed, probabilities
+SUMMED over positions, top-5 guesses, accuracy / pass@10 / bestOf10 with
+their plural lists. Models: their released Qwen3-1.7B LoRA adapters
+(smile, gold, leaf) — NOT their headline Gemma-2-9B (gated; no HF auth).
+Consequence, registered: comparisons are method-vs-method on the same
+model through our reimplementation of their baseline; their published
+Gemma numbers are context, never a comparison target.
+
+Instruments: (a) their logit lens, swept over all layers; (b) our J-lens
+fitted on the CLEAN Qwen/Qwen3-1.7B base (official jlens.fit, released
+recipe: pile-10k rows 0-24, t_max=128, skip_first=4, target L26),
+applied to the LoRA-merged organism's activations. Lens-on-base,
+readout-on-organism is deliberate: the realistic monitoring setting, and
+it doubles as the long-open backdoor-organism feasibility probe.
+Variants: raw (their aggregation) and z-score ((s_t − m_t)/sigma_t,
+step-7's registered-secondary correction), m_t/sigma_t from the clean
+base on fresh pile rows (src.taboo_mt, step-4 machinery).
+
+Hard gate before any eval: the fitted lens passes the step-1-style
+sanity battery (src.sanity_qwen3: wiring, late-layer agreement ≥5/10 at
+L25, known facts ≥2/3). Fail ⇒ the arm is reported as a feasibility
+negative, no elicitation numbers.
+
+Registered predictions:
+- **P1 (the comparison):** the J-lens surfaces the secret at least as
+  well as the logit lens at each instrument's best layer, and its best
+  layer is EARLIER in depth (the J-vs-logit gap comes from future-token
+  information; the secret is exactly a suppressed future token).
+- **P2 (calibration):** z-score ≥ raw on the J-lens in the late band
+  (L21–25), where step 7 found z-scoring rescues the transported lenses'
+  junk rebound. Flat m_t subtraction is NOT run — step 7 already
+  falsified it at working depths; re-running a falsified variant here
+  would be result-shopping.
+- **P3 (dose-response) is NOT registered:** 3 secrets cannot power the
+  frequency slope. Per-word results are reported descriptively only; the
+  20-word test needs the Gemma arm (or more Qwen organisms) and would be
+  registered separately.
+
+Layer-selection rule (against sweep overfitting with only 3 words x 10
+prompts): headline numbers use leave-one-word-out layer selection (pick
+the best layer on 2 words, score the held-out word, rotate); the full
+sweep is shown as a figure. Disclosed alongside: their own layer 32 was
+also empirically chosen, on the same models their table reports.
+
+Registered caveats: (1) m_t is pile-estimated, the eval reads
+chat-formatted assistant responses — 8a says that domain shift is real;
+if z-score underperforms, the shift is a named suspect before any
+conclusion about the correction. (2) Qwen3 chat template runs with
+enable_thinking=False (their protocol predates thinking blocks). (3)
+n=3 words: pass@10/bestOf10 are 0/1 per word — reported per word, no
+significance claims.
+
+- **Reverses if:** Ameya amends before the first eval run (this entry is
+  a draft until then); or HF auth + the Gemma license land in time, in
+  which case the Gemma arm gets its own registration with P3 promoted.
