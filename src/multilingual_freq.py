@@ -65,8 +65,8 @@ KNOWN LIMITS, both structural:
     the web. For a frequency prior over human text that is a feature.
 
 Run: .venv/bin/python -m src.multilingual_freq
-  -> results/step3_multilingual_freq.json  (coverage + validation report)
-  -> results/step3_wordfreq.npz            (Zipf score per token)
+  -> results/step3/step3_multilingual_freq.json  (coverage + validation report)
+  -> results/step3/step3_wordfreq.npz            (Zipf score per token)
 """
 
 from __future__ import annotations
@@ -83,10 +83,10 @@ from src.lens import MODEL_ID
 
 # Major languages plausibly present in a multilingual pretraining mixture.
 LANGS = ["en", "zh", "ja", "ko", "ru", "ar", "es", "fr", "de", "pt", "it", "hi"]
-COUNTS_PATH = "results/step3_token_counts.npz"
-READOUTS_PATH = "results/step2_readouts.json"
-SUMMARY_PATH = "results/step3_multilingual_freq.json"
-VECTOR_PATH = "results/step3_wordfreq.npz"
+COUNTS_PATH = "results/step3/step3_token_counts.npz"
+READOUTS_PATH = "results/step2/step2_readouts.json"
+SUMMARY_PATH = "results/step3/step3_multilingual_freq.json"
+VECTOR_PATH = "results/step3/step3_wordfreq.npz"
 
 
 def score_vocabulary(tokenizer, size: int) -> tuple[np.ndarray, np.ndarray]:

@@ -13,7 +13,7 @@ saved fp16 via JacobianLens.save, matching the released lens format; the
 fp32 running checkpoint stays on disk too (*.pt is gitignored).
 
 Smoke mode (--smoke) fits on the single first doc and writes timing +
-full-run projections to results/step2_pythia_smoke.json so we can decide
+full-run projections to results/step2/step2_pythia_smoke.json so we can decide
 n before committing to the real run.
 
 Examples:
@@ -39,7 +39,7 @@ DATASET_ID = "NeelNanda/pile-10k"
 SKIP_FIRST = 4  # released Qwen lens provenance: skip_first=4
 MAX_SEQ_LEN = 128  # provenance: t_max=128
 N_PROMPTS = 25  # provenance: n_prompts=25
-SMOKE_RESULT_PATH = "results/step2_pythia_smoke.json"
+SMOKE_RESULT_PATH = "results/step2/step2_pythia_smoke.json"
 
 
 def load_lens_model(device: str):
@@ -59,8 +59,8 @@ def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--smoke", action="store_true", help="1-doc timing run")
     parser.add_argument("--n-prompts", type=int, default=N_PROMPTS)
-    parser.add_argument("--out", default="results/pythia_jlens.pt")
-    parser.add_argument("--checkpoint", default="results/pythia_fit_ckpt.pt")
+    parser.add_argument("--out", default="results/step2/pythia_jlens.pt")
+    parser.add_argument("--checkpoint", default="results/step2/pythia_fit_ckpt.pt")
     args = parser.parse_args()
 
     logging.basicConfig(

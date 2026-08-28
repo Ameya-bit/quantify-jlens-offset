@@ -6,7 +6,7 @@ that route (Route B activation centering) was tested in step 4b and made the
 junk worse, because the RMSNorm -> unembed path is nonlinear. Score-space
 subtraction sits downstream of all the nonlinearity.
 
-Test bench: the step-3 two-hop prompts (results/step3_twohop.json). Each has
+Test bench: the step-3 two-hop prompts (results/step3/step3_twohop.json). Each has
 a known intermediate token (Munich -> " Germany") that the model must think
 of mid-stack but never says. Measurement, per item x layer x instrument, at
 the last prompt position: the rank of the intermediate among all 248,320
@@ -48,7 +48,7 @@ a genuine out-of-sample test, but a null could mean "offset does not
 transfer across text styles" rather than "correction is useless".
 
 Run: .venv/bin/python -m src.calibration   (~10 min on MPS; writes
-results/step7_calibration.json + step7_ranks.npz + step7_rank_by_depth.png)
+results/step7/step7_calibration.json + step7_ranks.npz + step7_rank_by_depth.png)
 """
 
 from __future__ import annotations
@@ -65,12 +65,12 @@ from scipy.stats import binomtest
 
 from src.lens import KINDS, Instrument
 
-MT_NPZ = "results/step4_mt.npz"
-NULL_JSON = "results/step4_noise_null.json"
-TWOHOP_JSON = "results/step3_twohop.json"
-OUT_JSON = "results/step7_calibration.json"
-OUT_NPZ = "results/step7_ranks.npz"
-OUT_PNG = "results/step7_rank_by_depth.png"
+MT_NPZ = "results/step4/step4_mt.npz"
+NULL_JSON = "results/step4/step4_noise_null.json"
+TWOHOP_JSON = "results/step3/step3_twohop.json"
+OUT_JSON = "results/step7/step7_calibration.json"
+OUT_NPZ = "results/step7/step7_ranks.npz"
+OUT_PNG = "results/step7/step7_rank_by_depth.png"
 
 SIGMA_EPS = 1e-6
 SHUFFLE_SEEDS = (0, 1, 2)

@@ -6,13 +6,13 @@ document-level split-half null, same score space (pre-softmax logits; here
 `lm.unembed` = final LayerNorm INCLUDING beta + output head, all fp32).
 Kinds are (logit, J) only: no released R-lens exists for Pythia.
 
-The lens is our own results/pythia_jlens.pt (passed the step-2 sanity
+The lens is our own results/step2/pythia_jlens.pt (passed the step-2 sanity
 battery 3/3), fitted layers 0-21. Split-half agreement is reported per layer;
 the pre-registered 4.0 gate lives on the Qwen run, this one is the Route A
 arm's replication check.
 
 Run: .venv/bin/python -m src.offset_battery_pythia   (~5 min; writes
-results/step4_mt_pythia.npz + results/step4_noise_null_pythia.json)
+results/step4/step4_mt_pythia.npz + results/step4/step4_noise_null_pythia.json)
 """
 
 from __future__ import annotations
@@ -39,10 +39,10 @@ from src.offset_battery import (
     split_half_stats,
 )
 
-LENS_PATH = "results/pythia_jlens.pt"
+LENS_PATH = "results/step2/pythia_jlens.pt"
 KINDS = ("logit", "J")
-NPZ_PATH = "results/step4_mt_pythia.npz"
-JSON_PATH = "results/step4_noise_null_pythia.json"
+NPZ_PATH = "results/step4/step4_mt_pythia.npz"
+JSON_PATH = "results/step4/step4_noise_null_pythia.json"
 
 
 def main() -> None:

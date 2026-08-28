@@ -28,7 +28,7 @@ could get lucky on), while variation across layers within a seed is driven
 by the activations. Layers are strided to keep this to ~2 min; the null is
 flat with depth by construction, so a dense sweep buys nothing.
 
-Run: .venv/bin/python -m src.null_baselines  (writes results/step2_baselines.json)
+Run: .venv/bin/python -m src.null_baselines  (writes results/step2/step2_baselines.json)
 """
 
 from __future__ import annotations
@@ -42,7 +42,7 @@ from src.flags import token_flags
 from src.junk_survey import DATASET_ID, MAX_SEQ_LEN, pick_positions, pick_rows
 from src.lens import Instrument
 
-OUT_PATH = "results/step2_baselines.json"
+OUT_PATH = "results/step2/step2_baselines.json"
 NULL_SEEDS = [0, 1, 2, 3, 4]
 NULL_LAYERS = [0, 5, 10, 15, 20, 25, 30]
 N_TEXTS = 25

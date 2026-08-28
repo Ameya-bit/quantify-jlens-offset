@@ -38,7 +38,7 @@ the strict flag catches all 19 euro items. Both are recorded rather than one
 being chosen here. Step 7 reports shortcut items separately or drops them;
 they are kept in the file so the choice stays visible and reversible.
 
-Run: .venv/bin/python -m src.twohop   -> results/step3_twohop.json
+Run: .venv/bin/python -m src.twohop   -> results/step3/step3_twohop.json
 """
 
 from __future__ import annotations
@@ -49,7 +49,7 @@ import torch
 
 from src.lens import MODEL_ID, Instrument
 
-OUT_PATH = "results/step3_twohop.json"
+OUT_PATH = "results/step3/step3_twohop.json"
 
 # (entity, kind, country, capital, currency, language)
 # language=None where the country is genuinely multilingual.

@@ -26,7 +26,7 @@ sets) so cross-domain correlations can be read against each arm's own
 noise ceiling. Halves stored fp16 (correlation-safe), combined fp32.
 
 Run: .venv/bin/python -m src.domain_mt   (~1 h MPS; writes
-results/step8_arm_<arm>.npz + results/step8_domain_mt.json)
+results/step8/step8_arm_<arm>.npz + results/step8/step8_domain_mt.json)
 """
 
 from __future__ import annotations
@@ -56,13 +56,13 @@ SEED_BASE = 3  # step-2 used 0, delta_t 1, step-4 battery 2
 ROT_SEED = 0
 SHUF_SHIFT = 15
 GATE_MIN_PEARSON = 0.8
-STEP4_NULL_JSON = "results/step4_noise_null.json"
-STEP4_MT_NPZ = "results/step4_mt.npz"
-OUT_JSON = "results/step8_domain_mt.json"
+STEP4_NULL_JSON = "results/step4/step4_noise_null.json"
+STEP4_MT_NPZ = "results/step4/step4_mt.npz"
+OUT_JSON = "results/step8/step8_domain_mt.json"
 
 
 def arm_npz(arm: str) -> str:
-    return f"results/step8_arm_{arm.replace(' ', '_').replace('(', '').replace(')', '')}.npz"
+    return f"results/step8/step8_arm_{arm.replace(' ', '_').replace('(', '').replace(')', '')}.npz"
 
 
 def all_prior_rows() -> set[int]:

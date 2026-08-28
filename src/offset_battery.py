@@ -18,7 +18,7 @@ PASS iff split-half Pearson r >= 0.9 at EVERY layer for the J-lens.
 No replication => no stable offset => all three public claims fail at once.
 
 Run: .venv/bin/python -m src.offset_battery   (~10 min; writes
-results/step4_mt.npz + results/step4_noise_null.json)
+results/step4/step4_mt.npz + results/step4/step4_noise_null.json)
 """
 
 from __future__ import annotations
@@ -38,9 +38,9 @@ SEED = 2  # step-2 survey used 0, delta_t used 1
 N_TEXTS = 100
 N_POSITIONS = 20
 GATE_MIN_PEARSON = 0.9
-PRIOR_ROW_FILES = ["results/step2_readouts.json", "results/step3_delta_t.json"]
-NPZ_PATH = "results/step4_mt.npz"
-JSON_PATH = "results/step4_noise_null.json"
+PRIOR_ROW_FILES = ["results/step2/step2_readouts.json", "results/step3/step3_delta_t.json"]
+NPZ_PATH = "results/step4/step4_mt.npz"
+JSON_PATH = "results/step4/step4_noise_null.json"
 
 
 def prior_rows() -> set[int]:

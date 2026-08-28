@@ -1,6 +1,6 @@
 """Step 6 (H3): the swap battery -- is the offset a transport artefact?
 
-Pure analysis over banked arrays (results/step4_mt.npz holds m_t/sigma_t for
+Pure analysis over banked arrays (results/step4/step4_mt.npz holds m_t/sigma_t for
 logit, J and R from the SAME forward passes); no model runs. The lever: J and
 R are two different recipes for the transport matrix sharing final norm and
 unembedding, so scores are on one comparable scale.
@@ -24,7 +24,7 @@ not recomputed; (4) the step-2 late junk rebound re-measured on m_t itself
 (L24-27 vs L18-21 junk share of the top-K, per half for stability).
 
 Run: .venv/bin/python -m src.h3_swap   (~2 min; writes
-results/step6_h3_swap.json + results/step6_h3_swap.png)
+results/step6/step6_h3_swap.json + results/step6/step6_h3_swap.png)
 """
 
 from __future__ import annotations
@@ -38,14 +38,14 @@ import matplotlib.pyplot as plt
 import numpy as np
 from scipy.stats import spearmanr
 
-MT_NPZ = "results/step4_mt.npz"
-FLAGS_NPZ = "results/step4_token_flags.npz"
-COUNTS_NPZ = "results/step3_token_counts.npz"
-H1_JSON = "results/step4_h1_regression.json"
-H2_JSON = "results/step5_h2_battery.json"
-NULL_JSON = "results/step4_noise_null.json"
-OUT_JSON = "results/step6_h3_swap.json"
-OUT_PNG = "results/step6_h3_swap.png"
+MT_NPZ = "results/step4/step4_mt.npz"
+FLAGS_NPZ = "results/step4/step4_token_flags.npz"
+COUNTS_NPZ = "results/step3/step3_token_counts.npz"
+H1_JSON = "results/step4/step4_h1_regression.json"
+H2_JSON = "results/step5/step5_h2_battery.json"
+NULL_JSON = "results/step4/step4_noise_null.json"
+OUT_JSON = "results/step6/step6_h3_swap.json"
+OUT_PNG = "results/step6/step6_h3_swap.png"
 
 TOP_KS = (100, 1000)
 PRIMARY_K = 100

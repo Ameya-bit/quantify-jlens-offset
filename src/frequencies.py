@@ -46,8 +46,8 @@ Also performs the step-3 tokenizer equality check (Qwen base vs instruct):
 if the two disagree, Delta_t needs the token-list fallback.
 
 Run: .venv/bin/python -m src.frequencies
-  -> results/step3_frequencies.json   (summary, committed)
-  -> results/step3_token_counts.npz   (raw counts, committed)
+  -> results/step3/step3_frequencies.json   (summary, committed)
+  -> results/step3/step3_token_counts.npz   (raw counts, committed)
 """
 
 from __future__ import annotations
@@ -71,9 +71,9 @@ TOKENIZERS = {
     "gpt2": "openai-community/gpt2",
 }
 QWEN_BASE = "Qwen/Qwen3.5-4B-Base"
-READOUTS_PATH = "results/step2_readouts.json"
-SUMMARY_PATH = "results/step3_frequencies.json"
-COUNTS_PATH = "results/step3_token_counts.npz"
+READOUTS_PATH = "results/step2/step2_readouts.json"
+SUMMARY_PATH = "results/step3/step3_frequencies.json"
+COUNTS_PATH = "results/step3/step3_token_counts.npz"
 
 
 def count_corpus(tokenizer, texts: list[str]) -> tuple[np.ndarray, np.ndarray, dict]:

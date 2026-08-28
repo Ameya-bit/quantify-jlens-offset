@@ -63,10 +63,10 @@ more the base model leaks toward these in English text" -- which is the
 context where the junk phenomenon appears.
 
 Runs only after the step-4.0 noise-null gate (skip condition, steps.md):
-refuses to start if results/step4_noise_null.json records a FAIL.
+refuses to start if results/step4/step4_noise_null.json records a FAIL.
 
 Run: .venv/bin/python -m src.h2_battery   (~3 min; writes
-results/step5_h2_battery.json + results/step5_h2_excess_by_depth.png)
+results/step5/step5_h2_battery.json + results/step5/step5_h2_excess_by_depth.png)
 """
 
 from __future__ import annotations
@@ -84,14 +84,14 @@ from transformers import AutoTokenizer
 from src.delta_t import FREQ_TOL, MIN_CONTROLS, is_special
 from src.lens import MODEL_ID
 
-MT_NPZ = "results/step4_mt.npz"
-NULL_JSON = "results/step4_noise_null.json"
-DELTA_NPZ = "results/step3_delta_t.npz"
-COUNTS_NPZ = "results/step3_token_counts.npz"
-FLAGS_NPZ = "results/step4_token_flags.npz"
-WORDFREQ_NPZ = "results/step3_wordfreq.npz"
-OUT_JSON = "results/step5_h2_battery.json"
-OUT_PNG = "results/step5_h2_excess_by_depth.png"
+MT_NPZ = "results/step4/step4_mt.npz"
+NULL_JSON = "results/step4/step4_noise_null.json"
+DELTA_NPZ = "results/step3/step3_delta_t.npz"
+COUNTS_NPZ = "results/step3/step3_token_counts.npz"
+FLAGS_NPZ = "results/step4/step4_token_flags.npz"
+WORDFREQ_NPZ = "results/step3/step3_wordfreq.npz"
+OUT_JSON = "results/step5/step5_h2_battery.json"
+OUT_PNG = "results/step5/step5_h2_excess_by_depth.png"
 
 # The wordfreq frame's window: same width as FREQ_TOL but Zipf is log10,
 # so 0.25 natural-log counts = 0.25/ln(10) ~ 0.109 Zipf units.

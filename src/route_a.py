@@ -7,7 +7,7 @@ that constant for the two LayerNorm models and asks whether it explains the
 offset:
 
   Pythia-1.4B : W_U @ beta  vs  log f_t (Pythia tokenizer, pile-10k counts)
-                and, when results/step4_mt_pythia.npz exists, vs the
+                and, when results/step4/step4_mt_pythia.npz exists, vs the
                 EMPIRICAL m_t per layer (the Route A hypothesis test proper).
   GPT-2       : W_U @ beta  vs  log f_t -- the phoenix cell, replicating or
                 refuting the public claim of r ~ 0.67. Weights only.
@@ -25,7 +25,7 @@ excluded share is reported per number (D18). Qwen appears here only as the
 contrast class: RMSNorm has no beta, so the analytic constant does not exist.
 
 Run: .venv/bin/python -m src.route_a   (~1 min CPU; writes
-results/step4_route_a.json + results/step4_wu_beta.npz)
+results/step4/step4_route_a.json + results/step4/step4_wu_beta.npz)
 """
 
 from __future__ import annotations
@@ -38,10 +38,10 @@ from scipy.stats import pearsonr, spearmanr
 from transformers import AutoModelForCausalLM
 
 N_NULL_SEEDS = 5
-COUNTS_NPZ = "results/step3_token_counts.npz"
-MT_PYTHIA_NPZ = "results/step4_mt_pythia.npz"
-OUT_JSON = "results/step4_route_a.json"
-OUT_NPZ = "results/step4_wu_beta.npz"
+COUNTS_NPZ = "results/step3/step3_token_counts.npz"
+MT_PYTHIA_NPZ = "results/step4/step4_mt_pythia.npz"
+OUT_JSON = "results/step4/step4_route_a.json"
+OUT_NPZ = "results/step4/step4_wu_beta.npz"
 
 MODELS = {
     # model_id, path to final LayerNorm, path to output head, counts key

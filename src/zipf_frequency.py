@@ -31,8 +31,8 @@ per script, and merge rank is compared head-to-head against the raw token id
 used as a stand-in until now.
 
 Run: .venv/bin/python -m src.zipf_frequency
-  -> results/step3_zipf_frequency.json  (validation report)
-  -> results/step3_merge_rank.npz       (rank + log-frequency proxy per token)
+  -> results/step3/step3_zipf_frequency.json  (validation report)
+  -> results/step3/step3_merge_rank.npz       (rank + log-frequency proxy per token)
 """
 
 from __future__ import annotations
@@ -47,9 +47,9 @@ from transformers import AutoTokenizer
 from src.flags import token_flags
 from src.lens import MODEL_ID
 
-COUNTS_PATH = "results/step3_token_counts.npz"
-SUMMARY_PATH = "results/step3_zipf_frequency.json"
-VECTOR_PATH = "results/step3_merge_rank.npz"
+COUNTS_PATH = "results/step3/step3_token_counts.npz"
+SUMMARY_PATH = "results/step3/step3_zipf_frequency.json"
+VECTOR_PATH = "results/step3/step3_merge_rank.npz"
 BANDS = [(0, 10_000), (10_000, 50_000), (50_000, 100_000),
          (100_000, 150_000), (150_000, 200_000), (200_000, 248_077)]
 

@@ -11,7 +11,7 @@ Three checks (steps.md, Step 1):
      separating "lens broken" from "model doesn't know".
 
 Run:  .venv/bin/python -m src.sanity
-Output: human-readable report + results/step1_sanity.json. Exit 1 on failure.
+Output: human-readable report + results/step1/step1_sanity.json. Exit 1 on failure.
 """
 
 from __future__ import annotations
@@ -134,7 +134,7 @@ def main() -> int:
     )
 
     Path("results").mkdir(exist_ok=True)
-    with open("results/step1_sanity.json", "w") as f:
+    with open("results/step1/step1_sanity.json", "w") as f:
         json.dump(results, f, indent=2, default=str)
 
     print("\n=== Step 1 sanity report ===")

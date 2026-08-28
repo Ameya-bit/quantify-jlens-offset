@@ -21,7 +21,7 @@ Checks:
      The logit-lens's first-hit layer is recorded alongside as a baseline:
      J earlier than logit = the fitted matrices add value.
 
-Run: .venv/bin/python -m src.sanity_pythia   (writes results/pythia_sanity.json)
+Run: .venv/bin/python -m src.sanity_pythia   (writes results/step2/pythia_sanity.json)
 """
 
 from __future__ import annotations
@@ -35,8 +35,8 @@ from jlens.hooks import ActivationRecorder
 from src.fit_pythia import DATASET_ID, MODEL_ID, load_lens_model
 from src.junk_survey import pick_positions, pick_rows
 
-LENS_PATH = "results/pythia_jlens.pt"
-OUT_PATH = "results/pythia_sanity.json"
+LENS_PATH = "results/step2/pythia_jlens.pt"
+OUT_PATH = "results/step2/pythia_sanity.json"
 AGREEMENT_LAYERS = [19, 20, 21]
 AGREEMENT_N_TEXTS = 25  # same seeded selection as the Qwen step-2 survey
 AGREEMENT_SEED = 0

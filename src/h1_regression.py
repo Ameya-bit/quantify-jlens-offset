@@ -18,10 +18,10 @@ training data exists in this project; wordfreq fixes coverage, not
 provenance.
 
 Runs only after the step-4.0 noise-null gate: refuses to start if
-results/step4_noise_null.json records a FAIL.
+results/step4/step4_noise_null.json records a FAIL.
 
 Run: .venv/bin/python -m src.h1_regression   (~2 min; writes
-results/step4_h1_regression.json + results/step4_h1_r_by_depth.png)
+results/step4/step4_h1_regression.json + results/step4/step4_h1_r_by_depth.png)
 """
 
 from __future__ import annotations
@@ -39,12 +39,12 @@ from transformers import AutoTokenizer
 from src.flags import token_flags
 from src.lens import MODEL_ID
 
-MT_NPZ = "results/step4_mt.npz"
-NULL_JSON = "results/step4_noise_null.json"
-COUNTS_NPZ = "results/step3_token_counts.npz"
-WORDFREQ_NPZ = "results/step3_wordfreq.npz"
-OUT_JSON = "results/step4_h1_regression.json"
-OUT_PNG = "results/step4_h1_r_by_depth.png"
+MT_NPZ = "results/step4/step4_mt.npz"
+NULL_JSON = "results/step4/step4_noise_null.json"
+COUNTS_NPZ = "results/step3/step3_token_counts.npz"
+WORDFREQ_NPZ = "results/step3/step3_wordfreq.npz"
+OUT_JSON = "results/step4/step4_h1_regression.json"
+OUT_PNG = "results/step4/step4_h1_r_by_depth.png"
 PROVENANCE_CAVEAT = (
     "No Qwen-provenance frequency exists for non-Latin tokens in this project; "
     "wordfreq fixes coverage, not provenance (D26-D28)."

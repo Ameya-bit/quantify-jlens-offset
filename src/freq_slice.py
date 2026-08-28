@@ -18,7 +18,7 @@ intermediates at working depths on J and R. Break criterion: the rare half
 depths on J or R.
 
 Run: .venv/bin/python -m src.freq_slice   (seconds; writes
-results/step8_freq_slice.json + step8_freq_slice.png)
+results/step8/step8_freq_slice.json + step8_freq_slice.png)
 """
 
 from __future__ import annotations
@@ -32,11 +32,11 @@ import matplotlib.pyplot as plt
 import numpy as np
 from scipy.stats import spearmanr
 
-RANKS_NPZ = "results/step7_ranks.npz"
-TWOHOP_JSON = "results/step3_twohop.json"
-WORDFREQ_NPZ = "results/step3_wordfreq.npz"
-OUT_JSON = "results/step8_freq_slice.json"
-OUT_PNG = "results/step8_freq_slice.png"
+RANKS_NPZ = "results/step7/step7_ranks.npz"
+TWOHOP_JSON = "results/step3/step3_twohop.json"
+WORDFREQ_NPZ = "results/step3/step3_wordfreq.npz"
+OUT_JSON = "results/step8/step8_freq_slice.json"
+OUT_PNG = "results/step8/step8_freq_slice.png"
 
 BANDS = {"working_L17_23": range(17, 24), "early_L0_4": range(0, 5)}
 PRIMARY_BAND = "working_L17_23"

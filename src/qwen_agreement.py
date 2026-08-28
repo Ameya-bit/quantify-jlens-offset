@@ -4,9 +4,9 @@ Retroactively upgrades step 1's 3-prompt late-layer agreement check to the
 same 125-sample standard as the (widened) Pythia battery: for every surveyed
 (text, position), top-10 overlap between the J-lens and logit-lens readouts
 at the same layer. No forward passes -- pure re-read of the committed
-results/step2_readouts.json.
+results/step2/step2_readouts.json.
 
-Run: .venv/bin/python -m src.qwen_agreement  (writes results/qwen_agreement.json)
+Run: .venv/bin/python -m src.qwen_agreement  (writes results/step2/qwen_agreement.json)
 """
 
 from __future__ import annotations
@@ -14,8 +14,8 @@ from __future__ import annotations
 import json
 from collections import defaultdict
 
-READOUTS_PATH = "results/step2_readouts.json"
-OUT_PATH = "results/qwen_agreement.json"
+READOUTS_PATH = "results/step2/step2_readouts.json"
+OUT_PATH = "results/step2/qwen_agreement.json"
 LATE_LAYERS = [26, 28, 29, 30]  # step 1's AGREEMENT_LAYERS
 
 

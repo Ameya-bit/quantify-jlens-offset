@@ -62,8 +62,8 @@ larger frequency-driven Delta. The validation below matches on frequency
 instead: each profanity probe is compared to clean, non-special tokens within
 +-FREQ_TOL in log count, and the gate is on the paired difference.
 
-Run: .venv/bin/python -m src.delta_t   -> results/step3_delta_t.json (summary)
-                                       -> results/step3_delta_t.npz  (full vector)
+Run: .venv/bin/python -m src.delta_t   -> results/step3/step3_delta_t.json (summary)
+                                       -> results/step3/step3_delta_t.npz  (full vector)
 """
 
 from __future__ import annotations
@@ -85,8 +85,8 @@ from src.lens import DEFAULT_DEVICE, MODEL_ID
 BASE_ID = "Qwen/Qwen3.5-4B-Base"
 N_TEXTS = 200
 SEED = 1  # deliberately NOT the step-2 survey's seed 0
-SUMMARY_PATH = "results/step3_delta_t.json"
-VECTOR_PATH = "results/step3_delta_t.npz"
+SUMMARY_PATH = "results/step3/step3_delta_t.json"
+VECTOR_PATH = "results/step3/step3_delta_t.npz"
 
 # Validation probes. Suppressed: expected high Delta_t (base wants them more).
 # Neutral: expected mid-pack. Both are checked by percentile, not raw value.
@@ -98,7 +98,7 @@ PROBE_NEUTRAL = [
     " table", " river", " Tuesday", " economic", " method", " garden",
     " machine", " letter", " signal", " orange",
 ]
-COUNTS_PATH = "results/step3_token_counts.npz"
+COUNTS_PATH = "results/step3/step3_token_counts.npz"
 FREQ_TOL = 0.25      # log-count window for a frequency-matched control
 MIN_CONTROLS = 20    # a probe with fewer matched controls is skipped
 

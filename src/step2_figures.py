@@ -1,5 +1,5 @@
-"""Step 2 setup figures, derived from results/step2_readouts.json (+
-results/step2_baselines.json for the reference lines). Figures never
+"""Step 2 setup figures, derived from results/step2/step2_readouts.json (+
+results/step2/step2_baselines.json for the reference lines). Figures never
 recompute readouts; they only re-read committed JSON.
 
 Figure 1 (quantitative), two panels:
@@ -51,8 +51,8 @@ import matplotlib.pyplot as plt
 CELL_FONTS = ["Menlo", "Hiragino Sans GB", "Arial Unicode MS"]
 from matplotlib.patches import Rectangle
 
-READOUTS_PATH = "results/step2_readouts.json"
-BASELINES_PATH = "results/step2_baselines.json"
+READOUTS_PATH = "results/step2/step2_readouts.json"
+BASELINES_PATH = "results/step2/step2_baselines.json"
 
 # Junk categories are warm-coloured; punctuation is scored CLEAN (see
 # src.flags) so it gets a neutral grey, distinguishable but not accusatory.
@@ -156,8 +156,8 @@ def junk_fraction_figure(data: dict, base: dict) -> None:
         fontsize=8.5, y=0.005, va="bottom",
     )
     fig.tight_layout(rect=(0, 0.05, 1, 1))
-    fig.savefig("results/step2_junk_fraction.png", dpi=150)
-    print("wrote results/step2_junk_fraction.png")
+    fig.savefig("results/step2/step2_junk_fraction.png", dpi=150)
+    print("wrote results/step2/step2_junk_fraction.png")
 
 
 def agreement_figure(data: dict) -> None:
@@ -212,13 +212,13 @@ def agreement_figure(data: dict) -> None:
     ax2.grid(alpha=0.3)
 
     fig.tight_layout()
-    fig.savefig("results/step2_lens_agreement.png", dpi=150)
-    print("wrote results/step2_lens_agreement.png")
+    fig.savefig("results/step2/step2_lens_agreement.png", dpi=150)
+    print("wrote results/step2/step2_lens_agreement.png")
 
 
 def composition_summary(data: dict) -> None:
     """Mean count per top-10 of each junk flag, per instrument, in layer
-    bands -> results/step2_junk_composition.json (devlog addendum evidence)."""
+    bands -> results/step2/step2_junk_composition.json (devlog addendum evidence)."""
     bands = {"early_0_5": range(0, 6), "mid_12_20": range(12, 21), "late_26_30": range(26, 31)}
     out = {}
     for kind in data["meta"]["kinds"]:
@@ -231,9 +231,9 @@ def composition_summary(data: dict) -> None:
                     for f in totals:
                         totals[f] += sum(t[f] for t in c["top"])
             out[f"{kind}.{bname}"] = {f: round(v / n, 2) for f, v in totals.items()}
-    with open("results/step2_junk_composition.json", "w") as f:
+    with open("results/step2/step2_junk_composition.json", "w") as f:
         json.dump(out, f, indent=2)
-    print("wrote results/step2_junk_composition.json")
+    print("wrote results/step2/step2_junk_composition.json")
 
 
 def grid_figure(data: dict, row: int) -> None:
@@ -282,7 +282,7 @@ def grid_figure(data: dict, row: int) -> None:
         fontsize=10
     )
     fig.tight_layout(rect=(0, 0.04, 1, 0.97))
-    out = f"results/step2_grid_row{row}.png"
+    out = f"results/step2/step2_grid_row{row}.png"
     fig.savefig(out, dpi=170)
     print(f"wrote {out}")
 

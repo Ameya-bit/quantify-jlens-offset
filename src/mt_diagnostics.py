@@ -2,17 +2,17 @@
 offset at all (high m, low sigma) or content (high sigma) or the
 multiplicative/unembedding-norm signature (both elevated -- flag if seen)?
 
-Per (instrument, layer) on the Qwen battery (results/step4_mt.npz):
+Per (instrument, layer) on the Qwen battery (results/step4/step4_mt.npz):
   - corr(m_t, sigma_t) across the vocabulary
   - for the top-100 tokens by m_t: median sigma_t percentile, junk share
     (non_latin | byte_fragment, the step-2 corrected rule), share never seen
     in pile-10k, and example tokens at a few layers.
 
-Also caches per-token-id flags to results/step4_token_flags.npz so later
+Also caches per-token-id flags to results/step4/step4_token_flags.npz so later
 steps stop re-deriving them (decode + flag over 248k ids, ~1 min).
 
 Run: .venv/bin/python -m src.mt_diagnostics   (writes
-results/step4_mt_diagnostics.json + results/step4_token_flags.npz)
+results/step4/step4_mt_diagnostics.json + results/step4/step4_token_flags.npz)
 """
 
 from __future__ import annotations
@@ -27,10 +27,10 @@ from transformers import AutoTokenizer
 from src.flags import token_flags
 from src.lens import MODEL_ID
 
-MT_NPZ = "results/step4_mt.npz"
-COUNTS_NPZ = "results/step3_token_counts.npz"
-FLAGS_NPZ = "results/step4_token_flags.npz"
-OUT_JSON = "results/step4_mt_diagnostics.json"
+MT_NPZ = "results/step4/step4_mt.npz"
+COUNTS_NPZ = "results/step3/step3_token_counts.npz"
+FLAGS_NPZ = "results/step4/step4_token_flags.npz"
+OUT_JSON = "results/step4/step4_mt_diagnostics.json"
 TOP_K = 100
 EXAMPLE_LAYERS = (0, 6, 12, 18, 24, 30)
 

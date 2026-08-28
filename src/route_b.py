@@ -15,7 +15,7 @@ context-dependent term. This script measures that directly:
      subtracted from a lens vector").
 
 Run: .venv/bin/python -m src.route_b   (~8 min; writes
-results/step4_route_b.json + results/step4_mu.npz)
+results/step4/step4_route_b.json + results/step4/step4_mu.npz)
 """
 
 from __future__ import annotations
@@ -34,9 +34,9 @@ from src.junk_survey import DATASET_ID, MAX_SEQ_LEN
 from src.lens import KINDS, Instrument
 from src.offset_battery import SEED, pick_fresh_rows, pick_random_positions
 
-MT_NPZ = "results/step4_mt.npz"
-OUT_JSON = "results/step4_route_b.json"
-OUT_NPZ = "results/step4_mu.npz"
+MT_NPZ = "results/step4/step4_mt.npz"
+OUT_JSON = "results/step4/step4_route_b.json"
+OUT_NPZ = "results/step4/step4_mu.npz"
 N_EVAL_DOCS = 25  # half-1 docs used for the centering evaluation
 N_EVAL_POSITIONS = 5
 

@@ -16,7 +16,7 @@ skipped to match the lens fit (skip_first=4). Texts truncated to 128 tokens
 to match the fit regime (t_max=128).
 
 Run: .venv/bin/python -m src.junk_survey   (~5 min; writes
-results/step2_readouts.json)
+results/step2/step2_readouts.json)
 """
 
 from __future__ import annotations
@@ -34,7 +34,7 @@ DATASET_ID = "NeelNanda/pile-10k"
 N_FIT_ROWS = 25  # rows 0..24 reserved for lens fitting; never surveyed
 SKIP_FIRST = 4
 MAX_SEQ_LEN = 128
-OUT_PATH = "results/step2_readouts.json"
+OUT_PATH = "results/step2/step2_readouts.json"
 
 
 def pick_rows(n_texts: int, seed: int, n_rows_total: int) -> list[int]:
