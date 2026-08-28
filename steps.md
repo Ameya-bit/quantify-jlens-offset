@@ -105,12 +105,14 @@ Natural successor experiment (writeup, not this project): take a model, finetune
 - [x] Corrected readout: re-rank by `s_t(h) − m_t`. (Score space, per instrument/layer — the route 4b left standing. Design + gate registered pre-code, D41: variants raw / corrected(primary) / z-scored(exploratory) / shuffled-m_t null ×3 seeds; headline = 72 strict capital items (D21). `src/calibration.py` → `results/step7_calibration.json` + `step7_ranks.npz`.)
 - [x] Two-hop set: rank of known intermediate, by depth, pre/post correction, per instrument (logit/J/R). Second figure. → **GATE FAIL, reported as registered: the flat subtraction sig-HURTS the intermediate's rank on J at 27/31 layers, R at 25/31, worst exactly where the readout works (J L20 median 1,000→6,656; R 1,052→9,798); shuffled-m_t null sits near raw, so the damage is offset-specific = the correction removes real signal. P3 confirmed with force: the mid-depth offset is the model's genuine frequency-shaped prior, not removable bias — the behavioral counterpart of 4c/6. Narrow registered success (P1/P2): R's early transport-junk band L0–4 sig-improves ≈2× (the step-6 recipe-specific band); J only L2. Exploratory: z-scoring rescues the late junk-rebound band L24–30 on all three instruments (logit L24 answer 340→20). Self-checks: L30 kind-agreement asserted; 27 cells re-derived by hand (25 exact, 2 ±1 fp rounding); L30 top1=answer 21/138 is informational — L30 is the penultimate of 32 blocks. (`step7_rank_by_depth.png`; devlog 0.4.0.)**
 
-## Step 8 — Red team (hour 14.5–16)
+## Step 8 — Red team (hour 14.5–16) — DONE 27 Aug (8e stretch not run; D42, devlog 0.5.0)
 
-- [ ] Shuffled-J / random-rotation null: does a "stable offset" appear anyway? (Then it's a `W_U`/norm property, not the lens.) — **random-rotation half done early** (Step 2 red team, `src/null_baselines.py`, 5 seeds): on the *junk* metric the null sits at 0.386 vs J/R 0.02–0.20. Still to do here: the same null on `m_t` itself, plus the shuffled-J variant.
-- [ ] Out-of-sample `m_t` on a third disjoint prompt set.
-- [ ] One deliberate attempt to break the headline result.
-- [ ] Logit-lens baseline present in every table.
+- [x] Shuffled-J / random-rotation null on `m_t` itself (8c, `src/domain_mt.py` mixed arm): **both nulls produce an offset as stable (split-half 0.97–0.99) and as big (D39 size: rot 3.90 vs J 2.47) as the fitted lenses** — stability/size are `W_U`/norm-path properties. But the rotation's m_t direction is uncorrelated with J's (r ≈ 0 all layers; shufJ~J 0.63 at L12 via the shared frequency component) — the content findings stand.
+- [x] Out-of-sample `m_t` on a third disjoint prompt set (8b): GATE PASS 31/31 layers, min Pearson 0.981 vs step-4 m_t.
+- [x] Domain-stratified m_t (8a, added by D42): **GATE FAIL 0/6 domain pairs** — claim narrows to "within-distribution offset" as registered. Worst layers L9–13 for every pair = the 4c frequency band; the confound and the narrowing are the same fact.
+- [x] One deliberate attempt to break the headline result (8d, `src/freq_slice.py`): frequency slice of step-7 damage — prediction held (rho 0.685 J / 0.614 R at L17–23, logit ≈ 0), break criterion not triggered. Headline survives with a dose-response curve.
+- [x] Logit-lens baseline present in every table (8f): audited, all results files carry it.
+- [ ] 8e (stretch, not run): second two-hop relation family, non-country intermediates — the step-7 25-intermediates caveat stands as disclosed.
 
 ## Step 9 — Writeup (+2h; exec summary drafted from hour 1)
 

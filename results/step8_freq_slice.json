@@ -1,0 +1,237 @@
+{
+ "design": {
+  "registered": "D42 (pre-code, 27 Aug)",
+  "damage": "log2(rank_corrected / rank_raw); positive = correction hurts",
+  "aggregation": "median over items sharing an intermediate, then over band layers",
+  "prediction": "Spearman rho(zipf, damage) > 0 at working depths, J and R",
+  "break_criterion": "rare half (bottom 12 of 25 by zipf) median damage < 0 at working depths on J or R"
+ },
+ "intermediates": {
+  " Norway": {
+   "zipf": 4.15,
+   "logit": -0.271,
+   "J": 0.898,
+   "R": 1.148
+  },
+  " Poland": {
+   "zipf": 4.24,
+   "logit": -0.01,
+   "J": 1.273,
+   "R": 2.446
+  },
+  " Netherlands": {
+   "zipf": 4.28,
+   "logit": -0.286,
+   "J": 2.166,
+   "R": 2.036
+  },
+  " Greece": {
+   "zipf": 4.28,
+   "logit": 0.035,
+   "J": 1.019,
+   "R": 1.923
+  },
+  " Austria": {
+   "zipf": 4.37,
+   "logit": 0.021,
+   "J": 1.481,
+   "R": 2.442
+  },
+  " Sweden": {
+   "zipf": 4.4,
+   "logit": -0.057,
+   "J": 1.575,
+   "R": 2.22
+  },
+  " Egypt": {
+   "zipf": 4.45,
+   "logit": -0.057,
+   "J": 0.438,
+   "R": 1.526
+  },
+  " Zealand": {
+   "zipf": 4.5,
+   "logit": -0.364,
+   "J": 0.248,
+   "R": 0.316
+  },
+  " Turkey": {
+   "zipf": 4.56,
+   "logit": -0.025,
+   "J": 2.775,
+   "R": 3.868
+  },
+  " Spain": {
+   "zipf": 4.59,
+   "logit": -0.043,
+   "J": 3.053,
+   "R": 3.323
+  },
+  " Korea": {
+   "zipf": 4.65,
+   "logit": -0.064,
+   "J": 2.195,
+   "R": 2.141
+  },
+  " Italy": {
+   "zipf": 4.66,
+   "logit": -0.317,
+   "J": 2.295,
+   "R": 3.098
+  },
+  " Mexico": {
+   "zipf": 4.75,
+   "logit": -0.302,
+   "J": 1.852,
+   "R": 2.216
+  },
+  " Japan": {
+   "zipf": 4.89,
+   "logit": -0.281,
+   "J": 2.223,
+   "R": 2.511
+  },
+  " Germany": {
+   "zipf": 4.9,
+   "logit": -0.059,
+   "J": 3.162,
+   "R": 3.996
+  },
+  " Australia": {
+   "zipf": 5.06,
+   "logit": 0.085,
+   "J": 2.572,
+   "R": 3.726
+  },
+  " China": {
+   "zipf": 5.1,
+   "logit": -0.368,
+   "J": 2.588,
+   "R": 2.303
+  },
+  " Canada": {
+   "zipf": 5.14,
+   "logit": -0.057,
+   "J": 4.082,
+   "R": 4.936
+  },
+  " America": {
+   "zipf": 5.22,
+   "logit": 0.128,
+   "J": 4.288,
+   "R": 5.013
+  },
+  " Portugal": {
+   "zipf": 5.28,
+   "logit": 0.095,
+   "J": 2.141,
+   "R": 2.351
+  },
+  " France": {
+   "zipf": 5.98,
+   "logit": -0.239,
+   "J": 2.543,
+   "R": 3.479
+  }
+ },
+ "results": {
+  "headline_72": {
+   "working_L17_23": {
+    "n_intermediates": 21,
+    "logit": {
+     "spearman_rho": 0.047,
+     "spearman_p": 0.8382714371945468,
+     "median_damage_rare_half": -0.057,
+     "median_damage_freq_half": -0.149
+    },
+    "J": {
+     "spearman_rho": 0.685,
+     "spearman_p": 0.0006177336449951997,
+     "median_damage_rare_half": 1.481,
+     "median_damage_freq_half": 2.558
+    },
+    "R": {
+     "spearman_rho": 0.614,
+     "spearman_p": 0.0030778785169624573,
+     "median_damage_rare_half": 2.141,
+     "median_damage_freq_half": 3.288
+    }
+   },
+   "early_L0_4": {
+    "n_intermediates": 21,
+    "logit": {
+     "spearman_rho": 0.042,
+     "spearman_p": 0.8558055722995337,
+     "median_damage_rare_half": 1.084,
+     "median_damage_freq_half": 1.005
+    },
+    "J": {
+     "spearman_rho": -0.171,
+     "spearman_p": 0.4590603762005796,
+     "median_damage_rare_half": 0.062,
+     "median_damage_freq_half": -0.077
+    },
+    "R": {
+     "spearman_rho": -0.316,
+     "spearman_p": 0.1623976467337286,
+     "median_damage_rare_half": -0.164,
+     "median_damage_freq_half": -0.43
+    }
+   }
+  },
+  "all_138": {
+   "working_L17_23": {
+    "n_intermediates": 25,
+    "logit": {
+     "spearman_rho": 0.046,
+     "spearman_p": 0.8279533225972516,
+     "median_damage_rare_half": -0.02,
+     "median_damage_freq_half": -0.044
+    },
+    "J": {
+     "spearman_rho": 0.716,
+     "spearman_p": 5.77360974854186e-05,
+     "median_damage_rare_half": 1.449,
+     "median_damage_freq_half": 2.499
+    },
+    "R": {
+     "spearman_rho": 0.674,
+     "spearman_p": 0.00022260547707363221,
+     "median_damage_rare_half": 2.243,
+     "median_damage_freq_half": 3.258
+    }
+   },
+   "early_L0_4": {
+    "n_intermediates": 25,
+    "logit": {
+     "spearman_rho": 0.128,
+     "spearman_p": 0.5428498414399501,
+     "median_damage_rare_half": 1.041,
+     "median_damage_freq_half": 1.11
+    },
+    "J": {
+     "spearman_rho": 0.03,
+     "spearman_p": 0.8882013817019262,
+     "median_damage_rare_half": -0.215,
+     "median_damage_freq_half": -0.043
+    },
+    "R": {
+     "spearman_rho": -0.01,
+     "spearman_p": 0.9606922341075209,
+     "median_damage_rare_half": -0.764,
+     "median_damage_freq_half": -0.418
+    }
+   }
+  }
+ },
+ "verdicts": {
+  "prediction_holds": {
+   "J": true,
+   "R": true
+  },
+  "break_triggered": {
+   "J": false,
+   "R": false
+  }
+ }
+}

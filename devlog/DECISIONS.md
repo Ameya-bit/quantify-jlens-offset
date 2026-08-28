@@ -626,3 +626,63 @@ failed pre-registered test unilaterally).
 - **Reverses if:** never — a registered gate stays registered. A different
   correction (e.g. fitting a transfer map for the pile→prompt shift) would
   be a new, separately registered experiment.
+
+---
+
+## Step 8 — red team
+
+### D42. Step-8 red-team battery registered pre-code: order, metrics, and thresholds
+**Date:** 27 Aug · **Where:** steps.md step 8 · **Evidence:** (to be produced: `results/step8_*.json`)
+
+Registered in conversation on 27 Aug with user approval, before any step-8
+analysis code existed. Six sub-batteries, run in this order:
+
+**8d (first, zero new forward passes) — frequency slice of the step-7
+headline.** Attack on "the offset is mostly genuine prior at working
+depths": if subtracting m_t hurts because the frequency component is real
+signal, the damage should scale with the intermediate token's frequency.
+Data: `step7_ranks.npz` re-sliced by `step3_wordfreq.npz` zipf of the 25
+distinct intermediates (feasibility checked pre-registration: zipf spread
+3.80–5.98). Metric: per item, damage = log2(rank_corrected / rank_raw),
+aggregated to the 25 distinct intermediates by median (deliberately
+collapsing repeats — the same independence caveat this red-teams),
+working-depth band L17–23 (where step 7 located the readout), J and R.
+**Registered prediction:** Spearman rho(zipf, damage) > 0 over the 25
+intermediates. **Break criterion:** the rare half (bottom 12/13 by zipf)
+shows median damage < 0 (correction *helps*) at working depths on J or R —
+that would mean the "genuine prior" reading is too strong and the claim
+must be qualified. Early band L0–4 reported alongside as context.
+
+**8a — domain-stratified m_t.** Estimate m_t separately on 3–4 disjoint
+pile-10k domains via `pile_set_name` (target: code-heavy vs prose vs
+academic; exact split fixed after checking row counts, before any m_t is
+computed). **Gate:** per-layer Pearson between each domain pair ≥ 0.8 at a
+majority of layers 0–30 on J → "context-independent offset" stands;
+otherwise the claim narrows to "within-distribution offset".
+
+**8b — third disjoint pile sample** (steps.md registered item): fresh seed,
+rows disjoint from step-2 survey, delta_t, and step-4 battery rows;
+correlate with original m_t. Same ≥0.8 bar, majority of layers.
+
+**8c — shuffled-J + random-rotation null on m_t itself** (steps.md
+registered item): rerun the offset battery with (i) layer-shuffled J,
+(ii) random rotations (reusing the step-2 null machinery). Question of
+record: does an arbitrary map produce a comparably *stable* offset
+(split-half Pearson) of comparable *size* (D39 metric)? No pass/fail —
+comparative, reported as-is.
+
+**8f — logit-lens baseline audit** of every results table (bookkeeping).
+
+**8e (only if time) — second two-hop relation family** with non-country
+intermediates spanning the zipf range; separate prompt set from 8d
+(user decision, 27 Aug). Design would be registered separately before
+generation.
+
+- **Rejected:** merging 8d and 8e into one new dataset (user chose separate
+  sets after the 8d feasibility check showed the existing spread suffices);
+  a hard gate on 8d (it is a directional red-team probe on an already-
+  reported registered result, not a new headline claim).
+- **Reverses if:** 8a's domain split turns out to have too few rows per
+  domain to clear the step-4.0 split-half noise floor — then domains merge
+  into coarser pairs (e.g. code vs everything-else) and the ≥0.8 bar
+  carries over unchanged.
