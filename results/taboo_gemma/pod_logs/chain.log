@@ -1,0 +1,5 @@
+=== fit done, running sanity ===
+sanity all_pass=True
+=== running m_t battery ===
+=== running 20-word eval ===
+CHAIN-DONE

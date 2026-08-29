@@ -1,0 +1,95 @@
+{
+  "lens_path": "results/taboo_gemma/gemma2_9b_jlens.pt",
+  "model_id": "google/gemma-2-9b-it",
+  "checks": {
+    "wiring": {
+      "pass": true,
+      "lens_top10": [
+        " is",
+        "'",
+        " wants",
+        " was",
+        "\u2019",
+        " needs",
+        " wanted",
+        " can",
+        " sees",
+        " has"
+      ],
+      "true_top10": [
+        " is",
+        "'",
+        " wants",
+        " was",
+        "\u2019",
+        " needs",
+        " wanted",
+        " can",
+        " sees",
+        " has"
+      ]
+    },
+    "late_agreement": {
+      "pass": true,
+      "rows": [
+        688,
+        1233,
+        1578,
+        1643,
+        2306,
+        2314,
+        2432,
+        3603,
+        4129,
+        4267,
+        4642,
+        4994,
+        5106,
+        5434,
+        5891,
+        6336,
+        6659,
+        6915,
+        7833,
+        7986,
+        8293,
+        8401,
+        8750,
+        9583,
+        9886
+      ],
+      "n_samples_per_layer": 125,
+      "mean_overlap_by_layer": {
+        "37": 6.19,
+        "38": 6.39,
+        "39": 6.74
+      },
+      "gate": "mean overlap at layer 39 >= 5.0"
+    },
+    "known_facts": {
+      "pass": true,
+      "hits": [
+        {
+          "prompt": "The Eiffel Tower is located in the city of",
+          "answer": "paris",
+          "first_layer": 30,
+          "logit_first_layer": 30
+        },
+        {
+          "prompt": "The capital city of Japan is",
+          "answer": "tokyo",
+          "first_layer": 10,
+          "logit_first_layer": 31
+        },
+        {
+          "prompt": "Water is made of hydrogen and",
+          "answer": "oxygen",
+          "first_layer": 30,
+          "logit_first_layer": 29
+        }
+      ],
+      "gate": ">=2/3"
+    }
+  },
+  "all_pass": true
+}

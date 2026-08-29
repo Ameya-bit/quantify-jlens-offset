@@ -1,0 +1,10 @@
+{
+  "model_id": "google/gemma-2-9b-it",
+  "device": "cuda",
+  "n_layers": 42,
+  "target_layer": 40,
+  "skip_first": 4,
+  "max_seq_len": 128,
+  "seconds_for_1_doc": 187.0,
+  "projected_minutes_25_docs": 77.9
+}

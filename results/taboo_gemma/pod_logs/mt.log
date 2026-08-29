@@ -1,0 +1,103 @@
+Loading weights:   0%|          | 0/464 [00:00<?, ?it/s]Loading weights:   2%|▏         | 11/464 [00:00<00:07, 57.16it/s]Loading weights:   4%|▎         | 17/464 [00:00<00:20, 21.44it/s]Loading weights:   5%|▌         | 25/464 [00:01<00:21, 20.84it/s]Loading weights:   8%|▊         | 35/464 [00:01<00:13, 32.12it/s]Loading weights:   9%|▉         | 41/464 [00:01<00:15, 27.44it/s]Loading weights:  10%|▉         | 46/464 [00:01<00:15, 27.07it/s]Loading weights:  11%|█         | 50/464 [00:01<00:16, 25.16it/s]Loading weights:  12%|█▎        | 58/464 [00:02<00:14, 28.84it/s]Loading weights:  14%|█▍        | 65/464 [00:02<00:14, 26.93it/s]Loading weights:  15%|█▍        | 69/464 [00:02<00:13, 28.34it/s]Loading weights:  16%|█▋        | 76/464 [00:02<00:14, 27.11it/s]Loading weights:  17%|█▋        | 80/464 [00:02<00:15, 25.08it/s]Loading weights:  20%|█▉        | 91/464 [00:03<00:15, 23.46it/s]Loading weights:  21%|██▏       | 99/464 [00:03<00:12, 30.33it/s]Loading weights:  22%|██▏       | 104/464 [00:03<00:14, 25.50it/s]Loading weights:  24%|██▍       | 111/464 [00:04<00:14, 25.12it/s]Loading weights:  25%|██▍       | 115/464 [00:04<00:14, 23.87it/s]Loading weights:  27%|██▋       | 124/464 [00:04<00:14, 23.11it/s]Loading weights:  29%|██▉       | 135/464 [00:05<00:14, 22.59it/s]Loading weights:  31%|███       | 143/464 [00:05<00:12, 26.27it/s]Loading weights:  32%|███▏      | 147/464 [00:05<00:14, 22.30it/s]Loading weights:  33%|███▎      | 155/464 [00:05<00:10, 29.29it/s]Loading weights:  34%|███▍      | 160/464 [00:06<00:14, 20.40it/s]Loading weights:  36%|███▌      | 165/464 [00:06<00:12, 23.86it/s]Loading weights:  36%|███▋      | 169/464 [00:06<00:16, 18.25it/s]Loading weights:  38%|███▊      | 175/464 [00:06<00:12, 23.48it/s]Loading weights:  39%|███▊      | 179/464 [00:07<00:16, 17.69it/s]Loading weights:  40%|████      | 186/464 [00:07<00:12, 21.82it/s]Loading weights:  41%|████      | 190/464 [00:08<00:16, 17.05it/s]Loading weights:  42%|████▏     | 193/464 [00:08<00:16, 16.67it/s]Loading weights:  43%|████▎     | 201/464 [00:08<00:15, 16.49it/s]Loading weights:  45%|████▌     | 209/464 [00:08<00:12, 21.07it/s]Loading weights:  46%|████▌     | 212/464 [00:09<00:14, 17.77it/s]Loading weights:  47%|████▋     | 220/464 [00:09<00:11, 20.62it/s]Loading weights:  48%|████▊     | 223/464 [00:09<00:12, 18.96it/s]Loading weights:  49%|████▊     | 226/464 [00:09<00:13, 18.24it/s]Loading weights:  50%|█████     | 234/464 [00:10<00:12, 18.82it/s]Loading weights:  52%|█████▏    | 242/464 [00:10<00:12, 17.81it/s]Loading weights:  53%|█████▎    | 245/464 [00:11<00:12, 17.10it/s]Loading weights:  54%|█████▎    | 249/464 [00:11<00:11, 18.03it/s]Loading weights:  54%|█████▍    | 251/464 [00:11<00:13, 16.11it/s]Loading weights:  55%|█████▌    | 256/464 [00:11<00:11, 18.33it/s]Loading weights:  56%|█████▌    | 259/464 [00:11<00:10, 20.11it/s]Loading weights:  58%|█████▊    | 267/464 [00:12<00:11, 17.78it/s]Loading weights:  59%|█████▉    | 275/464 [00:12<00:09, 20.72it/s]Loading weights:  60%|█████▉    | 278/464 [00:12<00:08, 21.63it/s]Loading weights:  61%|██████▏   | 285/464 [00:12<00:07, 25.42it/s]Loading weights:  62%|██████▏   | 288/464 [00:12<00:06, 26.02it/s]Loading weights:  63%|██████▎   | 291/464 [00:13<00:09, 19.19it/s]Loading weights:  64%|██████▍   | 297/464 [00:13<00:07, 22.64it/s]Loading weights:  65%|██████▍   | 300/464 [00:13<00:08, 20.11it/s]Loading weights:  66%|██████▌   | 305/464 [00:13<00:07, 22.08it/s]Loading weights:  66%|██████▋   | 308/464 [00:13<00:06, 23.39it/s]Loading weights:  67%|██████▋   | 311/464 [00:14<00:07, 20.33it/s]Loading weights:  69%|██████▊   | 318/464 [00:14<00:05, 25.15it/s]Loading weights:  69%|██████▉   | 321/464 [00:14<00:05, 25.51it/s]Loading weights:  70%|██████▉   | 324/464 [00:14<00:07, 19.10it/s]Loading weights:  71%|███████   | 330/464 [00:14<00:06, 19.53it/s]Loading weights:  72%|███████▏  | 333/464 [00:15<00:08, 16.11it/s]Loading weights:  74%|███████▍  | 344/464 [00:15<00:06, 18.63it/s]Loading weights:  76%|███████▌  | 353/464 [00:16<00:05, 22.07it/s]Loading weights:  77%|███████▋  | 356/464 [00:16<00:05, 20.30it/s]Loading weights:  78%|███████▊  | 363/464 [00:16<00:04, 21.48it/s]Loading weights:  79%|███████▉  | 366/464 [00:16<00:04, 22.17it/s]Loading weights:  80%|███████▉  | 370/464 [00:16<00:04, 21.99it/s]Loading weights:  81%|████████  | 374/464 [00:16<00:03, 24.78it/s]Loading weights:  81%|████████▏ | 377/464 [00:17<00:04, 21.63it/s]Loading weights:  82%|████████▏ | 380/464 [00:17<00:04, 19.59it/s]Loading weights:  83%|████████▎ | 383/464 [00:17<00:05, 15.83it/s]Loading weights:  84%|████████▍ | 389/464 [00:17<00:03, 19.80it/s]Loading weights:  85%|████████▌ | 395/464 [00:18<00:03, 22.68it/s]Loading weights:  86%|████████▌ | 398/464 [00:18<00:03, 20.53it/s]Loading weights:  86%|████████▋ | 401/464 [00:18<00:02, 22.03it/s]Loading weights:  88%|████████▊ | 408/464 [00:18<00:02, 22.69it/s]Loading weights:  89%|████████▊ | 411/464 [00:18<00:02, 20.28it/s]Loading weights:  90%|█████████ | 418/464 [00:18<00:01, 28.59it/s]Loading weights:  91%|█████████ | 422/464 [00:19<00:01, 25.50it/s]Loading weights:  93%|█████████▎| 432/464 [00:19<00:01, 25.26it/s]Loading weights:  95%|█████████▍| 440/464 [00:19<00:00, 26.20it/s]Loading weights:  95%|█████████▌| 443/464 [00:20<00:00, 23.42it/s]Loading weights:  96%|█████████▌| 446/464 [00:20<00:00, 24.31it/s]Loading weights:  97%|█████████▋| 451/464 [00:20<00:00, 24.50it/s]Loading weights:  98%|█████████▊| 454/464 [00:20<00:00, 18.53it/s]Loading weights:  98%|█████████▊| 457/464 [00:20<00:00, 17.72it/s]Loading weights: 100%|██████████| 464/464 [00:20<00:00, 22.20it/s]
+[1/100] row 165 half 0
+[2/100] row 427 half 0
+[3/100] row 488 half 0
+[4/100] row 632 half 1
+[5/100] row 635 half 1
+[6/100] row 850 half 0
+[7/100] row 976 half 0
+[8/100] row 1013 half 1
+[9/100] row 1289 half 1
+[10/100] row 1447 half 0
+[11/100] row 1558 half 1
+[12/100] row 1803 half 1
+[13/100] row 1805 half 0
+[14/100] row 2311 half 0
+[15/100] row 2671 half 0
+[16/100] row 2718 half 0
+[17/100] row 2773 half 0
+[18/100] row 2801 half 0
+[19/100] row 2852 half 0
+[20/100] row 2927 half 0
+[21/100] row 2979 half 1
+[22/100] row 2992 half 1
+[23/100] row 3065 half 1
+[24/100] row 3224 half 1
+[25/100] row 3498 half 0
+[26/100] row 3570 half 0
+[27/100] row 3735 half 0
+[28/100] row 3817 half 1
+[29/100] row 3885 half 1
+[30/100] row 3975 half 1
+[31/100] row 4208 half 1
+[32/100] row 4235 half 0
+[33/100] row 4513 half 1
+[34/100] row 4514 half 0
+[35/100] row 4594 half 1
+[36/100] row 4695 half 1
+[37/100] row 5100 half 0
+[38/100] row 5181 half 0
+[39/100] row 5204 half 0
+[40/100] row 5243 half 1
+[41/100] row 5353 half 1
+[42/100] row 5457 half 0
+[43/100] row 5465 half 0
+[44/100] row 5738 half 1
+[45/100] row 5894 half 0
+[46/100] row 5943 half 0
+[47/100] row 5945 half 1
+[48/100] row 6042 half 1
+[49/100] row 6064 half 1
+[50/100] row 6078 half 0
+[51/100] row 6114 half 1
+[52/100] row 6117 half 0
+[53/100] row 6156 half 0
+[54/100] row 6247 half 0
+[55/100] row 6382 half 1
+[56/100] row 6609 half 1
+[57/100] row 6716 half 1
+[58/100] row 6830 half 1
+[59/100] row 6965 half 1
+[60/100] row 7117 half 1
+[61/100] row 7235 half 1
+[62/100] row 7472 half 0
+[63/100] row 7486 half 1
+[64/100] row 7488 half 0
+[65/100] row 7637 half 1
+[66/100] row 7668 half 1
+[67/100] row 7742 half 0
+[68/100] row 7748 half 1
+[69/100] row 7807 half 0
+[70/100] row 8058 half 1
+[71/100] row 8173 half 0
+[72/100] row 8212 half 0
+[73/100] row 8231 half 0
+[74/100] row 8370 half 0
+[75/100] row 8417 half 1
+[76/100] row 8438 half 0
+[77/100] row 8475 half 0
+[78/100] row 8528 half 1
+[79/100] row 8556 half 0
+[80/100] row 8575 half 0
+[81/100] row 8576 half 0
+[82/100] row 8603 half 1
+[83/100] row 8635 half 1
+[84/100] row 8662 half 0
+[85/100] row 8702 half 0
+[86/100] row 8779 half 1
+[87/100] row 8828 half 1
+[88/100] row 8834 half 1
+[89/100] row 8914 half 0
+[90/100] row 9149 half 0
+[91/100] row 9372 half 1
+[92/100] row 9410 half 1
+[93/100] row 9420 half 0
+[94/100] row 9447 half 1
+[95/100] row 9541 half 1
+[96/100] row 9654 half 1
+[97/100] row 9768 half 1
+[98/100] row 9879 half 0
+[99/100] row 9942 half 1
+[100/100] row 9972 half 0
+min J-lens split-half Pearson 0.9542
+wrote results/taboo_gemma/gemma2_mt.npz + results/taboo_gemma/gemma2_noise_null.json
