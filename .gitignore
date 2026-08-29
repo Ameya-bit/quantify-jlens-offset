@@ -14,3 +14,10 @@ __pycache__/
 # large artifacts (models/lenses live in HF cache, not the repo)
 *.pt
 *.safetensors
+
+# npz too large for GitHub's 100MB limit — regenerable via src scripts;
+# the JSON evidence files stay tracked (see results/README.md)
+results/step8/step8_arm_*.npz
+results/taboo/qwen3_mt.npz
+results/taboo_gemma/*.npz
+results/step4/step4_mt.npz

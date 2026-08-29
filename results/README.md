@@ -7,3 +7,8 @@ before 28 Aug cite the old flat paths (`results/stepN_*`); map them as
 (`pythia_jlens.pt`, `pythia_fit_ckpt.pt`, `pythia_sanity.json`,
 `qwen_agreement.json`) live in `step2/`; the two `.pt` lens artifacts are
 gitignored.
+
+Large `.npz` arrays (step-8 domain arms, taboo m_t) exceed GitHub's 100 MB
+file limit and are gitignored: they live only on the machine that produced
+them and are regenerable from the committed scripts (`src/domain_mt.py`,
+`src/taboo_mt.py`); the JSON summaries derived from them are tracked.
