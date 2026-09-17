@@ -797,3 +797,31 @@ blue/book/salt/ship. Deltas from D43:
 - **Reverses if:** the reproduction check misses their published numbers
   badly — then the softcap choice is re-examined (uncapped rerun) before
   anything else is reported.
+
+### D45. Post-hoc paired significance test on the Gemma LOO headline gap
+**Date:** 17 Sep · **Where:** src/taboo_analysis_gemma.py (`sign_flip_test`, `paired_test`) · **Evidence:** results/taboo_gemma/taboo_summary.json → `paired_tests`; devlog 0.7.1
+
+**Post-hoc, not registered.** D43/D44 registered directional predictions
+(P1–P3) but no test of whether the LOO accuracy gap between cells is
+distinguishable from noise at n = 20. The question was raised while the
+executive summary was being redlined, after the 0.805 vs 0.665 headline
+was known; the test was chosen then. It is labelled post-hoc everywhere it
+is reported and it changes no registered verdict.
+
+- **Test:** exact two-sided sign-flip (permutation) test on the per-word
+  paired LOO-accuracy differences, all 2^20 sign assignments enumerated,
+  statistic = mean difference. No Monte Carlo, so no seed to record.
+- **Cross-check:** Wilcoxon signed-rank (ties dropped). Reported next to the
+  sign-flip p; the sign-flip value is the headline because it tests the
+  actual differences, not their ranks.
+- **Pairs:** zscore/J vs raw/logit (their protocol) and zscore/J vs
+  zscore/logit (transport vs calibration).
+- **Rejected:** a paired t-test (20 bounded accuracies in {0, 0.1, …, 1}
+  with 13 ties in one pair — the normal approximation is not earned);
+  a Monte Carlo sign-flip (unnecessary; 2^20 enumerates in about a second).
+- **Result:** p = 0.193 and p = 0.234. The headline gap is reported as a
+  point estimate.
+
+- **Reverses if:** a larger taboo organism family becomes available — then
+  the test is *registered* before the run, with the pair and the direction
+  fixed in advance, and this post-hoc row is superseded.

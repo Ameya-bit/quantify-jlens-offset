@@ -1495,5 +1495,39 @@
     },
     "registered_cell": "zscore/J",
     "verdict_rho_positive": false
+  },
+  "paired_tests": {
+    "spec": {
+      "status": "post-hoc (not registered in D43/D44; added 17 Sep 2026, D45)",
+      "unit": "per-word LOO accuracy (loo_headline.<cell>.per_word[].accuracy), n = 20",
+      "statistic": "mean paired difference a - b",
+      "headline_test": "exact sign-flip (permutation) test, all 2^20 sign assignments, two-sided",
+      "cross_check": "scipy.stats.wilcoxon on the nonzero differences, two-sided, ties dropped",
+      "seed": null
+    },
+    "pairs": {
+      "zscore/J vs raw/logit": {
+        "n": 20,
+        "mean_a": 0.805,
+        "mean_b": 0.665,
+        "mean_diff": 0.14,
+        "wins": 9,
+        "losses": 6,
+        "ties": 5,
+        "sign_flip_p": 0.1929,
+        "wilcoxon_p": 0.1551
+      },
+      "zscore/J vs zscore/logit": {
+        "n": 20,
+        "mean_a": 0.805,
+        "mean_b": 0.715,
+        "mean_diff": 0.09,
+        "wins": 4,
+        "losses": 3,
+        "ties": 13,
+        "sign_flip_p": 0.2344,
+        "wilcoxon_p": 0.2812
+      }
+    }
   }
 }

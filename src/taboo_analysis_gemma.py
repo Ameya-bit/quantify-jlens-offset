@@ -9,6 +9,11 @@ two D44 additions:
     not a gate; large disagreement gets diagnosed before claims.
   - P3 (REGISTERED at n=20): Spearman rho(zipf(word), per-word accuracy
     at the LOO-selected layer, zscore/J) > 0, zipf via wordfreq (en).
+  - paired_tests (POST-HOC, D45, added 17 Sep after the summary was
+    drafted): is the LOO accuracy gap between zscore/J and the two logit
+    cells more than noise over the 20 held-out words? Exact two-sided
+    sign-flip test on the paired per-word differences (all 2^20 sign
+    assignments enumerated), Wilcoxon signed-rank as a cross-check.
 
 Run: .venv/bin/python -m src.taboo_analysis_gemma
      (writes results/taboo_gemma/taboo_summary.json)
@@ -19,7 +24,7 @@ from __future__ import annotations
 import json
 
 import numpy as np
-from scipy.stats import spearmanr
+from scipy.stats import spearmanr, wilcoxon
 from wordfreq import zipf_frequency
 
 from src.taboo_eval_gemma import PLURALS, WORDS
@@ -29,6 +34,42 @@ OUT_PATH = "results/taboo_gemma/taboo_summary.json"
 TOP_K = 5
 REPRO_LAYER = 31  # their empirically-chosen layer (0-indexed), for raw/logit
 PUBLISHED = {"accuracy": 0.35, "pass@10": 0.75, "majority@10": 0.20}  # their top-5 row
+PAIRED_TEST_PAIRS = (("zscore/J", "raw/logit"), ("zscore/J", "zscore/logit"))
+SIGN_FLIP_TOL = 1e-12  # |null| >= |observed| up to float rounding
+
+
+def sign_flip_test(diffs: np.ndarray) -> float:
+    """Exact two-sided sign-flip p for a paired mean difference.
+
+    Under H0 (no difference) each pair's sign is a fair coin, so the null
+    is the mean over every one of the 2^n sign assignments. n = 20 here,
+    so all 1,048,576 are enumerated (no Monte Carlo, no seed). Ties
+    contribute zero under every assignment and so only dilute the mean,
+    exactly as they do in the observed statistic.
+    """
+    n = len(diffs)
+    observed = abs(diffs.mean())
+    codes = np.arange(2 ** n, dtype=np.int64)
+    signs = 1 - 2 * ((codes[:, None] >> np.arange(n)) & 1)  # (2^n, n) in {+1, -1}
+    null = (signs * diffs).mean(axis=1)
+    return float(np.mean(np.abs(null) >= observed - SIGN_FLIP_TOL))
+
+
+def paired_test(acc_a: np.ndarray, acc_b: np.ndarray) -> dict:
+    diffs = acc_a - acc_b
+    nonzero = diffs[diffs != 0]
+    wil_p = float(wilcoxon(nonzero).pvalue) if len(nonzero) else 1.0
+    return {
+        "n": int(len(diffs)),
+        "mean_a": round(float(acc_a.mean()), 4),
+        "mean_b": round(float(acc_b.mean()), 4),
+        "mean_diff": round(float(diffs.mean()), 4),
+        "wins": int((diffs > 0).sum()),
+        "losses": int((diffs < 0).sum()),
+        "ties": int((diffs == 0).sum()),
+        "sign_flip_p": round(sign_flip_test(diffs), 4),
+        "wilcoxon_p": round(wil_p, 4),
+    }
 
 
 def accuracy(preds_per_prompt, word, k=TOP_K):
@@ -166,6 +207,24 @@ def main() -> None:
     p3["verdict_rho_positive"] = bool(p3["cells"]["zscore/J"]["rho"] > 0)
     out["P3"] = p3
 
+    # paired_tests (POST-HOC, D45): LOO accuracy gap, zscore/J vs the logit cells
+    paired: dict = {
+        "spec": {
+            "status": "post-hoc (not registered in D43/D44; added 17 Sep 2026, D45)",
+            "unit": "per-word LOO accuracy (loo_headline.<cell>.per_word[].accuracy), n = 20",
+            "statistic": "mean paired difference a - b",
+            "headline_test": "exact sign-flip (permutation) test, all 2^20 sign assignments, two-sided",
+            "cross_check": "scipy.stats.wilcoxon on the nonzero differences, two-sided, ties dropped",
+            "seed": None,
+        },
+        "pairs": {},
+    }
+    for a, b in PAIRED_TEST_PAIRS:
+        acc_a = np.array([loo_word_acc[a][w] for w in words])
+        acc_b = np.array([loo_word_acc[b][w] for w in words])
+        paired["pairs"][f"{a} vs {b}"] = paired_test(acc_a, acc_b)
+    out["paired_tests"] = paired
+
     with open(OUT_PATH, "w") as f:
         json.dump(out, f, indent=2)
 
@@ -177,6 +236,10 @@ def main() -> None:
                       p1[v]["J"]["best_layer"], p1[v]["logit"]["best_layer"]) for v in variants})
     print("P2 band:", out["P2"]["band_deltas"], "->", out["P2"]["verdict_z_geq_raw_in_band"])
     print("P3:", p3["cells"], "-> registered zscore/J positive:", p3["verdict_rho_positive"])
+    print("paired tests (post-hoc, sign-flip p / Wilcoxon p):")
+    for name, r in paired["pairs"].items():
+        print(f"  {name}: diff {r['mean_diff']:+.3f}, W/L/T {r['wins']}/{r['losses']}/{r['ties']},"
+              f" p = {r['sign_flip_p']:.3f} / {r['wilcoxon_p']:.3f}")
     print(f"wrote {OUT_PATH}")
 
 
