@@ -4,6 +4,7 @@ Usage: .venv/bin/python -m src.exec_figures
 Writes results/exec_summary/fig1_payoff.png, fig2_anatomy.png, fig3_gate.png
 """
 import json
+import os
 from pathlib import Path
 
 import matplotlib.pyplot as plt
@@ -12,6 +13,12 @@ import numpy as np
 ROOT = Path(__file__).resolve().parent.parent
 OUT = ROOT / "results" / "exec_summary"
 OUT.mkdir(exist_ok=True)
+
+# Figure ground. White by default (the repo's copies). The website sets
+# JLENS_FIG_BG to its page colour so a figure sits on the page instead of in a
+# white rectangle; the grid steps one shade darker with it so it stays visible.
+BG = os.environ.get("JLENS_FIG_BG", "white")
+GRID = "#eceae4" if BG == "white" else "#dcdad3"
 
 # Entity colors are fixed across all figures (validated palette, light mode).
 C_J = "#2a78d6"      # J-lens        (blue)
@@ -22,9 +29,9 @@ INK = "#0b0b0b"
 INK2 = "#52514e"
 
 plt.rcParams.update({
-    "figure.facecolor": "white", "axes.facecolor": "white",
+    "figure.facecolor": BG, "axes.facecolor": BG,
     "axes.edgecolor": "#d8d6cf", "axes.linewidth": 0.8,
-    "axes.grid": True, "grid.color": "#eceae4", "grid.linewidth": 0.6,
+    "axes.grid": True, "grid.color": GRID, "grid.linewidth": 0.6,
     "axes.axisbelow": True, "font.size": 9, "axes.titlesize": 10,
     "axes.labelsize": 9, "xtick.color": INK2, "ytick.color": INK2,
     "axes.labelcolor": INK2, "text.color": INK,
@@ -92,7 +99,7 @@ def fig1_payoff():
         p = loq[key]["headline_pass@10"]
         axC.bar(i - 0.17, a, width=0.3, color=col, alpha=alpha)
         axC.bar(i + 0.17, p, width=0.3, color=col, alpha=alpha, hatch="///",
-                edgecolor="white", lw=0)
+                edgecolor=BG, lw=0)
         for x, v in ((i - 0.17, a), (i + 0.17, p)):
             axC.text(x, v + 0.012, f"{v:.2f}" if v else "0", ha="center",
                      fontsize=7.5, color=INK2)
@@ -213,7 +220,7 @@ def fig3_gate():
         xs = [v["zipf"] for v in inter.values()]
         ys = [v[kind] for v in inter.values()]
         rho = stats[kind]["spearman_rho"]
-        axB.scatter(xs, ys, s=34, color=col, edgecolor="white", lw=0.8,
+        axB.scatter(xs, ys, s=34, color=col, edgecolor=BG, lw=0.8,
                     label=f"{lab}  ρ = {rho:.2f}")
     axB.axhline(0, color="#c9c7c0", lw=0.8)
     axB.set_xlabel("latent-token frequency (Zipf)")
