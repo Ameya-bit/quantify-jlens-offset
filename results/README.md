@@ -12,3 +12,9 @@ Large `.npz` arrays (step-8 domain arms, taboo m_t) exceed GitHub's 100 MB
 file limit and are gitignored: they live only on the machine that produced
 them and are regenerable from the committed scripts (`src/domain_mt.py`,
 `src/taboo_mt.py`); the JSON summaries derived from them are tracked.
+
+`exec_summary/` holds the executive-summary figures (`fig1_payoff.png`,
+`fig2_anatomy.png`, `fig3_gate.png`) and their one-panel splits in
+`exec_summary/single/`. They read only the tracked JSONs above — no new
+experiments — and regenerate with `src/exec_figures.py` and
+`src/exec_figures_single.py` (committed 17 Sep 2026).
