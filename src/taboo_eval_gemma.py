@@ -10,7 +10,8 @@ response_scores docstring + D44).
 
 This is the arm where the comparison to their PUBLISHED table is
 legitimate (same model, same organisms): their logit lens at layer index
-31, top-5 = 16.5% accuracy / 75% pass@10. Our reimplemented raw/logit at
+31, top-5 = 35.0% accuracy / 75% pass@10 (their Table 1; 16.5% is the
+top-1 row). Our reimplemented raw/logit at
 L31 doubles as the reproduction check before any claim is made.
 
 Run (GPU box, after fit + sanity + m_t):

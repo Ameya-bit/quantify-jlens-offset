@@ -771,7 +771,9 @@ blue/book/salt/ship. Deltas from D43:
 
 - **Model/set:** gemma-2-9b-it, all 20 released taboo organisms — their
   published benchmark. Comparison to their published table (logit lens
-  L-index-31, top-5: 16.5% accuracy / 75% pass@10) is now legitimate.
+  L-index-31, top-5: 35.0% accuracy / 75% pass@10 — this row originally
+  said 16.5%, which is their top-1 accuracy; corrected 17 Sep against
+  their Table 1, the analysis script always used 35%) is now legitimate.
   **Reproduction check, not a gate:** our reimplemented raw/logit at
   L-index-31 should land near their numbers; a large gap means our
   reimplementation differs and gets diagnosed before any comparative
