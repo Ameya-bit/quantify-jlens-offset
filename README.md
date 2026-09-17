@@ -1,4 +1,4 @@
-# The J-lens non-context offset: mostly the model's own frequency prior — and knowing that wins on a secret-elicitation benchmark
+# The J-lens non-context offset: mostly the model's own frequency prior — and knowing that helps on a secret-elicitation benchmark
 
 A ~16-hour clocked study for the MATS 12.0 application, plus a registered
 extension. **Question:** J-lens readouts contain score that tokens collect
